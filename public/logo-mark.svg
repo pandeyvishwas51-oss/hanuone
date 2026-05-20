@@ -1,17 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Heart outline -->
-  <path d="M 70 18
-           C 82 18 90 32 84 46
-           C 78 60 60 76 50 84
-           C 40 76 22 60 16 46
-           C 10 32 18 18 30 18
-           C 40 18 40 26 50 28
-           C 60 26 60 18 70 18 Z"
-        fill="none" stroke="#023E8A" stroke-width="7"/>
-  <!-- Medical cross -->
-  <rect x="44" y="30" width="12" height="32" rx="2.5" fill="#023E8A"/>
-  <rect x="34" y="40" width="32" height="12" rx="2.5" fill="#023E8A"/>
-  <!-- ECG line -->
-  <polyline points="22,46 36,46 41,38 47,54 53,36 59,52 64,46 78,46"
-            stroke="#F0FAFF" stroke-width="3" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <g transform="translate(48,50)">
+    <!-- Heart -->
+    <path d="M 0 24
+             C -7 18 -24 7 -24 -7
+             C -24 -18 -15 -24 -8 -24
+             C -3 -24 -1 -22 0 -19
+             C 1 -22 3 -24 8 -24
+             C 15 -24 24 -18 24 -7
+             C 24 7 7 18 0 24 Z"
+          fill="#023E8A"/>
+    <!-- Cross cutout -->
+    <rect x="-3" y="-13" width="6" height="20" rx="1.2" fill="#ffffff"/>
+    <rect x="-10" y="-6" width="20" height="6" rx="1.2" fill="#ffffff"/>
+  </g>
+  <!-- Caring hand swoosh -->
+  <path d="M 14 76 Q 48 92 82 76"
+        stroke="#00B4D8" stroke-width="5" fill="none" stroke-linecap="round"/>
 </svg>

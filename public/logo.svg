@@ -1,50 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 210" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <!-- ============================== -->
-  <!-- Bicep + cradling hand           -->
-  <!-- ============================== -->
-  <!-- Forearm + hand silhouette -->
-  <path d="M 28 178
-           C 28 116 70 78 116 90
-           C 138 98 150 118 145 138
-           C 142 150 132 158 120 158
-           L 152 158
-           Q 184 158 208 168
-           L 244 178
-           Q 234 192 214 196
-           L 88 198
-           Q 28 198 28 178 Z"
-        fill="#023E8A"/>
-  <!-- Bicep flex highlight (negative space) -->
-  <path d="M 60 134
-           C 64 114 92 108 109 122
-           C 118 130 118 144 107 150
-           C 90 156 64 152 60 134 Z"
-        fill="#F0FAFF"/>
-  <!-- Wrist crease detail -->
-  <path d="M 152 158 Q 168 168 188 170 L 200 170 L 200 178 L 158 178 Z"
-        fill="#012F6B" fill-opacity="0.35"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <!-- Rounded square brand tile -->
+  <rect width="96" height="96" rx="22" fill="#023E8A"/>
 
-  <!-- ============================== -->
-  <!-- Heart outline                   -->
-  <!-- ============================== -->
-  <path d="M 198 30
-           C 220 30 232 50 222 70
-           C 213 88 198 102 188 110
-           C 178 102 163 88 154 70
-           C 144 50 156 30 178 30
-           C 188 30 188 38 188 40
-           C 188 38 188 30 198 30 Z"
-        fill="none" stroke="#023E8A" stroke-width="11"/>
+  <!-- Heart with medical cross cutout, centered -->
+  <g transform="translate(48,52)">
+    <!-- Heart -->
+    <path d="M 0 22
+             C -6 16 -22 6 -22 -6
+             C -22 -16 -14 -22 -7 -22
+             C -3 -22 -1 -20 0 -18
+             C 1 -20 3 -22 7 -22
+             C 14 -22 22 -16 22 -6
+             C 22 6 6 16 0 22 Z"
+          fill="#ffffff"/>
+    <!-- Medical cross cutout -->
+    <rect x="-3" y="-12" width="6" height="18" rx="1" fill="#023E8A"/>
+    <rect x="-9" y="-6" width="18" height="6" rx="1" fill="#023E8A"/>
+  </g>
 
-  <!-- ============================== -->
-  <!-- Medical cross                   -->
-  <!-- ============================== -->
-  <rect x="180" y="40" width="16" height="52" rx="3" fill="#023E8A"/>
-  <rect x="162" y="58" width="52" height="16" rx="3" fill="#023E8A"/>
-
-  <!-- ============================== -->
-  <!-- ECG / heartbeat line            -->
-  <!-- ============================== -->
-  <polyline points="156,66 174,66 181,54 188,78 195,58 202,72 220,66"
-            stroke="#F0FAFF" stroke-width="4" fill="none"/>
+  <!-- Subtle accent stroke / caring hand suggestion -->
+  <path d="M 18 70 Q 48 84 78 70"
+        stroke="#00B4D8" stroke-width="4" fill="none" stroke-linecap="round"/>
 </svg>

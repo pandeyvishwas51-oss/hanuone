@@ -19,7 +19,9 @@ import { supabaseService } from "@/lib/supabase";
 export const runtime = "nodejs";
 
 // Hard-coded fallback recipient. Override with NOTIFY_EMAIL env var.
-const DEFAULT_NOTIFY_EMAIL = "pandeyvishwas51@gmail.com";
+// Default points at the Resend account owner so the free tier can deliver
+// without requiring a verified domain.
+const DEFAULT_NOTIFY_EMAIL = "ritiktech970@gmail.com";
 
 function notifyEmail() {
   return process.env.NOTIFY_EMAIL?.trim() || DEFAULT_NOTIFY_EMAIL;
