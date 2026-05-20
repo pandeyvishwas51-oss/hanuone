@@ -22,6 +22,7 @@ export default function WaitlistForm({ compact }: Props) {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
+  const [mailtoUrl, setMailtoUrl] = useState<string | null>(null);
 
   function reset() {
     setName("");
@@ -42,6 +43,7 @@ export default function WaitlistForm({ compact }: Props) {
 
     setStatus("loading");
     setFeedback("");
+    setMailtoUrl(null);
 
     try {
       const res = await fetch("/api/waitlist", {
@@ -52,11 +54,13 @@ export default function WaitlistForm({ compact }: Props) {
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         error?: string;
+        mailto?: string;
       };
 
       if (!res.ok || !data.ok) {
         setStatus("error");
         setFeedback(data.error || "We could not save your details. Please try again.");
+        if (data.mailto) setMailtoUrl(data.mailto);
         return;
       }
 
@@ -151,8 +155,16 @@ export default function WaitlistForm({ compact }: Props) {
         </div>
       )}
       {status === "error" && (
-        <div className="rounded-md bg-red-50 px-3 py-2 text-xs font-medium text-red-700">
-          {feedback}
+        <div className="space-y-2 rounded-md bg-red-50 px-3 py-2 text-xs font-medium text-red-700">
+          <div>{feedback}</div>
+          {mailtoUrl && (
+            <a
+              href={mailtoUrl}
+              className="inline-flex items-center gap-1 rounded-full bg-red-600 px-3 py-1.5 text-white hover:bg-red-700"
+            >
+              Open email to send us your details
+            </a>
+          )}
         </div>
       )}
     </form>

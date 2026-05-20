@@ -92,9 +92,8 @@ async function sendResendEmail(p: Payload) {
 
 async function sendFormSubmit(p: Payload) {
   // FormSubmit "AJAX" endpoint: https://formsubmit.co/ajax/{email}
-  // Free, no signup, instantly emails the recipient.
-  // First-time use shows a confirmation email to NOTIFY_EMAIL; clicking the
-  // link activates the address.
+  // Free, no signup, instantly emails the recipient. Sometimes returns 403
+  // until the recipient confirms their email (first-time activation).
   const target = `https://formsubmit.co/ajax/${encodeURIComponent(notifyEmail())}`;
   try {
     const r = await fetch(target, {
@@ -114,6 +113,36 @@ async function sendFormSubmit(p: Payload) {
       })
     });
     if (!r.ok) return { ok: false, reason: `formsubmit ${r.status}` };
+    return { ok: true };
+  } catch (e: unknown) {
+    return { ok: false, reason: String((e as Error).message ?? e) };
+  }
+}
+
+async function sendWeb3Forms(p: Payload) {
+  // Web3Forms: free, reliable, needs WEB3FORMS_ACCESS_KEY env var.
+  // Create a key at https://web3forms.com/ in 30 seconds; emails are sent
+  // to whichever address owns the access key.
+  const key = process.env.WEB3FORMS_ACCESS_KEY;
+  if (!key) return { ok: false, reason: "no WEB3FORMS_ACCESS_KEY" };
+  try {
+    const r = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: key,
+        subject: `Hanuone signup: ${p.role}`,
+        from_name: "Hanuone",
+        name: p.name || "(not given)",
+        email: p.email || "noreply@hanuone.in",
+        whatsapp: p.whatsapp || "(not given)",
+        city: p.city || "(not given)",
+        role: p.role,
+        message: p.message || "(none)",
+        source: "hanuone.in / waitlist form"
+      })
+    });
+    if (!r.ok) return { ok: false, reason: `web3forms ${r.status}` };
     return { ok: true };
   } catch (e: unknown) {
     return { ok: false, reason: String((e as Error).message ?? e) };
@@ -175,20 +204,33 @@ export async function POST(req: Request) {
 
   const payload: Payload = { role, email, whatsapp, name, city, message };
 
-  // Run all three transports in parallel; success if at least one wins.
-  const [supabase, resend, formSubmit] = await Promise.all([
+  // Run all transports in parallel; success if at least one wins.
+  const [supabase, resend, web3forms, formSubmit] = await Promise.all([
     persistToSupabase(payload),
     sendResendEmail(payload),
+    sendWeb3Forms(payload),
     sendFormSubmit(payload)
   ]);
 
-  const wins = [supabase, resend, formSubmit].filter((r) => r.ok);
+  const wins = [supabase, resend, web3forms, formSubmit].filter((r) => r.ok);
   if (wins.length === 0) {
+    // Build a mailto link so the user always has a guaranteed escape hatch.
+    const subject = encodeURIComponent(`Hanuone signup: ${payload.role}`);
+    const lines = [
+      `Role: ${payload.role}`,
+      `Name: ${payload.name || "(not given)"}`,
+      `Email: ${payload.email || "(not given)"}`,
+      `WhatsApp: ${payload.whatsapp || "(not given)"}`,
+      `City: ${payload.city || "(not given)"}`,
+      `Note: ${payload.message || "(none)"}`
+    ].join("\n");
+    const mailto = `mailto:${notifyEmail()}?subject=${subject}&body=${encodeURIComponent(lines)}`;
     return NextResponse.json(
       {
         ok: false,
-        error: "We couldn't save your details. Please try again or WhatsApp us.",
-        debug: { supabase, resend, formSubmit }
+        error: "We couldn't save automatically. Tap the email link below and we'll get your details.",
+        mailto,
+        debug: { supabase, resend, web3forms, formSubmit }
       },
       { status: 502 }
     );
@@ -199,6 +241,7 @@ export async function POST(req: Request) {
     transports: {
       supabase: supabase.ok,
       resend: resend.ok,
+      web3forms: web3forms.ok,
       formSubmit: formSubmit.ok
     }
   });
