@@ -1,0 +1,7 @@
+scraper/
+scripts/
+supabase/
+data/practo_doctors.json
+.git/
+.next/
+node_modules/

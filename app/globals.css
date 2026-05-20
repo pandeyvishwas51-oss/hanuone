@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply text-ink;
+  }
+  :lang(hi), .hi {
+    font-family: "Noto Sans Devanagari", Inter, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary/40;
+  }
+  .btn-outline {
+    @apply btn border border-primary/20 bg-white text-primary hover:bg-primary/5;
+  }
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white hover:bg-[#1ebe57];
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-3 py-1.5 text-xs font-medium text-primary hover:border-primary/40;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-ink placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .section {
+    @apply py-12 sm:py-16;
+  }
+  .h1 { @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight; }
+  .h2 { @apply text-2xl sm:text-3xl font-bold tracking-tight; }
+  .h3 { @apply text-lg sm:text-xl font-semibold; }
+}
+
+/* Hide scrollbars on horizontal scroll rails */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

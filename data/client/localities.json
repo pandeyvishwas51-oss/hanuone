@@ -1,0 +1,695 @@
+[
+  {
+    "name": "Gomtinagar",
+    "slug": "gomtinagar",
+    "doctor_count": 122,
+    "lat": 26.859039053337558,
+    "lng": 81.00718456708238
+  },
+  {
+    "name": "Indira Nagar",
+    "slug": "indira-nagar",
+    "doctor_count": 76,
+    "lat": 26.880461982602473,
+    "lng": 80.98989940000335
+  },
+  {
+    "name": "Viraj Khand",
+    "slug": "viraj-khand",
+    "doctor_count": 38,
+    "lat": 26.849327167517,
+    "lng": 81.02042358366903
+  },
+  {
+    "name": "Aliganj",
+    "slug": "aliganj",
+    "doctor_count": 31,
+    "lat": 26.894760762453636,
+    "lng": 80.94744733188807
+  },
+  {
+    "name": "Vikas Nagar",
+    "slug": "vikas-nagar",
+    "doctor_count": 23,
+    "lat": 26.895460919900287,
+    "lng": 80.96037455325423
+  },
+  {
+    "name": "Jankipuram",
+    "slug": "jankipuram",
+    "doctor_count": 19,
+    "lat": 26.916787685546094,
+    "lng": 80.9514356595517
+  },
+  {
+    "name": "Hazratganj",
+    "slug": "hazratganj",
+    "doctor_count": 17,
+    "lat": 26.230855216279686,
+    "lng": 80.91656735937144
+  },
+  {
+    "name": "Mahanagar",
+    "slug": "mahanagar",
+    "doctor_count": 16,
+    "lat": 26.876791176967085,
+    "lng": 80.95543401056963
+  },
+  {
+    "name": "Dubagga",
+    "slug": "dubagga",
+    "doctor_count": 14,
+    "lat": 26.872701537575548,
+    "lng": 80.86940767504207
+  },
+  {
+    "name": "Ashiyana",
+    "slug": "ashiyana",
+    "doctor_count": 13,
+    "lat": 26.79056155966431,
+    "lng": 80.91399059577596
+  },
+  {
+    "name": "LDA Colony sector G",
+    "slug": "lda-colony-sector-g",
+    "doctor_count": 13,
+    "lat": 26.79806170304894,
+    "lng": 80.9015104919672
+  },
+  {
+    "name": "Alambagh",
+    "slug": "alambagh",
+    "doctor_count": 13,
+    "lat": 26.80885661714561,
+    "lng": 80.90213831829641
+  },
+  {
+    "name": "Vrindavan yojana\t",
+    "slug": "vrindavan-yojana",
+    "doctor_count": 12,
+    "lat": 26.765396529745285,
+    "lng": 80.95883717194937
+  },
+  {
+    "name": "Chowk",
+    "slug": "chowk",
+    "doctor_count": 11,
+    "lat": 26.870231480423687,
+    "lng": 80.89881389216288
+  },
+  {
+    "name": "Rajajipuram",
+    "slug": "rajajipuram",
+    "doctor_count": 11,
+    "lat": 26.845302195579784,
+    "lng": 80.8795191134055
+  },
+  {
+    "name": "Gomtinagar Vistar",
+    "slug": "gomtinagar-vistar",
+    "doctor_count": 10,
+    "lat": 26.83677393590646,
+    "lng": 81.0080550346073
+  },
+  {
+    "name": "Lucknow Chowk",
+    "slug": "lucknow-chowk",
+    "doctor_count": 10,
+    "lat": 26.86441653427746,
+    "lng": 80.91219488901075
+  },
+  {
+    "name": "Krishna Nagar",
+    "slug": "krishna-nagar",
+    "doctor_count": 9,
+    "lat": 26.798662605996867,
+    "lng": 80.89240650311973
+  },
+  {
+    "name": "Niralanagar",
+    "slug": "niralanagar",
+    "doctor_count": 7,
+    "lat": 26.876832962860114,
+    "lng": 80.93922155015044
+  },
+  {
+    "name": "Aminabad",
+    "slug": "aminabad",
+    "doctor_count": 7,
+    "lat": 26.848079428571427,
+    "lng": 80.92759428571428
+  },
+  {
+    "name": "Kalyanpur",
+    "slug": "kalyanpur",
+    "doctor_count": 7,
+    "lat": 27.396163188179603,
+    "lng": 79.94874645114956
+  },
+  {
+    "name": "Jankipuram Extension",
+    "slug": "jankipuram-extension",
+    "doctor_count": 6,
+    "lat": 26.93764735457278,
+    "lng": 80.9440679511565
+  },
+  {
+    "name": "Chinhat",
+    "slug": "chinhat",
+    "doctor_count": 5,
+    "lat": 26.881592464979565,
+    "lng": 81.03683743625879
+  },
+  {
+    "name": "Balaganj",
+    "slug": "balaganj",
+    "doctor_count": 4,
+    "lat": 26.85589944812392,
+    "lng": 80.91013093288892
+  },
+  {
+    "name": "L D A Colony",
+    "slug": "l-d-a-colony",
+    "doctor_count": 4,
+    "lat": 26.791294375053,
+    "lng": 80.90858323014025
+  },
+  {
+    "name": "Vrindavan Colony",
+    "slug": "vrindavan-colony",
+    "doctor_count": 4,
+    "lat": 26.763878808395,
+    "lng": 80.95235613386849
+  },
+  {
+    "name": "Sushant Golf City",
+    "slug": "sushant-golf-city",
+    "doctor_count": 4,
+    "lat": 26.784369116770655,
+    "lng": 80.99504531710221
+  },
+  {
+    "name": "Telibagh",
+    "slug": "telibagh",
+    "doctor_count": 4,
+    "lat": 26.780343481875498,
+    "lng": 80.941729890036
+  },
+  {
+    "name": "Khurram Nagar",
+    "slug": "khurram-nagar",
+    "doctor_count": 4,
+    "lat": 26.89681015941371,
+    "lng": 80.96901462435085
+  },
+  {
+    "name": "Lalbagh",
+    "slug": "lalbagh",
+    "doctor_count": 4,
+    "lat": 26.844660990787734,
+    "lng": 80.93514959368827
+  },
+  {
+    "name": "Arjunganj",
+    "slug": "arjunganj",
+    "doctor_count": 4,
+    "lat": 26.800034839396368,
+    "lng": 80.98641714469086
+  },
+  {
+    "name": "Vastu Khand",
+    "slug": "vastu-khand",
+    "doctor_count": 3,
+    "lat": 26.863644575928607,
+    "lng": 81.03097869480706
+  },
+  {
+    "name": "Thakurganj",
+    "slug": "thakurganj",
+    "doctor_count": 3,
+    "lat": 23.750656696508432,
+    "lng": 80.09724075825805
+  },
+  {
+    "name": "Lucknow",
+    "slug": "lucknow",
+    "doctor_count": 3,
+    "lat": 22.207634038771193,
+    "lng": 79.8244571685791
+  },
+  {
+    "name": "Aishbagh",
+    "slug": "aishbagh",
+    "doctor_count": 3,
+    "lat": 26.709425666666665,
+    "lng": 80.7966707
+  },
+  {
+    "name": "Utrathia",
+    "slug": "utrathia",
+    "doctor_count": 3,
+    "lat": 26.764130131092298,
+    "lng": 80.94638597098388
+  },
+  {
+    "name": "Eldeco II",
+    "slug": "eldeco-ii",
+    "doctor_count": 3,
+    "lat": 26.769987233518,
+    "lng": 80.93850994463567
+  },
+  {
+    "name": "Rajendranagar",
+    "slug": "rajendranagar",
+    "doctor_count": 3,
+    "lat": 26.84045567597933,
+    "lng": 80.91702909661099
+  },
+  {
+    "name": "Nirala Nagar",
+    "slug": "nirala-nagar",
+    "doctor_count": 3,
+    "lat": 26.875493359948,
+    "lng": 80.937000232541
+  },
+  {
+    "name": "Daliganj",
+    "slug": "daliganj",
+    "doctor_count": 3,
+    "lat": 26.87075309038919,
+    "lng": 80.9296147781372
+  },
+  {
+    "name": "Gokhley Marg",
+    "slug": "gokhley-marg",
+    "doctor_count": 2,
+    "lat": 26.856865575453497,
+    "lng": 80.960696052575
+  },
+  {
+    "name": "Sarojini Nagar",
+    "slug": "sarojini-nagar",
+    "doctor_count": 2,
+    "lat": 26.746915339743268,
+    "lng": 80.87194538050441
+  },
+  {
+    "name": "Mahipatmau",
+    "slug": "mahipatmau",
+    "doctor_count": 2,
+    "lat": 26.8808718,
+    "lng": 80.8362582
+  },
+  {
+    "name": "Ghaila",
+    "slug": "ghaila",
+    "doctor_count": 2,
+    "lat": 26.916707973317283,
+    "lng": 80.88983402157109
+  },
+  {
+    "name": "Vivek Khand",
+    "slug": "vivek-khand",
+    "doctor_count": 2,
+    "lat": 26.857674000000003,
+    "lng": 80.99849885
+  },
+  {
+    "name": "Sector-c Sitapur Rd",
+    "slug": "sector-c-sitapur-rd",
+    "doctor_count": 2,
+    "lat": 26.918474298244888,
+    "lng": 80.93363854348047
+  },
+  {
+    "name": "Khadra",
+    "slug": "khadra",
+    "doctor_count": 2,
+    "lat": 26.878394490527043,
+    "lng": 80.91718952205659
+  },
+  {
+    "name": "Singar Nagar",
+    "slug": "singar-nagar",
+    "doctor_count": 2,
+    "lat": 26.804714632738595,
+    "lng": 80.89705077286035
+  },
+  {
+    "name": "Narhi",
+    "slug": "narhi",
+    "doctor_count": 2,
+    "lat": 26.8450196,
+    "lng": 80.9487569
+  },
+  {
+    "name": "Vinamra khand",
+    "slug": "vinamra-khand",
+    "doctor_count": 2,
+    "lat": 26.8588016,
+    "lng": 81.0235985
+  },
+  {
+    "name": "Sitapur Road",
+    "slug": "sitapur-road",
+    "doctor_count": 2,
+    "lat": 26.89375686917854,
+    "lng": 80.92844292627379
+  },
+  {
+    "name": "Vishal Khand 2",
+    "slug": "vishal-khand-2",
+    "doctor_count": 2,
+    "lat": 26.8493878,
+    "lng": 80.981483
+  },
+  {
+    "name": "Mohibullahpur",
+    "slug": "mohibullahpur",
+    "doctor_count": 2,
+    "lat": 26.90025437896112,
+    "lng": 80.93549700563429
+  },
+  {
+    "name": "Vineet Khand",
+    "slug": "vineet-khand",
+    "doctor_count": 2,
+    "lat": 26.851848966329136,
+    "lng": 81.01562017635746
+  },
+  {
+    "name": "Jankipuram sector 1",
+    "slug": "jankipuram-sector-1",
+    "doctor_count": 2,
+    "lat": 26.8986082,
+    "lng": 80.9678711
+  },
+  {
+    "name": "Qaiserbagh",
+    "slug": "qaiserbagh",
+    "doctor_count": 2,
+    "lat": 26.851962043146,
+    "lng": 80.9275597595365
+  },
+  {
+    "name": "Thasemau Road",
+    "slug": "thasemau-road",
+    "doctor_count": 1,
+    "lat": 26.839742347945336,
+    "lng": 81.05172425508499
+  },
+  {
+    "name": "Aliganj sector C",
+    "slug": "aliganj-sector-c",
+    "doctor_count": 1,
+    "lat": 26.88746801579,
+    "lng": 80.938861269544
+  },
+  {
+    "name": "Golf City Road",
+    "slug": "golf-city-road",
+    "doctor_count": 1,
+    "lat": 26.779110425292,
+    "lng": 80.98381308942
+  },
+  {
+    "name": "BKT Road",
+    "slug": "bkt-road",
+    "doctor_count": 1,
+    "lat": 27.000563344123357,
+    "lng": 80.88972084224224
+  },
+  {
+    "name": "Golaganj",
+    "slug": "golaganj",
+    "doctor_count": 1,
+    "lat": 26.856305,
+    "lng": 80.9221566
+  },
+  {
+    "name": "Nishath Ganj",
+    "slug": "nishath-ganj",
+    "doctor_count": 1,
+    "lat": 26.8698135,
+    "lng": 80.9565412
+  },
+  {
+    "name": "Aliganj sector K",
+    "slug": "aliganj-sector-k",
+    "doctor_count": 1,
+    "lat": 26.90055,
+    "lng": 80.93974
+  },
+  {
+    "name": "Madiyaon",
+    "slug": "madiyaon",
+    "doctor_count": 1,
+    "lat": 26.931337,
+    "lng": 80.934011
+  },
+  {
+    "name": "Raja Bazar",
+    "slug": "raja-bazar",
+    "doctor_count": 1,
+    "lat": 26.858782139878507,
+    "lng": 80.91168880462646
+  },
+  {
+    "name": "Pandariba",
+    "slug": "pandariba",
+    "doctor_count": 1,
+    "lat": 26.83400854461305,
+    "lng": 80.91977834701538
+  },
+  {
+    "name": "Gurdwara",
+    "slug": "gurdwara",
+    "doctor_count": 1,
+    "lat": 26.836899714960005,
+    "lng": 80.94280242919922
+  },
+  {
+    "name": "Aliganj Extension",
+    "slug": "aliganj-extension",
+    "doctor_count": 1,
+    "lat": 26.90140529435549,
+    "lng": 80.93082904815674
+  },
+  {
+    "name": "Iim Mubarakpur",
+    "slug": "iim-mubarakpur",
+    "doctor_count": 1,
+    "lat": 26.931139689747457,
+    "lng": 80.93394845724106
+  },
+  {
+    "name": "Bakshi Ka Talab",
+    "slug": "bakshi-ka-talab",
+    "doctor_count": 1,
+    "lat": 26.9840712,
+    "lng": 80.921675
+  },
+  {
+    "name": "Navinmandi",
+    "slug": "navinmandi",
+    "doctor_count": 1,
+    "lat": 26.8462088,
+    "lng": 80.946129
+  },
+  {
+    "name": "Roberts Line",
+    "slug": "roberts-line",
+    "doctor_count": 1,
+    "lat": 26.8093666,
+    "lng": 80.9952441
+  },
+  {
+    "name": "Mohanlalganj",
+    "slug": "mohanlalganj",
+    "doctor_count": 1,
+    "lat": 26.683599499926,
+    "lng": 80.981126799875
+  },
+  {
+    "name": "C E School",
+    "slug": "c-e-school",
+    "doctor_count": 1,
+    "lat": 26.8498805,
+    "lng": 80.8751614
+  },
+  {
+    "name": "Vipul khand",
+    "slug": "vipul-khand",
+    "doctor_count": 1,
+    "lat": 26.8486314,
+    "lng": 80.9817593
+  },
+  {
+    "name": "vijyant khand",
+    "slug": "vijyant-khand",
+    "doctor_count": 1,
+    "lat": 26.8686626,
+    "lng": 81.0250862
+  },
+  {
+    "name": "Arya Nagar",
+    "slug": "arya-nagar",
+    "doctor_count": 1,
+    "lat": 26.838299,
+    "lng": 80.918004
+  },
+  {
+    "name": "Zahra colony",
+    "slug": "zahra-colony",
+    "doctor_count": 1,
+    "lat": 26.8715,
+    "lng": 80.89975
+  },
+  {
+    "name": "7NAW",
+    "slug": "7naw",
+    "doctor_count": 1,
+    "lat": 26.8466937,
+    "lng": 80.946166
+  },
+  {
+    "name": "Nilmatha",
+    "slug": "nilmatha",
+    "doctor_count": 1,
+    "lat": 26.775177078046106,
+    "lng": 80.97799971699715
+  },
+  {
+    "name": "Sgpgi",
+    "slug": "sgpgi",
+    "doctor_count": 1,
+    "lat": 26.75260878395123,
+    "lng": 80.94563182443379
+  },
+  {
+    "name": "Triveni Nagar",
+    "slug": "triveni-nagar",
+    "doctor_count": 1,
+    "lat": 26.897282,
+    "lng": 80.928732
+  },
+  {
+    "name": "Kursi Road",
+    "slug": "kursi-road",
+    "doctor_count": 1,
+    "lat": 26.937394476196,
+    "lng": 80.980954026754
+  },
+  {
+    "name": "Parag Road",
+    "slug": "parag-road",
+    "doctor_count": 1,
+    "lat": 26.783319367827,
+    "lng": 80.895842352773
+  },
+  {
+    "name": "Nadan Mahal",
+    "slug": "nadan-mahal",
+    "doctor_count": 1,
+    "lat": 26.85146932418019,
+    "lng": 80.90156078338623
+  },
+  {
+    "name": "Sector-14 Indiranagar",
+    "slug": "sector-14-indiranagar",
+    "doctor_count": 1,
+    "lat": 26.889458,
+    "lng": 81.002748
+  },
+  {
+    "name": "Anaura Kalan",
+    "slug": "anaura-kalan",
+    "doctor_count": 1,
+    "lat": 26.896268747579363,
+    "lng": 81.08902774751186
+  },
+  {
+    "name": "Aliganj sector N\t",
+    "slug": "aliganj-sector-n",
+    "doctor_count": 1,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "name": "IIM Road",
+    "slug": "iim-road",
+    "doctor_count": 1,
+    "lat": 26.930005018314,
+    "lng": 80.917359262031
+  },
+  {
+    "name": "Behta",
+    "slug": "behta",
+    "doctor_count": 1,
+    "lat": 26.968549088077257,
+    "lng": 81.00029457360506
+  },
+  {
+    "name": "Sarfarazganj",
+    "slug": "sarfarazganj",
+    "doctor_count": 1,
+    "lat": 26.87836360894,
+    "lng": 80.872550010681
+  },
+  {
+    "name": "Chandganj",
+    "slug": "chandganj",
+    "doctor_count": 1,
+    "lat": 26.8819251,
+    "lng": 80.9436261
+  },
+  {
+    "name": "Husainganj",
+    "slug": "husainganj",
+    "doctor_count": 1,
+    "lat": 26.838113420193,
+    "lng": 80.939534240762
+  },
+  {
+    "name": "Vijayant Khand",
+    "slug": "vijayant-khand",
+    "doctor_count": 1,
+    "lat": 26.871367283818827,
+    "lng": 81.02420143783092
+  },
+  {
+    "name": "New Hyderabad",
+    "slug": "new-hyderabad",
+    "doctor_count": 1,
+    "lat": 26.86335,
+    "lng": 80.94622
+  },
+  {
+    "name": "Vibhuthi khand",
+    "slug": "vibhuthi-khand",
+    "doctor_count": 1,
+    "lat": 26.862159012800127,
+    "lng": 81.00051149725914
+  },
+  {
+    "name": "Aliganj sector H",
+    "slug": "aliganj-sector-h",
+    "doctor_count": 1,
+    "lat": 26.891978704252,
+    "lng": 80.945697911828
+  },
+  {
+    "name": "Basant Vihar Colony",
+    "slug": "basant-vihar-colony",
+    "doctor_count": 1,
+    "lat": 26.8727074,
+    "lng": 80.8929831
+  },
+  {
+    "name": "Chander Nagar",
+    "slug": "chander-nagar",
+    "doctor_count": 1,
+    "lat": 26.814177327681723,
+    "lng": 80.9032978489995
+  }
+]
