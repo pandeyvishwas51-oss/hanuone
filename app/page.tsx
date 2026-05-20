@@ -5,6 +5,7 @@ import LocalityChip from "@/components/LocalityChip";
 import DoctorCard from "@/components/DoctorCard";
 import WaitlistForm from "@/components/WaitlistForm";
 import HeroHeadline from "@/components/HeroHeadline";
+import FaqSection from "@/components/FaqSection";
 import {
   getAllSpecializations,
   getAllLocalities,
@@ -12,6 +13,7 @@ import {
 } from "@/lib/queries";
 import { getVisitorCity } from "@/lib/geo";
 import { ShieldCheck, Users, Sparkles } from "lucide-react";
+import { HOME_FAQS } from "@/lib/seo";
 
 // Re-render every 5 minutes; geo headers are read per-request anyway because
 // `headers()` opts the page into dynamic rendering.
@@ -186,6 +188,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={HOME_FAQS} />
     </>
   );
 }

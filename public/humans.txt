@@ -1,0 +1,9 @@
+/* TEAM */
+Built by doctors, for the wellwishers of their loved ones.
+
+/* SITE */
+Site: Hanuone
+URL: https://hanuone.vercel.app
+Mission: Lucknow ke Trusted Doctors, Ek Jagah.
+Stack: Next.js 14, TypeScript, Tailwind CSS, Supabase
+Last update: 2026/05

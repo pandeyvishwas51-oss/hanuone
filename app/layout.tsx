@@ -4,19 +4,17 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import { SITE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.in";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
-    template: "%s | Hanuone"
+    default: `${SITE.name}, ${SITE.tagline}`,
+    template: `%s | ${SITE.name}`
   },
-  description:
-    "Find verified doctors in Lucknow by specialty, locality and pincode. Free directory of cardiologists, gynecologists, pediatricians and more. Contact via WhatsApp.",
+  description: SITE.description,
   keywords: [
     "doctors in Lucknow",
     "Lucknow doctors",
@@ -25,31 +23,64 @@ export const metadata: Metadata = {
     "Lucknow doctor by pincode",
     "Hanuone",
     "Gomtinagar doctor",
-    "Hazratganj doctor"
+    "Hazratganj doctor",
+    "Indira Nagar doctor",
+    "Aliganj doctor",
+    "Mahanagar doctor",
+    "Lucknow gynecologist",
+    "Lucknow paediatrician",
+    "Lucknow orthopedic"
   ],
-  applicationName: "Hanuone",
+  applicationName: SITE.name,
+  authors: [{ name: "Hanuone" }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "health",
   appleWebApp: {
     capable: true,
-    title: "Hanuone",
+    title: SITE.name,
     statusBarStyle: "default"
   },
   openGraph: {
     type: "website",
-    siteName: "Hanuone",
-    url: siteUrl,
-    title: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
-    description:
-      "Verified doctors in Lucknow by specialty, locality and pincode. Free, simple, trusted.",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Hanuone" }]
+    siteName: SITE.name,
+    locale: "en_IN",
+    url: SITE.url,
+    title: `${SITE.name}, ${SITE.tagline}`,
+    description: SITE.description,
+    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: SITE.name }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
-    description: "Verified doctors in Lucknow by specialty, locality and pincode."
+    title: `${SITE.name}, ${SITE.tagline}`,
+    description: SITE.description,
+    site: "@Hanuone_0",
+    creator: "@Hanuone_0",
+    images: [SITE.ogImage]
   },
-  alternates: { canonical: siteUrl },
-  robots: { index: true, follow: true },
-  manifest: "/manifest.webmanifest"
+  alternates: {
+    canonical: SITE.url,
+    languages: {
+      "en-IN": SITE.url,
+      "x-default": SITE.url
+    }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1
+    }
+  },
+  manifest: "/manifest.webmanifest",
+  verification: {
+    // Drop Search Console / Bing tags here when you add the property
+    // google: "your-verification-token"
+  }
 };
 
 export const viewport: Viewport = {
@@ -62,7 +93,21 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en-IN" className={inter.variable}>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="dns-prefetch" href="https://images1-fabric.practo.com" />
+        <link rel="preconnect" href="https://images1-fabric.practo.com" crossOrigin="" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col bg-bg">
         <SiteHeader />
         <main className="flex-1 pb-16 md:pb-0">{children}</main>

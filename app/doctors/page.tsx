@@ -58,18 +58,21 @@ export async function generateMetadata({
   const p = parseParams(searchParams);
   const spec = p.specialty[0];
   const loc = p.locality[0];
+  const pin = p.pincode;
   const titleParts: string[] = [];
-  if (spec) titleParts.push(`${titleCase(spec)}s`);
-  else titleParts.push("Doctors");
+  if (spec) titleParts.push(`Best ${titleCase(spec)}s`);
+  else titleParts.push("Verified Doctors");
   if (loc) titleParts.push(`in ${titleCase(loc)}`);
+  if (pin) titleParts.push(`near ${pin}`);
   titleParts.push("Lucknow");
   const title = titleParts.join(" ");
-  const description = `Find ${title.toLowerCase()}. Compare ratings, fees, experience and contact directly via WhatsApp.`;
+  const description = `Find ${title.toLowerCase()} on Hanuone. Compare ratings, fees, experience and contact directly via WhatsApp. Free, verified, and updated weekly.`;
   return {
     title,
     description,
     alternates: { canonical: "/doctors" },
-    openGraph: { title, description }
+    openGraph: { title, description, url: "/doctors", type: "website" },
+    twitter: { card: "summary_large_image", title, description }
   };
 }
 

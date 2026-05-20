@@ -14,6 +14,7 @@ import {
   getSimilarDoctors
 } from "@/lib/queries";
 import { buildTelLink, formatFeeRange, truncate } from "@/lib/utils";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export const revalidate = 3600;
 
@@ -29,7 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const doctor = await getDoctorBySlug(params.slug);
   if (!doctor) return { title: "Doctor not found" };
-  const title = `${doctor.name}, Best ${doctor.specialization} in ${doctor.locality}, ${doctor.city}`;
+  const title = `${doctor.name}, Best ${doctor.specialization} in ${doctor.locality}, Lucknow`;
   const description = truncate(
     `${doctor.name} is a ${doctor.experience_years ? `${doctor.experience_years}-year experienced ` : ""}${doctor.specialization} in ${doctor.locality}, ${doctor.city}. Consultation fee ${formatFeeRange(doctor.consultation_fee_min, doctor.consultation_fee_max)}. Contact directly via WhatsApp.`,
     180
@@ -42,7 +43,16 @@ export async function generateMetadata({
       title,
       description,
       type: "profile",
-      images: doctor.profile_image_url ? [{ url: doctor.profile_image_url }] : undefined
+      url: `/doctors/${doctor.slug}`,
+      images: doctor.profile_image_url
+        ? [{ url: doctor.profile_image_url, alt: doctor.name }]
+        : undefined
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: doctor.profile_image_url ? [doctor.profile_image_url] : undefined
     }
   };
 }
@@ -68,6 +78,21 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
   return (
     <div className="container-page py-6 sm:py-10">
       <DoctorJsonLd doctor={doctor} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", href: "/" },
+              {
+                name: `${doctor.specialization}s in Lucknow`,
+                href: `/specializations/${slugify(doctor.specialization)}`
+              },
+              { name: doctor.name, href: `/doctors/${doctor.slug}` }
+            ])
+          )
+        }}
+      />
 
       <BreadcrumbNav
         items={[
