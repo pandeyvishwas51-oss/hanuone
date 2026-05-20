@@ -71,8 +71,13 @@ export default function LocationSelector({
 
   function commit(l: Locality | null) {
     if (typeof window !== "undefined") {
-      if (l) window.localStorage.setItem("hanuone:locality", l.name);
-      else window.localStorage.removeItem("hanuone:locality");
+      if (l) {
+        window.localStorage.setItem("hanuone:locality", l.name);
+        // Lucknow is our launch market today; future-proof city tracking too.
+        window.localStorage.setItem("hanuone:city", "Lucknow");
+      } else {
+        window.localStorage.removeItem("hanuone:locality");
+      }
     }
     onChange(l);
     setOpen(false);

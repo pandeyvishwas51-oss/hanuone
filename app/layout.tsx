@@ -1,16 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Noto_Sans_Devanagari } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import MobileBottomNav from "@/components/MobileBottomNav";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const notoHindi = Noto_Sans_Devanagari({
-  subsets: ["devanagari"],
-  variable: "--font-hindi",
-  display: "swap"
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.in";
 
@@ -67,7 +62,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${notoHindi.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col bg-bg">
         <SiteHeader />
         <main className="flex-1 pb-16 md:pb-0">{children}</main>

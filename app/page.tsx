@@ -4,14 +4,18 @@ import SpecialtyCard from "@/components/SpecialtyCard";
 import LocalityChip from "@/components/LocalityChip";
 import DoctorCard from "@/components/DoctorCard";
 import WaitlistForm from "@/components/WaitlistForm";
+import HeroHeadline from "@/components/HeroHeadline";
 import {
   getAllSpecializations,
   getAllLocalities,
   getFeaturedDoctors
 } from "@/lib/queries";
+import { getVisitorCity } from "@/lib/geo";
 import { ShieldCheck, Users, Sparkles } from "lucide-react";
 
-export const revalidate = 300;
+// Re-render every 5 minutes; geo headers are read per-request anyway because
+// `headers()` opts the page into dynamic rendering.
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const [specializations, localities, featured] = await Promise.all([
@@ -22,6 +26,7 @@ export default async function HomePage() {
 
   const topSpecialties = specializations.slice(0, 6);
   const topLocalities = localities.slice(0, 8);
+  const visitorCity = getVisitorCity() ?? "Lucknow";
 
   return (
     <>
@@ -29,13 +34,10 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-bg to-bg">
         <div className="container-page pb-10 pt-8 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="hi inline-block rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-              हनुवन, परिवार के लिए डॉक्टर
+            <span className="inline-block rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+              Apno ke liye, sahi doctor
             </span>
-            <h1 className="h1 mt-3 sm:mt-4">
-              Lucknow ke Trusted Doctors,{" "}
-              <span className="text-primary">Ek Jagah</span>
-            </h1>
+            <HeroHeadline initialCity={visitorCity} />
             <p className="mt-3 text-sm text-muted sm:text-lg">
               Find verified doctors in Lucknow for your family. Search by specialty, locality or
               pincode. Free, simple, built for parents.
@@ -72,7 +74,7 @@ export default async function HomePage() {
               </p>
             </div>
             <Link href="/doctors" className="text-sm text-primary hover:underline whitespace-nowrap">
-              View all →
+              View all
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
@@ -109,7 +111,7 @@ export default async function HomePage() {
               </p>
             </div>
             <Link href="/doctors" className="text-sm text-primary hover:underline whitespace-nowrap">
-              See all →
+              See all
             </Link>
           </div>
           {featured.length === 0 ? (

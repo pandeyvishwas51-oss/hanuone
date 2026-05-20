@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Quote } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
 export default function SiteFooter() {
@@ -42,10 +43,26 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
+
+      {/* Doctor-led quote */}
+      <div className="border-t border-primary/10 bg-bg/60">
+        <div className="container-page flex flex-col items-start gap-3 py-8 sm:flex-row sm:items-center">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-primary/10 text-primary">
+            <Quote size={18} />
+          </span>
+          <p className="text-sm text-ink sm:text-base">
+            <span className="font-semibold">Built by doctors,</span>{" "}
+            <span className="text-muted">
+              for the wellwishers of their loved ones, so the right care is never more than a search away.
+            </span>
+          </p>
+        </div>
+      </div>
+
       <div className="border-t border-primary/10">
         <div className="container-page flex flex-col items-start gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} Hanuone. Made for Lucknow with care.</span>
-          <span className="hi">हनुवन, परिवार के लिए डॉक्टर</span>
+          <span>(c) {new Date().getFullYear()} Hanuone. Made for Lucknow with care.</span>
+          <span>Lucknow, India</span>
         </div>
       </div>
     </footer>

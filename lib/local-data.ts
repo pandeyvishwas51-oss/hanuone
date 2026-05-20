@@ -4,7 +4,7 @@ import practoData from "@/data/practo_doctors.json";
 /**
  * Local JSON fallback. Used at build/runtime when Supabase env vars are
  * missing OR when a query returns no rows from Supabase. This lets the site
- * be useful immediately with the 624 Lucknow doctors scraped from Practo.
+ * be useful immediately with the 624+ Lucknow doctors scraped from Practo.
  */
 
 function slugify(s: string) {
@@ -13,56 +13,6 @@ function slugify(s: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
-
-const SPEC_HINDI: Record<string, string> = {
-  Cardiologist: "हृदय रोग विशेषज्ञ",
-  Orthopedic: "हड्डी रोग विशेषज्ञ",
-  Pediatrician: "बाल रोग विशेषज्ञ",
-  Gynecologist: "स्त्री रोग विशेषज्ञ",
-  Dermatologist: "त्वचा रोग विशेषज्ञ",
-  Neurologist: "न्यूरोलॉजिस्ट",
-  Diabetologist: "मधुमेह विशेषज्ञ",
-  "ENT Specialist": "नाक, कान, गला विशेषज्ञ",
-  Ophthalmologist: "नेत्र रोग विशेषज्ञ",
-  "General Physician": "सामान्य चिकित्सक",
-  Urologist: "मूत्र रोग विशेषज्ञ",
-  Psychiatrist: "मनोचिकित्सक",
-  Physiotherapist: "फिजियोथेरेपिस्ट",
-  Oncologist: "कैंसर विशेषज्ञ",
-  Gastroenterologist: "पेट रोग विशेषज्ञ",
-  Dentist: "दंत चिकित्सक",
-  Pulmonologist: "फेफड़ा विशेषज्ञ",
-  Endocrinologist: "एंडोक्राइनोलॉजिस्ट",
-  Nephrologist: "किडनी विशेषज्ञ",
-  Rheumatologist: "गठिया विशेषज्ञ",
-  Ayurveda: "आयुर्वेद",
-  Homoeopath: "होम्योपैथ"
-};
-
-const SPEC_ICON: Record<string, string> = {
-  Cardiologist: "❤️",
-  Orthopedic: "🦴",
-  Pediatrician: "👶",
-  Gynecologist: "🏥",
-  Dermatologist: "🌟",
-  Neurologist: "🧠",
-  Diabetologist: "💉",
-  "ENT Specialist": "👂",
-  Ophthalmologist: "👁️",
-  "General Physician": "👨‍⚕️",
-  Urologist: "🚻",
-  Psychiatrist: "🧠",
-  Physiotherapist: "💪",
-  Oncologist: "🎗️",
-  Gastroenterologist: "🩺",
-  Dentist: "🦷",
-  Pulmonologist: "🫁",
-  Endocrinologist: "🧬",
-  Nephrologist: "🩸",
-  Rheumatologist: "🦴",
-  Ayurveda: "🌿",
-  Homoeopath: "💊"
-};
 
 type RawDoctor = {
   name: string;
@@ -101,7 +51,7 @@ export const LOCAL_DOCTORS: Doctor[] = RAW.map((d, i) => ({
   name_hindi: null,
   slug: d.slug,
   specialization: d.specialization,
-  specialization_hindi: SPEC_HINDI[d.specialization] || null,
+  specialization_hindi: null,
   sub_specializations: d.sub_specializations,
   qualifications: d.qualifications,
   experience_years: d.experience_years,
@@ -174,8 +124,8 @@ export const LOCAL_SPECIALIZATIONS: Specialization[] = Array.from(specCounts.ent
   .map(([name, count], i) => ({
     id: `local-spec-${i}`,
     name,
-    name_hindi: SPEC_HINDI[name] || null,
-    icon: SPEC_ICON[name] || "🩺",
+    name_hindi: null,
+    icon: null,
     slug: slugify(name === "ENT" ? "ent" : name),
     description: null,
     doctor_count: count

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 type Props = { compact?: boolean };
 
@@ -19,35 +18,61 @@ export default function WaitlistForm({ compact }: Props) {
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
-  const [interest, setInterest] = useState("doctor");
-  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [role, setRole] = useState("doctor");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [feedback, setFeedback] = useState("");
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email && !whatsapp) {
-      setStatus("error");
-      setMessage("Email or WhatsApp number is required.");
-      return;
-    }
-    setStatus("loading");
-    const { error } = await supabase.from("waitlist").insert({
-      email: email || null,
-      whatsapp: whatsapp || null,
-      city_of_residence: city || null,
-      interest: name ? `${interest} | ${name}` : interest
-    });
-    if (error) {
-      setStatus("error");
-      setMessage("Could not save. Please try again.");
-      return;
-    }
-    setStatus("ok");
-    setMessage("You're registered. We'll be in touch on WhatsApp shortly.");
+  function reset() {
     setName("");
     setEmail("");
     setWhatsapp("");
     setCity("");
+    setMessage("");
+  }
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!email && !whatsapp) {
+      setStatus("error");
+      setFeedback("Please share an email or WhatsApp number so we can reach you.");
+      return;
+    }
+
+    setStatus("loading");
+    setFeedback("");
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, whatsapp, city, role, message })
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        setFeedback(data.error || "We could not save your details. Please try again.");
+        return;
+      }
+
+      setStatus("ok");
+      setFeedback(
+        compact
+          ? "Registered. We'll WhatsApp you shortly."
+          : "Registered. We'll reach out on WhatsApp shortly to verify and onboard you."
+      );
+      reset();
+    } catch (err: unknown) {
+      setStatus("error");
+      setFeedback(
+        "Network error. Please try again, or WhatsApp us directly at +91-9876543210."
+      );
+    }
   }
 
   return (
@@ -59,6 +84,7 @@ export default function WaitlistForm({ compact }: Props) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="input bg-white text-ink"
+          autoComplete="name"
         />
       )}
       <div className={compact ? "grid grid-cols-1 gap-2" : "grid grid-cols-1 gap-3 sm:grid-cols-2"}>
@@ -68,6 +94,7 @@ export default function WaitlistForm({ compact }: Props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input bg-white text-ink"
+          autoComplete="email"
         />
         <input
           type="tel"
@@ -75,12 +102,14 @@ export default function WaitlistForm({ compact }: Props) {
           value={whatsapp}
           onChange={(e) => setWhatsapp(e.target.value)}
           className="input bg-white text-ink"
+          autoComplete="tel"
+          inputMode="tel"
         />
       </div>
       <div className={compact ? "grid grid-cols-1 gap-2" : "grid grid-cols-1 gap-3 sm:grid-cols-2"}>
         <select
-          value={interest}
-          onChange={(e) => setInterest(e.target.value)}
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
           className="input bg-white text-ink"
           aria-label="I am registering as"
         >
@@ -100,11 +129,32 @@ export default function WaitlistForm({ compact }: Props) {
           />
         )}
       </div>
+      {!compact && (
+        <textarea
+          placeholder="Anything we should know? (optional)"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="input min-h-[88px] bg-white text-ink"
+          rows={3}
+        />
+      )}
       <button type="submit" disabled={status === "loading"} className="btn-primary w-full">
-        {status === "loading" ? "Saving..." : compact ? "Register" : "Register with Home Care Network"}
+        {status === "loading"
+          ? "Saving..."
+          : compact
+          ? "Register"
+          : "Register with Home Care Network"}
       </button>
-      {status === "ok" && <div className="text-xs text-emerald-300">{message}</div>}
-      {status === "error" && <div className="text-xs text-red-300">{message}</div>}
+      {status === "ok" && (
+        <div className="rounded-md bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700">
+          {feedback}
+        </div>
+      )}
+      {status === "error" && (
+        <div className="rounded-md bg-red-50 px-3 py-2 text-xs font-medium text-red-700">
+          {feedback}
+        </div>
+      )}
     </form>
   );
 }
