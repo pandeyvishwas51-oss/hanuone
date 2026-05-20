@@ -1,14 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#023E8A"/>
       <stop offset="100%" stop-color="#00B4D8"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Logo (mirrored variant in white for contrast on the gradient) -->
+  <g transform="translate(60,180) scale(1.6)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bicep + hand -->
+    <path d="M 28 178
+             C 28 116 70 78 116 90
+             C 138 98 150 118 145 138
+             C 142 150 132 158 120 158
+             L 152 158
+             Q 184 158 208 168
+             L 244 178
+             Q 234 192 214 196
+             L 88 198
+             Q 28 198 28 178 Z"
+          fill="#FFFFFF"/>
+    <path d="M 60 134
+             C 64 114 92 108 109 122
+             C 118 130 118 144 107 150
+             C 90 156 64 152 60 134 Z"
+          fill="#023E8A" fill-opacity="0.35"/>
+    <!-- Heart outline -->
+    <path d="M 198 30
+             C 220 30 232 50 222 70
+             C 213 88 198 102 188 110
+             C 178 102 163 88 154 70
+             C 144 50 156 30 178 30
+             C 188 30 188 38 188 40
+             C 188 38 188 30 198 30 Z"
+          fill="none" stroke="#FFFFFF" stroke-width="11"/>
+    <!-- Cross -->
+    <rect x="180" y="40" width="16" height="52" rx="3" fill="#FFFFFF"/>
+    <rect x="162" y="58" width="52" height="16" rx="3" fill="#FFFFFF"/>
+    <!-- ECG -->
+    <polyline points="156,66 174,66 181,54 188,78 195,58 202,72 220,66"
+              stroke="#00B4D8" stroke-width="4" fill="none"/>
+  </g>
+
   <g fill="#ffffff" font-family="Inter, sans-serif">
-    <text x="80" y="200" font-size="64" font-weight="800">Hanuone</text>
-    <text x="80" y="280" font-size="44" font-weight="600">Lucknow ke Trusted Doctors</text>
-    <text x="80" y="340" font-size="32" font-weight="400" opacity="0.85">Verified · Local · Free Forever</text>
+    <text x="640" y="280" font-size="86" font-weight="800">Hanuone</text>
+    <text x="640" y="350" font-size="40" font-weight="600">Lucknow ke Trusted Doctors</text>
+    <text x="640" y="400" font-size="28" font-weight="500" opacity="0.85">Verified . Local . Free Forever</text>
+    <text x="640" y="470" font-size="22" font-weight="400" opacity="0.85">Built by doctors, for the wellwishers of their loved ones.</text>
   </g>
 </svg>

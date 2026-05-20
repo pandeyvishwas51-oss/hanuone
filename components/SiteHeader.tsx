@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Stethoscope } from "lucide-react";
+import Image from "next/image";
 import HeaderLocationChip from "./HeaderLocationChip";
 import { getAllLocalities } from "@/lib/queries";
 
@@ -13,9 +13,14 @@ export default async function SiteHeader() {
     >
       <div className="container-page flex h-14 items-center justify-between gap-2 sm:h-16">
         <Link href="/" className="flex items-center gap-2 min-w-0">
-          <span className="grid h-9 w-9 flex-none place-items-center rounded-xl bg-primary text-white">
-            <Stethoscope size={18} />
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="Hanuone"
+            width={42}
+            height={34}
+            priority
+            className="h-8 w-auto sm:h-9"
+          />
           <div className="leading-tight min-w-0">
             <div className="truncate text-base font-bold tracking-tight text-primary">Hanuone</div>
             <div className="hidden text-[11px] text-muted sm:block">Lucknow ke Trusted Doctors</div>

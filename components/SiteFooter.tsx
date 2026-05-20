@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
@@ -7,8 +8,11 @@ export default function SiteFooter() {
     <footer className="border-t border-primary/10 bg-white">
       <div className="container-page grid gap-10 py-12 lg:grid-cols-3">
         <div>
-          <div className="text-lg font-bold text-primary">Hanuone</div>
-          <p className="mt-2 text-sm text-muted">
+          <div className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="Hanuone" width={36} height={30} className="h-8 w-auto" />
+            <span className="text-lg font-bold text-primary">Hanuone</span>
+          </div>
+          <p className="mt-3 text-sm text-muted">
             Lucknow ke Trusted Doctors, Ek Jagah. A free, verified directory of doctors in Lucknow,
             built for families looking after their parents from afar.
           </p>
