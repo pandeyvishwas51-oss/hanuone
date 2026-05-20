@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Quote, Instagram, Facebook } from "lucide-react";
+import { Quote, Instagram, Facebook, Twitter } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
 export default function SiteFooter() {
@@ -84,6 +84,15 @@ export default function SiteFooter() {
               className="grid h-9 w-9 place-items-center rounded-full border border-primary/15 text-primary transition hover:border-primary hover:text-primary-600"
             >
               <Facebook size={16} />
+            </a>
+            <a
+              href="https://x.com/Hanuone_0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hanuone on X"
+              className="grid h-9 w-9 place-items-center rounded-full border border-primary/15 text-primary transition hover:border-primary hover:text-primary-600"
+            >
+              <Twitter size={16} />
             </a>
             <span className="hidden sm:inline">Lucknow, India</span>
           </div>
