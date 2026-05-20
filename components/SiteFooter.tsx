@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Quote } from "lucide-react";
+import { Quote, Instagram, Facebook } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
 export default function SiteFooter() {
@@ -64,9 +64,29 @@ export default function SiteFooter() {
       </div>
 
       <div className="border-t border-primary/10">
-        <div className="container-page flex flex-col items-start gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col items-start gap-3 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <span>(c) {new Date().getFullYear()} Hanuone. Made for Lucknow with care.</span>
-          <span>Lucknow, India</span>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://instagram.com/Hanuone_0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hanuone on Instagram"
+              className="grid h-9 w-9 place-items-center rounded-full border border-primary/15 text-primary transition hover:border-primary hover:text-primary-600"
+            >
+              <Instagram size={16} />
+            </a>
+            <a
+              href="https://www.facebook.com/share/1CZnNMGXk5/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hanuone on Facebook"
+              className="grid h-9 w-9 place-items-center rounded-full border border-primary/15 text-primary transition hover:border-primary hover:text-primary-600"
+            >
+              <Facebook size={16} />
+            </a>
+            <span className="hidden sm:inline">Lucknow, India</span>
+          </div>
         </div>
       </div>
     </footer>
