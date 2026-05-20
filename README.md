@@ -1,4 +1,4 @@
-# Hanuone — Lucknow ke Trusted Doctors, Ek Jagah
+# Hanuone, Lucknow ke Trusted Doctors, Ek Jagah
 
 Phase 1: a clean, SEO-optimized doctor discovery directory for Lucknow, India.
 Built for families (especially those living outside Lucknow) to find trusted
@@ -57,8 +57,8 @@ hanuone/
 │   ├── utils.py
 │   └── scrapers/
 │       ├── google_places.py        Recommended (legal, free tier)
-│       ├── practo.py               Dev only — respect ToS
-│       └── justdial.py             Dev only — respect ToS
+│       ├── practo.py               Dev only, respect ToS
+│       └── justdial.py             Dev only, respect ToS
 ├── supabase/
 │   ├── schema.sql
 │   └── seed.sql                    Specializations, localities, 5 doctors
@@ -140,8 +140,8 @@ python3 scripts/scrape_practo_lucknow.py --upsert
 ```
 
 The runner writes:
-- `data/practo_doctors.json` — full dataset
-- `supabase/seed_practo.sql` — `INSERT … ON CONFLICT (slug) DO UPDATE` upserts
+- `data/practo_doctors.json`, full dataset
+- `supabase/seed_practo.sql`, `INSERT … ON CONFLICT (slug) DO UPDATE` upserts
 
 After re-scraping, regenerate the slim client lookup files:
 

@@ -10,7 +10,7 @@ if (!HAS_ENV && process.env.NODE_ENV !== "production") {
   if (!(globalThis as any).__hanuoneEnvWarned) {
     (globalThis as any).__hanuoneEnvWarned = true;
     console.warn(
-      "[hanuone] Supabase env vars missing — using local Practo dataset fallback. Set NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local to enable Supabase."
+      "[hanuone] Supabase env vars missing, using local Practo dataset fallback. Set NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local to enable Supabase."
     );
   }
 }

@@ -1,5 +1,5 @@
 -- ============================================================
--- Hanuone — Supabase schema
+-- Hanuone, Supabase schema
 -- Run inside Supabase SQL editor (Project → SQL → New query)
 -- ============================================================
 
@@ -162,7 +162,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- ============================================================
--- Row Level Security — public read, no public write
+-- Row Level Security, public read, no public write
 -- ============================================================
 ALTER TABLE doctors ENABLE ROW LEVEL SECURITY;
 ALTER TABLE specializations ENABLE ROW LEVEL SECURITY;

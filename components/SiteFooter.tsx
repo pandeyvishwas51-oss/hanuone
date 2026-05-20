@@ -8,7 +8,7 @@ export default function SiteFooter() {
         <div>
           <div className="text-lg font-bold text-primary">Hanuone</div>
           <p className="mt-2 text-sm text-muted">
-            Lucknow ke Trusted Doctors — Ek Jagah. A free, verified directory of doctors in Lucknow,
+            Lucknow ke Trusted Doctors, Ek Jagah. A free, verified directory of doctors in Lucknow,
             built for families looking after their parents from afar.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function SiteFooter() {
       <div className="border-t border-primary/10">
         <div className="container-page flex flex-col items-start gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Hanuone. Made for Lucknow with care.</span>
-          <span className="hi">हनुवन — परिवार के लिए डॉक्टर</span>
+          <span className="hi">हनुवन, परिवार के लिए डॉक्टर</span>
         </div>
       </div>
     </footer>

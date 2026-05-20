@@ -6,8 +6,8 @@ JSON); we paginate per specialty until the response yields no new entities or
 hits `listing_data.doctors_found`.
 
 Outputs:
-  data/practo_doctors.json  — full deduped dataset
-  supabase/seed_practo.sql  — SQL upserts for Supabase
+  data/practo_doctors.json , full deduped dataset
+  supabase/seed_practo.sql , SQL upserts for Supabase
 
 Usage:
   python scripts/scrape_practo_lucknow.py
@@ -128,7 +128,7 @@ def scrape_specialty(specialty: str, max_pages: int) -> list[dict[str, Any]]:
             print(f"  {specialty}: total reported = {total}", file=sys.stderr)
         entities = ((data.get("doctors") or {}).get("entities") or {})
         if not entities:
-            print(f"  {specialty}: page {page} empty — stopping", file=sys.stderr)
+            print(f"  {specialty}: page {page} empty, stopping", file=sys.stderr)
             break
         new_on_page = 0
         for ent in entities.values():

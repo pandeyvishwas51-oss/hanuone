@@ -125,7 +125,7 @@ async def run(args: argparse.Namespace) -> None:
 
     if args.dry_run:
         for r in rows[:10]:
-            log.info("DRY: %s — %s", r.get("name"), r.get("clinic_address"))
+            log.info("DRY: %s, %s", r.get("name"), r.get("clinic_address"))
         return
 
     inserted = upsert_doctors(rows)

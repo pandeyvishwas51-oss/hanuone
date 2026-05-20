@@ -139,7 +139,7 @@ export default function LocationSelector({
       },
       (err) => {
         setLocating(false);
-        setError(err.code === 1 ? "Permission denied — pick a locality below." : "Could not get your location.");
+        setError(err.code === 1 ? "Permission denied, pick a locality below." : "Could not get your location.");
       },
       { enableHighAccuracy: false, timeout: 10000, maximumAge: 60_000 }
     );

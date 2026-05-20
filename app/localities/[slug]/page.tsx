@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import DoctorList from "@/components/DoctorList";
+import SpecialtyIcon from "@/components/SpecialtyIcon";
 import {
   getAllLocalities,
   getAllSpecializations,
@@ -23,7 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const loc = await getLocalityBySlug(params.slug);
   if (!loc) return { title: "Locality not found" };
-  const title = `Doctors in ${loc.name}, Lucknow — Find & Contact`;
+  const title = `Doctors in ${loc.name}, Lucknow, Find & Contact`;
   const description = `Discover verified doctors in ${loc.name}, Lucknow. Compare specialties, ratings and consultation fees. Contact via WhatsApp directly on Hanuone.`;
   return {
     title,
@@ -58,8 +59,8 @@ export default async function LocalityPage({ params }: { params: { slug: string 
         <p className="mt-3 max-w-3xl text-sm text-muted">
           {loc.name} is one of Lucknow's well-served localities, with clinics, diagnostic centres,
           and multi-specialty hospitals close at hand. Hanuone lists verified doctors across every
-          major specialty in {loc.name} — from cardiologists and gynecologists to pediatricians and
-          dermatologists — so families can find the right care nearby. Browse the doctors below or
+          major specialty in {loc.name}, from cardiologists and gynecologists to pediatricians and
+          dermatologists, so families can find the right care nearby. Browse the doctors below or
           jump straight to a specialty.
         </p>
       </header>
@@ -69,7 +70,8 @@ export default async function LocalityPage({ params }: { params: { slug: string 
         <div className="mt-2 flex flex-wrap gap-2">
           {specs.slice(0, 12).map((s) => (
             <a key={s.slug} href={`/${loc.slug}/${s.slug}`} className="chip">
-              {s.icon} {s.name} in {loc.name}
+              <SpecialtyIcon specialty={s.slug || s.name} size={12} />
+              {s.name} in {loc.name}
             </a>
           ))}
         </div>

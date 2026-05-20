@@ -299,7 +299,7 @@ export async function searchDoctors(params: DoctorSearchParams): Promise<{
     return localSearch(localParams);
   }
   if (data.length === 0 && (count ?? 0) === 0 && LOCAL_DATA_AVAILABLE) {
-    // Supabase has no rows yet — fall back to local data so the site is useful.
+    // Supabase has no rows yet, fall back to local data so the site is useful.
     return localSearch(localParams);
   }
   return { doctors: data, total: count ?? 0, page, pageSize };

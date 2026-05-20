@@ -113,7 +113,7 @@ def _parse_cards(html: str, specialty: str | None, hint_locality: str | None) ->
         if rating_text and rating_text.endswith("%"):
             try:
                 pct = float(rating_text.rstrip("%"))
-                rating = round(pct / 20.0, 1)  # convert 0–100 % to 0–5
+                rating = round(pct / 20.0, 1)  # convert 0-100 % to 0-5
             except ValueError:
                 rating = None
         review_count = 0

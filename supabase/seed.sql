@@ -1,5 +1,5 @@
 -- ============================================================
--- Hanuone — Seed data (specializations, localities, 5 doctors)
+-- Hanuone, Seed data (specializations, localities, 5 doctors)
 -- Run AFTER schema.sql
 -- ============================================================
 

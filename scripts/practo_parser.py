@@ -36,7 +36,7 @@ def collapse_timings(timings: list[dict[str, Any]] | None) -> str | None:
             day_str = "Mon-Fri"
         else:
             day_str = "/".join(DAY_SHORT[d] for d in sorted_days)
-        out.append(f"{day_str}: {t.get('begin_time')}–{t.get('end_time')}")
+        out.append(f"{day_str}: {t.get('begin_time')}-{t.get('end_time')}")
     return ", ".join(out) or None
 
 

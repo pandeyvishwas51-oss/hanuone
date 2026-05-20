@@ -1,8 +1,8 @@
 """Generate lean client-side data files from the Practo scrape.
 
 Outputs:
-  data/client/pincodes.json   — { "226010": "Gomtinagar", ... }
-  data/client/localities.json — [{name, slug, doctor_count, lat, lng}, ...]
+  data/client/pincodes.json  , { "226010": "Gomtinagar", ... }
+  data/client/localities.json, [{name, slug, doctor_count, lat, lng}, ...]
 """
 from __future__ import annotations
 

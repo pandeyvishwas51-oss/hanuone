@@ -20,7 +20,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 06:00–23:00",
+    "timing": "Mon-Sun: 06:00-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -54,7 +54,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 09:30–13:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sun: 09:30-13:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -88,7 +88,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 09:30–22:59, Sun: 11:00–22:59",
+    "timing": "Mon-Sat: 09:30-22:59, Sun: 11:00-22:59",
     "languages": [
       "Hindi",
       "English"
@@ -125,7 +125,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 08:30–11:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 08:30-11:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -159,7 +159,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -193,7 +193,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -226,7 +226,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -260,7 +260,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -294,7 +294,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -327,7 +327,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 12:00–14:00, Mon-Sun: 17:00–20:00",
+    "timing": "Mon-Sun: 12:00-14:00, Mon-Sun: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -363,7 +363,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Sat: 09:00–12:00, Sun: 10:00–21:00, Mon/Tue/Thu: 17:00–21:00, Fri: 17:00–20:00, Wed: 18:00–21:00",
+    "timing": "Sat: 09:00-12:00, Sun: 10:00-21:00, Mon/Tue/Thu: 17:00-21:00, Fri: 17:00-20:00, Wed: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -399,7 +399,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 08:00–15:45, Mon-Sun: 16:00–22:00",
+    "timing": "Mon-Sun: 08:00-15:45, Mon-Sun: 16:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -433,7 +433,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -467,7 +467,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -501,7 +501,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -535,7 +535,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -568,7 +568,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 10:00–15:00, Mon-Sun: 19:00–21:00",
+    "timing": "Mon-Sun: 10:00-15:00, Mon-Sun: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -601,7 +601,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–13:00",
+    "timing": "Mon-Sat: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -636,7 +636,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Sun: 11:00–13:00",
+    "timing": "Sun: 11:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -673,7 +673,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 16:00–19:00",
+    "timing": "Mon-Sat: 16:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -707,7 +707,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -742,7 +742,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–22:00",
+    "timing": "Mon-Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -775,7 +775,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Sat: 04:00–21:00, Sun: 10:00–14:00, Tue/Thu: 16:00–21:00, Mon/Wed/Fri: 18:00–21:00",
+    "timing": "Sat: 04:00-21:00, Sun: 10:00-14:00, Tue/Thu: 16:00-21:00, Mon/Wed/Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -808,7 +808,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 11:00–14:00, Mon-Sun: 18:00–20:00",
+    "timing": "Mon-Sun: 11:00-14:00, Mon-Sun: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -847,7 +847,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Sun: 10:00–12:00, Mon-Sat: 10:00–13:00",
+    "timing": "Sun: 10:00-12:00, Mon-Sat: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -882,7 +882,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -917,7 +917,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -950,7 +950,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00–14:00, Mon-Fri: 18:00–20:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00-14:00, Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -985,7 +985,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1019,7 +1019,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1054,7 +1054,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1089,7 +1089,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1124,7 +1124,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1159,7 +1159,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1193,7 +1193,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:30–13:30, Mon-Sat: 18:30–21:30",
+    "timing": "Mon-Sat: 09:30-13:30, Mon-Sat: 18:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -1228,7 +1228,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Fri: 17:30–20:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Fri: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -1265,7 +1265,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–09:30, Sun: 10:00–13:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 09:00-09:30, Sun: 10:00-13:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -1298,7 +1298,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 17:00–22:00",
+    "timing": "Mon-Sun: 17:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -1335,7 +1335,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 10:00–20:00",
+    "timing": "Mon-Sat: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -1372,7 +1372,7 @@
     "whatsapp": null,
     "consultation_fee_min": 120,
     "consultation_fee_max": 120,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -1407,7 +1407,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1442,7 +1442,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -1478,7 +1478,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -1515,7 +1515,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1548,7 +1548,7 @@
     "whatsapp": null,
     "consultation_fee_min": 20,
     "consultation_fee_max": 20,
-    "timing": "Mon-Sat: 08:00–12:30, Mon-Sat: 19:00–22:30",
+    "timing": "Mon-Sat: 08:00-12:30, Mon-Sat: 19:00-22:30",
     "languages": [
       "Hindi",
       "English"
@@ -1584,7 +1584,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 00:00–15:00, Mon-Sat: 18:00–20:30",
+    "timing": "Sun: 00:00-15:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -1620,7 +1620,7 @@
     "whatsapp": null,
     "consultation_fee_min": 350,
     "consultation_fee_max": 350,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -1654,7 +1654,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -1689,7 +1689,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -1724,7 +1724,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 17:30–20:00",
+    "timing": "Mon-Sun: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -1759,7 +1759,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1795,7 +1795,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -1829,7 +1829,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Sun: 00:00–21:00, Sat: 10:00–14:00, Mon-Fri: 10:00–21:00",
+    "timing": "Sun: 00:00-21:00, Sat: 10:00-14:00, Mon-Fri: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -1863,7 +1863,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -1898,7 +1898,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -1933,7 +1933,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 00:00–23:59, Sun: 10:00–12:00",
+    "timing": "Mon-Sat: 00:00-23:59, Sun: 10:00-12:00",
     "languages": [
       "Hindi",
       "English"
@@ -1968,7 +1968,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2003,7 +2003,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -2037,7 +2037,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -2071,7 +2071,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -2105,7 +2105,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 11:00–17:00",
+    "timing": "Mon-Sun: 11:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -2139,7 +2139,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -2174,7 +2174,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 11:00–14:00, Mon-Sat: 18:00–21:00",
+    "timing": "Sun: 11:00-14:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2208,7 +2208,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 09:30–13:30, Mon-Sat: 15:00–19:00",
+    "timing": "Sun: 09:30-13:30, Mon-Sat: 15:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -2242,7 +2242,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 10:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Sun: 10:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -2277,7 +2277,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 10:00–13:30, Mon-Fri: 18:30–21:30",
+    "timing": "Mon-Sun: 10:00-13:30, Mon-Fri: 18:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -2313,7 +2313,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 11:00–14:00, Mon-Fri: 18:00–21:00",
+    "timing": "Mon-Sun: 11:00-14:00, Mon-Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2347,7 +2347,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2381,7 +2381,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat/Sun: 10:30–14:00, Mon-Fri: 10:30–13:30, Mon-Fri: 18:30–21:30",
+    "timing": "Sat/Sun: 10:30-14:00, Mon-Fri: 10:30-13:30, Mon-Fri: 18:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -2416,7 +2416,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 12:00–15:00, Mon-Sat: 13:00–17:00",
+    "timing": "Sun: 12:00-15:00, Mon-Sat: 13:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -2485,7 +2485,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -2519,7 +2519,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 09:30–13:00, Mon-Sat: 18:00–21:30",
+    "timing": "Mon-Sat: 09:30-13:00, Mon-Sat: 18:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -2555,7 +2555,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Sun: 10:00–12:00, Mon-Sat: 18:00–20:00",
+    "timing": "Sun: 10:00-12:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -2589,7 +2589,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -2623,7 +2623,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 11:00–23:59",
+    "timing": "Mon-Sun: 11:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -2657,7 +2657,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:30–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2691,7 +2691,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 11:00–13:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 11:00-13:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2725,7 +2725,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 09:00–14:00, Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sat: 09:00-14:00, Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2759,7 +2759,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 07:30–09:00, Mon-Sat: 16:30–21:00",
+    "timing": "Mon-Sat: 07:30-09:00, Mon-Sat: 16:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2794,7 +2794,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -2829,7 +2829,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 11:00–17:00",
+    "timing": "Mon-Sun: 11:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -2863,7 +2863,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2897,7 +2897,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Fri: 09:30–11:00, Sun: 09:30–14:00, Mon-Fri: 18:00–21:00",
+    "timing": "Mon-Fri: 09:30-11:00, Sun: 09:30-14:00, Mon-Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2931,7 +2931,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 11:00–13:00, Mon-Sat: 18:30–21:00",
+    "timing": "Sun: 11:00-13:00, Mon-Sat: 18:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -2969,7 +2969,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 09:30–12:30, Mon-Fri: 18:00–20:30",
+    "timing": "Sun: 09:30-12:30, Mon-Fri: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -3003,7 +3003,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3037,7 +3037,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:00–12:00, Sun: 11:00–13:00, Mon-Fri: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-12:00, Sun: 11:00-13:00, Mon-Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3072,7 +3072,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:00–10:00, Mon-Sun: 17:30–19:30",
+    "timing": "Mon-Sun: 09:00-10:00, Mon-Sun: 17:30-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -3106,7 +3106,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 11:00–13:00, Mon-Fri: 18:00–20:00",
+    "timing": "Sun: 11:00-13:00, Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -3139,7 +3139,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3175,7 +3175,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3213,7 +3213,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 11:30–14:00, Mon-Fri: 19:00–22:00",
+    "timing": "Mon-Sun: 11:30-14:00, Mon-Fri: 19:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -3249,7 +3249,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3284,7 +3284,7 @@
     "whatsapp": null,
     "consultation_fee_min": 350,
     "consultation_fee_max": 350,
-    "timing": "Mon-Sun: 11:30–13:30, Mon-Sat: 20:30–21:30",
+    "timing": "Mon-Sun: 11:30-13:30, Mon-Sat: 20:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -3318,7 +3318,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Fri: 18:00–20:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -3353,7 +3353,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 12:00–14:00, Mon-Sat: 18:00–20:30",
+    "timing": "Sun: 12:00-14:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -3387,7 +3387,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:30–14:00, Sun: 11:00–14:00, Mon-Sat: 19:30–21:00",
+    "timing": "Mon-Sat: 10:30-14:00, Sun: 11:00-14:00, Mon-Sat: 19:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3422,7 +3422,7 @@
     "whatsapp": null,
     "consultation_fee_min": 450,
     "consultation_fee_max": 450,
-    "timing": "Sun: 10:30–13:30, Tue/Wed/Fri: 13:00–14:15, Mon-Sat: 18:00–21:00",
+    "timing": "Sun: 10:30-13:30, Tue/Wed/Fri: 13:00-14:15, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3456,7 +3456,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Sun: 11:00–14:00, Mon-Fri: 16:30–20:30",
+    "timing": "Sun: 11:00-14:00, Mon-Fri: 16:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -3490,7 +3490,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 09:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Sun: 09:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -3527,7 +3527,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Sun: 00:00–17:00, Mon-Sat: 09:00–17:00",
+    "timing": "Sun: 00:00-17:00, Mon-Sat: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -3561,7 +3561,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 11:00–13:30, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 11:00-13:30, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3595,7 +3595,7 @@
     "whatsapp": null,
     "consultation_fee_min": 50,
     "consultation_fee_max": 50,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:30–21:30",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -3628,7 +3628,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sat: 05:30–19:30",
+    "timing": "Mon-Sat: 05:30-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -3663,7 +3663,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:00–14:00, Mon-Fri: 19:00–22:00",
+    "timing": "Mon-Sun: 09:00-14:00, Mon-Fri: 19:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -3696,7 +3696,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 09:00–13:00, Mon-Sun: 17:00–22:00",
+    "timing": "Mon-Sun: 09:00-13:00, Mon-Sun: 17:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -3730,7 +3730,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:30–13:30, Mon-Fri: 18:00–21:30",
+    "timing": "Mon-Sun: 09:30-13:30, Mon-Fri: 18:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -3765,7 +3765,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 11:00–15:00",
+    "timing": "Mon-Sat: 11:00-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -3799,7 +3799,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00–14:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -3834,7 +3834,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 10:00–20:00",
+    "timing": "Mon-Sat: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -3868,7 +3868,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -3902,7 +3902,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Fri: 10:00–13:00, Sun: 17:00–20:30, Mon-Fri: 19:00–22:00",
+    "timing": "Mon-Fri: 10:00-13:00, Sun: 17:00-20:30, Mon-Fri: 19:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -3940,7 +3940,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 10:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -3974,7 +3974,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 08:00–09:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sat: 08:00-09:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -4008,7 +4008,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 00:00–12:00, Mon-Sat: 10:00–12:00, Mon-Fri: 19:00–20:00",
+    "timing": "Sun: 00:00-12:00, Mon-Sat: 10:00-12:00, Mon-Fri: 19:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4043,7 +4043,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 07:30–09:00, Mon-Sun: 19:15–22:00",
+    "timing": "Mon-Sun: 07:30-09:00, Mon-Sun: 19:15-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -4077,7 +4077,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 07:30–09:00, Mon-Sat: 16:30–21:00",
+    "timing": "Mon-Sat: 07:30-09:00, Mon-Sat: 16:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4111,7 +4111,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:00–10:00, Sun: 10:00–12:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sat: 09:00-10:00, Sun: 10:00-12:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4145,7 +4145,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 10:00–13:30, Mon-Fri: 18:00–21:30",
+    "timing": "Sun: 10:00-13:30, Mon-Fri: 18:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -4179,7 +4179,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 18:00–21:00, Mon-Sun: 21:15–23:00",
+    "timing": "Mon-Sun: 18:00-21:00, Mon-Sun: 21:15-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -4213,7 +4213,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -4247,7 +4247,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 08:00–10:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 08:00-10:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4281,7 +4281,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 10:00–13:30, Mon-Fri: 18:30–20:30",
+    "timing": "Mon-Sun: 10:00-13:30, Mon-Fri: 18:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -4315,7 +4315,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 11:00–14:00, Mon-Sat: 19:00–22:00",
+    "timing": "Sun: 11:00-14:00, Mon-Sat: 19:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -4349,7 +4349,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 10:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Sun: 10:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4383,7 +4383,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -4417,7 +4417,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -4451,7 +4451,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 00:00–19:00, Mon-Fri: 09:00–20:00, Sat: 10:00–19:00",
+    "timing": "Sun: 00:00-19:00, Mon-Fri: 09:00-20:00, Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -4485,7 +4485,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -4556,7 +4556,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -4590,7 +4590,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 07:00–10:00, Sun: 10:00–16:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 07:00-10:00, Sun: 10:00-16:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4623,7 +4623,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 10:00–20:00",
+    "timing": "Mon-Sun: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4657,7 +4657,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 11:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Sun: 11:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4690,7 +4690,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 10:00–13:30, Mon-Sun: 17:00–22:00",
+    "timing": "Mon-Sun: 10:00-13:30, Mon-Sun: 17:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -4724,7 +4724,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Fri: 18:00–22:00, Sat: 18:00–21:00",
+    "timing": "Mon-Fri: 18:00-22:00, Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4758,7 +4758,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–13:00",
+    "timing": "Mon-Sat: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -4792,7 +4792,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -4826,7 +4826,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 07:00–09:00, Sun: 10:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 07:00-09:00, Sun: 10:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4860,7 +4860,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 12:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sat: 12:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4894,7 +4894,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -4928,7 +4928,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Sat: 18:00–19:30, Mon/Tue/Wed/Thu/Fri/Sun: 18:00–21:00",
+    "timing": "Sat: 18:00-19:30, Mon/Tue/Wed/Thu/Fri/Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4963,7 +4963,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 07:00–09:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 07:00-09:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -4996,7 +4996,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 08:00–14:00, Mon-Sun: 17:00–22:00",
+    "timing": "Mon-Sun: 08:00-14:00, Mon-Sun: 17:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -5030,7 +5030,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 00:00–13:30, Mon-Sat: 12:00–14:00, Mon-Fri: 17:30–20:00, Sat: 17:30–20:15",
+    "timing": "Sun: 00:00-13:30, Mon-Sat: 12:00-14:00, Mon-Fri: 17:30-20:00, Sat: 17:30-20:15",
     "languages": [
       "Hindi",
       "English"
@@ -5064,7 +5064,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5098,7 +5098,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:00–23:00, Sun: 11:00–16:00",
+    "timing": "Mon-Sat: 10:00-23:00, Sun: 11:00-16:00",
     "languages": [
       "Hindi",
       "English"
@@ -5132,7 +5132,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5166,7 +5166,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -5200,7 +5200,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Sun: 12:00–14:00, Mon-Sat: 17:00–20:30",
+    "timing": "Sun: 12:00-14:00, Mon-Sat: 17:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -5234,7 +5234,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5268,7 +5268,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 11:00–13:30, Mon-Sun: 19:30–20:30",
+    "timing": "Mon-Sun: 11:00-13:30, Mon-Sun: 19:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -5335,7 +5335,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 09:00–22:00",
+    "timing": "Mon-Sat: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -5369,7 +5369,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5403,7 +5403,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Fri: 09:00–21:00, Sat/Sun: 09:00–14:00",
+    "timing": "Mon-Fri: 09:00-21:00, Sat/Sun: 09:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -5437,7 +5437,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Sun: 11:00–14:00, Mon-Fri: 16:30–20:30",
+    "timing": "Sun: 11:00-14:00, Mon-Fri: 16:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -5471,7 +5471,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Fri: 18:00–20:00",
+    "timing": "Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -5505,7 +5505,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 18:00–21:00",
+    "timing": "Mon-Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -5540,7 +5540,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5574,7 +5574,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 11:00–14:00, Sat: 11:00–22:00, Sun: 15:00–21:00, Mon-Fri: 17:00–20:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 11:00-14:00, Sat: 11:00-22:00, Sun: 15:00-21:00, Mon-Fri: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -5607,7 +5607,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 11:00–14:00, Mon-Sat: 15:00–23:00",
+    "timing": "Mon-Sat: 11:00-14:00, Mon-Sat: 15:00-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -5641,7 +5641,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -5675,7 +5675,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -5709,7 +5709,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 18:40–19:30",
+    "timing": "Mon-Sat: 18:40-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -5743,7 +5743,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -5777,7 +5777,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 11:00–16:00",
+    "timing": "Mon-Sat: 11:00-16:00",
     "languages": [
       "Hindi",
       "English"
@@ -5811,7 +5811,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5846,7 +5846,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:01, Mon-Sat: 17:00–19:30",
+    "timing": "Mon-Sat: 10:00-14:01, Mon-Sat: 17:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -5880,7 +5880,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat: 10:00–19:00, Mon-Fri: 16:00–19:00",
+    "timing": "Sat: 10:00-19:00, Mon-Fri: 16:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -5914,7 +5914,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon/Tue/Thu/Fri/Sat/Sun: 19:00–21:00",
+    "timing": "Mon/Tue/Thu/Fri/Sat/Sun: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -5948,7 +5948,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -5982,7 +5982,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 08:30–22:00",
+    "timing": "Mon-Sun: 08:30-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -6016,7 +6016,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6051,7 +6051,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:01, Mon-Sat: 17:00–19:30",
+    "timing": "Mon-Sat: 10:00-14:01, Mon-Sat: 17:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -6085,7 +6085,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 00:00–23:59, Sun: 10:00–12:00",
+    "timing": "Mon-Sat: 00:00-23:59, Sun: 10:00-12:00",
     "languages": [
       "Hindi",
       "English"
@@ -6119,7 +6119,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -6153,7 +6153,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6188,7 +6188,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6222,7 +6222,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6256,7 +6256,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 16:00–20:30",
+    "timing": "Mon-Sat: 16:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -6291,7 +6291,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 10:00–21:00",
+    "timing": "Mon-Sat: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -6326,7 +6326,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat/Sun: 10:00–15:00, Mon-Fri: 13:30–20:30",
+    "timing": "Sat/Sun: 10:00-15:00, Mon-Fri: 13:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -6360,7 +6360,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 14:00–16:00",
+    "timing": "Mon-Sat: 14:00-16:00",
     "languages": [
       "Hindi",
       "English"
@@ -6395,7 +6395,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 12:00–15:00, Mon-Sat: 13:00–17:00",
+    "timing": "Sun: 12:00-15:00, Mon-Sat: 13:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -6429,7 +6429,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6463,7 +6463,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–20:00, Sun: 11:00–13:00",
+    "timing": "Mon-Sat: 09:00-20:00, Sun: 11:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -6497,7 +6497,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -6531,7 +6531,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6565,7 +6565,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Fri: 10:00–13:00",
+    "timing": "Mon-Fri: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -6599,7 +6599,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–20:00",
+    "timing": "Mon-Sun: 00:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -6633,7 +6633,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6667,7 +6667,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 10:00–13:00",
+    "timing": "Mon-Fri: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -6701,7 +6701,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:30, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 10:00-14:30, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -6735,7 +6735,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1500,
     "consultation_fee_max": 1500,
-    "timing": "Mon-Sat: 14:00–19:00",
+    "timing": "Mon-Sat: 14:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -6769,7 +6769,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 10:30–13:30, Mon-Sun: 18:00–21:30",
+    "timing": "Mon-Sun: 10:30-13:30, Mon-Sun: 18:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -6803,7 +6803,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 09:30–20:30, Sat/Sun: 09:30–15:00",
+    "timing": "Mon-Fri: 09:30-20:30, Sat/Sun: 09:30-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -6836,7 +6836,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 00:00–23:59",
+    "timing": "Mon-Sat: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -6870,7 +6870,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -6904,7 +6904,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 11:30–14:00, Sun: 12:00–14:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 11:30-14:00, Sun: 12:00-14:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -6938,7 +6938,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 09:15–12:45, Mon-Sat: 13:45–17:00",
+    "timing": "Mon-Sat: 09:15-12:45, Mon-Sat: 13:45-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -6972,7 +6972,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 10:00–18:00",
+    "timing": "Mon-Sat: 10:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -7006,7 +7006,7 @@
     "whatsapp": null,
     "consultation_fee_min": 450,
     "consultation_fee_max": 450,
-    "timing": "Mon-Fri: 09:30–20:30, Sat/Sun: 09:30–15:00",
+    "timing": "Mon-Fri: 09:30-20:30, Sat/Sun: 09:30-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -7040,7 +7040,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 09:30–20:30, Sat/Sun: 09:30–15:00",
+    "timing": "Mon-Fri: 09:30-20:30, Sat/Sun: 09:30-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -7074,7 +7074,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–15:00",
+    "timing": "Mon-Sat: 10:00-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -7108,7 +7108,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7143,7 +7143,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sun: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7177,7 +7177,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7212,7 +7212,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 11:30–14:30, Mon-Sat: 19:30–21:30",
+    "timing": "Mon-Sun: 11:30-14:30, Mon-Sat: 19:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -7247,7 +7247,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7281,7 +7281,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 14:00–21:00, Sat: 17:00–21:00",
+    "timing": "Mon-Fri: 14:00-21:00, Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7315,7 +7315,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 00:00–23:59",
+    "timing": "Mon-Sat: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7350,7 +7350,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7384,7 +7384,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Fri: 18:00–20:00",
+    "timing": "Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -7422,7 +7422,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–13:00, Mon-Sat: 18:00–20:30",
+    "timing": "Mon-Sun: 00:00-13:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -7457,7 +7457,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 11:30–13:30, Mon-Sat: 17:15–19:30",
+    "timing": "Mon-Sat: 11:30-13:30, Mon-Sat: 17:15-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -7491,7 +7491,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 11:00–20:00",
+    "timing": "Mon-Sun: 11:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -7525,7 +7525,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 16:00–19:30",
+    "timing": "Mon-Sat: 16:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -7559,7 +7559,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 10:00–13:00",
+    "timing": "Mon-Sat: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -7627,7 +7627,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7661,7 +7661,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7695,7 +7695,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:00",
+    "timing": "Mon-Sat: 10:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -7729,7 +7729,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 13:00–20:00",
+    "timing": "Mon-Sat: 13:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -7763,7 +7763,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Wed/Thu: 09:30–10:30, Sat/Sun: 10:00–12:00, Tue/Wed/Thu: 18:30–21:00, Mon/Fri: 19:00–21:00",
+    "timing": "Wed/Thu: 09:30-10:30, Sat/Sun: 10:00-12:00, Tue/Wed/Thu: 18:30-21:00, Mon/Fri: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7798,7 +7798,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 12:00–17:00, Mon-Sat: 20:00–22:00",
+    "timing": "Mon-Sat: 12:00-17:00, Mon-Sat: 20:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -7833,7 +7833,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 10:00–23:59",
+    "timing": "Mon-Sun: 10:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7867,7 +7867,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Sat: 00:00–21:05, Mon-Fri: 07:15–21:00, Sun: 12:00–21:00",
+    "timing": "Sat: 00:00-21:05, Mon-Fri: 07:15-21:00, Sun: 12:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -7902,7 +7902,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7937,7 +7937,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -7971,7 +7971,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8006,7 +8006,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8041,7 +8041,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 00:00–23:59",
+    "timing": "Mon-Sat: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8074,7 +8074,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8109,7 +8109,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 15:00–18:00",
+    "timing": "Mon-Fri: 15:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -8144,7 +8144,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 16:00–19:00",
+    "timing": "Mon-Sat: 16:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -8179,7 +8179,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8215,7 +8215,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8250,7 +8250,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon/Tue/Thu/Fri/Sat/Sun: 09:00–20:00",
+    "timing": "Mon/Tue/Thu/Fri/Sat/Sun: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -8285,7 +8285,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8355,7 +8355,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8392,7 +8392,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 09:15–12:30, Mon-Sat: 18:00–20:30",
+    "timing": "Mon-Sat: 09:15-12:30, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -8428,7 +8428,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–12:30, Mon-Sat: 18:00–20:30",
+    "timing": "Mon-Sat: 10:00-12:30, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -8463,7 +8463,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Fri: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -8501,7 +8501,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 09:00–13:00, Tue/Wed/Thu/Fri/Sat/Sun: 18:00–21:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 09:00-13:00, Tue/Wed/Thu/Fri/Sat/Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -8536,7 +8536,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–23:59",
+    "timing": "Mon-Sun: 09:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -8571,7 +8571,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Wed/Sun: 10:00–21:00, Mon/Tue/Thu/Fri/Sat: 17:00–21:00",
+    "timing": "Wed/Sun: 10:00-21:00, Mon/Tue/Thu/Fri/Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -8607,7 +8607,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–22:00",
+    "timing": "Mon-Sat: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -8640,7 +8640,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1800,
     "consultation_fee_max": 1800,
-    "timing": "Mon-Fri: 08:00–16:00",
+    "timing": "Mon-Fri: 08:00-16:00",
     "languages": [
       "Hindi",
       "English"
@@ -8679,7 +8679,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 09:00–11:00, Sun: 09:00–13:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 09:00-11:00, Sun: 09:00-13:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -8715,7 +8715,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sat: 09:00–15:00",
+    "timing": "Mon-Sat: 09:00-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -8750,7 +8750,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Sat: 00:00–15:00, Mon-Fri: 12:00–23:00, Sun: 19:00–23:00",
+    "timing": "Sat: 00:00-15:00, Mon-Fri: 12:00-23:00, Sun: 19:00-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -8786,7 +8786,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Sun: 00:00–21:30, Mon-Sat: 11:00–21:30",
+    "timing": "Sun: 00:00-21:30, Mon-Sat: 11:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -8819,7 +8819,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Sat: 00:00–19:00, Mon-Fri: 09:00–11:00, Mon-Fri: 17:00–20:00",
+    "timing": "Sat: 00:00-19:00, Mon-Fri: 09:00-11:00, Mon-Fri: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -8854,7 +8854,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 17:00–21:30",
+    "timing": "Mon-Sun: 17:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -8892,7 +8892,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Sun: 10:00–14:00, Mon-Fri: 17:00–21:00",
+    "timing": "Sun: 10:00-14:00, Mon-Fri: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -8931,7 +8931,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:00–09:30, Mon-Sat: 17:00–18:00",
+    "timing": "Mon-Sat: 09:00-09:30, Mon-Sat: 17:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -8967,7 +8967,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -9003,7 +9003,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:00–13:00",
+    "timing": "Mon-Sat: 09:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -9039,7 +9039,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 10:00–15:30, Mon-Fri: 18:30–22:00",
+    "timing": "Mon-Sun: 10:00-15:30, Mon-Fri: 18:30-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -9076,7 +9076,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9111,7 +9111,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Fri: 17:30–20:00",
+    "timing": "Mon-Fri: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -9147,7 +9147,7 @@
     "whatsapp": null,
     "consultation_fee_min": 319,
     "consultation_fee_max": 319,
-    "timing": "Mon-Sun: 09:00–22:00",
+    "timing": "Mon-Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -9180,7 +9180,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 16:00–20:00",
+    "timing": "Mon-Sat: 16:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -9216,7 +9216,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Fri: 10:00–21:00, Sat: 13:00–21:00",
+    "timing": "Mon-Fri: 10:00-21:00, Sat: 13:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -9252,7 +9252,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 09:00–12:00, Mon-Sat: 14:00–21:00",
+    "timing": "Mon-Sun: 09:00-12:00, Mon-Sat: 14:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -9288,7 +9288,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:00–13:00",
+    "timing": "Mon-Sun: 10:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -9323,7 +9323,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9359,7 +9359,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat: 00:00–20:30, Mon-Fri: 11:00–20:30, Sun: 14:00–17:00",
+    "timing": "Sat: 00:00-20:30, Mon-Fri: 11:00-20:30, Sun: 14:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -9395,7 +9395,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9431,7 +9431,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 17:45–20:00",
+    "timing": "Mon-Sat: 17:45-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -9467,7 +9467,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -9502,7 +9502,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–14:00, Sun: 11:00–13:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 09:00-14:00, Sun: 11:00-13:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -9537,7 +9537,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:30–14:30, Mon-Fri: 17:30–20:30",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:30-14:30, Mon-Fri: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -9573,7 +9573,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–13:30, Mon-Sun: 17:00–21:30",
+    "timing": "Mon-Sun: 09:00-13:30, Mon-Sun: 17:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -9610,7 +9610,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon: 10:00–20:30, Tue/Wed/Thu/Fri/Sat: 11:00–20:30, Sun: 11:00–13:00",
+    "timing": "Mon: 10:00-20:30, Tue/Wed/Thu/Fri/Sat: 11:00-20:30, Sun: 11:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -9646,7 +9646,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9682,7 +9682,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1500,
     "consultation_fee_max": 1500,
-    "timing": "Mon-Sat: 09:00–19:00",
+    "timing": "Mon-Sat: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -9718,7 +9718,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1500,
     "consultation_fee_max": 1500,
-    "timing": "Mon-Sat: 09:00–19:00",
+    "timing": "Mon-Sat: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -9754,7 +9754,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1500,
     "consultation_fee_max": 1500,
-    "timing": "Mon-Sat: 09:00–19:00",
+    "timing": "Mon-Sat: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -9790,7 +9790,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 00:00–23:59",
+    "timing": "Mon-Sat: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9825,7 +9825,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9860,7 +9860,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 06:30–22:30",
+    "timing": "Mon-Sun: 06:30-22:30",
     "languages": [
       "Hindi",
       "English"
@@ -9897,7 +9897,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -9933,7 +9933,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 09:00–20:00",
+    "timing": "Mon-Sat: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -9969,7 +9969,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -10004,7 +10004,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10039,7 +10039,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 11:00–22:00, Mon-Sat: 16:00–22:00",
+    "timing": "Sun: 11:00-22:00, Mon-Sat: 16:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -10074,7 +10074,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 10:00–21:00, Sun: 10:00–14:00",
+    "timing": "Mon-Sat: 10:00-21:00, Sun: 10:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -10109,7 +10109,7 @@
     "whatsapp": null,
     "consultation_fee_min": 950,
     "consultation_fee_max": 950,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -10144,7 +10144,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10179,7 +10179,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–20:00",
+    "timing": "Mon-Sun: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -10214,7 +10214,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 14:00–20:00",
+    "timing": "Mon-Sat: 14:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -10248,7 +10248,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 10:00–17:00",
+    "timing": "Mon-Sat: 10:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -10283,7 +10283,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10316,7 +10316,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–22:00",
+    "timing": "Mon-Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -10354,7 +10354,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 10:00–14:30, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-14:30, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -10389,7 +10389,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10423,7 +10423,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 10:00–14:00",
+    "timing": "Mon-Sat: 10:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -10458,7 +10458,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 08:45–20:00",
+    "timing": "Mon-Sun: 08:45-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -10493,7 +10493,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10528,7 +10528,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -10563,7 +10563,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–19:30",
+    "timing": "Mon-Sun: 09:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -10598,7 +10598,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Fri: 09:00–12:00, Sun: 10:00–13:00, Mon-Fri: 17:30–20:30",
+    "timing": "Mon-Fri: 09:00-12:00, Sun: 10:00-13:00, Mon-Fri: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -10632,7 +10632,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 17:00–19:30",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 17:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -10666,7 +10666,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 10:00–13:00, Sun: 10:00–14:15, Mon-Sat: 15:30–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Sun: 10:00-14:15, Mon-Sat: 15:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -10700,7 +10700,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 16:00–21:00",
+    "timing": "Mon-Fri: 16:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -10734,7 +10734,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1100,
     "consultation_fee_max": 1100,
-    "timing": "Sun: 10:00–13:00, Mon/Tue/Thu/Fri/Sat: 10:00–16:00, Mon/Tue/Thu/Fri/Sat: 17:00–20:45",
+    "timing": "Sun: 10:00-13:00, Mon/Tue/Thu/Fri/Sat: 10:00-16:00, Mon/Tue/Thu/Fri/Sat: 17:00-20:45",
     "languages": [
       "Hindi",
       "English"
@@ -10768,7 +10768,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 18:30–21:30",
+    "timing": "Mon-Sat: 18:30-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -10802,7 +10802,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Fri: 09:00–19:00, Sat/Sun: 09:00–13:00, Sat/Sun: 16:00–19:00",
+    "timing": "Mon-Fri: 09:00-19:00, Sat/Sun: 09:00-13:00, Sat/Sun: 16:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -10836,7 +10836,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10870,7 +10870,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -10907,7 +10907,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -10941,7 +10941,7 @@
     "whatsapp": null,
     "consultation_fee_min": 750,
     "consultation_fee_max": 750,
-    "timing": "Sun: 11:00–14:00, Mon-Fri: 17:00–20:00",
+    "timing": "Sun: 11:00-14:00, Mon-Fri: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -10976,7 +10976,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 08:00–13:00, Mon-Sat: 16:00–20:00",
+    "timing": "Mon-Sat: 08:00-13:00, Mon-Sat: 16:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11010,7 +11010,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 08:00–20:00",
+    "timing": "Mon-Sat: 08:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11043,7 +11043,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -11079,7 +11079,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Fri: 14:00–18:30",
+    "timing": "Mon-Fri: 14:00-18:30",
     "languages": [
       "Hindi",
       "English"
@@ -11112,7 +11112,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 08:00–20:00",
+    "timing": "Mon-Sat: 08:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11145,7 +11145,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11181,7 +11181,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Fri: 14:00–18:30",
+    "timing": "Mon-Fri: 14:00-18:30",
     "languages": [
       "Hindi",
       "English"
@@ -11214,7 +11214,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 08:00–20:00, Mon: 08:00–21:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 08:00-20:00, Mon: 08:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11247,7 +11247,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–15:00, Mon-Sun: 15:15–22:00",
+    "timing": "Mon-Sun: 10:00-15:00, Mon-Sun: 15:15-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -11280,7 +11280,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 08:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 08:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11313,7 +11313,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11347,7 +11347,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 18:00–21:00",
+    "timing": "Mon-Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11382,7 +11382,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 09:00–13:00, Mon-Sun: 16:00–20:00",
+    "timing": "Mon-Sun: 09:00-13:00, Mon-Sun: 16:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11417,7 +11417,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 08:00–14:00, Mon-Sun: 16:00–21:00",
+    "timing": "Mon-Sun: 08:00-14:00, Mon-Sun: 16:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11451,7 +11451,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 06:00–08:00, Mon-Sun: 17:00–22:00",
+    "timing": "Mon-Sun: 06:00-08:00, Mon-Sun: 17:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -11484,7 +11484,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 09:00–13:30, Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sun: 09:00-13:30, Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11518,7 +11518,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 10:00–13:00, Mon-Sat: 10:00–13:45, Mon-Sat: 17:00–21:00",
+    "timing": "Sun: 10:00-13:00, Mon-Sat: 10:00-13:45, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11552,7 +11552,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11585,7 +11585,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11620,7 +11620,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -11654,7 +11654,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -11687,7 +11687,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 09:30–13:30, Mon-Sat: 18:00–22:00",
+    "timing": "Mon-Sat: 09:30-13:30, Mon-Sat: 18:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -11720,7 +11720,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Sun: 10:00–14:00, Mon-Sat: 10:00–22:00",
+    "timing": "Sun: 10:00-14:00, Mon-Sat: 10:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -11754,7 +11754,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 08:30–09:30, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sat: 08:30-09:30, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11787,7 +11787,7 @@
     "whatsapp": null,
     "consultation_fee_min": 70,
     "consultation_fee_max": 70,
-    "timing": "Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -11820,7 +11820,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 10:30–13:00, Mon-Sun: 18:00–21:30",
+    "timing": "Mon-Sun: 10:30-13:00, Mon-Sun: 18:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -11854,7 +11854,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 09:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sun: 09:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11887,7 +11887,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Fri: 16:00–20:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Fri: 16:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11922,7 +11922,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 00:00–17:00",
+    "timing": "Mon-Sat: 00:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -11955,7 +11955,7 @@
     "whatsapp": null,
     "consultation_fee_min": 350,
     "consultation_fee_max": 350,
-    "timing": "Mon-Sun: 08:00–10:00, Mon-Sun: 16:00–20:00",
+    "timing": "Mon-Sun: 08:00-10:00, Mon-Sun: 16:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -11989,7 +11989,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 08:00–12:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 08:00-12:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12022,7 +12022,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -12055,7 +12055,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 10:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12089,7 +12089,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12122,7 +12122,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 09:00–12:30, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 09:00-12:30, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12155,7 +12155,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 09:00–12:30, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 09:00-12:30, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12188,7 +12188,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 09:00–13:30, Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sun: 09:00-13:30, Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12222,7 +12222,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12255,7 +12255,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 09:00–13:30, Mon-Sun: 14:30–20:00",
+    "timing": "Mon-Sun: 09:00-13:30, Mon-Sun: 14:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12289,7 +12289,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12322,7 +12322,7 @@
     "whatsapp": null,
     "consultation_fee_min": 60,
     "consultation_fee_max": 60,
-    "timing": "Mon-Sat: 09:00–14:00, Mon-Sat: 15:00–20:00",
+    "timing": "Mon-Sat: 09:00-14:00, Mon-Sat: 15:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12356,7 +12356,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12390,7 +12390,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -12424,7 +12424,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 09:00–11:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sun: 09:00-11:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12458,7 +12458,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12491,7 +12491,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 08:00–13:00, Mon-Sat: 16:30–21:00",
+    "timing": "Mon-Sun: 08:00-13:00, Mon-Sat: 16:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12524,7 +12524,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Sun: 07:00–12:00, Mon-Sat: 07:00–10:00, Mon-Sat: 19:00–22:00",
+    "timing": "Sun: 07:00-12:00, Mon-Sat: 07:00-10:00, Mon-Sat: 19:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -12558,7 +12558,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12591,7 +12591,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 10:00–12:00, Mon-Sun: 18:00–20:00",
+    "timing": "Mon-Sun: 10:00-12:00, Mon-Sun: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12624,7 +12624,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12658,7 +12658,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 09:30–12:00, Mon-Sat: 18:30–20:00",
+    "timing": "Mon-Sat: 09:30-12:00, Mon-Sat: 18:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12692,7 +12692,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12725,7 +12725,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Sun: 09:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Sun: 09:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12793,7 +12793,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Fri: 17:00–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Fri: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -12827,7 +12827,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:30–13:00, Mon-Sat: 17:30–20:00",
+    "timing": "Mon-Sun: 10:30-13:00, Mon-Sat: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12860,7 +12860,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 08:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 08:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12893,7 +12893,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 10:00–19:00",
+    "timing": "Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -12926,7 +12926,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -12959,7 +12959,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -12993,7 +12993,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13028,7 +13028,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 08:00–11:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 08:00-11:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13062,7 +13062,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 18:00–20:30",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -13095,7 +13095,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sun: 09:00–11:00",
+    "timing": "Mon-Sun: 09:00-11:00",
     "languages": [
       "Hindi",
       "English"
@@ -13128,7 +13128,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13161,7 +13161,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Fri: 16:00–19:00",
+    "timing": "Mon-Fri: 16:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -13194,7 +13194,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:30–13:30, Sun: 10:30–14:00, Mon-Fri: 18:30–21:30, Sat: 18:30–22:00",
+    "timing": "Mon-Sat: 10:30-13:30, Sun: 10:30-14:00, Mon-Fri: 18:30-21:30, Sat: 18:30-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -13227,7 +13227,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 08:00–20:00",
+    "timing": "Mon-Sat: 08:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -13260,7 +13260,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Tue/Wed/Thu/Fri: 00:00–21:00, Mon: 09:00–21:00, Sat/Sun: 09:00–13:00",
+    "timing": "Tue/Wed/Thu/Fri: 00:00-21:00, Mon: 09:00-21:00, Sat/Sun: 09:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -13293,7 +13293,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Sun: 02:00–14:00, Mon-Sat: 11:00–14:00, Mon-Sat: 17:00–20:00",
+    "timing": "Sun: 02:00-14:00, Mon-Sat: 11:00-14:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -13328,7 +13328,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 09:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 09:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13361,7 +13361,7 @@
     "whatsapp": null,
     "consultation_fee_min": 50,
     "consultation_fee_max": 50,
-    "timing": "Mon-Sat: 09:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 09:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13396,7 +13396,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 17:00–20:00, Sun: 20:00–22:00",
+    "timing": "Mon-Sat: 17:00-20:00, Sun: 20:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -13431,7 +13431,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13464,7 +13464,7 @@
     "whatsapp": null,
     "consultation_fee_min": 50,
     "consultation_fee_max": 50,
-    "timing": "Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13497,7 +13497,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon: 08:00–13:00, Tue/Wed/Thu/Fri/Sat/Sun: 09:00–13:00",
+    "timing": "Mon: 08:00-13:00, Tue/Wed/Thu/Fri/Sat/Sun: 09:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -13532,7 +13532,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 09:30–13:30, Mon-Sat: 17:00–20:30",
+    "timing": "Mon-Sat: 09:30-13:30, Mon-Sat: 17:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -13565,7 +13565,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 16:00–22:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 16:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -13598,7 +13598,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 07:00–22:00",
+    "timing": "Mon-Sun: 07:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -13631,7 +13631,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–13:00, Mon-Sat: 16:00–20:30",
+    "timing": "Mon-Sat: 09:00-13:00, Mon-Sat: 16:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -13664,7 +13664,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13697,7 +13697,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13730,7 +13730,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 11:00–13:00, Mon-Sat: 18:00–20:30",
+    "timing": "Mon-Sat: 11:00-13:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -13764,7 +13764,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sat: 09:00–12:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 09:00-12:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13798,7 +13798,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 10:30–14:30, Tue/Wed/Thu/Fri/Sat/Sun: 16:30–20:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 10:30-14:30, Tue/Wed/Thu/Fri/Sat/Sun: 16:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -13831,7 +13831,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 09:00–13:00, Mon-Sat: 17:00–21:00",
+    "timing": "Mon-Sun: 09:00-13:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13866,7 +13866,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:30–14:00, Tue/Thu/Sat: 18:00–21:00, Mon/Wed/Fri: 19:00–21:00",
+    "timing": "Mon-Sun: 10:30-14:00, Tue/Thu/Sat: 18:00-21:00, Mon/Wed/Fri: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -13899,7 +13899,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–13:00, Mon-Sat: 14:00–17:00",
+    "timing": "Mon-Sat: 09:00-13:00, Mon-Sat: 14:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -13932,7 +13932,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:00–20:00",
+    "timing": "Mon-Sun: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -13965,7 +13965,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–18:00",
+    "timing": "Mon-Sat: 09:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -13998,7 +13998,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14031,7 +14031,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 09:00–11:00, Mon-Sat: 13:00–20:30",
+    "timing": "Mon-Sat: 09:00-11:00, Mon-Sat: 13:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -14064,7 +14064,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 08:00–10:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 08:00-10:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14097,7 +14097,7 @@
     "whatsapp": null,
     "consultation_fee_min": 100,
     "consultation_fee_max": 100,
-    "timing": "Sun: 11:00–13:00, Mon-Sat: 18:00–20:30",
+    "timing": "Sun: 11:00-13:00, Mon-Sat: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -14130,7 +14130,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 10:00–13:30, Mon-Sun: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:30, Mon-Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -14163,7 +14163,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 17:00–20:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14197,7 +14197,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sat: 07:30–13:30, Mon-Sat: 17:00–20:00, Sun: 17:30–20:00",
+    "timing": "Mon-Sat: 07:30-13:30, Mon-Sat: 17:00-20:00, Sun: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14230,7 +14230,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Fri: 10:00–13:00, Sat: 10:00–12:00, Mon-Fri: 18:00–20:00",
+    "timing": "Mon-Fri: 10:00-13:00, Sat: 10:00-12:00, Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14264,7 +14264,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–20:00, Sun: 10:00–18:00",
+    "timing": "Mon-Sat: 10:00-20:00, Sun: 10:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -14297,7 +14297,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 08:00–20:00, Sun: 10:00–14:00",
+    "timing": "Mon-Sat: 08:00-20:00, Sun: 10:00-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -14331,7 +14331,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 08:00–20:00",
+    "timing": "Mon-Sat: 08:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14364,7 +14364,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 00:00–23:59",
+    "timing": "Mon-Sat: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -14397,7 +14397,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 09:00–14:00, Mon-Sun: 17:00–21:00",
+    "timing": "Mon-Sun: 09:00-14:00, Mon-Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -14430,7 +14430,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Wed: 00:00–21:00, Mon/Tue/Thu/Sat/Sun: 17:00–21:00, Fri: 18:00–21:00",
+    "timing": "Wed: 00:00-21:00, Mon/Tue/Thu/Sat/Sun: 17:00-21:00, Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -14464,7 +14464,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–18:00",
+    "timing": "Mon-Sat: 09:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -14497,7 +14497,7 @@
     "whatsapp": null,
     "consultation_fee_min": 450,
     "consultation_fee_max": 450,
-    "timing": "Mon-Fri: 08:00–12:00, Sat/Sun: 10:00–20:00, Mon-Fri: 13:00–20:00",
+    "timing": "Mon-Fri: 08:00-12:00, Sat/Sun: 10:00-20:00, Mon-Fri: 13:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14530,7 +14530,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:00–13:00, Mon-Sat: 14:00–17:00",
+    "timing": "Mon-Sat: 09:00-13:00, Mon-Sat: 14:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -14563,7 +14563,7 @@
     "whatsapp": null,
     "consultation_fee_min": 150,
     "consultation_fee_max": 150,
-    "timing": "Mon-Sun: 09:00–19:00",
+    "timing": "Mon-Sun: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -14596,7 +14596,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -14629,7 +14629,7 @@
     "whatsapp": null,
     "consultation_fee_min": 299,
     "consultation_fee_max": 299,
-    "timing": "Sun: 10:00–20:00",
+    "timing": "Sun: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14663,7 +14663,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Tue/Wed/Thu/Sat/Sun: 09:00–17:00, Mon: 10:30–17:00",
+    "timing": "Tue/Wed/Thu/Sat/Sun: 09:00-17:00, Mon: 10:30-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -14696,7 +14696,7 @@
     "whatsapp": null,
     "consultation_fee_min": 499,
     "consultation_fee_max": 499,
-    "timing": "Mon-Sun: 07:00–23:59",
+    "timing": "Mon-Sun: 07:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -14729,7 +14729,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 10:00–20:00, Mon: 10:00–21:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat/Sun: 10:00-20:00, Mon: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -14762,7 +14762,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sat: 12:00–12:30, Mon-Sat: 12:45–13:15",
+    "timing": "Mon-Sat: 12:00-12:30, Mon-Sat: 12:45-13:15",
     "languages": [
       "Hindi",
       "English"
@@ -14798,7 +14798,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 10:00–11:00, Mon/Wed/Thu/Fri/Sat: 14:00–15:00, Tue: 14:00–15:30",
+    "timing": "Mon-Sat: 10:00-11:00, Mon/Wed/Thu/Fri/Sat: 14:00-15:00, Tue: 14:00-15:30",
     "languages": [
       "Hindi",
       "English"
@@ -14835,7 +14835,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 08:00–20:00",
+    "timing": "Mon-Sat: 08:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -14871,7 +14871,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -14894,7 +14894,7 @@
     ],
     "qualifications": [
       "MBBS",
-      "MD – General Medicine",
+      "MD - General Medicine",
       "DM - Medical Oncology"
     ],
     "experience_years": 23,
@@ -14909,7 +14909,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 09:30–17:00",
+    "timing": "Mon-Sat: 09:30-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -14946,7 +14946,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1100,
     "consultation_fee_max": 1100,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -14983,7 +14983,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15020,7 +15020,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15094,7 +15094,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -15129,7 +15129,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 08:30–11:00, Mon-Sat: 15:00–20:00",
+    "timing": "Mon-Sat: 08:30-11:00, Mon-Sat: 15:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -15166,7 +15166,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1100,
     "consultation_fee_max": 1100,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15203,7 +15203,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15238,7 +15238,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15273,7 +15273,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 09:30–13:00",
+    "timing": "Mon-Sun: 09:30-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -15308,7 +15308,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 09:00–19:00",
+    "timing": "Mon-Sun: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -15343,7 +15343,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 15:00–19:30, Mon-Sat: 23:30–23:45",
+    "timing": "Mon-Sat: 15:00-19:30, Mon-Sat: 23:30-23:45",
     "languages": [
       "Hindi",
       "English"
@@ -15378,7 +15378,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15415,7 +15415,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 08:30–11:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 08:30-11:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -15450,7 +15450,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15485,7 +15485,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15520,7 +15520,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15555,7 +15555,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sat: 09:00–19:00",
+    "timing": "Mon-Sat: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -15588,7 +15588,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 09:30–11:00, Mon-Sat: 13:30–20:30",
+    "timing": "Mon-Sat: 09:30-11:00, Mon-Sat: 13:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -15626,7 +15626,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–21:30",
+    "timing": "Mon-Sun: 09:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -15661,7 +15661,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Fri: 09:00–13:30, Sat/Sun: 09:00–20:00, Mon-Fri: 18:00–20:00",
+    "timing": "Mon-Fri: 09:00-13:30, Sat/Sun: 09:00-20:00, Mon-Fri: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -15695,7 +15695,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -15730,7 +15730,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15765,7 +15765,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15800,7 +15800,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sat: 00:00–23:59, Sun: 10:00–12:00",
+    "timing": "Mon-Sat: 00:00-23:59, Sun: 10:00-12:00",
     "languages": [
       "Hindi",
       "English"
@@ -15835,7 +15835,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 14:30–15:30, Sat: 18:00–20:30, Mon-Fri: 18:30–20:30",
+    "timing": "Mon-Sat: 14:30-15:30, Sat: 18:00-20:30, Mon-Fri: 18:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -15870,7 +15870,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15908,7 +15908,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -15943,7 +15943,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -15980,7 +15980,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -16015,7 +16015,7 @@
     "whatsapp": null,
     "consultation_fee_min": 2000,
     "consultation_fee_max": 2000,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 08:00–19:00, Sat: 08:00–23:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 08:00-19:00, Sat: 08:00-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -16050,7 +16050,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -16084,7 +16084,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 11:00–14:25, Mon-Sat: 14:50–19:00",
+    "timing": "Mon-Sat: 11:00-14:25, Mon-Sat: 14:50-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -16118,7 +16118,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 11:00–14:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 11:00-14:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16151,7 +16151,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 11:00–14:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 11:00-14:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16185,7 +16185,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16219,7 +16219,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 09:00–20:00, Mon-Sat: 10:00–21:00",
+    "timing": "Sun: 09:00-20:00, Mon-Sat: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16256,7 +16256,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:30–14:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sun: 10:30-14:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -16291,7 +16291,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:30–21:00",
+    "timing": "Mon-Sun: 09:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16325,7 +16325,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 00:00–13:00, Mon-Sat: 10:00–19:00",
+    "timing": "Sun: 00:00-13:00, Mon-Sat: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -16361,7 +16361,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:00–13:00, Mon-Sat: 17:00–20:15",
+    "timing": "Mon-Sat: 10:00-13:00, Mon-Sat: 17:00-20:15",
     "languages": [
       "Hindi",
       "English"
@@ -16395,7 +16395,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sat: 09:00–17:00",
+    "timing": "Mon-Sat: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -16429,7 +16429,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:30–21:00",
+    "timing": "Mon-Sun: 09:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16462,7 +16462,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–14:00, Mon/Tue/Wed/Thu/Sat: 16:00–20:30, Fri: 16:00–21:30",
+    "timing": "Mon-Sun: 10:00-14:00, Mon/Tue/Wed/Thu/Sat: 16:00-20:30, Fri: 16:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -16496,7 +16496,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–14:00, Mon/Tue/Wed/Thu/Sat: 16:00–20:30, Fri: 16:00–21:30",
+    "timing": "Mon-Sun: 10:00-14:00, Mon/Tue/Wed/Thu/Sat: 16:00-20:30, Fri: 16:00-21:30",
     "languages": [
       "Hindi",
       "English"
@@ -16534,7 +16534,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:30–21:00, Sun: 09:30–14:30",
+    "timing": "Mon-Sat: 09:30-21:00, Sun: 09:30-14:30",
     "languages": [
       "Hindi",
       "English"
@@ -16568,7 +16568,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 09:00–20:00, Mon-Sat: 10:00–21:00",
+    "timing": "Sun: 09:00-20:00, Mon-Sat: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16605,7 +16605,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16638,7 +16638,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:30–14:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sun: 10:30-14:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -16672,7 +16672,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:30–13:30, Sun: 10:30–14:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sat: 10:30-13:30, Sun: 10:30-14:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -16708,7 +16708,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:30–21:00",
+    "timing": "Mon-Sun: 09:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16746,7 +16746,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 08:30–22:00",
+    "timing": "Mon-Sun: 08:30-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -16779,7 +16779,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16813,7 +16813,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 09:00–21:00, Sat/Sun: 09:00–13:00",
+    "timing": "Mon-Fri: 09:00-21:00, Sat/Sun: 09:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -16847,7 +16847,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–22:00",
+    "timing": "Mon-Sun: 10:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -16881,7 +16881,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:30–20:30, Sun: 09:30–14:00",
+    "timing": "Mon-Sat: 09:30-20:30, Sun: 09:30-14:00",
     "languages": [
       "Hindi",
       "English"
@@ -16915,7 +16915,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00–14:00, Mon/Tue/Wed/Thu/Fri/Sun: 17:00–21:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00-14:00, Mon/Tue/Wed/Thu/Fri/Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -16948,7 +16948,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 17:00–20:30",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 17:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -16982,7 +16982,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17015,7 +17015,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 09:00–15:00, Sun: 10:00–15:00, Mon-Sat: 15:15–21:00",
+    "timing": "Mon-Sat: 09:00-15:00, Sun: 10:00-15:00, Mon-Sat: 15:15-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17053,7 +17053,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon: 00:00–14:00, Tue/Wed/Thu/Fri/Sat/Sun: 10:00–14:00, Tue/Wed/Thu/Fri/Sat: 16:30–20:00, Mon: 16:30–21:00",
+    "timing": "Mon: 00:00-14:00, Tue/Wed/Thu/Fri/Sat/Sun: 10:00-14:00, Tue/Wed/Thu/Fri/Sat: 16:30-20:00, Mon: 16:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17086,7 +17086,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:30–19:00",
+    "timing": "Mon-Sun: 10:30-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -17120,7 +17120,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 11:00–14:25, Mon-Sat: 14:50–19:00",
+    "timing": "Mon-Sat: 11:00-14:25, Mon-Sat: 14:50-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -17153,7 +17153,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 10:00–14:00, Mon-Sat: 10:00–20:00",
+    "timing": "Sun: 10:00-14:00, Mon-Sat: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17186,7 +17186,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat: 00:00–13:00, Sun: 09:00–14:00, Mon-Fri: 12:00–21:00",
+    "timing": "Sat: 00:00-13:00, Sun: 09:00-14:00, Mon-Fri: 12:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17220,7 +17220,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17253,7 +17253,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17287,7 +17287,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–22:00",
+    "timing": "Mon-Sun: 10:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -17321,7 +17321,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Tue/Wed/Thu/Fri/Sat: 10:00–14:00, Sun: 10:00–16:00, Tue/Wed/Thu/Fri/Sat: 14:15–20:00, Mon: 17:00–20:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat: 10:00-14:00, Sun: 10:00-16:00, Tue/Wed/Thu/Fri/Sat: 14:15-20:00, Mon: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17356,7 +17356,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -17390,7 +17390,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17424,7 +17424,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -17458,7 +17458,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 09:30–22:59, Sun: 11:00–22:59",
+    "timing": "Mon-Sat: 09:30-22:59, Sun: 11:00-22:59",
     "languages": [
       "Hindi",
       "English"
@@ -17492,7 +17492,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 15:00–20:30",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 15:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -17525,7 +17525,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17559,7 +17559,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 09:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17595,7 +17595,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sat: 15:00–20:30",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sat: 15:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -17633,7 +17633,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17668,7 +17668,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Tue/Wed/Thu/Fri/Sat: 10:00–14:00, Sun: 10:00–16:00, Tue/Wed/Thu/Fri/Sat: 14:15–20:00, Mon: 17:00–20:00",
+    "timing": "Tue/Wed/Thu/Fri/Sat: 10:00-14:00, Sun: 10:00-16:00, Tue/Wed/Thu/Fri/Sat: 14:15-20:00, Mon: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17702,7 +17702,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–20:00",
+    "timing": "Mon-Sun: 10:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17736,7 +17736,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17775,7 +17775,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Sat: 00:00–16:00, Mon-Fri: 11:00–21:00",
+    "timing": "Sat: 00:00-16:00, Mon-Fri: 11:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17809,7 +17809,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 11:00–20:00",
+    "timing": "Mon-Sun: 11:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17842,7 +17842,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17875,7 +17875,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 09:00–21:00",
+    "timing": "Mon/Wed/Thu/Fri/Sat/Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17909,7 +17909,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 11:00–20:00",
+    "timing": "Mon-Sun: 11:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -17943,7 +17943,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -17977,7 +17977,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:30–13:30, Sun: 10:30–14:30, Mon-Sat: 17:30–20:30",
+    "timing": "Mon-Sat: 10:30-13:30, Sun: 10:30-14:30, Mon-Sat: 17:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -18010,7 +18010,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sat: 09:30–22:59, Sun: 11:00–22:59",
+    "timing": "Mon-Sat: 09:30-22:59, Sun: 11:00-22:59",
     "languages": [
       "Hindi",
       "English"
@@ -18046,7 +18046,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 17:30–20:00",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 17:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -18084,7 +18084,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon: 00:00–14:00, Tue/Wed/Thu/Fri/Sat/Sun: 10:00–14:00, Tue/Wed/Thu/Fri/Sat: 16:30–20:00, Mon: 16:30–21:00",
+    "timing": "Mon: 00:00-14:00, Tue/Wed/Thu/Fri/Sat/Sun: 10:00-14:00, Tue/Wed/Thu/Fri/Sat: 16:30-20:00, Mon: 16:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18118,7 +18118,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 00:00–20:00, Mon-Sat: 10:30–14:30, Mon-Sat: 16:30–20:00",
+    "timing": "Sun: 00:00-20:00, Mon-Sat: 10:30-14:30, Mon-Sat: 16:30-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -18152,7 +18152,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 00:00–23:45",
+    "timing": "Mon-Sun: 00:00-23:45",
     "languages": [
       "Hindi",
       "English"
@@ -18189,7 +18189,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 17:30–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 17:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18223,7 +18223,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:30–14:00, Mon-Sun: 17:00–21:00",
+    "timing": "Mon-Sun: 10:30-14:00, Mon-Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18257,7 +18257,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Thu/Fri: 10:00–13:00, Sun: 11:00–14:00, Mon-Fri: 18:00–21:00",
+    "timing": "Mon/Tue/Thu/Fri: 10:00-13:00, Sun: 11:00-14:00, Mon-Fri: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18292,7 +18292,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:30–19:00",
+    "timing": "Mon-Sun: 10:30-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -18325,7 +18325,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sun: 17:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18363,7 +18363,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon/Tue/Wed/Fri/Sat/Sun: 10:00–14:00, Mon/Tue/Wed/Fri/Sat/Sun: 14:30–21:00",
+    "timing": "Mon/Tue/Wed/Fri/Sat/Sun: 10:00-14:00, Mon/Tue/Wed/Fri/Sat/Sun: 14:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18401,7 +18401,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Fri: 14:00–17:30, Sat/Sun: 14:00–17:00, Sat/Sun: 17:30–19:30, Mon-Fri: 21:00–23:45",
+    "timing": "Mon-Fri: 14:00-17:30, Sat/Sun: 14:00-17:00, Sat/Sun: 17:30-19:30, Mon-Fri: 21:00-23:45",
     "languages": [
       "Hindi",
       "English"
@@ -18438,7 +18438,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu/Sat/Sun: 11:00–20:00",
+    "timing": "Mon/Tue/Wed/Thu/Sat/Sun: 11:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -18472,7 +18472,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 00:00–20:00",
+    "timing": "Mon-Sun: 00:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -18505,7 +18505,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00–14:00, Mon/Tue/Wed/Thu/Fri/Sun: 17:00–21:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 10:00-14:00, Mon/Tue/Wed/Thu/Fri/Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18542,7 +18542,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 09:00–19:00, Mon-Sat: 09:00–21:00",
+    "timing": "Sun: 09:00-19:00, Mon-Sat: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18575,7 +18575,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Sat: 00:00–13:00, Sun: 09:00–14:00, Mon-Fri: 12:00–21:00",
+    "timing": "Sat: 00:00-13:00, Sun: 09:00-14:00, Mon-Fri: 12:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18609,7 +18609,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–21:00",
+    "timing": "Mon-Sun: 10:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18643,7 +18643,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sat: 10:00–16:00",
+    "timing": "Mon-Sat: 10:00-16:00",
     "languages": [
       "Hindi",
       "English"
@@ -18677,7 +18677,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 09:00–22:00",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -18710,7 +18710,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 11:00–14:00, Mon-Fri: 19:00–21:00",
+    "timing": "Sun: 11:00-14:00, Mon-Fri: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18744,7 +18744,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sat: 17:00–19:00",
+    "timing": "Mon-Sat: 17:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -18778,7 +18778,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 10:00–13:30, Mon-Fri: 18:00–20:30",
+    "timing": "Mon-Sun: 10:00-13:30, Mon-Fri: 18:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -18812,7 +18812,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -18846,7 +18846,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -18881,7 +18881,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -18915,7 +18915,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sat: 10:00–12:00, Mon-Sat: 19:00–21:00",
+    "timing": "Mon-Sat: 10:00-12:00, Mon-Sat: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18949,7 +18949,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Fri: 19:00–21:00",
+    "timing": "Mon-Fri: 19:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -18984,7 +18984,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19018,7 +19018,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Fri: 19:30–21:00",
+    "timing": "Mon-Fri: 19:30-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -19052,7 +19052,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -19086,7 +19086,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Sun: 11:00–14:00, Mon-Fri: 16:30–20:30",
+    "timing": "Sun: 11:00-14:00, Mon-Fri: 16:30-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -19120,7 +19120,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sat: 15:00–18:00, Mon-Fri: 17:00–20:00",
+    "timing": "Sat: 15:00-18:00, Mon-Fri: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -19156,7 +19156,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 11:00–17:00",
+    "timing": "Mon-Sun: 11:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -19225,7 +19225,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19259,7 +19259,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–20:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -19293,7 +19293,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 08:00–13:00, Mon-Sat: 17:00–20:00",
+    "timing": "Mon-Sat: 08:00-13:00, Mon-Sat: 17:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -19326,7 +19326,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 10:00–13:00, Mon-Fri: 17:00–21:00",
+    "timing": "Sun: 10:00-13:00, Mon-Fri: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -19360,7 +19360,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Fri: 15:00–20:00",
+    "timing": "Mon-Fri: 15:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -19395,7 +19395,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sun: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -19429,7 +19429,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 09:00–22:00",
+    "timing": "Mon-Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -19463,7 +19463,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 09:00–22:00",
+    "timing": "Mon-Sun: 09:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -19498,7 +19498,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19532,7 +19532,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -19566,7 +19566,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19600,7 +19600,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Fri: 18:00–21:00, Sat: 18:00–20:00",
+    "timing": "Mon-Fri: 18:00-21:00, Sat: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -19634,7 +19634,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon/Tue/Wed/Thu: 09:00–13:00",
+    "timing": "Mon/Tue/Wed/Thu: 09:00-13:00",
     "languages": [
       "Hindi",
       "English"
@@ -19668,7 +19668,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19702,7 +19702,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19736,7 +19736,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1200,
     "consultation_fee_max": 1200,
-    "timing": "Mon-Sun: 09:00–18:00",
+    "timing": "Mon-Sun: 09:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -19772,7 +19772,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Sun: 11:00–14:00, Mon-Sat: 17:00–21:00",
+    "timing": "Sun: 11:00-14:00, Mon-Sat: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -19807,7 +19807,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19842,7 +19842,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Fri: 10:00–12:00, Sat: 10:00–12:30, Mon-Sat: 18:30–19:30",
+    "timing": "Mon-Fri: 10:00-12:00, Sat: 10:00-12:30, Mon-Sat: 18:30-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -19877,7 +19877,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19911,7 +19911,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 16:00–17:00",
+    "timing": "Mon-Sat: 16:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -19946,7 +19946,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -19982,7 +19982,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20019,7 +20019,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20056,7 +20056,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20093,7 +20093,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20130,7 +20130,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20167,7 +20167,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 09:00–17:00",
+    "timing": "Mon-Sun: 09:00-17:00",
     "languages": [
       "Hindi",
       "English"
@@ -20204,7 +20204,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Fri: 01:45–00:00, Mon/Tue/Wed/Thu: 08:00–19:00, Sat: 08:00–12:30, Sun: 09:30–12:30",
+    "timing": "Fri: 01:45-00:00, Mon/Tue/Wed/Thu: 08:00-19:00, Sat: 08:00-12:30, Sun: 09:30-12:30",
     "languages": [
       "Hindi",
       "English"
@@ -20241,7 +20241,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20276,7 +20276,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20312,7 +20312,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 09:00–15:00",
+    "timing": "Mon-Sat: 09:00-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -20349,7 +20349,7 @@
     "whatsapp": null,
     "consultation_fee_min": 800,
     "consultation_fee_max": 800,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20386,7 +20386,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sat: 09:00–15:00",
+    "timing": "Mon-Sat: 09:00-15:00",
     "languages": [
       "Hindi",
       "English"
@@ -20423,7 +20423,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20493,7 +20493,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 19:00–20:00",
+    "timing": "Mon-Sat: 19:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -20528,7 +20528,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20563,7 +20563,7 @@
     "whatsapp": null,
     "consultation_fee_min": 900,
     "consultation_fee_max": 900,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -20596,7 +20596,7 @@
     "whatsapp": null,
     "consultation_fee_min": 610,
     "consultation_fee_max": 610,
-    "timing": "Mon-Sun: 09:00–21:00",
+    "timing": "Mon-Sun: 09:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -20629,7 +20629,7 @@
     "whatsapp": null,
     "consultation_fee_min": 600,
     "consultation_fee_max": 600,
-    "timing": "Mon-Sun: 10:00–18:00",
+    "timing": "Mon-Sun: 10:00-18:00",
     "languages": [
       "Hindi",
       "English"
@@ -20663,7 +20663,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 09:00–20:00",
+    "timing": "Mon-Sun: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -20696,7 +20696,7 @@
     "whatsapp": null,
     "consultation_fee_min": 299,
     "consultation_fee_max": 299,
-    "timing": "Mon-Sun: 09:00–19:00",
+    "timing": "Mon-Sun: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -20729,7 +20729,7 @@
     "whatsapp": null,
     "consultation_fee_min": 299,
     "consultation_fee_max": 299,
-    "timing": "Mon-Sun: 10:00–19:30",
+    "timing": "Mon-Sun: 10:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -20762,7 +20762,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–19:00",
+    "timing": "Mon-Sun: 10:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -20795,7 +20795,7 @@
     "whatsapp": null,
     "consultation_fee_min": 49,
     "consultation_fee_max": 49,
-    "timing": "Mon-Sun: 09:00–19:00",
+    "timing": "Mon-Sun: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -20828,7 +20828,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–15:00, Mon-Sun: 15:15–22:00",
+    "timing": "Mon-Sun: 10:00-15:00, Mon-Sun: 15:15-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -20851,7 +20851,7 @@
     ],
     "experience_years": 7,
     "clinic_name": "JIVA Ayurveda",
-    "clinic_address": "JIVA Ayurveda, Space No UGF-01, Shri Pratap Tower, Sector – B, LDA Colony, Kanpur Road, Alambagh, Lucknow",
+    "clinic_address": "JIVA Ayurveda, Space No UGF-01, Shri Pratap Tower, Sector - B, LDA Colony, Kanpur Road, Alambagh, Lucknow",
     "locality": "Alambagh",
     "city": "Lucknow",
     "pincode": "226012",
@@ -20861,7 +20861,7 @@
     "whatsapp": null,
     "consultation_fee_min": null,
     "consultation_fee_max": null,
-    "timing": "Mon-Sun: 10:00–19:30",
+    "timing": "Mon-Sun: 10:00-19:30",
     "languages": [
       "Hindi",
       "English"
@@ -20894,7 +20894,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 09:00–20:00",
+    "timing": "Mon-Sun: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -20927,7 +20927,7 @@
     "whatsapp": null,
     "consultation_fee_min": 299,
     "consultation_fee_max": 299,
-    "timing": "Mon-Sun: 09:00–19:00",
+    "timing": "Mon-Sun: 09:00-19:00",
     "languages": [
       "Hindi",
       "English"
@@ -20960,7 +20960,7 @@
     "whatsapp": null,
     "consultation_fee_min": 700,
     "consultation_fee_max": 700,
-    "timing": "Mon-Sun: 11:00–14:00, Mon-Sat: 17:00–20:30",
+    "timing": "Mon-Sun: 11:00-14:00, Mon-Sat: 17:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -20994,7 +20994,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon-Sun: 10:00–14:00, Mon-Sun: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-14:00, Mon-Sun: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21027,7 +21027,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21061,7 +21061,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sun: 10:00–13:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sun: 10:00-13:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21095,7 +21095,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Wed: 00:00–21:00, Mon/Fri/Sat/Sun: 10:00–14:00, Mon/Thu/Fri/Sat/Sun: 17:00–21:00",
+    "timing": "Wed: 00:00-21:00, Mon/Fri/Sat/Sun: 10:00-14:00, Mon/Thu/Fri/Sat/Sun: 17:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21128,7 +21128,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 17:00–20:30",
+    "timing": "Mon/Tue/Wed/Thu/Fri/Sun: 17:00-20:30",
     "languages": [
       "Hindi",
       "English"
@@ -21161,7 +21161,7 @@
     "whatsapp": null,
     "consultation_fee_min": 499,
     "consultation_fee_max": 499,
-    "timing": "Sat/Sun: 10:00–21:00, Mon-Fri: 11:00–21:00",
+    "timing": "Sat/Sun: 10:00-21:00, Mon-Fri: 11:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21195,7 +21195,7 @@
     "whatsapp": null,
     "consultation_fee_min": 499,
     "consultation_fee_max": 499,
-    "timing": "Mon-Sun: 00:00–21:00",
+    "timing": "Mon-Sun: 00:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21228,7 +21228,7 @@
     "whatsapp": null,
     "consultation_fee_min": 400,
     "consultation_fee_max": 400,
-    "timing": "Mon-Sun: 08:00–22:00",
+    "timing": "Mon-Sun: 08:00-22:00",
     "languages": [
       "Hindi",
       "English"
@@ -21261,7 +21261,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–16:00, Sun: 10:00–20:00, Mon-Sat: 17:00–23:00",
+    "timing": "Mon-Sat: 10:00-16:00, Sun: 10:00-20:00, Mon-Sat: 17:00-23:00",
     "languages": [
       "Hindi",
       "English"
@@ -21294,7 +21294,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 10:00–14:00, Mon-Sat: 18:00–21:00",
+    "timing": "Mon-Sat: 10:00-14:00, Mon-Sat: 18:00-21:00",
     "languages": [
       "Hindi",
       "English"
@@ -21328,7 +21328,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Sat/Sun: 00:00–20:00, Mon-Fri: 11:00–20:00",
+    "timing": "Sat/Sun: 00:00-20:00, Mon-Fri: 11:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -21361,7 +21361,7 @@
     "whatsapp": null,
     "consultation_fee_min": 250,
     "consultation_fee_max": 250,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"
@@ -21394,7 +21394,7 @@
     "whatsapp": null,
     "consultation_fee_min": 300,
     "consultation_fee_max": 300,
-    "timing": "Sun: 09:00–12:00, Mon-Sat: 09:30–11:30, Mon-Sat: 18:00–20:15",
+    "timing": "Sun: 09:00-12:00, Mon-Sat: 09:30-11:30, Mon-Sat: 18:00-20:15",
     "languages": [
       "Hindi",
       "English"
@@ -21427,7 +21427,7 @@
     "whatsapp": null,
     "consultation_fee_min": 500,
     "consultation_fee_max": 500,
-    "timing": "Mon-Sat: 11:00–13:30, Sun: 11:00–13:00, Mon-Sat: 17:00–20:00, Sun: 18:00–20:00",
+    "timing": "Mon-Sat: 11:00-13:30, Sun: 11:00-13:00, Mon-Sat: 17:00-20:00, Sun: 18:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -21460,7 +21460,7 @@
     "whatsapp": null,
     "consultation_fee_min": 1000,
     "consultation_fee_max": 1000,
-    "timing": "Sun: 09:00–19:00, Mon: 09:00–21:00, Tue/Wed/Thu/Fri/Sat: 09:00–20:00",
+    "timing": "Sun: 09:00-19:00, Mon: 09:00-21:00, Tue/Wed/Thu/Fri/Sat: 09:00-20:00",
     "languages": [
       "Hindi",
       "English"
@@ -21493,7 +21493,7 @@
     "whatsapp": null,
     "consultation_fee_min": 200,
     "consultation_fee_max": 200,
-    "timing": "Mon-Sun: 00:00–23:59",
+    "timing": "Mon-Sun: 00:00-23:59",
     "languages": [
       "Hindi",
       "English"

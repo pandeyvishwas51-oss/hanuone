@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SpecialtyIcon from "./SpecialtyIcon";
 import type { Specialization } from "@/lib/types";
 
 export default function SpecialtyCard({ specialty }: { specialty: Specialization }) {
@@ -7,8 +8,8 @@ export default function SpecialtyCard({ specialty }: { specialty: Specialization
       href={`/specializations/${specialty.slug}`}
       className="card flex flex-col items-center gap-2 p-5 text-center transition hover:-translate-y-0.5 hover:shadow-lg"
     >
-      <span className="text-3xl" aria-hidden>
-        {specialty.icon || "🩺"}
+      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/10">
+        <SpecialtyIcon specialty={specialty.slug || specialty.name} size={22} />
       </span>
       <span className="text-sm font-semibold text-ink">{specialty.name}</span>
       {specialty.name_hindi && (

@@ -13,13 +13,12 @@ type Props = {
   variant?: "hero" | "compact";
 };
 
-export default function SearchBar({ specializations, localities, variant = "hero" }: Props) {
+export default function SearchBar({ specializations, localities }: Props) {
   const router = useRouter();
   const [specialty, setSpecialty] = useState("");
   const [locality, setLocality] = useState<Locality | null>(null);
   const [q, setQ] = useState("");
 
-  // Restore locality from localStorage on first mount
   useEffect(() => {
     if (typeof window === "undefined") return;
     const saved = window.localStorage.getItem("hanuone:locality");
@@ -37,7 +36,6 @@ export default function SearchBar({ specializations, localities, variant = "hero
     if (locality) params.set("locality", locality.name);
     const trimmed = q.trim();
     if (trimmed) {
-      // If a 6-digit pincode is typed, prefer routing through the pincode page
       if (/^\d{6}$/.test(trimmed)) {
         const target = PINCODE_MAP[trimmed];
         if (target) params.set("locality", target);
@@ -52,19 +50,18 @@ export default function SearchBar({ specializations, localities, variant = "hero
   return (
     <form
       onSubmit={onSubmit}
-      className="grid w-full gap-2 rounded-2xl bg-white p-3 shadow-card sm:grid-cols-12"
+      className="grid w-full gap-2 rounded-2xl bg-white p-2 shadow-card sm:p-3 sm:grid-cols-12"
     >
       <label className="sm:col-span-4">
         <span className="sr-only">Specialty</span>
         <select
           value={specialty}
           onChange={(e) => setSpecialty(e.target.value)}
-          className="input"
+          className="input h-11 sm:h-auto"
         >
           <option value="">All specialties</option>
           {specializations.map((s) => (
             <option key={s.slug} value={s.name}>
-              {s.icon ? `${s.icon} ` : ""}
               {s.name}
             </option>
           ))}
@@ -79,19 +76,19 @@ export default function SearchBar({ specializations, localities, variant = "hero
         />
       </div>
       <label className="sm:col-span-3">
-        <span className="sr-only">Search</span>
+        <span className="sr-only">Doctor, clinic or pincode</span>
         <input
           type="search"
           inputMode="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Doctor, clinic or pincode"
-          className="input"
+          className="input h-11 sm:h-auto"
         />
       </label>
-      <button type="submit" className="btn-primary sm:col-span-2">
+      <button type="submit" className="btn-primary h-11 sm:h-auto sm:col-span-2">
         <Search size={16} />
-        Search
+        <span>Search</span>
       </button>
     </form>
   );

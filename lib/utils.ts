@@ -15,7 +15,7 @@ export function generateSlug(name: string, specialty?: string, locality?: string
 
 export function formatFeeRange(min: number | null, max: number | null) {
   if (min == null && max == null) return "Fee on request";
-  if (min != null && max != null && min !== max) return `₹${min} – ₹${max}`;
+  if (min != null && max != null && min !== max) return `₹${min} - ₹${max}`;
   return `₹${min ?? max}`;
 }
 

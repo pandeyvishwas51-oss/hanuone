@@ -64,7 +64,7 @@ export default async function ComboPage({ params }: { params: Params }) {
         <p className="mt-2 max-w-3xl text-sm text-muted">
           Looking for a {spec.name.toLowerCase()} in {loc.name}, Lucknow? Hanuone lists verified
           {" "}{spec.name.toLowerCase()}s practicing in and around {loc.name} with full transparency on
-          qualifications, experience, fees and patient ratings. Contact directly on WhatsApp — no
+          qualifications, experience, fees and patient ratings. Contact directly on WhatsApp, no
           booking fees, no spam.
         </p>
       </header>

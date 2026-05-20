@@ -4,7 +4,7 @@ type Props = { doctor: Doctor };
 
 /**
  * Renders JSON-LD Physician schema for a doctor profile page.
- * Use inside the page body — Next.js will keep it in the rendered HTML for SEO.
+ * Use inside the page body, Next.js will keep it in the rendered HTML for SEO.
  */
 export default function DoctorJsonLd({ doctor }: Props) {
   const data: Record<string, unknown> = {

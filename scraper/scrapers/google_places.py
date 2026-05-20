@@ -1,7 +1,7 @@
 """
 Google Places scraper for Hanuone.
 
-Uses the Places API (Text Search + Place Details) — 100% legal, returns
+Uses the Places API (Text Search + Place Details), 100% legal, returns
 name, address, phone, rating, review count, photos.
 
 Free tier: 10,000 requests/month.

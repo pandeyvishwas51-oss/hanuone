@@ -1,0 +1,17 @@
+{
+  "name": "Hanuone, Lucknow ke Trusted Doctors",
+  "short_name": "Hanuone",
+  "description": "Find verified doctors in Lucknow by specialty, locality and pincode.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0FAFF",
+  "theme_color": "#023E8A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

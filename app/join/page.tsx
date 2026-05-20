@@ -6,7 +6,7 @@ import { HeartHandshake, Stethoscope, Users } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Join Hanuone Home Care Network — Register as Doctor or Nurse",
+  title: "Join Hanuone Home Care Network, Register as Doctor or Nurse",
   description:
     "Are you a doctor, nurse or trained caregiver in Lucknow? Register with Hanuone Home Care to offer home visits, nursing and elder care to families.",
   alternates: { canonical: "/join" }
@@ -21,12 +21,12 @@ export default async function JoinPage() {
           Hanuone Home Care Network
         </span>
         <h1 className="h2 mt-3">
-          Care for parents at home — earn doing what you do best
+          Care for parents at home, earn doing what you do best
         </h1>
         <p className="mt-2 text-muted">
           Hanuone Home Care connects Lucknow families with verified doctors,
           nurses and trained caregivers for home visits and elder care. If you
-          provide any of these services, register below — onboarding is free,
+          provide any of these services, register below, onboarding is free,
           and you set your own availability and rates.
         </p>
 

@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const notoHindi = Noto_Sans_Devanagari({
@@ -16,51 +17,62 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.in";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Hanuone — Lucknow ke Trusted Doctors, Ek Jagah",
+    default: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
     template: "%s | Hanuone"
   },
   description:
-    "Find verified doctors in Lucknow by specialty and locality. Free directory of cardiologists, gynecologists, pediatricians, orthopedics and more. Contact via WhatsApp directly.",
+    "Find verified doctors in Lucknow by specialty, locality and pincode. Free directory of cardiologists, gynecologists, pediatricians and more. Contact via WhatsApp.",
   keywords: [
     "doctors in Lucknow",
     "Lucknow doctors",
     "best cardiologist Lucknow",
     "doctors near me Lucknow",
+    "Lucknow doctor by pincode",
     "Hanuone",
     "Gomtinagar doctor",
     "Hazratganj doctor"
   ],
+  applicationName: "Hanuone",
+  appleWebApp: {
+    capable: true,
+    title: "Hanuone",
+    statusBarStyle: "default"
+  },
   openGraph: {
     type: "website",
     siteName: "Hanuone",
     url: siteUrl,
-    title: "Hanuone — Lucknow ke Trusted Doctors, Ek Jagah",
+    title: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
     description:
-      "Verified doctors in Lucknow by specialty and locality. Free, simple, trusted.",
+      "Verified doctors in Lucknow by specialty, locality and pincode. Free, simple, trusted.",
     images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Hanuone" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hanuone — Lucknow ke Trusted Doctors, Ek Jagah",
-    description: "Verified doctors in Lucknow by specialty and locality."
+    title: "Hanuone, Lucknow ke Trusted Doctors, Ek Jagah",
+    description: "Verified doctors in Lucknow by specialty, locality and pincode."
   },
   alternates: { canonical: siteUrl },
-  robots: { index: true, follow: true }
+  robots: { index: true, follow: true },
+  manifest: "/manifest.webmanifest"
 };
 
 export const viewport: Viewport = {
   themeColor: "#023E8A",
   width: "device-width",
-  initialScale: 1
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${notoHindi.variable}`}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-bg">
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-16 md:pb-0">{children}</main>
         <SiteFooter />
+        <MobileBottomNav />
       </body>
     </html>
   );

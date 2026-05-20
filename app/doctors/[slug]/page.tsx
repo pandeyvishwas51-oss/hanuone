@@ -29,7 +29,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const doctor = await getDoctorBySlug(params.slug);
   if (!doctor) return { title: "Doctor not found" };
-  const title = `${doctor.name} — Best ${doctor.specialization} in ${doctor.locality}, ${doctor.city}`;
+  const title = `${doctor.name}, Best ${doctor.specialization} in ${doctor.locality}, ${doctor.city}`;
   const description = truncate(
     `${doctor.name} is a ${doctor.experience_years ? `${doctor.experience_years}-year experienced ` : ""}${doctor.specialization} in ${doctor.locality}, ${doctor.city}. Consultation fee ${formatFeeRange(doctor.consultation_fee_min, doctor.consultation_fee_max)}. Contact directly via WhatsApp.`,
     180
@@ -90,8 +90,8 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
             <h2 className="h3">Reviews</h2>
             <p className="mt-1 text-sm text-muted">
               {doctor.review_count > 0
-                ? `${doctor.review_count} reviews · ${doctor.rating?.toFixed(1) ?? "—"} ★`
-                : "No reviews yet — be the first to share your experience."}
+                ? `${doctor.review_count} reviews · ${doctor.rating?.toFixed(1) ?? "-"} ★`
+                : "No reviews yet, be the first to share your experience."}
             </p>
             {reviews.length > 0 && (
               <div className="mt-4 grid gap-3">
@@ -173,13 +173,13 @@ function SectionAbout({ doctor }: { doctor: NonNullable<Awaited<ReturnType<typeo
     <section id="about" className="card p-6">
       <h2 className="h3">About Dr. {doctor.name.replace(/^Dr\.?\s*/i, "")}</h2>
       <div className="mt-3 grid gap-4 sm:grid-cols-2">
-        <Field label="Qualifications" value={(doctor.qualifications ?? []).join(", ") || "—"} />
-        <Field label="Experience" value={doctor.experience_years ? `${doctor.experience_years} years` : "—"} />
+        <Field label="Qualifications" value={(doctor.qualifications ?? []).join(", ") || "-"} />
+        <Field label="Experience" value={doctor.experience_years ? `${doctor.experience_years} years` : "-"} />
         <Field label="Specialization" value={doctor.specialization} />
-        <Field label="Languages" value={(doctor.languages ?? []).join(", ") || "—"} />
+        <Field label="Languages" value={(doctor.languages ?? []).join(", ") || "-"} />
         <Field
           label="Sub-specialties"
-          value={(doctor.sub_specializations ?? []).join(", ") || "—"}
+          value={(doctor.sub_specializations ?? []).join(", ") || "-"}
         />
         <Field
           label="Consultation fee"

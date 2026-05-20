@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 type Props = { compact?: boolean };
 
 const ROLES = [
-  { value: "doctor", label: "Doctor — home consultations" },
+  { value: "doctor", label: "Doctor, home consultations" },
   { value: "nurse", label: "Nurse (BSc / GNM / ANM)" },
   { value: "caregiver", label: "Caregiver / attendant" },
   { value: "physiotherapist", label: "Physiotherapist (home visits)" },

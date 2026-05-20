@@ -29,7 +29,7 @@ python main.py --source google_places --locality all
 # A single locality + specialty
 python main.py --source google_places --specialty cardiologist --locality gomtinagar
 
-# Practo (development/testing only — respect ToS in production)
+# Practo (development/testing only, respect ToS in production)
 python main.py --source practo --specialty cardiologist --locality gomtinagar
 
 # JustDial
@@ -43,11 +43,11 @@ After scraping, doctor counts on `specializations` and `localities` tables are a
 
 ## Files
 
-- `main.py` — CLI entrypoint, dedup, upsert, count refresh
-- `scrapers/google_places.py` — Google Places API (recommended)
-- `scrapers/practo.py` — Practo HTML scraping (Playwright)
-- `scrapers/justdial.py` — JustDial HTML scraping (Playwright)
-- `scraper_errors.log` — failed/skipped rows
+- `main.py`, CLI entrypoint, dedup, upsert, count refresh
+- `scrapers/google_places.py`, Google Places API (recommended)
+- `scrapers/practo.py`, Practo HTML scraping (Playwright)
+- `scrapers/justdial.py`, JustDial HTML scraping (Playwright)
+- `scraper_errors.log`, failed/skipped rows
 
 ## Legal note
 
