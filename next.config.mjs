@@ -12,8 +12,14 @@ const nextConfig = {
       { protocol: "https", hostname: "maps.googleapis.com" }
     ]
   },
-  experimental: {
-    typedRoutes: false
+  async redirects() {
+    return [
+      {
+        source: "/join",
+        destination: "https://hanuonepro.vercel.app/register",
+        permanent: true
+      }
+    ];
   }
 };
 
