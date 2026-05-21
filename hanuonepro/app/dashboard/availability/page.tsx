@@ -1,66 +1,78 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase-browser";
 import { Plus, Trash2 } from "lucide-react";
-import type { Availability } from "@/lib/types";
+
+type Slot = {
+  id: string;
+  date: string;
+  start_time: string;
+  end_time: string;
+  is_booked: boolean | null;
+};
+
+type ApiSlot = {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  isBooked: boolean | null;
+};
 
 export default function AvailabilityPage() {
-  const supabase = createClient();
-  const [slots, setSlots] = useState<Availability[]>([]);
+  const [slots, setSlots] = useState<Slot[]>([]);
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [startTime, setStartTime] = useState("09:00");
   const [endTime, setEndTime] = useState("17:00");
   const [loading, setLoading] = useState(false);
-  const [profId, setProfId] = useState<string | null>(null);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: prof } = await supabase.from("professionals").select("id").eq("user_id", user.id).single();
-      if (prof) {
-        setProfId(prof.id);
-        loadSlots(prof.id);
-      }
-    })();
-  }, []);
-
-  async function loadSlots(id: string) {
-    const { data } = await supabase
-      .from("availability")
-      .select("*")
-      .eq("professional_id", id)
-      .gte("date", new Date().toISOString().split("T")[0])
-      .order("date", { ascending: true })
-      .order("start_time", { ascending: true })
-      .limit(50);
-    setSlots(data ?? []);
+  async function load() {
+    const r = await fetch("/api/availability");
+    const data = await r.json();
+    if (data.ok) {
+      setSlots(
+        (data.slots as ApiSlot[]).map((s) => ({
+          id: s.id,
+          date: s.date,
+          start_time: s.startTime,
+          end_time: s.endTime,
+          is_booked: s.isBooked
+        }))
+      );
+    }
   }
 
+  useEffect(() => {
+    load();
+  }, []);
+
   async function addSlot() {
-    if (!profId) return;
     setLoading(true);
-    await supabase.from("availability").insert({
-      professional_id: profId,
-      date,
-      start_time: startTime,
-      end_time: endTime
+    setError("");
+    const r = await fetch("/api/availability", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ date, startTime, endTime })
     });
-    await loadSlots(profId);
+    const data = await r.json();
     setLoading(false);
+    if (!r.ok || !data.ok) {
+      setError(data.error || "Could not add slot");
+      return;
+    }
+    await load();
   }
 
   async function deleteSlot(id: string) {
-    if (!profId) return;
-    await supabase.from("availability").delete().eq("id", id);
-    await loadSlots(profId);
+    await fetch(`/api/availability?id=${id}`, { method: "DELETE" });
+    await load();
   }
 
   return (
     <div>
       <h1 className="text-xl font-bold text-ink">Availability</h1>
-      <p className="mt-1 text-sm text-muted">Mark when you're available for gigs.</p>
+      <p className="mt-1 text-sm text-muted">Mark when you are available for gigs.</p>
 
       <div className="mt-6 card p-5">
         <h2 className="text-sm font-semibold text-ink">Add a slot</h2>
@@ -83,6 +95,7 @@ export default function AvailabilityPage() {
             </button>
           </div>
         </div>
+        {error && <div className="mt-2 text-xs text-red-600">{error}</div>}
       </div>
 
       <div className="mt-6">

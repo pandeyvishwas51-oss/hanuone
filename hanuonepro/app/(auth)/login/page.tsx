@@ -3,47 +3,42 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase-browser";
-import { Phone, Mail } from "lucide-react";
+import { signIn } from "next-auth/react";
+import { Mail, KeyRound } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const supabase = createClient();
-  const [mode, setMode] = useState<"phone" | "email">("phone");
-  const [phone, setPhone] = useState("");
+  const [mode, setMode] = useState<"password" | "magic">("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [otp, setOtp] = useState("");
-  const [step, setStep] = useState<"input" | "otp">("input");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
 
-  async function sendOtp() {
-    setLoading(true); setError("");
-    const digits = phone.replace(/\D/g, "");
-    const e164 = digits.length === 10 ? `+91${digits}` : `+${digits}`;
-    const { error } = await supabase.auth.signInWithOtp({ phone: e164 });
+  async function loginPassword() {
+    setLoading(true);
+    setError("");
+    setInfo("");
+    const res = await signIn("credentials", { email, password, redirect: false });
     setLoading(false);
-    if (error) { setError(error.message); return; }
-    setStep("otp");
-  }
-
-  async function verifyOtp() {
-    setLoading(true); setError("");
-    const digits = phone.replace(/\D/g, "");
-    const e164 = digits.length === 10 ? `+91${digits}` : `+${digits}`;
-    const { error } = await supabase.auth.verifyOtp({ phone: e164, token: otp, type: "sms" });
-    setLoading(false);
-    if (error) { setError(error.message); return; }
+    if (res?.error) {
+      setError("Wrong email or password.");
+      return;
+    }
     router.push("/dashboard");
   }
 
-  async function loginEmail() {
-    setLoading(true); setError("");
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+  async function loginMagic() {
+    setLoading(true);
+    setError("");
+    setInfo("");
+    const res = await signIn("resend", { email, redirect: false });
     setLoading(false);
-    if (error) { setError(error.message); return; }
-    router.push("/dashboard");
+    if (res?.error) {
+      setError("Could not send magic link. Check the email and try again.");
+      return;
+    }
+    setInfo("Check your email for the login link.");
   }
 
   return (
@@ -55,56 +50,43 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-6 flex rounded-lg border border-slate-200 p-1">
-          <button onClick={() => setMode("phone")} className={`flex-1 rounded-md py-2 text-sm font-medium ${mode === "phone" ? "bg-primary text-white" : "text-muted"}`}>
-            <Phone size={14} className="inline mr-1" /> Phone OTP
+          <button onClick={() => setMode("password")} className={`flex-1 rounded-md py-2 text-sm font-medium ${mode === "password" ? "bg-primary text-white" : "text-muted"}`}>
+            <KeyRound size={14} className="inline mr-1" /> Password
           </button>
-          <button onClick={() => setMode("email")} className={`flex-1 rounded-md py-2 text-sm font-medium ${mode === "email" ? "bg-primary text-white" : "text-muted"}`}>
-            <Mail size={14} className="inline mr-1" /> Email
+          <button onClick={() => setMode("magic")} className={`flex-1 rounded-md py-2 text-sm font-medium ${mode === "magic" ? "bg-primary text-white" : "text-muted"}`}>
+            <Mail size={14} className="inline mr-1" /> Magic link
           </button>
         </div>
 
-        {mode === "phone" ? (
-          <div className="mt-5 space-y-4">
-            {step === "input" ? (
-              <>
-                <div>
-                  <label className="label">Phone number</label>
-                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91 98765 43210" className="input" />
-                </div>
-                <button onClick={sendOtp} disabled={loading} className="btn-primary w-full">
-                  {loading ? "Sending..." : "Send OTP"}
-                </button>
-              </>
-            ) : (
-              <>
-                <div>
-                  <label className="label">Enter OTP sent to {phone}</label>
-                  <input type="text" inputMode="numeric" maxLength={6} value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="123456" className="input text-center text-lg tracking-widest" />
-                </div>
-                <button onClick={verifyOtp} disabled={loading} className="btn-primary w-full">
-                  {loading ? "Verifying..." : "Verify & Login"}
-                </button>
-                <button onClick={() => setStep("input")} className="btn-ghost w-full">Change number</button>
-              </>
-            )}
-          </div>
-        ) : (
+        {mode === "password" ? (
           <div className="mt-5 space-y-4">
             <div>
               <label className="label">Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" className="input" />
+              <input type="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" />
             </div>
             <div>
               <label className="label">Password</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Your password" className="input" />
+              <input type="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
             </div>
-            <button onClick={loginEmail} disabled={loading} className="btn-primary w-full">
+            <button onClick={loginPassword} disabled={loading} className="btn-primary w-full">
               {loading ? "Logging in..." : "Login"}
+            </button>
+          </div>
+        ) : (
+          <div className="mt-5 space-y-4">
+            <p className="text-xs text-muted">We'll email you a one-click login link.</p>
+            <div>
+              <label className="label">Email</label>
+              <input type="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" />
+            </div>
+            <button onClick={loginMagic} disabled={loading} className="btn-primary w-full">
+              {loading ? "Sending..." : "Email me a login link"}
             </button>
           </div>
         )}
 
         {error && <div className="mt-3 rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">{error}</div>}
+        {info && <div className="mt-3 rounded-md bg-emerald-50 px-3 py-2 text-xs text-emerald-700">{info}</div>}
 
         <p className="mt-6 text-center text-sm text-muted">
           New here? <Link href="/register" className="font-semibold text-primary hover:underline">Register as a professional</Link>

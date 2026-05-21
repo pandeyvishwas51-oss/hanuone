@@ -1,30 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase-browser";
-import type { Earning } from "@/lib/types";
 import { ArrowDownLeft, ArrowUpRight, Wallet } from "lucide-react";
 
+type Earning = {
+  id: string;
+  amount: number;
+  type: string;
+  description: string | null;
+  createdAt: string;
+};
+
 export default function EarningsPage() {
-  const supabase = createClient();
   const [earnings, setEarnings] = useState<Earning[]>([]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: prof } = await supabase.from("professionals").select("id").eq("user_id", user.id).single();
-      if (!prof) return;
-      const { data } = await supabase
-        .from("earnings")
-        .select("*")
-        .eq("professional_id", prof.id)
-        .order("created_at", { ascending: false })
-        .limit(100);
-      const rows = data ?? [];
-      setEarnings(rows);
-      setTotal(rows.reduce((s, e) => s + (e.type === "credit" ? e.amount : -e.amount), 0));
+      const r = await fetch("/api/earnings");
+      const data = await r.json();
+      if (data.ok) {
+        setEarnings(data.earnings);
+        setTotal(data.total);
+      }
     })();
   }, []);
 
@@ -57,7 +55,7 @@ export default function EarningsPage() {
                 )}
                 <div>
                   <div className="text-sm text-ink">{e.description || e.type}</div>
-                  <div className="text-[11px] text-muted">{new Date(e.created_at).toLocaleDateString()}</div>
+                  <div className="text-[11px] text-muted">{new Date(e.createdAt).toLocaleDateString()}</div>
                 </div>
               </div>
               <span className={`text-sm font-semibold ${e.type === "credit" ? "text-emerald-600" : "text-red-600"}`}>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#023E8A"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(150,260)">
+    <path d="M 0 84 C -28 64 -96 28 -96 -28 C -96 -64 -64 -84 -32 -84 C -12 -84 -4 -76 0 -68 C 4 -76 12 -84 32 -84 C 64 -84 96 -64 96 -28 C 96 28 28 64 0 84 Z" fill="#ffffff"/>
+    <rect x="-12" y="-50" width="24" height="74" rx="4" fill="#023E8A"/>
+    <rect x="-37" y="-26" width="74" height="24" rx="4" fill="#023E8A"/>
+  </g>
+  <g fill="#ffffff" font-family="Inter, system-ui, sans-serif">
+    <text x="320" y="280" font-size="92" font-weight="800">HanuonePro</text>
+    <text x="320" y="354" font-size="40" font-weight="600">Healthcare Gig Dashboard</text>
+    <text x="320" y="404" font-size="28" font-weight="500" opacity="0.85">Doctors . Nurses . Caregivers</text>
+    <text x="320" y="478" font-size="22" font-weight="400" opacity="0.85">Register. Get verified. Track every gig and rupee.</text>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "name": "HanuonePro, Healthcare Gig Dashboard",
+  "short_name": "HanuonePro",
+  "description": "Register, get verified, manage availability and track gigs across Lucknow.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F0FAFF",
+  "theme_color": "#023E8A",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

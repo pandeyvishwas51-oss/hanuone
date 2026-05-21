@@ -1,8 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase-browser";
-import type { Booking } from "@/lib/types";
+
+type Booking = {
+  id: string;
+  patientName: string;
+  patientPhone: string;
+  patientAddress: string | null;
+  serviceType: string;
+  bookingDate: string;
+  status: string;
+  notes: string | null;
+  amount: number | null;
+};
 
 const STATUS_BADGE: Record<string, string> = {
   pending: "badge-pending",
@@ -13,35 +23,25 @@ const STATUS_BADGE: Record<string, string> = {
 };
 
 export default function BookingsPage() {
-  const supabase = createClient();
   const [bookings, setBookings] = useState<Booking[]>([]);
-  const [profId, setProfId] = useState<string | null>(null);
 
-  useEffect(() => {
-    (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: prof } = await supabase.from("professionals").select("id").eq("user_id", user.id).single();
-      if (prof) {
-        setProfId(prof.id);
-        loadBookings(prof.id);
-      }
-    })();
-  }, []);
-
-  async function loadBookings(id: string) {
-    const { data } = await supabase
-      .from("bookings")
-      .select("*")
-      .eq("professional_id", id)
-      .order("booking_date", { ascending: false })
-      .limit(50);
-    setBookings(data ?? []);
+  async function load() {
+    const r = await fetch("/api/bookings");
+    const data = await r.json();
+    if (data.ok) setBookings(data.bookings);
   }
 
-  async function updateStatus(bookingId: string, status: string) {
-    await supabase.from("bookings").update({ status }).eq("id", bookingId);
-    if (profId) loadBookings(profId);
+  useEffect(() => {
+    load();
+  }, []);
+
+  async function updateStatus(id: string, status: string) {
+    await fetch("/api/bookings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status })
+    });
+    load();
   }
 
   return (
@@ -51,7 +51,7 @@ export default function BookingsPage() {
 
       {bookings.length === 0 ? (
         <div className="mt-8 card p-8 text-center text-sm text-muted">
-          No bookings yet. Once families request your services, they'll appear here.
+          No bookings yet. Once families request your services, they will appear here.
         </div>
       ) : (
         <div className="mt-6 space-y-3">
@@ -59,9 +59,10 @@ export default function BookingsPage() {
             <div key={b.id} className="card p-4 sm:p-5">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <div className="text-sm font-semibold text-ink">{b.patient_name}</div>
-                  <div className="text-xs text-muted">{b.service_type} - {b.booking_date}</div>
-                  {b.patient_address && <div className="mt-1 text-xs text-muted">{b.patient_address}</div>}
+                  <div className="text-sm font-semibold text-ink">{b.patientName}</div>
+                  <div className="text-xs text-muted">{b.serviceType} - {b.bookingDate}</div>
+                  {b.patientAddress && <div className="mt-1 text-xs text-muted">{b.patientAddress}</div>}
+                  <div className="mt-1 text-xs text-muted">{b.patientPhone}</div>
                 </div>
                 <span className={STATUS_BADGE[b.status] || "badge"}>{b.status.replace("_", " ")}</span>
               </div>
