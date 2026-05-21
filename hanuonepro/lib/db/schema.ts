@@ -18,6 +18,7 @@ export const users = pgTable("users", {
   emailVerified: timestamp("email_verified", { withTimezone: true }),
   image: text("image"),
   passwordHash: text("password_hash"),
+  isAdmin: boolean("is_admin").default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
 });
 
@@ -119,5 +120,32 @@ export const earnings = pgTable("earnings", {
   amount: integer("amount").notNull(),
   type: text("type").default("credit"),
   description: text("description"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
+});
+
+// =====================================================================
+// Read-only references to patient-side tables (Hanuone main directory)
+// =====================================================================
+export const doctors = pgTable("doctors", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
+  specialization: text("specialization").notNull(),
+  locality: text("locality").notNull(),
+  city: text("city").default("Lucknow"),
+  rating: decimal("rating", { precision: 2, scale: 1 }),
+  reviewCount: integer("review_count").default(0),
+  verified: boolean("verified").default(false),
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
+});
+
+export const waitlist = pgTable("waitlist", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  email: text("email"),
+  whatsapp: text("whatsapp"),
+  cityOfResidence: text("city_of_residence"),
+  parentsCity: text("parents_city").default("Lucknow"),
+  interest: text("interest"),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
 });

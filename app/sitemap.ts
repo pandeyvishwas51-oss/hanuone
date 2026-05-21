@@ -20,8 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticUrls: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, lastModified: now, changeFrequency: "daily", priority: 1.0 },
-    { url: `${BASE}/doctors`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
-    { url: `${BASE}/join`, lastModified: now, changeFrequency: "weekly", priority: 0.5 }
+    { url: `${BASE}/doctors`, lastModified: now, changeFrequency: "daily", priority: 0.9 }
   ];
 
   const doctorUrls: MetadataRoute.Sitemap = doctorSlugs.map((slug) => ({

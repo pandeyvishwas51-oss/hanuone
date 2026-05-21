@@ -10,13 +10,13 @@ import * as schema from "@/lib/db/schema";
 
 declare module "next-auth" {
   interface Session {
-    user: { id: string } & DefaultSession["user"];
+    user: { id: string; isAdmin?: boolean } & DefaultSession["user"];
+  }
+  interface User {
+    isAdmin?: boolean;
   }
 }
 
-// At build time DATABASE_URL may be missing; use a placeholder so Drizzle
-// initialisation doesn't throw. The adapter is only ever invoked at runtime
-// inside actual auth flows where the env is real.
 const url = process.env.DATABASE_URL || "postgres://placeholder@localhost/neondb";
 const dbInstance = drizzle(neon(url), { schema });
 
@@ -48,7 +48,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name ?? user.email.split("@")[0],
-          image: user.image ?? null
+          image: user.image ?? null,
+          isAdmin: !!user.isAdmin
         };
       }
     }),
@@ -59,11 +60,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.id = user.id;
+      if (user) {
+        token.id = user.id;
+        (token as { isAdmin?: boolean }).isAdmin = (user as { isAdmin?: boolean }).isAdmin ?? false;
+      }
       return token;
     },
     async session({ session, token }) {
-      if (token?.id && session.user) session.user.id = String(token.id);
+      if (token?.id && session.user) {
+        session.user.id = String(token.id);
+        (session.user as { isAdmin?: boolean }).isAdmin = !!(token as { isAdmin?: boolean }).isAdmin;
+      }
       return session;
     }
   }

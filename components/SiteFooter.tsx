@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Quote, Instagram, Facebook, Twitter } from "lucide-react";
-import WaitlistForm from "./WaitlistForm";
+import { Quote, Instagram, Facebook, Twitter, ArrowRight } from "lucide-react";
 
 export default function SiteFooter() {
   return (
@@ -40,11 +39,21 @@ export default function SiteFooter() {
         <div className="rounded-2xl bg-primary p-6 text-white">
           <div className="text-base font-semibold">Hanuone Home Care Network</div>
           <p className="mt-1 text-sm text-white/80">
-            Are you a doctor, nurse or caregiver? Register to offer home visits and elder care to Lucknow families.
+            Are you a doctor, nurse, ward boy, caregiver or physiotherapist? Register on HanuonePro
+            to manage your availability and receive home-care gigs.
           </p>
-          <div className="mt-4">
-            <WaitlistForm compact />
-          </div>
+          <Link
+            href="https://hanuonepro.vercel.app/register"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-primary hover:bg-white/90"
+          >
+            Register on HanuonePro <ArrowRight size={14} />
+          </Link>
+          <Link
+            href="https://hanuonepro.vercel.app/login"
+            className="mt-2 block text-xs text-white/70 hover:text-white"
+          >
+            Already registered? Login
+          </Link>
         </div>
       </div>
 

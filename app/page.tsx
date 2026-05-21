@@ -3,7 +3,6 @@ import SearchBar from "@/components/SearchBar";
 import SpecialtyCard from "@/components/SpecialtyCard";
 import LocalityChip from "@/components/LocalityChip";
 import DoctorCard from "@/components/DoctorCard";
-import WaitlistForm from "@/components/WaitlistForm";
 import HeroHeadline from "@/components/HeroHeadline";
 import FaqSection from "@/components/FaqSection";
 import {
@@ -172,18 +171,28 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-white/80">
                 Get listed for free. Verified profiles get more visibility on Hanuone.
               </p>
-              <Link href="/join" className="btn-whatsapp mt-4 inline-flex">
+              <Link href="https://hanuonepro.vercel.app/register" className="btn-whatsapp mt-4 inline-flex">
                 Get listed free
               </Link>
             </div>
             <div className="rounded-2xl bg-white/10 p-4 sm:p-5">
               <div className="text-sm font-semibold">Hanuone Home Care Network</div>
-              <p className="text-xs text-white/80">
-                Doctors, nurses and caregivers, register to offer home visits in Lucknow.
+              <p className="mt-1 text-xs text-white/80">
+                Are you a nurse, ward boy, caregiver or physiotherapist? Register on HanuonePro to get
+                home-care gigs in Lucknow.
               </p>
-              <div className="mt-3">
-                <WaitlistForm compact />
-              </div>
+              <Link
+                href="https://hanuonepro.vercel.app/register"
+                className="btn-whatsapp mt-4 inline-flex"
+              >
+                Register on HanuonePro
+              </Link>
+              <Link
+                href="https://hanuonepro.vercel.app/login"
+                className="mt-2 block text-xs text-white/70 hover:text-white"
+              >
+                Already registered? Login
+              </Link>
             </div>
           </div>
         </div>

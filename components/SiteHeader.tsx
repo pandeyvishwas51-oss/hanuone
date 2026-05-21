@@ -31,12 +31,12 @@ export default async function SiteHeader() {
           <Link href="/doctors" className="hover:text-primary">Find Doctors</Link>
           <Link href="/specializations/cardiologist" className="hover:text-primary">Specialties</Link>
           <Link href="/localities/gomtinagar" className="hover:text-primary">Localities</Link>
-          <Link href="/join" className="hover:text-primary">Home Care Network</Link>
+          <Link href="https://hanuonepro.vercel.app/register" className="hover:text-primary">Home Care Network</Link>
         </nav>
 
         <div className="flex items-center gap-2 min-w-0">
           <HeaderLocationChip localities={localities} />
-          <Link href="/join" className="btn-outline hidden md:inline-flex">List Your Practice</Link>
+          <Link href="https://hanuonepro.vercel.app/register" className="btn-outline hidden md:inline-flex">List Your Practice</Link>
         </div>
       </div>
     </header>

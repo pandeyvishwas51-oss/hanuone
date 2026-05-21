@@ -20,7 +20,7 @@ const TABS = [
     match: (p: string) => p.startsWith("/localities")
   },
   {
-    href: "/join",
+    href: "https://hanuonepro.vercel.app/register",
     label: "Home Care",
     icon: HeartHandshake,
     match: (p: string) => p.startsWith("/join")
