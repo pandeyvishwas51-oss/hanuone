@@ -129,4 +129,4 @@ INSERT INTO doctors (
 ON CONFLICT (slug) DO NOTHING;
 
 -- Refresh counts after seeding
-SELECT refresh_doctor_counts;
+SELECT refresh_doctor_counts();

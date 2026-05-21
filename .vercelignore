@@ -1,8 +1,9 @@
-# We do NOT exclude data/ — `lib/local-data.ts` imports the Practo JSON dataset
-# at build time so the site works without Supabase env vars.
+# We do NOT exclude data/ since `lib/local-data.ts` imports the Practo JSON dataset
+# at build time so the site works without DATABASE_URL.
 scraper/
 scripts/
 supabase/
+hanuonepro/
 .git/
 .next/
 node_modules/

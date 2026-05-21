@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseService } from "@/lib/supabase";
+import { HAS_DB, db, schema } from "@/lib/db";
 
 /**
  * POST /api/waitlist
@@ -44,21 +44,17 @@ function isValidPhone(s: string) {
   return /^[+\d][\d\s\-()]{7,}$/.test(s);
 }
 
-async function persistToSupabase(p: Payload) {
+async function persistToDatabase(p: Payload) {
+  if (!HAS_DB) return { ok: false, reason: "DATABASE_URL missing" };
   try {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!url || !key) return { ok: false, reason: "supabase env missing" };
-    const client = supabaseService();
-    const { error } = await client.from("waitlist").insert({
+    await db().insert(schema.waitlist).values({
       email: p.email || null,
       whatsapp: p.whatsapp || null,
-      city_of_residence: p.city || null,
+      cityOfResidence: p.city || null,
       interest: [p.role, p.name && `name=${p.name}`, p.message && `note=${p.message}`]
         .filter(Boolean)
         .join(" | ")
     });
-    if (error) return { ok: false, reason: error.message };
     return { ok: true };
   } catch (e: unknown) {
     return { ok: false, reason: String((e as Error).message ?? e) };
@@ -207,14 +203,14 @@ export async function POST(req: Request) {
   const payload: Payload = { role, email, whatsapp, name, city, message };
 
   // Run all transports in parallel; success if at least one wins.
-  const [supabase, resend, web3forms, formSubmit] = await Promise.all([
-    persistToSupabase(payload),
+  const [database, resend, web3forms, formSubmit] = await Promise.all([
+    persistToDatabase(payload),
     sendResendEmail(payload),
     sendWeb3Forms(payload),
     sendFormSubmit(payload)
   ]);
 
-  const wins = [supabase, resend, web3forms, formSubmit].filter((r) => r.ok);
+  const wins = [database, resend, web3forms, formSubmit].filter((r) => r.ok);
   if (wins.length === 0) {
     // Build a mailto link so the user always has a guaranteed escape hatch.
     const subject = encodeURIComponent(`Hanuone signup: ${payload.role}`);
@@ -232,7 +228,7 @@ export async function POST(req: Request) {
         ok: false,
         error: "We couldn't save automatically. Tap the email link below and we'll get your details.",
         mailto,
-        debug: { supabase, resend, web3forms, formSubmit }
+        debug: { database, resend, web3forms, formSubmit }
       },
       { status: 502 }
     );
@@ -241,7 +237,7 @@ export async function POST(req: Request) {
   return NextResponse.json({
     ok: true,
     transports: {
-      supabase: supabase.ok,
+      database: database.ok,
       resend: resend.ok,
       web3forms: web3forms.ok,
       formSubmit: formSubmit.ok
