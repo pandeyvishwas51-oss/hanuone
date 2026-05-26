@@ -8,8 +8,7 @@ export default function SiteFooter() {
       <div className="container-page grid gap-10 py-12 lg:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="Hanuone" width={36} height={30} className="h-8 w-auto" />
-            <span className="text-lg font-bold text-primary">Hanuone</span>
+            <Image src="/logo.svg" alt="Hanuone" width={180} height={50} className="h-9 w-auto" />
           </div>
           <p className="mt-3 text-sm text-muted">
             Lucknow ke Trusted Doctors, Ek Jagah. A free, verified directory of doctors in Lucknow,

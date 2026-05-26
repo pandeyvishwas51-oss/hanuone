@@ -1,20 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#023E8A"/>
-      <stop offset="100%" stop-color="#00B4D8"/>
+      <stop offset="0%" stop-color="#0F4C5C"/>
+      <stop offset="100%" stop-color="#0a3540"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(150,260)">
-    <path d="M 0 84 C -28 64 -96 28 -96 -28 C -96 -64 -64 -84 -32 -84 C -12 -84 -4 -76 0 -68 C 4 -76 12 -84 32 -84 C 64 -84 96 -64 96 -28 C 96 28 28 64 0 84 Z" fill="#ffffff"/>
-    <rect x="-12" y="-50" width="24" height="74" rx="4" fill="#023E8A"/>
-    <rect x="-37" y="-26" width="74" height="24" rx="4" fill="#023E8A"/>
+
+  <!-- Decorative orange shape -->
+  <circle cx="1080" cy="80" r="120" fill="#FF6B35" opacity="0.85"/>
+  <circle cx="1140" cy="540" r="90" fill="#FF6B35" opacity="0.5"/>
+
+  <!-- Logo -->
+  <g transform="translate(80,150)">
+    <rect x="6" y="6" width="22" height="160" rx="11" fill="#FF6B35"/>
+    <circle cx="17" cy="180" r="22" fill="#FF6B35"/>
+    <rect x="78" y="6" width="22" height="160" rx="11" fill="#ffffff"/>
+    <path d="M 28 90 L 50 90 L 56 78 L 62 102 L 68 84 L 74 90 L 78 90"
+          stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
+
   <g fill="#ffffff" font-family="Inter, system-ui, sans-serif">
-    <text x="320" y="280" font-size="92" font-weight="800">HanuonePro</text>
-    <text x="320" y="354" font-size="40" font-weight="600">Healthcare Gig Dashboard</text>
-    <text x="320" y="404" font-size="28" font-weight="500" opacity="0.85">Doctors . Nurses . Caregivers</text>
-    <text x="320" y="478" font-size="22" font-weight="400" opacity="0.85">Register. Get verified. Track every gig and rupee.</text>
+    <text x="240" y="220" font-size="100" font-weight="800" letter-spacing="-0.02em">Hanu<tspan fill="#FF6B35">ONE</tspan></text>
+    <text x="240" y="290" font-size="34" font-weight="500" opacity="0.9">Trusted Healthcare, At Home</text>
+    <text x="80" y="460" font-size="44" font-weight="700">Connected Care.</text>
+    <text x="80" y="510" font-size="44" font-weight="700" fill="#FF6B35">Complete Support.</text>
+    <text x="80" y="570" font-size="22" font-weight="500" opacity="0.85">Find verified doctors in Lucknow. Book home visits. Track everything.</text>
   </g>
 </svg>

@@ -16,15 +16,11 @@ export default async function SiteHeader() {
           <Image
             src="/logo.svg"
             alt="Hanuone"
-            width={42}
-            height={34}
+            width={200}
+            height={56}
             priority
-            className="h-8 w-auto sm:h-9"
+            className="h-9 w-auto sm:h-11"
           />
-          <div className="leading-tight min-w-0">
-            <div className="truncate text-base font-bold tracking-tight text-primary">Hanuone</div>
-            <div className="hidden text-[11px] text-muted sm:block">Lucknow ke Trusted Doctors</div>
-          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink lg:flex">

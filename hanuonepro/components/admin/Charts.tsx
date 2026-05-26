@@ -16,9 +16,9 @@ import {
   Legend
 } from "recharts";
 
-const COLORS = ["#023E8A", "#00B4D8", "#90E0EF", "#5E60CE", "#48BFE3", "#80FFDB", "#7400B8", "#5390D9", "#48BFE3", "#56CFE1"];
+const COLORS = ["#0F4C5C", "#FF6B35", "#FFD9C7", "#0E2A33", "#48BFE3", "#80FFDB", "#7400B8", "#5390D9", "#48BFE3", "#56CFE1"];
 
-export function TimeseriesArea({ data, label, color = "#023E8A" }: { data: { date: string; count: number }[]; label: string; color?: string }) {
+export function TimeseriesArea({ data, label, color = "#0F4C5C" }: { data: { date: string; count: number }[]; label: string; color?: string }) {
   const fmt = (d: unknown) => {
     if (typeof d !== "string") return "";
     const date = new Date(d);
@@ -44,7 +44,7 @@ export function TimeseriesArea({ data, label, color = "#023E8A" }: { data: { dat
   );
 }
 
-export function HorizontalBar({ data, color = "#00B4D8" }: { data: { name: string; count: number }[]; color?: string }) {
+export function HorizontalBar({ data, color = "#FF6B35" }: { data: { name: string; count: number }[]; color?: string }) {
   return (
     <ResponsiveContainer width="100%" height={Math.max(180, data.length * 28)}>
       <BarChart data={data} layout="vertical" margin={{ top: 4, right: 12, left: 4, bottom: 0 }}>

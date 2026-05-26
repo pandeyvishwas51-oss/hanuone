@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Hanuone, Growth Strategy v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #023E8A;
+    --navy-2: #012F6B;
+    --teal: #00B4D8;
+    --teal-light: #90E0EF;
+    --bg: #F0FAFF;
+    --ink: #03045E;
+    --muted: #64748B;
+    --white: #ffffff;
+    --green: #25D366;
+    --amber: #F59E0B;
+    --rose: #F43F5E;
+    --emerald: #10B981;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: #0B1733;
+    color: var(--ink);
+    overflow: hidden;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .deck { position: relative; width: 100vw; height: 100vh; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .slide.active { display: block; animation: fadeIn 0.45s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  .slide.prev { display: block; animation: fadeOut 0.35s ease both; pointer-events: none; }
+  @keyframes fadeOut { to { opacity: 0; transform: translateY(-6px); } }
+
+  .pad {
+    position: absolute; inset: 0;
+    padding: 6vh 7vw;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Typography */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: rgba(2, 62, 138, 0.08);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  h1.title {
+    font-size: clamp(36px, 5.4vw, 76px);
+    font-weight: 900;
+    line-height: 1.04;
+    margin: 18px 0 14px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  h1.title .accent { color: var(--navy); }
+  h2.title {
+    font-size: clamp(28px, 3.8vw, 50px);
+    font-weight: 800;
+    line-height: 1.1; margin: 10px 0 12px;
+    color: var(--ink);
+  }
+  .lede {
+    font-size: clamp(16px, 1.5vw, 22px);
+    color: var(--muted);
+    max-width: 80%;
+    line-height: 1.55;
+  }
+  .small { font-size: 13px; color: var(--muted); }
+
+  /* Cover */
+  .cover {
+    background: radial-gradient(1200px 600px at 80% 0%, rgba(0,180,216,0.18), transparent 60%),
+                radial-gradient(900px 600px at 0% 100%, rgba(2,62,138,0.18), transparent 60%),
+                #ffffff;
+  }
+  .logo {
+    display: inline-flex; align-items: center; gap: 12px; font-weight: 800; color: var(--navy);
+    font-size: 22px; letter-spacing: -0.01em;
+  }
+  .logo svg { width: 38px; height: 38px; }
+  .cover .meta { margin-top: auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+  .cover .meta b { color: var(--ink); }
+
+  /* Cards */
+  .grid { display: grid; gap: 18px; }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: #fff;
+    border: 1px solid rgba(2,62,138,0.08);
+    border-radius: 18px;
+    padding: 22px 22px;
+    box-shadow: 0 1px 3px rgba(2,62,138,0.05);
+  }
+  .card.dark {
+    background: linear-gradient(180deg, var(--navy), var(--navy-2));
+    color: #fff;
+    border: none;
+  }
+  .card .ic {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(0,180,216,0.12); color: var(--navy);
+  }
+  .card.dark .ic { background: rgba(255,255,255,0.12); color: #fff; }
+  .card h3 { margin: 12px 0 6px; font-size: 18px; font-weight: 700; color: var(--ink); }
+  .card.dark h3 { color: #fff; }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .card.dark p { color: rgba(255,255,255,0.78); }
+
+  /* Stat tiles */
+  .stat {
+    background: #fff;
+    border: 1px solid rgba(2,62,138,0.08);
+    border-radius: 18px;
+    padding: 18px;
+  }
+  .stat .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .stat .value { font-size: clamp(26px, 3vw, 40px); font-weight: 800; color: var(--ink); margin-top: 6px; line-height: 1; }
+  .stat .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  /* Stagger animation entrance */
+  .slide.active .stagger > * {
+    opacity: 0; transform: translateY(12px); animation: rise 0.5s ease forwards;
+  }
+  .slide.active .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+  .slide.active .stagger > *:nth-child(2) { animation-delay: 0.12s; }
+  .slide.active .stagger > *:nth-child(3) { animation-delay: 0.18s; }
+  .slide.active .stagger > *:nth-child(4) { animation-delay: 0.24s; }
+  .slide.active .stagger > *:nth-child(5) { animation-delay: 0.30s; }
+  .slide.active .stagger > *:nth-child(6) { animation-delay: 0.36s; }
+  .slide.active .stagger > *:nth-child(7) { animation-delay: 0.42s; }
+  .slide.active .stagger > *:nth-child(8) { animation-delay: 0.48s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* Tables */
+  table.t {
+    width: 100%; border-collapse: collapse;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(2,62,138,0.05);
+    font-size: 14px;
+  }
+  table.t th, table.t td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(2,62,138,0.06); }
+  table.t th { background: rgba(2,62,138,0.05); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  table.t tr:last-child td { border-bottom: none; }
+  table.t .pos { color: var(--emerald); font-weight: 700; }
+  table.t .neg { color: var(--rose); font-weight: 700; }
+  table.t .pending { color: var(--amber); font-weight: 700; }
+  table.t .done { color: var(--emerald); font-weight: 700; }
+  table.t .strong { font-weight: 700; color: var(--ink); }
+
+  /* Bar chart */
+  .bars { display: flex; align-items: flex-end; gap: 16px; height: 320px; padding: 16px 4px 0; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .bar-stack { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; height: 100%; position: relative; }
+  .bar { width: 100%; border-radius: 8px 8px 0 0; transform: scaleY(0); transform-origin: bottom; transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide.active .bar { transform: scaleY(1); }
+  .bar.consult { background: linear-gradient(180deg, var(--navy), var(--teal)); }
+  .bar.gig { background: linear-gradient(180deg, var(--teal), var(--teal-light)); }
+  .bar-meta { font-size: 12px; color: var(--muted); }
+  .bar-value { font-weight: 700; color: var(--ink); font-size: 13px; }
+
+  /* Timeline */
+  .timeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .step {
+    background: #fff; border-radius: 16px; padding: 18px;
+    border: 1px solid rgba(2,62,138,0.08);
+    position: relative;
+  }
+  .step .num { font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; }
+  .step h4 { margin: 6px 0 6px; color: var(--ink); font-size: 16px; font-weight: 700; }
+  .step p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+  .step.active { background: linear-gradient(180deg, var(--navy), var(--navy-2)); color: #fff; border: none; }
+  .step.active .num { color: var(--teal-light); }
+  .step.active h4 { color: #fff; }
+  .step.active p { color: rgba(255,255,255,0.85); }
+
+  /* Pillars */
+  .pillar {
+    background: #fff; border-radius: 18px; padding: 24px;
+    border: 1px solid rgba(2,62,138,0.08);
+    position: relative; overflow: hidden;
+  }
+  .pillar::before {
+    content: ""; position: absolute; top: 0; left: 0; height: 4px; width: 100%;
+    background: linear-gradient(90deg, var(--navy), var(--teal));
+  }
+  .pillar h3 { margin: 6px 0 10px; font-size: 20px; font-weight: 800; color: var(--ink); }
+  .pillar p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .pillar .label { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase; }
+
+  /* Architecture diagram */
+  .arch { background: #fff; border-radius: 18px; padding: 28px; border: 1px solid rgba(2,62,138,0.08); }
+  .arch .top { text-align: center; }
+  .arch .top .pill {
+    display: inline-block; background: var(--ink); color: #fff;
+    padding: 14px 26px; border-radius: 14px; font-weight: 800; font-size: 18px;
+  }
+  .arch .branches { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
+  .arch .branch { background: rgba(2,62,138,0.04); border-radius: 14px; padding: 20px; text-align: center; }
+  .arch .branch .who { color: var(--teal); font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .arch .branch h4 { margin: 6px 0 10px; color: var(--ink); font-size: 20px; font-weight: 800; }
+  .arch .branch p { color: var(--muted); font-size: 13px; margin: 0; }
+  .arch .moat {
+    margin-top: 24px; background: linear-gradient(135deg, var(--navy), var(--teal));
+    color: #fff; padding: 22px; border-radius: 14px; text-align: center;
+  }
+  .arch .moat h4 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+  .arch .moat p { margin: 0; opacity: 0.92; font-size: 14px; }
+
+  /* Pull quote */
+  .quote {
+    background: #fff; border-radius: 18px; padding: 36px;
+    border: 1px solid rgba(2,62,138,0.08);
+    font-size: clamp(20px, 2.2vw, 32px);
+    font-weight: 600; line-height: 1.4; color: var(--ink);
+    position: relative;
+  }
+  .quote::before {
+    content: "\201C"; position: absolute; top: 6px; left: 18px;
+    font-size: 80px; color: var(--teal); opacity: 0.5; line-height: 1;
+  }
+  .quote .src { display: block; margin-top: 14px; font-size: 14px; color: var(--muted); font-weight: 500; }
+
+  /* Bullets */
+  ul.checks { padding: 0; margin: 0; list-style: none; display: grid; gap: 10px; }
+  ul.checks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink); line-height: 1.5; }
+  ul.checks li svg { flex: none; margin-top: 3px; color: var(--teal); }
+
+  /* Numbered ring */
+  .ring {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--navy); color: #fff;
+    font-weight: 800; font-size: 14px; flex: none;
+  }
+
+  /* Legend */
+  .legend { display: flex; gap: 18px; align-items: center; font-size: 12px; color: var(--muted); }
+  .legend .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: middle; }
+
+  /* Side dots / progress */
+  .nav {
+    position: fixed; right: 18px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 7px;
+    z-index: 50;
+  }
+  .nav button {
+    width: 9px; height: 9px; border-radius: 50%;
+    border: none; padding: 0;
+    background: rgba(2,62,138,0.18);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .nav button.active { background: var(--navy); transform: scale(1.4); }
+  .nav button:hover { background: var(--teal); }
+
+  .topbar {
+    position: fixed; top: 14px; left: 18px;
+    z-index: 50;
+    display: flex; align-items: center; gap: 12px;
+    color: var(--muted); font-size: 12px; font-weight: 600;
+  }
+  .topbar .crumb { background: #fff; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(2,62,138,0.08); }
+  .progress {
+    position: fixed; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--teal));
+    z-index: 50; transition: width 0.4s ease;
+  }
+  .controls {
+    position: fixed; bottom: 16px; right: 18px;
+    z-index: 50; display: flex; gap: 8px; align-items: center;
+    background: #fff; padding: 6px; border-radius: 999px; border: 1px solid rgba(2,62,138,0.08);
+    box-shadow: 0 4px 12px rgba(2,62,138,0.08);
+  }
+  .controls button {
+    background: transparent; border: none; cursor: pointer;
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    color: var(--navy);
+  }
+  .controls button:hover { background: rgba(2,62,138,0.08); }
+  .controls .count { font-size: 12px; color: var(--muted); padding: 0 8px; font-weight: 700; }
+  .help {
+    position: fixed; bottom: 16px; left: 18px; z-index: 50;
+    color: var(--muted); font-size: 11px;
+  }
+  .help kbd {
+    background: #fff; padding: 2px 6px; border-radius: 4px; font-family: inherit;
+    border: 1px solid rgba(2,62,138,0.12);
+  }
+
+  /* Highlight chip */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,180,216,0.12); color: var(--navy);
+    padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  }
+  .chip.green { background: rgba(16,185,129,0.12); color: var(--emerald); }
+  .chip.amber { background: rgba(245,158,11,0.14); color: #B45309; }
+  .chip.rose { background: rgba(244,63,94,0.12); color: #BE123C; }
+
+  /* Final slide */
+  .final {
+    background: linear-gradient(135deg, var(--navy), #0B1733);
+    color: #fff;
+  }
+  .final .pad { color: #fff; }
+  .final h1, .final h2, .final h3 { color: #fff; }
+  .final .lede { color: rgba(255,255,255,0.8); }
+  .final .opener {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px; padding: 36px;
+    font-size: clamp(20px, 2.2vw, 30px); font-weight: 600; line-height: 1.5;
+  }
+
+  @media (max-width: 800px) {
+    .pad { padding: 5vh 5vw; }
+    .grid.cols-3, .grid.cols-4, .timeline { grid-template-columns: 1fr 1fr; }
+    .grid.cols-2 { grid-template-columns: 1fr; }
+    .arch .branches { grid-template-columns: 1fr; }
+    .lede { max-width: 100%; }
+    .nav { display: none; }
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <span class="crumb"><span id="topbar-name">Hanuone</span></span>
+    <span>Growth Strategy v2.0</span>
+  </div>
+  <div class="nav" id="nav"></div>
+  <div class="progress" id="progress" style="width:0%"></div>
+  <div class="controls">
+    <button onclick="prev()" aria-label="Previous">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <span class="count"><span id="cur">1</span> / <span id="total">0</span></span>
+    <button onclick="next()" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <button onclick="toggleFs()" aria-label="Fullscreen" title="Press F">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V3h4M21 7V3h-4M3 17v4h4M21 17v4h-4"/></svg>
+    </button>
+  </div>
+  <div class="help"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> navigate &nbsp; <kbd>F</kbd> fullscreen &nbsp; <kbd>Home</kbd> first &nbsp; <kbd>End</kbd> last</div>
+
+  <div class="deck" id="deck">
+
+    <!-- Slide 1: Cover -->
+    <section class="slide cover">
+      <div class="pad">
+        <div class="logo">
+          <svg viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#023E8A"/>
+            <g transform="translate(48,46)">
+              <path d="M 0 22 C -6 16 -22 6 -22 -6 C -22 -16 -14 -22 -7 -22 C -3 -22 -1 -20 0 -18 C 1 -20 3 -22 7 -22 C 14 -22 22 -16 22 -6 C 22 6 6 16 0 22 Z" fill="#ffffff"/>
+              <rect x="-3" y="-12" width="6" height="18" rx="1" fill="#023E8A"/>
+              <rect x="-9" y="-6" width="18" height="6" rx="1" fill="#023E8A"/>
+            </g>
+          </svg>
+          Hanuone
+        </div>
+        <span class="eyebrow" style="margin-top:24px"><span class="dot"></span>Founder Meeting, Tonight 8 PM</span>
+        <h1 class="title">
+          Growth Strategy <span class="accent">v2.0</span>
+        </h1>
+        <p class="lede">
+          One platform. Two audiences. One city first. The platform is built. Tech is owned.
+          We don't need months to build, we need weeks to fill.
+        </p>
+        <div class="meta">
+          <span><b>Founding team</b> &middot; Tech &amp; Growth</span>
+          <span>hanuone.vercel.app</span>
+          <span>hanuonepro.vercel.app</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Where We Stand -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Status check</span>
+        <h2 class="title">Where we stand right now</h2>
+        <p class="lede">Day 0 with the platform already shipped. We skip the 4 to 6 week build phase most startups waste.</p>
+        <div style="margin-top: 28px; flex: 1; display: flex; flex-direction: column;">
+          <table class="t stagger">
+            <thead>
+              <tr><th>What</th><th>Status</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="strong">Patient platform (hanuone.vercel.app)</td><td><span class="done">&#10003; Ready</span></td><td>629 doctors live, SEO indexed, mobile optimized</td></tr>
+              <tr><td class="strong">Pro dashboard (hanuonepro.vercel.app)</td><td><span class="done">&#10003; Ready</span></td><td>Auth, registration, availability, bookings, earnings</td></tr>
+              <tr><td class="strong">Founder admin panel</td><td><span class="done">&#10003; Live</span></td><td>KPIs, charts, traffic, professional vetting</td></tr>
+              <tr><td class="strong">Tech ownership</td><td><span class="done">&#10003; In-house</span></td><td>Both apps, same brand, same database</td></tr>
+              <tr><td class="strong">Domain + Hosting</td><td><span class="pending">&#9711; ~&#x20B9;3,000</span></td><td>hanuone.in pending</td></tr>
+              <tr><td class="strong">Doctors onboarded</td><td><span class="pending">&#9711; Pending</span></td><td>Personal calls + hospital visits next</td></tr>
+              <tr><td class="strong">Gig workers registered</td><td><span class="pending">&#9711; Pending</span></td><td>Nursing colleges + WhatsApp networks</td></tr>
+              <tr><td class="strong">Marketing running</td><td><span class="pending">&#9711; Pending</span></td><td>Capital decision tonight</td></tr>
+              <tr><td class="strong">Revenue</td><td><span class="neg">&#x20B9;0</span></td><td>Today. Month 4 break-even target</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Architecture -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>The business in one visual</span>
+        <h2 class="title">One platform. Two audiences. One moat.</h2>
+        <div class="arch stagger" style="margin-top: 22px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <div class="top"><span class="pill">hanuone.in &middot; one platform, always</span></div>
+          <div class="branches">
+            <div class="branch">
+              <div class="who">For Patients</div>
+              <h4>Find a Doctor</h4>
+              <p>Book consultations with verified Lucknow doctors. Phase 1, live now.</p>
+            </div>
+            <div class="branch">
+              <div class="who">For Professionals</div>
+              <h4>Join as a Pro</h4>
+              <p>Nurse, Ward Boy, Caregiver, Physio register for gig work. Phase 1, live now.</p>
+            </div>
+          </div>
+          <div class="moat">
+            <h4>Phase 2, the moat</h4>
+            <p>Doctor recommends home care, Hanuone dispatches a verified gig worker, the same platform handles every step. Patients don't switch apps. Doctors don't refer elsewhere. Workers get steady ecosystem demand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Business model -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>How we make money</span>
+        <h2 class="title">Two revenue streams, one stack</h2>
+        <div class="grid cols-2 stagger" style="margin-top: 22px; flex: 1;">
+          <div class="card">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <span class="chip" style="margin-top: 12px">Live in Month 1</span>
+            <h3>Stream 1, Consulting fees</h3>
+            <p>Patient books a consultation through Hanuone. We take a 20 to 25 percent platform fee on every booking.</p>
+            <div class="grid cols-2" style="gap: 12px; margin-top: 16px">
+              <div class="stat"><div class="label">Avg. consult fee</div><div class="value">&#x20B9;300-600</div></div>
+              <div class="stat"><div class="label">Hanuone earns</div><div class="value">&#x20B9;75-150</div></div>
+            </div>
+          </div>
+          <div class="card dark">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="chip" style="margin-top: 12px">Live in Month 3-4</span>
+            <h3>Stream 2, Gig services</h3>
+            <p>Family books a nurse, caregiver or physio. Same 20 to 25 percent cut on every visit.</p>
+            <div class="grid cols-2" style="gap: 12px; margin-top: 16px">
+              <div class="stat" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14);"><div class="label" style="color: rgba(255,255,255,0.7)">Avg. gig value</div><div class="value" style="color:#fff">&#x20B9;600-2,000</div></div>
+              <div class="stat" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14);"><div class="label" style="color: rgba(255,255,255,0.7)">Hanuone earns</div><div class="value" style="color:#fff">&#x20B9;150-500</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Revenue projection -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Revenue projection (estimated, conservative)</span>
+        <h2 class="title">Break-even at Month 4 to 5</h2>
+        <p class="lede">Combined consulting and gig revenue, 6 month forecast. Lucknow only. <b>Estimates, not commitments.</b> Final numbers depend on doctor sign-up speed and ad performance.</p>
+        <div class="card" style="margin-top: 22px; flex: 1; display: flex; flex-direction: column;">
+          <div class="legend" style="justify-content: flex-end">
+            <span><span class="swatch" style="background: linear-gradient(180deg, var(--navy), var(--teal));"></span>Consulting</span>
+            <span><span class="swatch" style="background: linear-gradient(180deg, var(--teal), var(--teal-light));"></span>Gig services</span>
+          </div>
+          <div class="bars">
+            <!-- Heights are scaled to a max of 1.6L = 100% -->
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar consult" style="height: 3%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;5K</div>
+              <div class="bar-meta">M1</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar consult" style="height: 11%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;18K</div>
+              <div class="bar-meta">M2</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar gig" style="height: 6%"></div>
+                <div class="bar consult" style="height: 22%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;45K</div>
+              <div class="bar-meta">M3</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar gig" style="height: 14%"></div>
+                <div class="bar consult" style="height: 39%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;85K</div>
+              <div class="bar-meta">M4 &middot; break-even</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar gig" style="height: 22%"></div>
+                <div class="bar consult" style="height: 53%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;1.2L</div>
+              <div class="bar-meta">M5</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-stack" style="height: 100%">
+                <div class="bar gig" style="height: 35%"></div>
+                <div class="bar consult" style="height: 65%"></div>
+              </div>
+              <div class="bar-value">&#x20B9;1.6L</div>
+              <div class="bar-meta">M6</div>
+            </div>
+          </div>
+          <div class="grid cols-3" style="margin-top: 20px; gap: 12px">
+            <div class="stat"><div class="label">Month 6 consults</div><div class="value">600</div><div class="hint">Per month, monthly recurring</div></div>
+            <div class="stat"><div class="label">Month 6 gigs</div><div class="value">250</div><div class="hint">Phase 2 in full swing</div></div>
+            <div class="stat"><div class="label">6 mo. revenue</div><div class="value">&#x20B9;3.0L+</div><div class="hint">Lucknow city alone</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Three tracks -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>The strategy</span>
+        <h2 class="title">Three tracks, running in parallel</h2>
+        <p class="lede">Right now, Month 1. Don't open for bookings until 20 plus doctors live and 30 plus gig workers registered. A first-time patient must never see "no availability."</p>
+        <div class="grid cols-3 stagger" style="margin-top: 24px; flex: 1;">
+          <div class="pillar">
+            <div class="label">Track 1</div>
+            <h3>Doctor onboarding</h3>
+            <p>Get 30 doctors listed in 30 days. Personal calls plus hospital visits. Top 5 specialties first, Cardiologist, Diabetologist, GP, Orthopedic, Pediatrician.</p>
+            <div class="chip green" style="margin-top: 12px">Free 3-month listing, 0 commission to start</div>
+          </div>
+          <div class="pillar">
+            <div class="label">Track 2</div>
+            <h3>Gig worker registration</h3>
+            <p>Get 50 nurses, ward boys, and caregivers registered. Facebook ads plus nursing college visits plus WhatsApp groups plus OLX/Apna.</p>
+            <div class="chip green" style="margin-top: 12px">First 100 workers, priority assignments</div>
+          </div>
+          <div class="pillar">
+            <div class="label">Track 3</div>
+            <h3>Awareness building</h3>
+            <p>Run ads, post content, build a waitlist of patients before full launch. No bookings accepted yet, just building the queue.</p>
+            <div class="chip amber" style="margin-top: 12px">Bookings open only when supply is ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: Doctor onboarding -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Phase 1, supply first</span>
+        <h2 class="title">Doctor onboarding, 30 in 30 days</h2>
+        <div class="grid cols-2 stagger" style="margin-top: 22px; flex: 1;">
+          <div class="card">
+            <div class="chip">Week 1-2</div>
+            <h3 style="margin-top: 10px">Personal outreach</h3>
+            <p>Visit top clinics in Gomtinagar, Civil Lines, Hazratganj, Indira Nagar.</p>
+            <p style="margin-top: 10px"><b style="color: var(--ink)">The pitch:</b> 3 lakh log Lucknow se bahar hain jo apne parents ke liye doctor dhundh rahe hain, aap unke pehle choice ban sakte hain.</p>
+            <ul class="checks" style="margin-top: 14px">
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Top 5 specialties first</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free premium listing for 3 months</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1-page explainer + simple form ready</li>
+            </ul>
+          </div>
+          <div class="card dark">
+            <div class="chip" style="background: rgba(255,255,255,0.14); color: #fff">Week 3-4</div>
+            <h3 style="margin-top: 10px">Hospital business development</h3>
+            <p>OPD coordinators at SGPGI, King George, Medanta, Vivekananda. List all visiting consultants in one move.</p>
+            <p style="margin-top: 10px"><b style="color: #fff">Hospital benefit:</b> their doctors get more patients, the hospital gets more footfall.</p>
+            <ul class="checks" style="margin-top: 14px; color: #fff">
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">10 to 15 doctors per hospital</span></li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">Co-branded doctor profiles</span></li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">WhatsApp group, listed doctors</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Gig worker -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Phase 1, supply first</span>
+        <h2 class="title">Gig worker registration, 50 in 30 days</h2>
+        <p class="lede">The more important supply side. Without gig workers, Phase 2 cannot launch.</p>
+        <div class="grid cols-4 stagger" style="margin-top: 22px;">
+          <div class="card">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.66 9.13 8.44 9.88v-7H7.9v-2.88h2.54V9.84c0-2.5 1.5-3.88 3.78-3.88 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78L15.9 14.88h-2.34v7C18.34 21.13 22 17 22 12z"/></svg>
+            </div>
+            <h3>Facebook + Instagram ads</h3>
+            <p>&#x20B9;8,000. Lucknow, healthcare workers, nursing or paramedical background.</p>
+            <p style="font-style: italic; color: var(--ink); margin-top: 8px; font-size: 13.5px">"Lucknow mein Nurse, Ward Boy ya Caregiver ho? Ghar ke paas kaam karo, apni timing pe."</p>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3>Nursing colleges</h3>
+            <p>&#x20B9;0 cost. KGMU School of Nursing, Era's Lucknow Medical, RMLIMS. Earn while job hunting.</p>
+            <span class="chip green" style="margin-top: 10px">Spot registrations</span>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3>WhatsApp blast</h3>
+            <p>&#x20B9;0. Lucknow Nurses Group, Healthcare Workers Lucknow, ANM networks. Direct registration link.</p>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>OLX + Apna App</h3>
+            <p>&#x20B9;0. Free job listings already pull thousands of healthcare workers seeking gigs.</p>
+          </div>
+        </div>
+        <div class="card stagger" style="margin-top: 20px">
+          <h3 style="margin: 0 0 8px">What we collect at registration</h3>
+          <p>Name, phone, skill type, experience years &middot; ID proof + nursing certificate &middot; preferred Lucknow localities &middot; availability (full-time, part-time, weekends).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: Demand activation -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Phase 1, demand activation, Month 2</span>
+        <h2 class="title">Two audiences, two messages</h2>
+        <p class="lede">Once 20+ doctors live and 30+ gig workers registered, we flip the switch.</p>
+        <div class="grid cols-2 stagger" style="margin-top: 24px; flex: 1;">
+          <div class="card">
+            <span class="chip">Audience 1</span>
+            <h3 style="margin-top: 10px">Diaspora, parents in Lucknow</h3>
+            <p><b style="color: var(--ink)">Where:</b> Delhi, Mumbai, Bengaluru, Pune, Noida, Gurugram.</p>
+            <p style="margin-top: 8px"><b style="color: var(--ink)">Targeting:</b> Hometown = Lucknow, currently in metros.</p>
+            <div class="quote" style="padding: 18px; margin-top: 14px; font-size: 18px">
+              "Lucknow mein maa-papa hain? Trusted doctors ek jagah, Hanuone."
+            </div>
+            <p style="margin-top: 12px"><b style="color: var(--ink)">Goal:</b> they save profiles, share with parents, drive parent-led bookings.</p>
+          </div>
+          <div class="card dark">
+            <span class="chip" style="background: rgba(255,255,255,0.14); color: #fff">Audience 2</span>
+            <h3 style="margin-top: 10px">Lucknow residents, 30 to 65</h3>
+            <p style="color: rgba(255,255,255,0.85)"><b style="color: #fff">Where:</b> Lucknow, 15 km radius.</p>
+            <p style="margin-top: 8px; color: rgba(255,255,255,0.85)"><b style="color: #fff">Targeting:</b> 30 to 65, health interests, FB primary.</p>
+            <div class="quote" style="padding: 18px; margin-top: 14px; font-size: 18px; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14); color: #fff">
+              "Lucknow ke verified doctors, fee, timing, reviews sab ek jagah."
+            </div>
+            <p style="margin-top: 12px; color: rgba(255,255,255,0.85)"><b style="color: #fff">Goal:</b> direct same-week bookings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 10: Marketing budget -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Marketing budget (estimated, indicative)</span>
+        <h2 class="title">~&#x20B9;1,60,000 over 3 months</h2>
+        <p class="lede">Working estimate of where money goes. Final spend will flex with what's working. Tech is already paid for.</p>
+        <div class="grid cols-3 stagger" style="margin-top: 24px; flex: 1;">
+          <div class="card">
+            <div class="chip amber">Month 1, supply</div>
+            <h3 style="margin-top: 10px">&#x20B9;30,000</h3>
+            <ul class="checks" style="margin-top: 12px">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;8K, gig worker FB ads</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;5K, content, 3 reels + posts</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;5K, doctor outreach travel</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;3K, domain + hosting</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;2K, WhatsApp API</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;2K, college visits</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;5K, contingency</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="chip">Month 2, demand</div>
+            <h3 style="margin-top: 10px">&#x20B9;55,000</h3>
+            <ul class="checks" style="margin-top: 12px">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;20K, Meta ads, patients</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;12K, Google search ads</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;8K, real doctor video shoot</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;8K, gig worker ads continue</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;4K, SEO content (4 blogs)</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>&#x20B9;3K, tools + analytics</li>
+            </ul>
+          </div>
+          <div class="card dark">
+            <div class="chip" style="background: rgba(255,255,255,0.14); color: #fff">Month 3, scale</div>
+            <h3 style="margin-top: 10px; color: #fff">&#x20B9;75,000</h3>
+            <ul class="checks" style="margin-top: 12px">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">&#x20B9;30K, Meta, scale winners</span></li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">&#x20B9;20K, Google, expand keywords</span></li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">&#x20B9;10K, content, testimonials</span></li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">&#x20B9;10K, ops, support, dispatch</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 11: Pilot city plan -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Pilot city plan</span>
+        <h2 class="title">Lucknow first. Then copy-paste.</h2>
+        <div class="grid cols-3 stagger" style="margin-top: 22px; flex: 1;">
+          <div class="card">
+            <div class="chip">City 1, Months 1-4</div>
+            <h3 style="margin-top: 10px">Lucknow</h3>
+            <p>4.8M metro population. Zero tech-enabled home healthcare competitor. SGPGI patient discharge volume. Strong UP diaspora in metros.</p>
+            <p style="margin-top: 12px; font-weight: 700; color: var(--ink)">Success criteria for City 2:</p>
+            <ul class="checks" style="margin-top: 8px">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>300+ consults/month consistently</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>50+ active gig workers</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>CAC &lt; &#x20B9;400, LTV &gt; &#x20B9;3,000</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Full playbook documented</li>
+            </ul>
+          </div>
+          <div class="card dark">
+            <div class="chip" style="background: rgba(255,255,255,0.14); color: #fff">City 2, Months 5-6</div>
+            <h3 style="margin-top: 10px; color: #fff">Kanpur</h3>
+            <p style="color: rgba(255,255,255,0.85)">85 km from Lucknow. Same culture, same nursing supply pool, 3.5M population, zero competition.</p>
+            <p style="margin-top: 12px; font-weight: 700; color: #fff">How:</p>
+            <ul class="checks" style="margin-top: 8px">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">Copy-paste the Lucknow playbook</span></li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">Hire 1 City Ops, &#x20B9;15K/mo</span></li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#fff">&#x20B9;50K revenue by Kanpur Month 2</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="chip amber">City 3+, data decides</div>
+            <h3 style="margin-top: 10px">Varanasi, Agra, Prayagraj</h3>
+            <p>After 2 cities working, use search volume + diaspora population data to pick City 3.</p>
+            <p style="margin-top: 12px; color: var(--ink); font-weight: 600">Lucknow first. India next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 12: What we need from founders -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>The ask</span>
+        <h2 class="title">What we need from the founders</h2>
+        <div style="margin-top: 22px; flex: 1;">
+          <table class="t stagger" style="width: 100%">
+            <thead>
+              <tr><th>Need</th><th>Amount / Effort</th><th>When</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="strong">Initial capital</td><td>&#x20B9;1,60,000</td><td>Month 1 start</td></tr>
+              <tr><td class="strong">Doctor network access</td><td>10+ warm intros</td><td>Week 1</td></tr>
+              <tr><td class="strong">Clinical protocols for gig workers</td><td>Document by Month 2</td><td>Before Phase 2</td></tr>
+              <tr><td class="strong">Medical license &amp; compliance input</td><td>Ongoing</td><td>Month 1 onwards</td></tr>
+              <tr><td class="strong">City 2 capital</td><td>&#x20B9;80,000</td><td>Month 5</td></tr>
+            </tbody>
+          </table>
+          <div class="card" style="margin-top: 22px">
+            <h3 style="margin: 0 0 10px">What we bring in-house, no additional cost</h3>
+            <div class="grid cols-2" style="gap: 8px 18px">
+              <ul class="checks">
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Complete platform built and maintained</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Full marketing ownership, Meta, Google, SEO, content</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Gig worker supply strategy and execution</li>
+              </ul>
+              <ul class="checks">
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Data and analytics, CAC, LTV, conversion tracking</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Investor deck preparation when needed</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Founder cockpit, live KPIs across both apps</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 13: Timeline -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Timeline</span>
+        <h2 class="title">6-month plan, one page</h2>
+        <div class="timeline stagger" style="margin-top: 24px;">
+          <div class="step active">
+            <div class="num">MONTH 1</div>
+            <h4>Supply build</h4>
+            <p>Domain live. 20 doctors + 30 gig workers. First ads. 0 bookings, 50 waitlist.</p>
+          </div>
+          <div class="step">
+            <div class="num">MONTH 2</div>
+            <h4>Bookings open</h4>
+            <p>Consulting goes live. Scale ads. 100 consultations.</p>
+          </div>
+          <div class="step">
+            <div class="num">MONTH 3</div>
+            <h4>250+ / month</h4>
+            <p>Phase 2 prep, gig vetting, first press, seed deck ready.</p>
+          </div>
+          <div class="step">
+            <div class="num">MONTH 4</div>
+            <h4>Phase 2 LIVE</h4>
+            <p>Home services bookable. Doctor &rarr; gig referral loop on. Kanpur planning.</p>
+          </div>
+          <div class="step">
+            <div class="num">MONTH 5</div>
+            <h4>&#x20B9;1L+ MRR</h4>
+            <p>Lucknow hitting 1L+ MRR. Kanpur soft launch.</p>
+          </div>
+          <div class="step">
+            <div class="num">MONTH 6</div>
+            <h4>Investor talks</h4>
+            <p>1.6L combined revenue. Angel investor conversations begin.</p>
+          </div>
+        </div>
+        <div class="grid cols-3" style="margin-top: 22px; gap: 14px">
+          <div class="stat"><div class="label">Month 6 MRR</div><div class="value">&#x20B9;1.1L-1.6L</div><div class="hint">Lucknow + Kanpur combined</div></div>
+          <div class="stat"><div class="label">Month 4 break-even</div><div class="value">on ops</div><div class="hint">Conservative model</div></div>
+          <div class="stat"><div class="label">Month 6 ready for</div><div class="value">seed talks</div><div class="hint">2 cities, replicable</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 14: Supply retention -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>The operating principle</span>
+        <h2 class="title">Never let supply sit idle</h2>
+        <p class="lede">Most marketplaces die because supply churns in the first 30 days. Two simple rules avoid that.</p>
+        <div class="grid cols-2 stagger" style="margin-top: 22px; flex: 1;">
+          <div class="card">
+            <div class="chip">Rule 1, doctors</div>
+            <h3 style="margin-top: 10px">Stagger onboarding, never list 30 at once</h3>
+            <ul class="checks" style="margin-top: 12px">
+              <li><div class="ring">1</div><div><b style="color:var(--ink)">Week 1, onboard 5 doctors only.</b> Run ALL demand ads pointing to these 5. Each gets 8 to 12 bookings.</div></li>
+              <li><div class="ring">2</div><div><b style="color:var(--ink)">Week 2, add 5 more.</b> First 5 refer colleagues. Word spreads.</div></li>
+              <li><div class="ring">3</div><div><b style="color:var(--ink)">Week 3-4, scale to 20-25.</b> Real volume exists. New doctors see proof before they start.</div></li>
+            </ul>
+            <p style="margin-top: 14px; padding: 14px; background: rgba(0,180,216,0.08); border-radius: 12px; color: var(--ink); font-size: 13.5px">
+              <b>Plus:</b> dashboard views ("Your profile was viewed 34 times this week") and a <b>10-consult guarantee</b> in Month 1, or zero commission Month 2.
+            </p>
+          </div>
+          <div class="card dark">
+            <div class="chip" style="background: rgba(255,255,255,0.14); color: #fff">Rule 2, gig workers</div>
+            <h3 style="margin-top: 10px; color: #fff">Don't mass recruit until demand exists</h3>
+            <ul class="checks" style="margin-top: 12px">
+              <li><div class="ring" style="background: var(--teal)">1</div><div style="color:rgba(255,255,255,0.9)"><b style="color:#fff">Month 1, 10-15 testers only.</b> Finalize SOP, vetting.</div></li>
+              <li><div class="ring" style="background: var(--teal)">2</div><div style="color:rgba(255,255,255,0.9)"><b style="color:#fff">Month 2, registration campaign.</b> Phase 2 launches Month 3-4. 6-8 weeks lead time is enough.</div></li>
+              <li><div class="ring" style="background: var(--teal)">3</div><div style="color:rgba(255,255,255,0.9)"><b style="color:#fff">Month 3-4, full activation.</b> Workers get bookings within days of joining.</div></li>
+            </ul>
+            <p style="margin-top: 14px; padding: 14px; background: rgba(255,255,255,0.06); border-radius: 12px; color: #fff; font-size: 13.5px">
+              <b>Founding Crew:</b> exclusive WhatsApp group, weekly progress updates, micro-tasks (SOP videos), <b>0% commission for first 50 workers' first month</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 15: Founder personal asset -->
+    <section class="slide">
+      <div class="pad" style="display:flex;flex-direction:column;justify-content:center">
+        <span class="eyebrow"><span class="dot"></span>Why this works</span>
+        <div class="quote" style="margin-top: 20px">
+          The doctors you know personally, use those relationships to onboard the first 5.
+          Once those 5 start getting bookings, every other doctor you approach already knows it works.
+          Your personal network solves the cold start.
+          <span class="src">That is why the founding doctors' network is the single most valuable non-monetary asset in this business right now.</span>
+        </div>
+        <div class="grid cols-3 stagger" style="margin-top: 26px">
+          <div class="stat"><div class="label">First 5 doctors</div><div class="value">Founders</div><div class="hint">Need to introduce</div></div>
+          <div class="stat"><div class="label">Their bookings</div><div class="value">Hanuone</div><div class="hint">Drives via paid + SEO</div></div>
+          <div class="stat"><div class="label">Next 25 doctors</div><div class="value">Themselves</div><div class="hint">Word of mouth, refer in</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 16: Questions to ask founders -->
+    <section class="slide">
+      <div class="pad">
+        <span class="eyebrow"><span class="dot"></span>Decisions to take, tonight</span>
+        <h2 class="title">5 questions for tonight</h2>
+        <div class="grid cols-2 stagger" style="margin-top: 22px; flex: 1;">
+          <div class="card">
+            <div class="ring">1</div>
+            <h3 style="margin-top: 10px">Capital</h3>
+            <p>Are you ready to put in &#x20B9;1.6 lakhs for the first 3 months of marketing and operations? Tech is sorted.</p>
+          </div>
+          <div class="card">
+            <div class="ring">2</div>
+            <h3 style="margin-top: 10px">Doctor network</h3>
+            <p>Can you personally intro me to 10 doctors in Lucknow this week? Your network is the fastest path to our first 20 listings.</p>
+          </div>
+          <div class="card">
+            <div class="ring">3</div>
+            <h3 style="margin-top: 10px">Clinical protocols</h3>
+            <p>Who from your side will create vetting criteria and safety protocols for gig workers before Phase 2 launches?</p>
+          </div>
+          <div class="card">
+            <div class="ring">4</div>
+            <h3 style="margin-top: 10px">Time commitment</h3>
+            <p>How many hours per week can each of you give in Month 1? I need someone on the ground in Lucknow for doctor and gig meetings.</p>
+          </div>
+          <div class="card" style="grid-column: span 2">
+            <div class="ring">5</div>
+            <h3 style="margin-top: 10px">Decision making</h3>
+            <p>Are you comfortable with me owning all product, marketing, and tech decisions independently? I want to move fast without approval loops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 17: Closing -->
+    <section class="slide final">
+      <div class="pad">
+        <span class="eyebrow" style="background: rgba(255,255,255,0.1); color: #fff"><span class="dot"></span>Opening line for tonight</span>
+        <div class="opener" style="margin-top: 24px">
+          Platform is ready. Tech is handled. We don't need months to build, we need weeks to fill.
+          The only question tonight is, <b>how fast do we want to move</b>, and <b>what's our first 30 days capital commitment?</b>
+          I've mapped a working estimate of every rupee and every action. Let me walk you through it.
+        </div>
+        <div style="margin-top: auto; display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 20px">
+          <div>
+            <h2 class="title" style="margin: 0; font-size: clamp(28px, 4vw, 56px); font-weight: 900;">Hanuone</h2>
+            <p style="margin: 4px 0 0; color: rgba(255,255,255,0.75); font-size: 18px;">One platform. Lucknow first. India next.</p>
+          </div>
+          <div style="text-align: right; color: rgba(255,255,255,0.7); font-size: 13px;">
+            <div>hanuone.vercel.app</div>
+            <div>hanuonepro.vercel.app</div>
+            <div style="margin-top: 6px;">Founding team &middot; Tech &amp; Growth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  document.getElementById('total').textContent = total;
+  const nav = document.getElementById('nav');
+  const progress = document.getElementById('progress');
+  const cur = document.getElementById('cur');
+
+  // Build dot nav
+  for (let i = 0; i < total; i++) {
+    const b = document.createElement('button');
+    b.title = `Slide ${i + 1}`;
+    b.addEventListener('click', () => go(i));
+    nav.appendChild(b);
+  }
+  const dots = nav.querySelectorAll('button');
+
+  let idx = 0;
+  function go(i) {
+    if (i < 0 || i >= total || i === idx) return;
+    slides[idx].classList.remove('active');
+    slides[idx].classList.add('prev');
+    setTimeout(() => slides[idx].classList.remove('prev'), 350);
+    idx = i;
+    slides[idx].classList.add('active');
+    dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+    cur.textContent = idx + 1;
+    progress.style.width = `${((idx + 1) / total) * 100}%`;
+    if (location.hash !== `#${idx + 1}`) history.replaceState(null, '', `#${idx + 1}`);
+  }
+  function next() { go(idx + 1); }
+  function prev() { go(idx - 1); }
+  function toggleFs() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  }
+  window.next = next; window.prev = prev; window.toggleFs = toggleFs;
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(total - 1);
+    else if (e.key === 'f' || e.key === 'F') toggleFs();
+  });
+
+  // Touch swipe
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (touchX == null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 60) (dx < 0 ? next : prev)();
+    touchX = null;
+  });
+
+  // Init from hash
+  const start = parseInt((location.hash || '#1').slice(1), 10);
+  if (!isNaN(start) && start >= 1 && start <= total) {
+    slides[0].classList.remove('active');
+    idx = start - 1;
+    slides[idx].classList.add('active');
+  } else {
+    slides[0].classList.add('active');
+  }
+  dots[idx].classList.add('active');
+  cur.textContent = idx + 1;
+  progress.style.width = `${((idx + 1) / total) * 100}%`;
+</script>
+</body>
+</html>

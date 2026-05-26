@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HanuonePro doctor dashboard preview</title>
+<style>
+  body { font-family: Inter, system-ui, sans-serif; background: #F0FAFF; color: #03045E; margin: 0; padding: 24px; }
+  h1 { font-weight: 800; letter-spacing: -0.02em; margin: 0 0 4px; }
+  p.lede { color: #64748B; margin: 0 0 24px; }
+  .sec { margin-bottom: 32px; }
+  .sec h2 { font-size: 20px; margin: 0 0 12px; color: #023E8A; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; }
+  .card { background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(2,62,138,0.06); overflow: hidden; }
+  .card .label { padding: 10px 14px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B; border-bottom: 1px solid rgba(2,62,138,0.08); }
+  .card img { display: block; max-width: 100%; }
+  .desktop .card { width: calc((100% - 32px) / 2); }
+  .mobile .card { width: 240px; }
+  .desktop .card img { width: 100%; height: auto; }
+  .mobile .card img { width: 240px; height: auto; }
+  @media (max-width: 800px) {
+    .desktop .card { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <h1>HanuonePro, doctor dashboard preview</h1>
+  <p class="lede">Live screenshots of the demo doctor account (Dr. Demo Sharma, Cardiologist, Gomtinagar). Captured on hanuonepro.vercel.app.</p>
+
+  <div class="sec">
+    <h2>Desktop (1440 x 900)</h2>
+    <div class="row desktop">
+      <div class="card"><div class="label">Overview / KPIs</div><img src="01-overview-desktop.png" alt="Overview"></div>
+      <div class="card"><div class="label">Bookings</div><img src="02-bookings-desktop.png" alt="Bookings"></div>
+      <div class="card"><div class="label">Availability</div><img src="03-availability-desktop.png" alt="Availability"></div>
+      <div class="card"><div class="label">Earnings</div><img src="04-earnings-desktop.png" alt="Earnings"></div>
+      <div class="card"><div class="label">Profile</div><img src="05-profile-desktop.png" alt="Profile"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Mobile (iPhone 14, 390 x 844)</h2>
+    <div class="row mobile">
+      <div class="card"><div class="label">Overview</div><img src="01-overview-mobile.png" alt="Overview"></div>
+      <div class="card"><div class="label">Bookings</div><img src="02-bookings-mobile.png" alt="Bookings"></div>
+      <div class="card"><div class="label">Availability</div><img src="03-availability-mobile.png" alt="Availability"></div>
+      <div class="card"><div class="label">Earnings</div><img src="04-earnings-mobile.png" alt="Earnings"></div>
+      <div class="card"><div class="label">Profile</div><img src="05-profile-mobile.png" alt="Profile"></div>
+    </div>
+  </div>
+</body>
+</html>

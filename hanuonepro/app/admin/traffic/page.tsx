@@ -144,7 +144,7 @@ export default async function AdminTrafficPage() {
           <span className="text-xs font-semibold text-emerald-600">{t.last7d} in 7d</span>
         </div>
         <div className="mt-3">
-          <TimeseriesArea data={t.timeseries} label="pageviews" color="#023E8A" />
+          <TimeseriesArea data={t.timeseries} label="pageviews" color="#0F4C5C" />
         </div>
       </section>
 
@@ -163,7 +163,7 @@ export default async function AdminTrafficPage() {
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Top countries (30d)</h2>
           <p className="text-xs text-muted">From Vercel geo headers.</p>
-          <div className="mt-3"><HorizontalBar data={t.byCountry.length ? t.byCountry : [{ name: "no data", count: 0 }]} color="#00B4D8" /></div>
+          <div className="mt-3"><HorizontalBar data={t.byCountry.length ? t.byCountry : [{ name: "no data", count: 0 }]} color="#FF6B35" /></div>
         </div>
       </section>
 
@@ -172,12 +172,12 @@ export default async function AdminTrafficPage() {
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Top pages, hanuone.vercel.app</h2>
           <p className="text-xs text-muted">Most-viewed paths on the patient directory, last 30 days.</p>
-          <div className="mt-3"><HorizontalBar data={t.topPathsHanuone.length ? t.topPathsHanuone : [{ name: "no data", count: 0 }]} color="#023E8A" /></div>
+          <div className="mt-3"><HorizontalBar data={t.topPathsHanuone.length ? t.topPathsHanuone : [{ name: "no data", count: 0 }]} color="#0F4C5C" /></div>
         </div>
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Top pages, hanuonepro.vercel.app</h2>
           <p className="text-xs text-muted">Most-viewed paths on the pro dashboard, last 30 days.</p>
-          <div className="mt-3"><HorizontalBar data={t.topPathsHanuonePro.length ? t.topPathsHanuonePro : [{ name: "no data", count: 0 }]} color="#00B4D8" /></div>
+          <div className="mt-3"><HorizontalBar data={t.topPathsHanuonePro.length ? t.topPathsHanuonePro : [{ name: "no data", count: 0 }]} color="#FF6B35" /></div>
         </div>
       </section>
 

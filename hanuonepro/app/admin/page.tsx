@@ -126,7 +126,7 @@ export default async function AdminOverview() {
             <span className="text-xs font-semibold text-emerald-600">{k.signups30d} total</span>
           </div>
           <div className="mt-3">
-            <TimeseriesArea data={signups} label="signups" color="#023E8A" />
+            <TimeseriesArea data={signups} label="signups" color="#0F4C5C" />
           </div>
         </div>
         <div className="card p-5">
@@ -138,7 +138,7 @@ export default async function AdminOverview() {
             <span className="text-xs font-semibold text-emerald-600">{k.bookings7d} in 7d</span>
           </div>
           <div className="mt-3">
-            <TimeseriesArea data={bookings} label="bookings" color="#00B4D8" />
+            <TimeseriesArea data={bookings} label="bookings" color="#FF6B35" />
           </div>
         </div>
       </section>
@@ -148,12 +148,12 @@ export default async function AdminOverview() {
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Top specialties</h2>
           <p className="text-xs text-muted">Doctor count by specialty, top 10.</p>
-          <div className="mt-3"><HorizontalBar data={specs} color="#023E8A" /></div>
+          <div className="mt-3"><HorizontalBar data={specs} color="#0F4C5C" /></div>
         </div>
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Top localities</h2>
           <p className="text-xs text-muted">Doctor count by Lucknow locality, top 10.</p>
-          <div className="mt-3"><HorizontalBar data={localities} color="#00B4D8" /></div>
+          <div className="mt-3"><HorizontalBar data={localities} color="#FF6B35" /></div>
         </div>
         <div className="card p-5">
           <h2 className="text-base font-semibold text-ink">Pros by role</h2>

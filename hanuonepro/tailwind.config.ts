@@ -9,11 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: "#023E8A", 50: "#E6EEF8", 100: "#C2D4EC", 500: "#023E8A", 600: "#012F6B", 700: "#01214C" },
-        accent: { DEFAULT: "#00B4D8", light: "#90E0EF" },
-        bg: "#F0FAFF",
-        ink: "#03045E",
-        muted: "#64748B"
+        primary: {
+          DEFAULT: "#0F4C5C",
+          50: "#E7F2F4",
+          100: "#C2DEE3",
+          400: "#1F6E80",
+          500: "#0F4C5C",
+          600: "#0a3540",
+          700: "#072830"
+        },
+        accent: {
+          DEFAULT: "#FF6B35",
+          50: "#FFF2EC",
+          100: "#FFD9C7",
+          500: "#FF6B35",
+          600: "#E45422",
+          700: "#B8421A"
+        },
+        bg: "#FFF8F2",
+        ink: "#0E2A33",
+        muted: "#5C6B73"
       },
       fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] }
     }

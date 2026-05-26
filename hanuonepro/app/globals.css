@@ -6,14 +6,15 @@
   html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
   body { @apply bg-bg text-ink font-sans antialiased; overflow-x: hidden; }
   input, select, textarea { font-size: 16px; }
-  a, button { -webkit-tap-highlight-color: rgba(2, 62, 138, 0.05); }
+  a, button { -webkit-tap-highlight-color: rgba(255, 107, 53, 0.06); }
 }
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98]; min-height: 44px; }
-  .btn-primary { @apply btn bg-primary text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary/40; }
-  .btn-outline { @apply btn border border-primary/20 bg-white text-primary hover:bg-primary/5; }
+  .btn-primary { @apply btn bg-accent text-white hover:bg-accent-600 focus:ring-2 focus:ring-accent/40; }
+  .btn-secondary { @apply btn bg-primary text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary/40; }
+  .btn-outline { @apply btn border border-primary/25 bg-white text-primary hover:bg-primary/5; }
   .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
   .btn-ghost { @apply btn text-muted hover:text-ink hover:bg-slate-100; }
   .card { @apply rounded-2xl bg-white shadow-sm border border-slate-100; }
