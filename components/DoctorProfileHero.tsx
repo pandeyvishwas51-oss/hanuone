@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BadgeCheck, GraduationCap, Briefcase, MapPin, Languages } from "lucide-react";
 import RatingStars from "./RatingStars";
 import WhatsAppButton from "./WhatsAppButton";
+import BookingDialog from "./BookingDialog";
 import type { Doctor } from "@/lib/types";
 import { buildTelLink, formatFeeRange } from "@/lib/utils";
 
@@ -89,6 +90,7 @@ export default function DoctorProfileHero({ doctor }: { doctor: Doctor }) {
             <div className="text-xs text-muted">{doctor.clinic_address}</div>
           </div>
           <div className="flex flex-col gap-2">
+            <BookingDialog doctorSlug={doctor.slug} doctorName={doctor.name} doctorCity={doctor.city} className="btn-primary" />
             <WhatsAppButton phone={doctor.whatsapp ?? doctor.phone} doctorName={doctor.name} />
             {tel && (
               <a href={tel} className="btn-outline">

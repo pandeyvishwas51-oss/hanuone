@@ -88,9 +88,9 @@ const ORG_LD = {
   logo: `${SITE_URL}/logo.svg`,
   parentOrganization: { "@type": "Organization", name: "Hanuone", url: "https://hanuone.vercel.app" },
   sameAs: [
-    "https://instagram.com/Hanuone_0",
-    "https://www.facebook.com/share/1CZnNMGXk5/",
-    "https://x.com/Hanuone_0"
+    "https://www.instagram.com/hanu.one",
+    "https://www.linkedin.com/company/hanuone/",
+    "https://x.com/hanu_one"
   ],
   address: { "@type": "PostalAddress", addressLocality: "Lucknow", addressRegion: "Uttar Pradesh", addressCountry: "IN" }
 };

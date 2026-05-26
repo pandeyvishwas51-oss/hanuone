@@ -10,6 +10,7 @@ import {
   getAllLocalities,
   searchDoctors
 } from "@/lib/queries";
+import { getActiveCity } from "@/lib/active-city";
 import { asArray, titleCase } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -78,21 +79,22 @@ export async function generateMetadata({
 
 export default async function DoctorsPage({ searchParams }: { searchParams: SP }) {
   const p = parseParams(searchParams);
+  const activeCity = getActiveCity();
   const searchInput = p.pincode ? p.pincode : p.q;
   const [specializations, localities, results] = await Promise.all([
-    getAllSpecializations(),
-    getAllLocalities(),
-    searchDoctors({ ...p, q: searchInput })
+    getAllSpecializations(activeCity.name),
+    getAllLocalities(activeCity.name),
+    searchDoctors({ ...p, q: searchInput, city: activeCity.name })
   ]);
 
   const heading =
     p.specialty[0]
-      ? `${titleCase(p.specialty[0])}s${p.locality[0] ? ` in ${titleCase(p.locality[0])}` : ""} in Lucknow`
+      ? `${titleCase(p.specialty[0])}s${p.locality[0] ? ` in ${titleCase(p.locality[0])}` : ""} in ${activeCity.name}`
       : p.locality[0]
-      ? `Doctors in ${titleCase(p.locality[0])}, Lucknow`
+      ? `Doctors in ${titleCase(p.locality[0])}, ${activeCity.name}`
       : p.pincode
-      ? `Doctors near pincode ${p.pincode}, Lucknow`
-      : "All doctors in Lucknow";
+      ? `Doctors near pincode ${p.pincode}, ${activeCity.name}`
+      : `All doctors in ${activeCity.name}`;
 
   return (
     <div className="container-page py-8">

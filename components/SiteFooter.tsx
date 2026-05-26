@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Quote, Instagram, Facebook, Twitter, ArrowRight } from "lucide-react";
+import { Quote, Instagram, Linkedin, Twitter, ArrowRight } from "lucide-react";
 
 export default function SiteFooter() {
   return (
@@ -76,7 +76,7 @@ export default function SiteFooter() {
           <span>(c) {new Date().getFullYear()} Hanuone. Made for Lucknow with care.</span>
           <div className="flex items-center gap-3">
             <a
-              href="https://instagram.com/Hanuone_0"
+              href="https://www.instagram.com/hanu.one"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Hanuone on Instagram"
@@ -85,16 +85,16 @@ export default function SiteFooter() {
               <Instagram size={16} />
             </a>
             <a
-              href="https://www.facebook.com/share/1CZnNMGXk5/"
+              href="https://www.linkedin.com/company/hanuone/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Hanuone on Facebook"
+              aria-label="Hanuone on LinkedIn"
               className="grid h-9 w-9 place-items-center rounded-full border border-primary/15 text-primary transition hover:border-primary hover:text-primary-600"
             >
-              <Facebook size={16} />
+              <Linkedin size={16} />
             </a>
             <a
-              href="https://x.com/Hanuone_0"
+              href="https://x.com/hanu_one"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Hanuone on X"

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MapPin, BadgeCheck } from "lucide-react";
 import RatingStars from "./RatingStars";
 import WhatsAppButton from "./WhatsAppButton";
+import BookingDialog from "./BookingDialog";
 import type { Doctor } from "@/lib/types";
 import { formatFeeRange } from "@/lib/utils";
 
@@ -78,8 +79,9 @@ export default function DoctorCard({ doctor, className = "" }: Props) {
       </div>
 
       <div className="flex items-center gap-2">
-        <Link href={`/doctors/${doctor.slug}`} className="btn-primary flex-1">
-          View Profile
+        <BookingDialog doctorSlug={doctor.slug} doctorName={doctor.name} doctorCity={doctor.city} className="btn-primary flex-1" trigger="Book" />
+        <Link href={`/doctors/${doctor.slug}`} className="btn-outline flex-1">
+          View
         </Link>
         <WhatsAppButton phone={doctor.whatsapp ?? doctor.phone} doctorName={doctor.name} variant="icon" />
       </div>

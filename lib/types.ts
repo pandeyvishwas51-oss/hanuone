@@ -66,6 +66,7 @@ export type DoctorSearchParams = {
   q?: string;
   specialty?: string | string[];
   locality?: string | string[];
+  city?: string;
   feeMin?: number;
   feeMax?: number;
   minRating?: number;

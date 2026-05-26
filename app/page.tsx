@@ -10,7 +10,7 @@ import {
   getAllLocalities,
   getFeaturedDoctors
 } from "@/lib/queries";
-import { getVisitorCity } from "@/lib/geo";
+import { getActiveCity } from "@/lib/active-city";
 import { ShieldCheck, Users, Sparkles } from "lucide-react";
 import { HOME_FAQS } from "@/lib/seo";
 
@@ -19,15 +19,16 @@ import { HOME_FAQS } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const activeCity = getActiveCity();
   const [specializations, localities, featured] = await Promise.all([
-    getAllSpecializations(),
-    getAllLocalities(),
-    getFeaturedDoctors(10)
+    getAllSpecializations(activeCity.name),
+    getAllLocalities(activeCity.name),
+    getFeaturedDoctors(10, activeCity.name)
   ]);
 
   const topSpecialties = specializations.slice(0, 6);
   const topLocalities = localities.slice(0, 8);
-  const visitorCity = getVisitorCity() ?? "Lucknow";
+  const visitorCity = activeCity.name;
 
   return (
     <>
@@ -35,12 +36,12 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-bg to-bg">
         <div className="container-page pb-10 pt-8 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-block rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-              Apno ke liye, sahi doctor
+            <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+              Trusted Healthcare, At Home
             </span>
             <HeroHeadline initialCity={visitorCity} />
             <p className="mt-3 text-sm text-muted sm:text-lg">
-              Find verified doctors in Lucknow for your family. Search by specialty, locality or
+              Find verified doctors in {activeCity.name} for your family. Search by specialty, locality or
               pincode. Free, simple, built for parents.
             </p>
           </div>
@@ -89,7 +90,7 @@ export default async function HomePage() {
       {/* Localities */}
       <section className="section pt-0">
         <div className="container-page">
-          <h2 className="h2">Popular localities in Lucknow</h2>
+          <h2 className="h2">Popular localities in {activeCity.name}</h2>
           <p className="mt-1 text-sm text-muted">
             Doctors near where your family lives. You can also enter a 6-digit pincode in the search bar.
           </p>
@@ -108,7 +109,7 @@ export default async function HomePage() {
             <div>
               <h2 className="h2">Featured doctors</h2>
               <p className="mt-1 hidden text-sm text-muted sm:block">
-                Top-rated, verified profiles in Lucknow.
+                Top-rated, verified profiles in {activeCity.name}.
               </p>
             </div>
             <Link href="/doctors" className="text-sm text-primary hover:underline whitespace-nowrap">

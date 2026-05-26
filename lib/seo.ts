@@ -19,12 +19,12 @@ export const SITE = {
     ),
   logo: "/logo.svg",
   ogImage: "/og-image.svg",
-  email: "ritiktech970@gmail.com",
+  email: "care@hanuone.com",
   phoneE164: "+919876543210",
   social: {
-    instagram: "https://instagram.com/Hanuone_0",
-    facebook: "https://www.facebook.com/share/1CZnNMGXk5/",
-    twitter: "https://x.com/Hanuone_0"
+    instagram: "https://www.instagram.com/hanu.one",
+    linkedin: "https://www.linkedin.com/company/hanuone/",
+    twitter: "https://x.com/hanu_one"
   },
   area: { city: "Lucknow", region: "Uttar Pradesh", country: "IN" }
 } as const;
@@ -46,7 +46,7 @@ export function organizationJsonLd() {
     url: SITE.url,
     logo: abs(SITE.logo),
     email: SITE.email,
-    sameAs: [SITE.social.instagram, SITE.social.facebook, SITE.social.twitter],
+    sameAs: [SITE.social.instagram, SITE.social.linkedin, SITE.social.twitter],
     address: {
       "@type": "PostalAddress",
       addressLocality: SITE.area.city,

@@ -23,6 +23,11 @@ const PAGE_SIZE = 20;
 
 const { doctors, specializations, localities, reviews, waitlist } = schema;
 
+// Helper used by several queries to scope to an active city.
+function cityWhere(city?: string | null) {
+  return city && city.trim() ? eq(doctors.city, city) : undefined;
+}
+
 // ---------------------------------------------------------------------------
 // Row -> Doctor mapper (Drizzle returns camelCase; site types are snake_case)
 // ---------------------------------------------------------------------------
@@ -94,9 +99,27 @@ function toLocality(l: DbLocalityRow): Locality {
 // ---------------------------------------------------------------------------
 // Specializations + Localities
 // ---------------------------------------------------------------------------
-export async function getAllSpecializations(): Promise<Specialization[]> {
+export async function getAllSpecializations(city?: string): Promise<Specialization[]> {
   if (!HAS_DB) return LOCAL_SPECIALIZATIONS;
   try {
+    if (city) {
+      // Scope counts to the active city using a derived subquery.
+      const rows = await db().execute<{ id: string; name: string; slug: string; description: string | null; icon: string | null; doctor_count: number }>(sql`
+        SELECT s.id, s.name, s.slug, s.description, s.icon,
+               COALESCE(c.cnt, 0)::int AS doctor_count
+        FROM specializations s
+        LEFT JOIN (
+          SELECT specialization, COUNT(*) AS cnt FROM doctors WHERE is_active = true AND city = ${city} GROUP BY specialization
+        ) c ON c.specialization = s.name
+        ORDER BY doctor_count DESC, s.name ASC
+      `);
+      const arr = (rows as any).rows ?? rows;
+      return (arr as any[]).map((r) => ({
+        id: r.id, name: r.name, name_hindi: null, icon: r.icon ?? null,
+        slug: r.slug, description: r.description ?? null,
+        doctor_count: Number(r.doctor_count ?? 0)
+      }));
+    }
     const rows = await db()
       .select()
       .from(specializations)
@@ -118,9 +141,28 @@ export async function getSpecializationBySlug(slug: string): Promise<Specializat
   }
 }
 
-export async function getAllLocalities(): Promise<Locality[]> {
+export async function getAllLocalities(city?: string): Promise<Locality[]> {
   if (!HAS_DB) return LOCAL_LOCALITIES;
   try {
+    if (city) {
+      const rows = await db().execute<{ id: string; name: string; slug: string; lat: string | null; lng: string | null; doctor_count: number }>(sql`
+        SELECT l.id, l.name, l.slug, l.lat::text, l.lng::text,
+               COALESCE(c.cnt, 0)::int AS doctor_count
+        FROM localities l
+        LEFT JOIN (
+          SELECT locality, COUNT(*) AS cnt FROM doctors WHERE is_active = true AND city = ${city} GROUP BY locality
+        ) c ON c.locality = l.name
+        WHERE l.city = ${city} OR c.cnt > 0
+        ORDER BY doctor_count DESC, l.name ASC
+      `);
+      const arr = (rows as any).rows ?? rows;
+      return (arr as any[]).map((r) => ({
+        id: r.id, name: r.name, name_hindi: null, slug: r.slug,
+        doctor_count: Number(r.doctor_count ?? 0),
+        lat: r.lat ? Number(r.lat) : null,
+        lng: r.lng ? Number(r.lng) : null
+      }));
+    }
     const rows = await db()
       .select()
       .from(localities)
@@ -218,7 +260,7 @@ export async function getDoctorBySlug(slug: string): Promise<Doctor | null> {
   }
 }
 
-export async function getFeaturedDoctors(limit = 8): Promise<Doctor[]> {
+export async function getFeaturedDoctors(limit = 8, city?: string): Promise<Doctor[]> {
   if (!HAS_DB) {
     return [...LOCAL_DOCTORS]
       .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0) || b.review_count - a.review_count)
@@ -228,7 +270,7 @@ export async function getFeaturedDoctors(limit = 8): Promise<Doctor[]> {
     const rows = await db()
       .select()
       .from(doctors)
-      .where(eq(doctors.isActive, true))
+      .where(city ? and(eq(doctors.isActive, true), eq(doctors.city, city)) : eq(doctors.isActive, true))
       .orderBy(desc(doctors.rating), desc(doctors.reviewCount))
       .limit(limit);
     return rows.length
@@ -288,6 +330,7 @@ export async function searchDoctors(params: DoctorSearchParams): Promise<{
 
   try {
     const conditions: any[] = [eq(doctors.isActive, true)];
+    if (localParams.city) conditions.push(eq(doctors.city, localParams.city));
     const specialtiesArr = (asArray(localParams.specialty).filter(Boolean) as string[]).map(titleCase);
     const localitiesArr = (asArray(localParams.locality).filter(Boolean) as string[]).map(titleCase);
 

@@ -86,6 +86,45 @@ export const waitlist = pgTable("waitlist", {
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
 });
 
+// Patient-side booking (consultation request)
+export const doctorBookings = pgTable("doctor_bookings", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  doctorId: uuid("doctor_id").references(() => doctors.id, { onDelete: "set null" }),
+  doctorSlug: text("doctor_slug").notNull(),
+  doctorName: text("doctor_name").notNull(),
+  patientName: text("patient_name").notNull(),
+  patientPhone: text("patient_phone").notNull(),
+  patientEmail: text("patient_email"),
+  preferredDate: date("preferred_date").notNull(),
+  preferredTime: text("preferred_time").notNull(),
+  reason: text("reason"),
+  city: text("city"),
+  status: text("status").default("pending"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
+});
+
+export const serviceRequests = pgTable("service_requests", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  service: text("service").notNull(),
+  name: text("name"),
+  phone: text("phone").notNull(),
+  email: text("email"),
+  city: text("city"),
+  pincode: text("pincode"),
+  notes: text("notes"),
+  status: text("status").default("new"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
+});
+
+export const patients = pgTable("patients", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  phone: text("phone").notNull().unique(),
+  name: text("name"),
+  email: text("email"),
+  city: text("city"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
+});
+
 // =====================================================================
 // HanuonePro (gig professional dashboard) tables
 // =====================================================================
