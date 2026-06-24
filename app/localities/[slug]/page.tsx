@@ -13,9 +13,14 @@ import {
 import {
   breadcrumbJsonLd,
   doctorItemListJsonLd,
+  localityAnswer,
   localityFaqs,
-  placeJsonLd
+  medicalWebPageJsonLd,
+  placeJsonLd,
+  speakableJsonLd
 } from "@/lib/seo";
+import AnswerBlock from "@/components/AnswerBlock";
+import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 3600;
 
@@ -87,6 +92,16 @@ export default async function LocalityPage({ params }: { params: { slug: string 
           __html: JSON.stringify(doctorItemListJsonLd(results.doctors))
         }}
       />
+      <JsonLd
+        data={[
+          medicalWebPageJsonLd({
+            url: `/localities/${loc.slug}`,
+            name: `Doctors in ${loc.name}, Lucknow`,
+            description: localityAnswer(loc.name, "Lucknow", results.total)
+          }),
+          speakableJsonLd(`/localities/${loc.slug}`)
+        ]}
+      />
 
       <div className="container-page py-8">
         <BreadcrumbNav
@@ -101,6 +116,13 @@ export default async function LocalityPage({ params }: { params: { slug: string 
           <h1 className="h2">Doctors in {loc.name}, Lucknow</h1>
           <p className="mt-3 max-w-3xl text-sm text-muted">{description}</p>
         </header>
+
+        <div className="mt-5">
+          <AnswerBlock
+            question={`How many doctors are listed in ${loc.name}, Lucknow?`}
+            answer={localityAnswer(loc.name, "Lucknow", results.total)}
+          />
+        </div>
 
         <section className="mt-6">
           <div className="text-xs font-semibold uppercase tracking-wide text-muted">

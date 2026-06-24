@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import HeaderLocationChip from "./HeaderLocationChip";
 import CitySelector from "./CitySelector";
+import AccountNavLink from "./AccountNavLink";
 import { getAllLocalities } from "@/lib/queries";
 import { getActiveCity } from "@/lib/active-city";
 
@@ -29,8 +30,10 @@ export default async function SiteHeader() {
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink lg:flex">
           <Link href="/doctors" className="hover:text-accent">Find Doctors</Link>
           <Link href="/services" className="hover:text-accent">Services</Link>
+          <Link href="/vitals" className="hover:text-accent">Vital Checkup</Link>
           <Link href="/specializations/cardiologist" className="hover:text-accent">Specialties</Link>
           <Link href="https://hanuonepro.vercel.app/register" className="hover:text-accent">For Doctors</Link>
+          <AccountNavLink />
         </nav>
 
         <div className="flex items-center gap-2 min-w-0">

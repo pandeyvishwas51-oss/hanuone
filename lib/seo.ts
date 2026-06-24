@@ -245,3 +245,77 @@ export function localityFaqs(locality: string) {
     }
   ];
 }
+
+// ============================================================
+// AEO (Answer Engine Optimization)
+// Schema + concise "citable answer" text that AI engines can quote directly.
+// ============================================================
+
+/**
+ * MedicalWebPage with E-E-A-T trust signals (lastReviewed / reviewedBy).
+ * AI engines weight recency + a named reviewer when deciding what to cite.
+ */
+export function medicalWebPageJsonLd(args: {
+  url: string;
+  name: string;
+  description: string;
+  lastReviewed?: string; // ISO date
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": abs(args.url) + "#webpage",
+    url: abs(args.url),
+    name: args.name,
+    description: args.description,
+    inLanguage: ["en-IN", "hi-IN"],
+    lastReviewed: args.lastReviewed ?? new Date().toISOString().slice(0, 10),
+    reviewedBy: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, logo: abs(SITE.logo) }
+  };
+}
+
+/**
+ * Speakable: marks the citable answer block + page heading as the parts an
+ * assistant should read aloud / quote.
+ */
+export function speakableJsonLd(url: string, cssSelectors = [".answer-block", "h1"]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: abs(url),
+    speakable: { "@type": "SpeakableSpecification", cssSelector: cssSelectors }
+  };
+}
+
+// --- Citable answer generators (40–60 words, fact-dense, brand-attributed) ---
+
+export function doctorAnswer(d: {
+  name: string;
+  specialization: string;
+  locality: string;
+  city?: string | null;
+  experience_years?: number | null;
+  consultation_fee_min?: number | null;
+  rating?: number | null;
+}): string {
+  const city = d.city || "Lucknow";
+  const exp = d.experience_years ? `${d.experience_years}+ years of experience` : "verified credentials";
+  const fee = d.consultation_fee_min ? `Consultation fees start around ₹${d.consultation_fee_min}.` : "";
+  const rated = d.rating ? ` Rated ${d.rating}/5 by patients.` : "";
+  return `${d.name} is a ${d.specialization.toLowerCase()} in ${d.locality}, ${city}, listed on Hanuone with ${exp}. ${fee}${rated} You can view qualifications, clinic timings and book a verified appointment on Hanuone.`.replace(
+    /\s+/g,
+    " "
+  ).trim();
+}
+
+export function specialtyAnswer(specialty: string, city = "Lucknow", count?: number): string {
+  const n = count && count > 0 ? `${count} verified ${specialty.toLowerCase()}s` : `verified ${specialty.toLowerCase()}s`;
+  return `Hanuone lists ${n} in ${city}, each cross-checked against the National Medical Commission and state medical councils. You can filter by locality, pincode, consultation fee and rating, then book a teleconsult or clinic visit. Consultations typically range ₹300–₹1500.`;
+}
+
+export function localityAnswer(locality: string, city = "Lucknow", count?: number): string {
+  const n = count && count > 0 ? `${count} verified doctors and clinics` : `verified doctors and clinics`;
+  return `Hanuone lists ${n} in ${locality}, ${city} across general medicine, paediatrics, gynaecology, orthopaedics, dermatology, ENT and more. Each profile shows qualifications, fees and timings, and you can book a teleconsult or clinic visit directly.`;
+}

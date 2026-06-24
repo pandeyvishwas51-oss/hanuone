@@ -14,7 +14,9 @@ import {
   getSimilarDoctors
 } from "@/lib/queries";
 import { buildTelLink, formatFeeRange, truncate } from "@/lib/utils";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, medicalWebPageJsonLd, speakableJsonLd, doctorAnswer } from "@/lib/seo";
+import AnswerBlock from "@/components/AnswerBlock";
+import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 3600;
 
@@ -94,6 +96,17 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
         }}
       />
 
+      <JsonLd
+        data={[
+          medicalWebPageJsonLd({
+            url: `/doctors/${doctor.slug}`,
+            name: `${doctor.name} — ${doctor.specialization} in ${doctor.locality}, ${doctor.city}`,
+            description: doctorAnswer(doctor)
+          }),
+          speakableJsonLd(`/doctors/${doctor.slug}`)
+        ]}
+      />
+
       <BreadcrumbNav
         items={[
           { label: "Home", href: "/" },
@@ -104,6 +117,14 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
 
       <div className="mt-4">
         <DoctorProfileHero doctor={doctor} />
+      </div>
+
+      <div className="mt-4">
+        <AnswerBlock
+          question={`Who is ${doctor.name} and what do they treat?`}
+          answer={doctorAnswer(doctor)}
+          updated={new Date().toISOString().slice(0, 10)}
+        />
       </div>
 
       {/* Tabs as anchored sections (server-rendered) */}
@@ -151,6 +172,9 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
             <div className="text-xs text-muted">{doctor.clinic_address}</div>
             {doctor.timing && <div className="mt-2 text-xs text-muted">⏱ {doctor.timing}</div>}
             <div className="mt-4 flex flex-col gap-2">
+              <a href={`/book/${doctor.slug}`} className="btn-primary text-center">
+                Book video consult
+              </a>
               <WhatsAppButton
                 phone={doctor.whatsapp ?? doctor.phone}
                 doctorName={doctor.name}

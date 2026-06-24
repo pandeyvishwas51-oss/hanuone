@@ -14,8 +14,13 @@ import {
   breadcrumbJsonLd,
   doctorItemListJsonLd,
   medicalSpecialtyJsonLd,
+  medicalWebPageJsonLd,
+  speakableJsonLd,
+  specialtyAnswer,
   specialtyFaqs
 } from "@/lib/seo";
+import AnswerBlock from "@/components/AnswerBlock";
+import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 3600;
 
@@ -88,6 +93,16 @@ export default async function SpecializationPage({ params }: { params: { slug: s
           __html: JSON.stringify(doctorItemListJsonLd(results.doctors))
         }}
       />
+      <JsonLd
+        data={[
+          medicalWebPageJsonLd({
+            url: `/specializations/${spec.slug}`,
+            name: `Best ${spec.name}s in Lucknow`,
+            description: specialtyAnswer(spec.name, "Lucknow", results.total)
+          }),
+          speakableJsonLd(`/specializations/${spec.slug}`)
+        ]}
+      />
 
       <div className="container-page py-8">
         <BreadcrumbNav
@@ -107,6 +122,13 @@ export default async function SpecializationPage({ params }: { params: { slug: s
             <p className="mt-3 max-w-3xl text-sm text-muted">{description}</p>
           </div>
         </header>
+
+        <div className="mt-5">
+          <AnswerBlock
+            question={`How do I find the best ${spec.name.toLowerCase()} in Lucknow?`}
+            answer={specialtyAnswer(spec.name, "Lucknow", results.total)}
+          />
+        </div>
 
         <section className="mt-6">
           <div className="text-xs font-semibold uppercase tracking-wide text-muted">
