@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { img } from "@/lib/images";
 import {
   Video,
   HeartHandshake,
@@ -86,6 +88,18 @@ export default function ServicesPage() {
           <span className="rounded-full bg-primary/5 px-3 py-1.5 text-primary">Active in {city}</span>
           <Link href="/doctors" className="rounded-full bg-primary text-white px-3 py-1.5 hover:bg-primary-600">Find a doctor</Link>
         </div>
+      </div>
+
+      <div className="relative mx-auto mt-8 aspect-[16/7] w-full max-w-5xl overflow-hidden rounded-2xl">
+        <Image
+          src={img("heroHome")}
+          alt="Trusted healthcare at home with Hanuone"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
       </div>
 
       <section className="mt-10 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">

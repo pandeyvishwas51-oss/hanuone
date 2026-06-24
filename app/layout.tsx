@@ -8,6 +8,7 @@ import { SITE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Tracker from "@/components/Tracker";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1 pb-16 md:pb-0">{children}</main>
         <SiteFooter />
         <MobileBottomNav />
+        <ChatWidget />
         <Analytics />
         <SpeedInsights />
         <Tracker site="hanuone" />
