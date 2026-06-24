@@ -17,7 +17,7 @@ export const SITE = {
       /^https?:\/\//,
       ""
     ),
-  logo: "/logo.svg",
+  logo: "/logo.png",
   ogImage: "/og-image.svg",
   email: "care@hanuone.com",
   phoneE164: "+919876543210",

@@ -19,13 +19,15 @@ const config: Config = {
           600: "#0a3540",
           700: "#072830"
         },
+        // Orange matched to the Hanuone logo ("ONE" + ECG line)
         accent: {
-          DEFAULT: "#FF6B35",
-          50: "#FFF2EC",
-          100: "#FFD9C7",
-          500: "#FF6B35",
-          600: "#E45422",
-          700: "#B8421A"
+          DEFAULT: "#F47A20",
+          50: "#FEF2E8",
+          100: "#FBDCBF",
+          400: "#F79347",
+          500: "#F47A20",
+          600: "#D9651A",
+          700: "#B25015"
         },
         whatsapp: "#25D366",
         bg: "#FFF8F2", // cream background from template

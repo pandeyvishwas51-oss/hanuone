@@ -18,12 +18,12 @@ export default async function SiteHeader() {
       <div className="container-page flex h-14 items-center justify-between gap-2 sm:h-16">
         <Link href="/" className="flex items-center gap-2 min-w-0">
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Hanuone"
-            width={200}
-            height={56}
+            width={120}
+            height={120}
             priority
-            className="h-9 w-auto sm:h-11"
+            className="h-10 w-auto sm:h-12"
           />
         </Link>
 

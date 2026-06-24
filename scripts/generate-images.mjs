@@ -17,11 +17,17 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const OUT_DIR = join(ROOT, "public", "generated");
 
-const KEY = process.env.OPENAI_API_KEY;
+// Supports either standard OpenAI or Azure OpenAI (services.ai.azure.com/openai/v1).
+const KEY = process.env.OPENAI_API_KEY || process.env.AZURE_OPENAI_KEY;
+const AZURE_ENDPOINT = (process.env.AZURE_OPENAI_ENDPOINT || "").replace(/\/$/, "");
+const AZURE_DEPLOYMENT = process.env.AZURE_OPENAI_IMAGE_DEPLOYMENT || "gpt-image-2";
+const IS_AZURE = !!AZURE_ENDPOINT;
 if (!KEY) {
-  console.error("✗ Set OPENAI_API_KEY first.  e.g.  OPENAI_API_KEY=sk-... node scripts/generate-images.mjs");
+  console.error("✗ Set OPENAI_API_KEY (or AZURE_OPENAI_KEY + AZURE_OPENAI_ENDPOINT) first.");
   process.exit(1);
 }
+const API_URL = IS_AZURE ? `${AZURE_ENDPOINT}/images/generations` : "https://api.openai.com/v1/images/generations";
+const MODEL = IS_AZURE ? AZURE_DEPLOYMENT : "gpt-image-1";
 
 const force = process.argv.includes("--force");
 const onlyId = process.argv.find((a) => !a.startsWith("-") && !a.endsWith(".mjs") && !a.includes("node"));
@@ -41,10 +47,13 @@ async function generate(img) {
   }
   const prompt = `${img.prompt}\n\nStyle: ${baseStyle}`;
   process.stdout.write(`… generating ${img.id} (${img.size}) `);
-  const res = await fetch("https://api.openai.com/v1/images/generations", {
+  const headers = IS_AZURE
+    ? { "api-key": KEY, "Content-Type": "application/json" }
+    : { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" };
+  const res = await fetch(API_URL, {
     method: "POST",
-    headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model: "gpt-image-1", prompt, size: img.size, n: 1 })
+    headers,
+    body: JSON.stringify({ model: MODEL, prompt, size: img.size, n: 1 })
   });
   if (!res.ok) {
     console.log("✗");
