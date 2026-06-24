@@ -1,7 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Treat empty strings (blank .env.local entries) as unset, not as a real URL.
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL || undefined;
+const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || undefined;
 
 const HAS_ENV = !!url && !!anonKey;
 

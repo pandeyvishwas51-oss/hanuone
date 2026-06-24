@@ -334,6 +334,65 @@ export const vitalVisits = pgTable("vital_visits", {
 });
 
 // =====================================================================
+// Medicine delivery
+// =====================================================================
+export const medicineOrders = pgTable("medicine_orders", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  patientUserId: uuid("patient_user_id").references(() => users.id, { onDelete: "set null" }),
+  prescriptionId: uuid("prescription_id").references(() => prescriptions.id, { onDelete: "set null" }),
+  patientName: text("patient_name").notNull(),
+  patientPhone: text("patient_phone").notNull(),
+  address: text("address").notNull(),
+  pincode: text("pincode"),
+  city: text("city"),
+  prescriptionUrl: text("prescription_url"), // uploaded Rx image/pdf
+  items: text("items"), // JSON: [{name, qty}]
+  notes: text("notes"),
+  // 'placed' | 'confirmed' | 'dispatched' | 'delivered' | 'cancelled'
+  status: text("status").notNull().default("placed"),
+  amountInr: integer("amount_inr"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow()
+});
+
+// =====================================================================
+// Lab tests (catalog + home-collection orders)
+// =====================================================================
+export const labTests = pgTable("lab_tests", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
+  category: text("category"),
+  description: text("description"),
+  sampleType: text("sample_type"),
+  tatHours: integer("tat_hours"),
+  priceInr: integer("price_inr"),
+  homeCollection: boolean("home_collection").default(true),
+  isActive: boolean("is_active").default(true)
+});
+
+export const labOrders = pgTable("lab_orders", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  patientUserId: uuid("patient_user_id").references(() => users.id, { onDelete: "set null" }),
+  testId: uuid("test_id").references(() => labTests.id, { onDelete: "set null" }),
+  testName: text("test_name").notNull(),
+  patientName: text("patient_name").notNull(),
+  patientPhone: text("patient_phone").notNull(),
+  address: text("address"),
+  pincode: text("pincode"),
+  city: text("city"),
+  collectionType: text("collection_type").default("home"), // 'home' | 'walkin'
+  slotDate: date("slot_date"),
+  slotTime: text("slot_time"),
+  // 'booked' | 'collected' | 'processing' | 'report_ready' | 'cancelled'
+  status: text("status").notNull().default("booked"),
+  reportUrl: text("report_url"),
+  amountInr: integer("amount_inr"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow()
+});
+
+// =====================================================================
 // Compliance: append-only audit log for writes to health/payment tables
 // =====================================================================
 export const auditLogs = pgTable("audit_logs", {

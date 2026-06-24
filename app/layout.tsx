@@ -5,8 +5,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import { SITE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Tracker from "@/components/Tracker";
 import ChatWidget from "@/components/ChatWidget";
 
@@ -118,8 +116,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
         <MobileBottomNav />
         <ChatWidget />
-        <Analytics />
-        <SpeedInsights />
         <Tracker site="hanuone" />
       </body>
     </html>

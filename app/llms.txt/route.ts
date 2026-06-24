@@ -40,6 +40,8 @@ export async function GET() {
     "## Core pages",
     `- [Find doctors](${abs("/doctors")}): search verified doctors by specialty, locality, pincode, fee and rating`,
     `- [Services](${abs("/services")}): teleconsult, medicines, lab tests, home nursing, physiotherapy, Vital Checkup`,
+    `- [Lab tests at home](${abs("/lab")}): book blood tests and health packages with home sample collection`,
+    `- [Medicines at home](${abs("/medicine")}): prescription-linked medicine delivery`,
     `- [Vital Checkup](${abs("/vitals")}): at-home vitals capture with an instant flagged report and trend tracking`,
     `- [For providers](${abs("/pro")}): doctors and home-care professionals register, get verified and accept bookings`,
     ""

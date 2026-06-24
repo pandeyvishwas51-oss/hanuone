@@ -1,0 +1,30 @@
+import MedicineOrder from "@/components/MedicineOrder";
+import AnswerBlock from "@/components/AnswerBlock";
+import { getActiveCity } from "@/lib/active-city";
+
+export const dynamic = "force-dynamic";
+export const metadata = {
+  title: "Order Medicines Online — prescription delivery | Hanuone",
+  description: "Upload your prescription and get medicines delivered to your door. Prescription-linked, partner pharmacies, same-day in select pincodes."
+};
+
+export default function MedicinePage() {
+  const city = getActiveCity().name;
+  return (
+    <div className="container-page py-8">
+      <h1 className="h2">Medicines at home</h1>
+      <p className="mt-1 text-sm text-muted">Upload a prescription or list your medicines. Partner pharmacies confirm price and deliver.</p>
+
+      <div className="mt-4">
+        <AnswerBlock
+          question="How do I order medicines on Hanuone?"
+          answer={`Upload a doctor's prescription or list the medicines you need, add your delivery address, and a partner pharmacy in ${city} confirms availability and price. Prescription medicines are dispensed only against a valid prescription, and delivery is same-day in select pincodes.`}
+        />
+      </div>
+
+      <div className="mt-6">
+        <MedicineOrder city={city} />
+      </div>
+    </div>
+  );
+}

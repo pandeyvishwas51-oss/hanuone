@@ -14,11 +14,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/join",
-        destination: "https://hanuonepro.vercel.app/register",
-        permanent: true
-      }
+      { source: "/join", destination: "/providers/join", permanent: true }
     ];
   }
 };

@@ -24,13 +24,31 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     id: "teleconsult", label: "Teleconsultation",
-    icon: Video, live: true,
+    icon: Video, live: true, href: "/doctors",
     desc: "Talk to a verified doctor on video or call. Same-day slots, prescription delivered to your inbox.",
     cta: "Talk to a doctor"
   },
   {
+    id: "vitals", label: "Vital Checkup",
+    icon: ShieldCheck, live: true, href: "/vitals",
+    desc: "At-home vitals capture with an instant flagged report and trend tracking. Our signature wellness layer.",
+    cta: "Start a checkup"
+  },
+  {
+    id: "diagnostics", label: "Lab Tests at Home",
+    icon: TestTube2, live: true, href: "/lab",
+    desc: "Home sample collection for blood tests, thyroid, diabetes and full-body panels. Digital reports.",
+    cta: "Book a test"
+  },
+  {
+    id: "medicines", label: "Medicines @ Home",
+    icon: Pill, live: true, href: "/medicine",
+    desc: "Upload a prescription and get medicines delivered. Partner pharmacies, same-day in select pincodes.",
+    cta: "Order medicines"
+  },
+  {
     id: "nursing", label: "Home Nursing",
-    icon: HeartHandshake, live: true,
+    icon: HeartHandshake, live: true, href: "/home-nursing",
     desc: "GNM and BSc nurses for daily, overnight, and post-surgery care at home.",
     cta: "Request a nurse"
   },
@@ -41,28 +59,10 @@ const SERVICES = [
     cta: "Book a physio"
   },
   {
-    id: "diagnostics", label: "Diagnostics & Lab",
-    icon: TestTube2, live: false,
-    desc: "Home sample collection for blood tests, urine, and full body panels. Coming soon.",
-    cta: "Notify me, diagnostics"
-  },
-  {
-    id: "preventive", label: "Preventive Health Programs",
-    icon: ShieldCheck, live: true,
-    desc: "Quarterly health check-ups for elderly parents. Curated by GP and a specialist.",
-    cta: "Plan a check-up"
-  },
-  {
     id: "elder", label: "Elder Care Assistance",
     icon: Users, live: true,
     desc: "Trained attendants for senior citizens, post-discharge support, and day-care companions.",
     cta: "Get an attendant"
-  },
-  {
-    id: "medicines", label: "Medicines @ Home",
-    icon: Pill, live: false,
-    desc: "30-minute medicine delivery in select pincodes. Launching soon.",
-    cta: "Notify me, medicines"
   },
   {
     id: "digital-support", label: "Digital Healthcare Support",
@@ -117,14 +117,23 @@ export default function ServicesPage() {
             </div>
             <h2 className="mt-3 text-base font-semibold text-ink">{s.label}</h2>
             <p className="mt-1 text-sm text-muted flex-1">{s.desc}</p>
-            <ServiceRequestDialog
-              service={s.id}
-              serviceLabel={s.label}
-              isLive={s.live}
-              defaultCity={city}
-              className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primary-600"
-              trigger={<>{s.cta} <ArrowRight size={14} /></>}
-            />
+            {"href" in s && s.href ? (
+              <Link
+                href={s.href}
+                className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primary-600"
+              >
+                {s.cta} <ArrowRight size={14} />
+              </Link>
+            ) : (
+              <ServiceRequestDialog
+                service={s.id}
+                serviceLabel={s.label}
+                isLive={s.live}
+                defaultCity={city}
+                className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primary-600"
+                trigger={<>{s.cta} <ArrowRight size={14} /></>}
+              />
+            )}
           </article>
         ))}
       </section>

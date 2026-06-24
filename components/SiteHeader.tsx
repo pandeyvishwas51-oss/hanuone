@@ -30,9 +30,10 @@ export default async function SiteHeader() {
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink lg:flex">
           <Link href="/doctors" className="hover:text-accent">Find Doctors</Link>
           <Link href="/services" className="hover:text-accent">Services</Link>
+          <Link href="/lab" className="hover:text-accent">Lab Tests</Link>
+          <Link href="/medicine" className="hover:text-accent">Medicines</Link>
           <Link href="/vitals" className="hover:text-accent">Vital Checkup</Link>
-          <Link href="/specializations/cardiologist" className="hover:text-accent">Specialties</Link>
-          <Link href="https://hanuonepro.vercel.app/register" className="hover:text-accent">For Doctors</Link>
+          <Link href="/providers/join" className="hover:text-accent">For Doctors</Link>
           <AccountNavLink />
         </nav>
 

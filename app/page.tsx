@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { img } from "@/lib/images";
 import SearchBar from "@/components/SearchBar";
 import SpecialtyCard from "@/components/SpecialtyCard";
 import LocalityChip from "@/components/LocalityChip";
@@ -59,6 +61,33 @@ export default async function HomePage() {
                 className="rounded-full bg-white px-3 py-1.5 text-primary shadow-sm hover:shadow"
               >
                 {s}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services showcase */}
+      <section className="section pt-2">
+        <div className="container-page">
+          <h2 className="h2">Everything your family needs</h2>
+          <p className="mt-1 text-sm text-muted">One platform — consult, test, medicate and monitor.</p>
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {[
+              { href: "/doctors", title: "Consult a doctor", desc: "Video or clinic visit", image: img("consult") },
+              { href: "/lab", title: "Lab tests at home", desc: "Reports in 24–48h", image: img("lab") },
+              { href: "/medicine", title: "Medicines at home", desc: "Prescription delivery", image: img("medicine") },
+              { href: "/vitals", title: "Vital Checkup", desc: "Instant flagged report", image: img("vitals") }
+            ].map((s) => (
+              <Link key={s.href} href={s.href} className="card group overflow-hidden p-0 transition hover:shadow-lg">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image src={s.image} alt={s.title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-300 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+                  <div className="absolute bottom-0 p-3 text-white">
+                    <div className="text-sm font-semibold">{s.title}</div>
+                    <div className="text-[11px] text-white/85">{s.desc}</div>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
@@ -172,7 +201,7 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-white/80">
                 Get listed for free. Verified profiles get more visibility on Hanuone.
               </p>
-              <Link href="https://hanuonepro.vercel.app/register" className="btn-whatsapp mt-4 inline-flex">
+              <Link href="/providers/join" className="btn-whatsapp mt-4 inline-flex">
                 Get listed free
               </Link>
             </div>
@@ -182,16 +211,10 @@ export default async function HomePage() {
                 Are you a nurse, ward boy, caregiver or physiotherapist? Register on HanuonePro to get
                 home-care gigs in Lucknow.
               </p>
-              <Link
-                href="https://hanuonepro.vercel.app/register"
-                className="btn-whatsapp mt-4 inline-flex"
-              >
-                Register on HanuonePro
+              <Link href="/providers/register" className="btn-whatsapp mt-4 inline-flex">
+                Register as a professional
               </Link>
-              <Link
-                href="https://hanuonepro.vercel.app/login"
-                className="mt-2 block text-xs text-white/70 hover:text-white"
-              >
+              <Link href="/login" className="mt-2 block text-xs text-white/70 hover:text-white">
                 Already registered? Login
               </Link>
             </div>

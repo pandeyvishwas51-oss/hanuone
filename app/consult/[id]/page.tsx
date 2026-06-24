@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { getCurrentUser } from "@/lib/auth";
 import { HAS_DB, db, schema } from "@/lib/db";
 import VideoRoom from "@/components/VideoRoom";
+import PrescriptionPanel from "@/components/PrescriptionPanel";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Your consultation", robots: { index: false } };
@@ -28,6 +29,7 @@ export default async function ConsultPage({ params }: { params: { id: string } }
   const when = consult.scheduledAt ? new Date(consult.scheduledAt) : null;
   const room = consult.videoRoom || `ho-${consult.id.slice(0, 10)}`;
   const paid = consult.status !== "pending_payment";
+  const isProvider = user.role === "provider" || user.role === "admin" || user.isAdmin;
 
   return (
     <div className="container-page py-6">
@@ -59,6 +61,12 @@ export default async function ConsultPage({ params }: { params: { id: string } }
         <div className="card mt-4 p-5">
           <div className="label">Reason for consult</div>
           <p className="text-sm text-ink">{consult.context}</p>
+        </div>
+      ) : null}
+
+      {isProvider && paid ? (
+        <div className="mt-4">
+          <PrescriptionPanel consultationId={consult.id} />
         </div>
       ) : null}
     </div>
