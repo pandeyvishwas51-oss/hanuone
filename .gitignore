@@ -48,3 +48,8 @@ public/robots.txt
 # editor
 .vscode/
 .idea/
+
+# build/dev artifacts (keep repo clean)
+screenshots/
+presentation.html
+*.log
