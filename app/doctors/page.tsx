@@ -13,6 +13,7 @@ import {
 import { getActiveCity } from "@/lib/active-city";
 import { asArray, titleCase } from "@/lib/utils";
 import { SITE } from "@/lib/seo";
+import ActiveFilterChips from "@/components/ActiveFilterChips";
 
 export const dynamic = "force-dynamic";
 
@@ -135,6 +136,8 @@ export default async function DoctorsPage({ searchParams }: { searchParams: SP }
           <SortSelect />
         </Suspense>
       </div>
+
+      <ActiveFilterChips searchParams={searchParams} />
 
       <div className="mt-6 grid gap-6 md:grid-cols-[260px,1fr]">
         <Suspense>
