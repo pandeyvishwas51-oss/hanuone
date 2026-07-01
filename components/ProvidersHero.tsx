@@ -54,7 +54,7 @@ export default function ProvidersHero() {
         <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-medium ring-1 ring-white/30">
           For doctors &amp; nurses
         </span>
-        <h1 className="mt-4 max-w-2xl font-serif text-4xl font-semibold leading-tight md:text-5xl">
+        <h1 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight md:text-5xl">
           Grow your practice with HanuONE
         </h1>
         <p className="mt-4 max-w-xl text-white/85">

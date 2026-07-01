@@ -151,7 +151,7 @@ export default function ProviderWizard() {
     <div className="mx-auto max-w-5xl px-4 py-8">
       {/* Role toggle */}
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="font-serif text-2xl font-semibold text-trust-900">Join HanuONE as a provider</h1>
+        <h1 className="font-display text-2xl font-semibold text-trust-900">Join HanuONE as a provider</h1>
         <div className="flex rounded-full border border-slate-300 p-1 text-sm">
           {(["doctor", "nurse"] as Role[]).map((r) => (
             <button
@@ -263,7 +263,7 @@ const inputCls = "w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-s
 function StepHead({ title, sub }: { title: string; sub: string }) {
   return (
     <div className="mb-5">
-      <h2 className="font-serif text-xl font-semibold text-trust-900">{title}</h2>
+      <h2 className="font-display text-xl font-semibold text-trust-900">{title}</h2>
       <p className="mt-1 text-sm text-slate-500">{sub}</p>
     </div>
   );
@@ -484,7 +484,7 @@ function Submitted({ role, name }: { role: Role; name: string }) {
   return (
     <div className="mx-auto max-w-xl px-5 py-20 text-center">
       <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-50 text-3xl">✓</div>
-      <h1 className="mt-4 font-serif text-3xl font-semibold text-trust-900">Application submitted</h1>
+      <h1 className="mt-4 font-display text-3xl font-semibold text-trust-900">Application submitted</h1>
       <p className="mt-2 text-slate-600">
         Thank you, {name}. Our team will verify your {role} registration and documents. You&apos;ll be
         notified and go live within <strong>48 hours</strong>.

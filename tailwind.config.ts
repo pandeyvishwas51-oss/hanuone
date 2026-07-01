@@ -42,13 +42,43 @@ const config: Config = {
           600: "#E06806",
           700: "#B45205"
         },
+        // `brand` (action/orange) + `trust` (teal) aliases used by the provider
+        // onboarding + home-nursing flows. Previously undefined → those pages
+        // rendered unstyled. Mapped to the HanuOne orange/teal so everything is
+        // one cohesive palette.
+        brand: {
+          DEFAULT: "#FE7D15",
+          50: "#FFF2E6",
+          100: "#FEDDBC",
+          300: "#FEA85A",
+          400: "#FE9847",
+          500: "#FE7D15",
+          600: "#E06806",
+          700: "#B45205",
+          800: "#8A3F04"
+        },
+        trust: {
+          DEFAULT: "#01586C",
+          50: "#E6F1F4",
+          100: "#BFDCE3",
+          400: "#1B7488",
+          500: "#01586C",
+          600: "#024656",
+          700: "#033543",
+          900: "#06222B"
+        },
         whatsapp: "#25D366",
-        bg: "#FFF8F2", // cream background from template
-        ink: "#0E2A33",
-        muted: "#5C6B73"
+        // Clean, cool-neutral canvas (replaces the dated peachy cream) — reads
+        // fresh/clinical and lets the teal + orange brand colors pop.
+        bg: "#F5F8F8",
+        surface: "#FFFFFF",
+        ink: "#0D2A33",     // deep teal-slate for text
+        muted: "#5A6B75",
+        line: "#E4ECEC"     // hairline borders on the neutral canvas
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         hindi: ["'Noto Sans Devanagari'", "Inter", "sans-serif"]
       },
       boxShadow: {

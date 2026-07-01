@@ -27,7 +27,7 @@ export default function ProviderJoinPage() {
       <ProvidersHero />
 
       <section className="mx-auto max-w-6xl px-5 py-14">
-        <h2 className="font-serif text-3xl font-semibold text-trust-900">Why join HanuONE</h2>
+        <h2 className="font-display text-3xl font-semibold text-trust-900">Why join HanuONE</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {BENEFITS.map((b) => (
             <div key={b.t} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -40,7 +40,7 @@ export default function ProviderJoinPage() {
 
       <section className="border-t border-slate-100 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-14">
-          <h2 className="font-serif text-3xl font-semibold text-trust-900">How onboarding works</h2>
+          <h2 className="font-display text-3xl font-semibold text-trust-900">How onboarding works</h2>
           <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s, i) => (
               <li key={s} className="rounded-2xl border border-slate-200 bg-white p-6">

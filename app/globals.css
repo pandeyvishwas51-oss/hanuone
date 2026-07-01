@@ -5,7 +5,7 @@
 @layer base {
   html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
   body { @apply bg-bg text-ink font-sans antialiased; overflow-x: hidden; }
-  h1, h2, h3, h4 { @apply text-ink; }
+  h1, h2, h3, h4 { @apply text-ink font-display tracking-tight; }
   :lang(hi), .hi { font-family: "Noto Sans Devanagari", Inter, system-ui, sans-serif; }
   a, button { -webkit-tap-highlight-color: rgba(255, 107, 53, 0.06); }
   input, select, textarea { font-size: 16px; }
@@ -20,12 +20,12 @@
   .btn-whatsapp { @apply btn bg-whatsapp text-white hover:bg-[#1ebe57]; }
   .card { @apply rounded-2xl bg-white shadow-card; }
   .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-3 py-1.5 text-xs font-medium text-primary hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; }
-  .input { @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base text-ink placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-sm; }
+  .input { @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-base text-ink placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-sm; }
   .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted; }
   .section { @apply py-10 sm:py-16; }
-  .h1 { @apply text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight; }
-  .h2 { @apply text-xl sm:text-3xl font-bold tracking-tight; }
-  .h3 { @apply text-base sm:text-xl font-semibold; }
+  .h1 { @apply font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight; }
+  .h2 { @apply font-display text-xl sm:text-3xl font-bold tracking-tight; }
+  .h3 { @apply font-display text-base sm:text-xl font-semibold tracking-tight; }
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
