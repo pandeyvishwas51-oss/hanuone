@@ -1,12 +1,15 @@
+import Link from "next/link";
 import DoctorCard from "./DoctorCard";
 import type { Doctor } from "@/lib/types";
 
 export default function DoctorList({
   doctors,
-  emptyMessage = "No doctors found. Try adjusting your filters."
+  emptyMessage = "No doctors found. Try adjusting your filters.",
+  resetHref
 }: {
   doctors: Doctor[];
   emptyMessage?: string;
+  resetHref?: string;
 }) {
   if (!doctors.length) {
     return (
@@ -14,6 +17,9 @@ export default function DoctorList({
         <div>
           <div className="text-2xl">🔍</div>
           <p className="mt-2">{emptyMessage}</p>
+          {resetHref && (
+            <Link href={resetHref} className="btn-primary mt-4 inline-block">Clear all filters</Link>
+          )}
         </div>
       </div>
     );

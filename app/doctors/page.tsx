@@ -107,6 +107,10 @@ export default async function DoctorsPage({ searchParams }: { searchParams: SP }
     searchDoctors({ ...p, q: searchInput, city: activeCity.name })
   ]);
 
+  const hasFilters =
+    p.specialty.length > 0 || p.locality.length > 0 || !!p.pincode ||
+    p.feeMin != null || p.feeMax != null || p.minRating != null || !!p.q;
+
   const heading =
     p.specialty[0]
       ? `${titleCase(p.specialty[0])}s${p.locality[0] ? ` in ${titleCase(p.locality[0])}` : ""} in ${activeCity.name}`
@@ -144,7 +148,7 @@ export default async function DoctorsPage({ searchParams }: { searchParams: SP }
           <FilterSidebar specializations={specializations} localities={localities} />
         </Suspense>
         <div>
-          <DoctorList doctors={results.doctors} />
+          <DoctorList doctors={results.doctors} resetHref={hasFilters ? "/doctors" : undefined} />
           <Pagination
             baseUrl="/doctors"
             searchParams={searchParams}
