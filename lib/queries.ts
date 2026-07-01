@@ -214,7 +214,9 @@ function localSearch(params: DoctorSearchParams) {
     });
   }
   if (typeof params.feeMin === "number") list = list.filter((d) => (d.consultation_fee_min ?? 0) >= params.feeMin!);
-  if (typeof params.feeMax === "number") list = list.filter((d) => (d.consultation_fee_max ?? d.consultation_fee_min ?? 0) <= params.feeMax!);
+  // Unknown-fee doctors must NOT pass a "max fee" filter — coalescing NULL to 0
+  // would misrepresent them as free and surface them under any budget cap.
+  if (typeof params.feeMax === "number") list = list.filter((d) => (d.consultation_fee_max ?? d.consultation_fee_min ?? Number.POSITIVE_INFINITY) <= params.feeMax!);
   if (typeof params.minRating === "number" && params.minRating > 0) list = list.filter((d) => (d.rating ?? 0) >= params.minRating!);
 
   const sortBy = params.sort ?? "relevance";
