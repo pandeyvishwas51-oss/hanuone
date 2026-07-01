@@ -20,6 +20,9 @@ const SENDER_ID = process.env.MSG91_SENDER_ID?.trim();
 
 export const MSG91_LIVE = !!AUTH_KEY;
 const DEV_OTP = "000000";
+// The fixed-code "000000" dev shortcut must NEVER work in production, or anyone
+// could log into any phone number. Only allowed off-production.
+const DEV_OTP_OK = process.env.NODE_ENV !== "production";
 
 /** Normalize an Indian mobile to MSG91's `91XXXXXXXXXX` form. */
 export function normalizeMobile(phone: string): string {
@@ -56,7 +59,8 @@ async function call(path: string, params: Record<string, string>): Promise<Resul
 export async function sendOtp(phone: string): Promise<Result<{ requestId?: string; dev?: boolean }>> {
   const mobile = normalizeMobile(phone);
   if (!MSG91_LIVE) {
-    // Local dev: pretend success; verify will accept DEV_OTP.
+    // Local dev only: pretend success; verify will accept DEV_OTP.
+    if (!DEV_OTP_OK) return { ok: false, reason: "SMS OTP not configured" };
     return { ok: true, dev: true, requestId: "dev" };
   }
   const params: Record<string, string> = { mobile, otp_length: "6" };
@@ -69,6 +73,8 @@ export async function sendOtp(phone: string): Promise<Result<{ requestId?: strin
 export async function verifyOtp(phone: string, otp: string): Promise<Result> {
   const mobile = normalizeMobile(phone);
   if (!MSG91_LIVE) {
+    // Dev-only fixed code. Never accept it in production.
+    if (!DEV_OTP_OK) return { ok: false, reason: "SMS OTP not configured" };
     return { ok: otp.trim() === DEV_OTP, reason: otp.trim() === DEV_OTP ? undefined : "invalid otp (dev expects 000000)" };
   }
   return call("/otp/verify", { mobile, otp: otp.trim() });
@@ -85,7 +91,8 @@ export async function resendOtp(phone: string): Promise<Result> {
 export async function sendSms(phone: string, message: string): Promise<Result> {
   const mobile = normalizeMobile(phone);
   if (!MSG91_LIVE) {
-    console.info(`[msg91:dev] SMS -> ${mobile}: ${message}`);
+    // Don't log the full body — SMS payloads include OTPs / e-Rx text. Length only.
+    console.info(`[msg91:dev] SMS -> ${mobile} (${message.length} chars)`);
     return { ok: true };
   }
   const params: Record<string, string> = { mobile, message };

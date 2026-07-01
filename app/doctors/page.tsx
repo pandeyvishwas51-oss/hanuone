@@ -12,6 +12,7 @@ import {
 } from "@/lib/queries";
 import { getActiveCity } from "@/lib/active-city";
 import { asArray, titleCase } from "@/lib/utils";
+import { SITE } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -68,12 +69,30 @@ export async function generateMetadata({
   titleParts.push("Lucknow");
   const title = titleParts.join(" ");
   const description = `Find ${title.toLowerCase()} on Hanuone. Compare ratings, fees, experience and contact directly via WhatsApp. Free, verified, and updated weekly.`;
+
+  // Only the bare /doctors directory is indexable. Every faceted/filtered/paged
+  // permutation (specialty, locality, pincode, fee, rating, sort, q, page>1) is
+  // near-duplicate noise — noindex,follow so crawlers still traverse to the
+  // dedicated SEO surfaces (/{locality}/{specialty}, /specializations, /localities)
+  // which carry the real ranking signal and live in the sitemap.
+  const isBare =
+    p.specialty.length === 0 &&
+    p.locality.length === 0 &&
+    !p.pincode &&
+    p.feeMin == null &&
+    p.feeMax == null &&
+    p.minRating == null &&
+    !p.sort &&
+    !p.q &&
+    p.page <= 1;
+
   return {
     title,
     description,
     alternates: { canonical: "/doctors" },
-    openGraph: { title, description, url: "/doctors", type: "website" },
-    twitter: { card: "summary_large_image", title, description }
+    robots: isBare ? undefined : { index: false, follow: true },
+    openGraph: { title, description, url: "/doctors", type: "website", images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [SITE.ogImage] }
   };
 }
 

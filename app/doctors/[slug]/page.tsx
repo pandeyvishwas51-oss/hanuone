@@ -14,7 +14,7 @@ import {
   getSimilarDoctors
 } from "@/lib/queries";
 import { buildTelLink, formatFeeRange, truncate } from "@/lib/utils";
-import { breadcrumbJsonLd, medicalWebPageJsonLd, speakableJsonLd, doctorAnswer } from "@/lib/seo";
+import { breadcrumbJsonLd, medicalWebPageJsonLd, speakableJsonLd, doctorAnswer, SITE } from "@/lib/seo";
 import AnswerBlock from "@/components/AnswerBlock";
 import JsonLd from "@/components/JsonLd";
 
@@ -46,15 +46,18 @@ export async function generateMetadata({
       description,
       type: "profile",
       url: `/doctors/${doctor.slug}`,
+      // Headshots are small/square; lead with the branded 1200x630 card (correct
+      // dims) and append the headshot. With no headshot, just the branded image.
       images: doctor.profile_image_url
-        ? [{ url: doctor.profile_image_url, alt: doctor.name }]
-        : undefined
+        ? [{ url: SITE.ogImage, width: 1200, height: 630, alt: doctor.name }, { url: doctor.profile_image_url, alt: doctor.name }]
+        : [{ url: SITE.ogImage, width: 1200, height: 630, alt: doctor.name }]
     },
     twitter: {
-      card: "summary_large_image",
+      // A bare headshot fits a square "summary" card; the branded image fits the large one.
+      card: doctor.profile_image_url ? "summary" : "summary_large_image",
       title,
       description,
-      images: doctor.profile_image_url ? [doctor.profile_image_url] : undefined
+      images: [{ url: doctor.profile_image_url || SITE.ogImage, alt: doctor.name }]
     }
   };
 }
@@ -78,7 +81,7 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
     : `https://maps.google.com/maps?q=${mapsQuery}&output=embed`;
 
   return (
-    <div className="container-page py-6 sm:py-10">
+    <div className="container-page py-6 pb-36 sm:py-10 sm:pb-10">
       <DoctorJsonLd doctor={doctor} />
       <script
         type="application/ld+json"
@@ -190,7 +193,7 @@ export default async function DoctorProfilePage({ params }: { params: { slug: st
       </div>
 
       {/* Sticky mobile CTA bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-primary/10 bg-white p-3 shadow-md sm:hidden">
+      <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 border-t border-primary/10 bg-white p-3 shadow-md sm:hidden print:hidden">
         <div className="flex gap-2">
           {tel && (
             <a href={tel} className="btn-outline flex-1">

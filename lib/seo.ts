@@ -11,22 +11,32 @@ export const SITE = {
   tagline: "Lucknow ke Trusted Doctors, Ek Jagah",
   description:
     "Hanuone is a free, verified directory of doctors in Lucknow. Search by specialty, locality or pincode and contact any clinic via WhatsApp.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.com",
   domain:
-    (process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.vercel.app").replace(
+    (process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.com").replace(
       /^https?:\/\//,
       ""
     ),
   logo: "/logo.png",
-  ogImage: "/og-image.svg",
+  ogImage: "/generated/og-default.jpg", // 1200x630 JPG (~130KB); crawlers prefer JPG/PNG over WebP
   email: "care@hanuone.com",
-  phoneE164: "+919876543210",
+  // Single source of truth for the support number. Set NEXT_PUBLIC_WHATSAPP_NUMBER
+  // (digits, e.g. 919876543210) and it flows to JSON-LD, the chat widget and every
+  // "WhatsApp us" message. Falls back to a placeholder until configured.
+  phoneE164: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
+    ? `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER.replace(/\D/g, "")}`
+    : "+919876543210",
   social: {
     instagram: "https://www.instagram.com/hanu.one",
     linkedin: "https://www.linkedin.com/company/hanuone/",
     twitter: "https://x.com/hanu_one"
   },
-  area: { city: "Lucknow", region: "Uttar Pradesh", country: "IN" }
+  // HQ / primary address (used for the Organization PostalAddress).
+  area: { city: "Lucknow", region: "Uttar Pradesh", country: "IN" },
+  // Live service markets — the cities Hanuone actually operates in. Kept in sync
+  // with the multi-city system (locality combos, llms.txt, /services). Emitted as
+  // schema `areaServed` so search/AI engines know the real coverage.
+  areasServed: ["Lucknow", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Delhi", "Delhi NCR"]
 } as const;
 
 export function abs(path = "/") {
@@ -53,6 +63,7 @@ export function organizationJsonLd() {
       addressRegion: SITE.area.region,
       addressCountry: SITE.area.country
     },
+    areaServed: SITE.areasServed.map((c) => ({ "@type": "City", name: c })),
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -241,7 +252,7 @@ export function localityFaqs(locality: string) {
     },
     {
       q: `Do you list senior care services in ${locality}?`,
-      a: `Phase 2 of Hanuone is the Home Care Network where doctors, nurses and caregivers can register to offer home visits in ${locality} and across Lucknow.`
+      a: `Yes. Hanuone's Home Care Network offers nurse visits, lab sample collection and vitals checks at home in ${locality} and across Lucknow — book a home visit directly on Hanuone.`
     }
   ];
 }
@@ -318,4 +329,34 @@ export function specialtyAnswer(specialty: string, city = "Lucknow", count?: num
 export function localityAnswer(locality: string, city = "Lucknow", count?: number): string {
   const n = count && count > 0 ? `${count} verified doctors and clinics` : `verified doctors and clinics`;
   return `Hanuone lists ${n} in ${locality}, ${city} across general medicine, paediatrics, gynaecology, orthopaedics, dermatology, ENT and more. Each profile shows qualifications, fees and timings, and you can book a teleconsult or clinic visit directly.`;
+}
+
+/** Citable answer for the high-intent /[locality]/[specialty] combo page. */
+export function comboAnswer(specialty: string, locality: string, city = "Lucknow", count?: number): string {
+  const s = specialty.toLowerCase();
+  const n = count && count > 0 ? `${count} verified ${s}s` : `verified ${s}s`;
+  return `Hanuone lists ${n} in ${locality}, ${city}, each cross-checked against the National Medical Commission and state medical councils. Compare qualifications, experience, consultation fees and patient ratings, then book a teleconsult or clinic visit. Most ${s} consultations in ${locality} range ₹300–₹1500.`.replace(/\s+/g, " ").trim();
+}
+
+/** FAQs tailored to a specialty within a specific locality (intent-matched). */
+export function comboFaqs(specialty: string, locality: string, city = "Lucknow") {
+  const s = specialty.toLowerCase();
+  return [
+    {
+      q: `Who is the best ${s} in ${locality}, ${city}?`,
+      a: `Hanuone ranks ${s}s in ${locality} by patient rating, experience and consultation fee. Every profile is verified against public medical registries, so you can compare the top-rated ${s}s near ${locality} and book directly.`
+    },
+    {
+      q: `What is the consultation fee of a ${s} in ${locality}?`,
+      a: `Most ${s}s in ${locality}, ${city} charge between ₹300 and ₹1500 per consultation. The exact fee is shown on each doctor's profile, and many offer discounted follow-ups.`
+    },
+    {
+      q: `Can I book a ${s} in ${locality} online?`,
+      a: `Yes. You can book a video teleconsult or an in-clinic appointment with a ${s} in ${locality} directly on Hanuone — no booking fees, with instant confirmation.`
+    },
+    {
+      q: `Are the ${s} listings in ${locality} verified?`,
+      a: `Yes. Every ${s} listed in ${locality} is cross-checked against the National Medical Commission and state medical councils before being published on Hanuone.`
+    }
+  ];
 }

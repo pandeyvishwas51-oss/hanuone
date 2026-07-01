@@ -16,28 +16,58 @@ export default function ProfessionalApprovals() {
   const [pros, setPros] = useState<Pro[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [error, setError] = useState("");
 
   async function load() {
-    setLoading(true);
-    const r = await fetch("/api/admin/professionals");
-    const j = await r.json();
-    setPros(j.professionals ?? []);
-    setLoading(false);
+    setLoading(true); setError("");
+    try {
+      const r = await fetch("/api/admin/professionals");
+      if (!r.ok) throw new Error();
+      const j = await r.json();
+      setPros(j.professionals ?? []);
+    } catch {
+      setError("Couldn't load applications. Check your connection and retry.");
+    } finally {
+      setLoading(false);
+    }
   }
   useEffect(() => { load(); }, []);
 
+  const STATUS_FOR: Record<string, string> = { verify: "verified", reject: "rejected", suspend: "suspended" };
+
   async function act(id: string, action: "verify" | "reject" | "suspend") {
-    setBusyId(id);
-    await fetch("/api/admin/professionals", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, action })
-    });
-    await load();
-    setBusyId(null);
+    const next = STATUS_FOR[action];
+    const prev = pros.find((p) => p.id === id)?.status;
+    setBusyId(id); setError("");
+    // Optimistic: flip the badge instantly, roll back if the server rejects.
+    setPros((list) => list.map((p) => (p.id === id ? { ...p, status: next } : p)));
+    try {
+      const r = await fetch("/api/admin/professionals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, action })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || j.ok === false) {
+        if (prev) setPros((list) => list.map((p) => (p.id === id ? { ...p, status: prev } : p)));
+        setError(j.error || "Action failed — nothing was changed.");
+      }
+    } catch {
+      if (prev) setPros((list) => list.map((p) => (p.id === id ? { ...p, status: prev } : p)));
+      setError("Network error — check your connection and try again.");
+    } finally {
+      setBusyId(null);
+    }
   }
 
   if (loading) return <p className="text-sm text-muted">Loading…</p>;
+  if (error && pros.length === 0)
+    return (
+      <div className="card p-6 text-center">
+        <p role="alert" className="text-sm text-rose-600">{error}</p>
+        <button onClick={load} className="btn-outline mt-3">Retry</button>
+      </div>
+    );
   if (pros.length === 0) return <p className="text-sm text-muted">No provider applications yet.</p>;
 
   const color: Record<string, string> = {
@@ -49,6 +79,7 @@ export default function ProfessionalApprovals() {
 
   return (
     <div className="grid gap-2">
+      {error && <div role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</div>}
       {pros.map((p) => (
         <div key={p.id} className="card flex flex-wrap items-center justify-between gap-3 p-4">
           <div>
@@ -58,10 +89,10 @@ export default function ProfessionalApprovals() {
           <div className="flex items-center gap-2">
             <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${color[p.status] ?? "bg-slate-100"}`}>{p.status}</span>
             {p.status !== "verified" && (
-              <button disabled={busyId === p.id} onClick={() => act(p.id, "verify")} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white">Approve</button>
+              <button disabled={busyId === p.id} onClick={() => act(p.id, "verify")} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white transition disabled:opacity-50">{busyId === p.id ? "Working…" : "Approve"}</button>
             )}
             {p.status !== "rejected" && (
-              <button disabled={busyId === p.id} onClick={() => act(p.id, "reject")} className="rounded-lg border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-600">Reject</button>
+              <button disabled={busyId === p.id} onClick={() => act(p.id, "reject")} className="rounded-lg border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-600 transition disabled:opacity-50">Reject</button>
             )}
           </div>
         </div>

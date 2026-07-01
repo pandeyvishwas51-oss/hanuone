@@ -27,10 +27,11 @@ export default function HeroHeadline({ initialCity }: Props) {
     }
   }, [copy.city]);
 
+  // Brand-forward English headline (city kept for subtle local relevance).
   return (
     <h1 className="h1 mt-3 sm:mt-4">
-      {copy.possessive} Trusted Doctors,{" "}
-      <span className="text-primary">Ek Jagah</span>
+      Your Family&apos;s Complete Healthcare,{" "}
+      <span className="text-accent">All in One Place</span>
     </h1>
   );
 }

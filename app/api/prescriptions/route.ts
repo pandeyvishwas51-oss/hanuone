@@ -60,6 +60,13 @@ export async function POST(req: Request) {
       ? await db().select().from(schema.doctors).where(eq(schema.doctors.id, consult.doctorId)).limit(1)
       : [null];
 
+    // Bind the prescriber to the consulting doctor: if this catalog doctor is
+    // linked to a real provider account, only that provider (or an admin) may
+    // issue prescriptions on their consults. Closes cross-provider Rx forgery.
+    if (doctor?.userId && doctor.userId !== user.id && !user.isAdmin && user.role !== "admin") {
+      return NextResponse.json({ ok: false, error: "Only the consulting doctor can issue this prescription" }, { status: 403 });
+    }
+
     const date = new Date().toISOString().slice(0, 10);
     const validUntil = prescriptionValidUntil();
 

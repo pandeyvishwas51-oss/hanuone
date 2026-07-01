@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const IMAGES = [
   { src: "/providers/01.jpg", pos: "center 35%" },
@@ -27,14 +28,23 @@ export default function ProvidersHero() {
             aria-hidden
             className="absolute inset-0 transition-all duration-700 ease-out"
             style={{
-              backgroundImage: `url('${img.src}')`,
-              backgroundSize: "cover",
-              backgroundPosition: img.pos,
               opacity: k === i ? 1 : 0,
               transform: k === i ? "scale(1.06)" : "scale(1)",
               transitionDuration: k === i ? "4000ms, 700ms" : "700ms",
             }}
-          />
+          >
+            {/* next/image routes these through AVIF/WebP + responsive sizing; only
+                the first slide is eager (it's the hero LCP), the rest lazy-load. */}
+            <Image
+              src={img.src}
+              alt=""
+              fill
+              priority={k === 0}
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: img.pos }}
+            />
+          </div>
         ))}
         <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(0,77,90,0.9)_0%,rgba(0,77,90,0.72)_50%,rgba(13,106,122,0.55)_100%)]" />
       </div>

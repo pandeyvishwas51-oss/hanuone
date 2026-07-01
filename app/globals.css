@@ -13,13 +13,13 @@
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98]; min-height: 44px; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; min-height: 44px; }
   .btn-primary { @apply btn bg-accent text-white hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent/40; }
   .btn-secondary { @apply btn bg-primary text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary/40; }
   .btn-outline { @apply btn border border-primary/25 bg-white text-primary hover:bg-primary/5; }
   .btn-whatsapp { @apply btn bg-whatsapp text-white hover:bg-[#1ebe57]; }
   .card { @apply rounded-2xl bg-white shadow-card; }
-  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-3 py-1.5 text-xs font-medium text-primary hover:border-primary/40; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-3 py-1.5 text-xs font-medium text-primary hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; }
   .input { @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base text-ink placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-sm; }
   .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted; }
   .section { @apply py-10 sm:py-16; }
@@ -30,3 +30,61 @@
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Keyboard focus safety net: any interactive element without its own focus
+   style (e.g. icon-only close buttons) still gets a visible ring. */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  summary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(1, 88, 108, 0.45);
+    border-radius: 0.5rem;
+  }
+}
+
+/* Respect users who prefer reduced motion — disable entrance animations + transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important; /* else staggered entrances hold content at opacity:0 during the delay */
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reusable skeleton shimmer block. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #eef2f5;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.6s infinite;
+}
+
+/* Print: drop site chrome and floating widgets so prescriptions/records print
+   clean. Tailwind's `print:hidden` covers per-component chrome; this is the
+   global safety net for shared shells (header/footer/nav/chat/widgets). */
+@media print {
+  header[data-site-header],
+  footer[data-site-footer],
+  nav[data-mobile-nav],
+  [data-chat-widget],
+  [data-floating] {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  .skeleton::after {
+    animation: none !important;
+  }
+}

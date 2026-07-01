@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import HeroVideo from "@/components/HeroVideo";
 import { img } from "@/lib/images";
 import SearchBar from "@/components/SearchBar";
+import CategoryBar from "@/components/CategoryBar";
 import SpecialtyCard from "@/components/SpecialtyCard";
 import LocalityChip from "@/components/LocalityChip";
 import DoctorCard from "@/components/DoctorCard";
@@ -13,20 +15,32 @@ import {
   getFeaturedDoctors
 } from "@/lib/queries";
 import { getActiveCity } from "@/lib/active-city";
-import { ShieldCheck, Users, Sparkles } from "lucide-react";
+import { unstable_cache } from "next/cache";
+import { ShieldCheck, Users, Sparkles, BadgeCheck as CheckBadge } from "lucide-react";
 import { HOME_FAQS } from "@/lib/seo";
 
-// Re-render every 5 minutes; geo headers are read per-request anyway because
-// `headers()` opts the page into dynamic rendering.
+// The page itself is dynamic (geo city is resolved per-request from headers),
+// but the homepage's three catalog reads only vary by city — so they're cached
+// for 5 minutes per city instead of hitting Postgres on every visit.
 export const dynamic = "force-dynamic";
+
+const getHomeData = (city: string) =>
+  unstable_cache(
+    async () => {
+      const [specializations, localities, featured] = await Promise.all([
+        getAllSpecializations(city),
+        getAllLocalities(city),
+        getFeaturedDoctors(10, city)
+      ]);
+      return { specializations, localities, featured };
+    },
+    ["home-data", city],
+    { revalidate: 300, tags: ["doctors"] }
+  )();
 
 export default async function HomePage() {
   const activeCity = getActiveCity();
-  const [specializations, localities, featured] = await Promise.all([
-    getAllSpecializations(activeCity.name),
-    getAllLocalities(activeCity.name),
-    getFeaturedDoctors(10, activeCity.name)
-  ]);
+  const { specializations, localities, featured } = await getHomeData(activeCity.name);
 
   const topSpecialties = specializations.slice(0, 6);
   const topLocalities = localities.slice(0, 8);
@@ -36,21 +50,42 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-bg to-bg">
-        <div className="container-page pb-10 pt-8 sm:pt-20">
+        {/* Background story video (landscape, all screens) */}
+        <HeroVideo />
+
+        <div className="container-page relative z-10 pb-10 pt-8 sm:pt-16">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
-              Trusted Healthcare, At Home
+              One Platform · Complete Healthcare
             </span>
             <HeroHeadline initialCity={visitorCity} />
-            <p className="mt-3 text-sm text-muted sm:text-lg">
-              Find verified doctors in {activeCity.name} for your family. Search by specialty, locality or
-              pincode. Free, simple, built for parents.
+            <p className="mt-3 text-sm font-medium text-primary sm:text-base">
+              Trusted Healthcare, Right at Home.
             </p>
+            <p className="mt-2 text-sm text-muted sm:text-lg">
+              Consult doctors, book lab tests, order medicines, nursing, physiotherapy and an AI health
+              assistant — for your whole family in {activeCity.name}.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/ai-doctor" className="btn-secondary">
+                🎙️ Talk to Dr. Hanu
+              </Link>
+              <Link href="/services" className="btn-primary">
+                Book Now
+              </Link>
+              <Link href="/services" className="btn-outline">
+                Explore Services
+              </Link>
+            </div>
+            <p className="mt-2 text-xs text-muted">Speak in Hindi or English — our AI doctor listens and replies by voice.</p>
           </div>
 
           <div className="mx-auto mt-6 max-w-4xl sm:mt-8">
             <SearchBar specializations={specializations} localities={localities} />
           </div>
+
+          {/* Urban-Company-style one-tap category access */}
+          <CategoryBar />
 
           <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-muted">
             <span className="hidden sm:inline">Popular:</span>
@@ -64,6 +99,22 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
+
+          {/* Trust bar */}
+          <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-primary/80">
+            {[
+              "Verified Doctors",
+              "Trusted Healthcare Partners",
+              "Affordable Pricing",
+              "Home Healthcare Services",
+              "AI-Powered Health Guidance",
+              "Secure Health Records"
+            ].map((t) => (
+              <span key={t} className="inline-flex items-center gap-1.5">
+                <CheckBadge className="h-4 w-4 text-accent" /> {t}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -71,15 +122,19 @@ export default async function HomePage() {
       <section className="section pt-2">
         <div className="container-page">
           <h2 className="h2">Everything your family needs</h2>
-          <p className="mt-1 text-sm text-muted">One platform — consult, test, medicate and monitor.</p>
+          <p className="mt-1 text-sm text-muted">One platform — consult, test, medicate, recover and monitor.</p>
           <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {[
               { href: "/doctors", title: "Consult a doctor", desc: "Video or clinic visit", image: img("consult") },
-              { href: "/lab", title: "Lab tests at home", desc: "Reports in 24–48h", image: img("lab") },
-              { href: "/medicine", title: "Medicines at home", desc: "Prescription delivery", image: img("medicine") },
-              { href: "/vitals", title: "Vital Checkup", desc: "Instant flagged report", image: img("vitals") }
+              { href: "/lab", title: "Diagnostics & lab tests", desc: "Home sample, fast reports", image: img("lab") },
+              { href: "/medicine", title: "Pharmacy delivery", desc: "Medicines to your door", image: img("medicine") },
+              { href: "/home-nursing", title: "Nursing & home care", desc: "Skilled care at home", image: img("nursing") },
+              { href: "/services", title: "Physiotherapy", desc: "Rehab & mobility care", image: img("physio") },
+              { href: "/vitals", title: "Vital Checkup", desc: "Instant flagged report", image: img("vitals") },
+              { href: "/ai-doctor", title: "AI Health Assistant", desc: "Symptom check & guidance", image: img("ai") },
+              { href: "/services", title: "Nutrition support", desc: "Personalised diet plans", image: img("nutrition") }
             ].map((s) => (
-              <Link key={s.href} href={s.href} className="card group overflow-hidden p-0 transition hover:shadow-lg">
+              <Link key={s.title} href={s.href} className="card group overflow-hidden p-0 transition hover:-translate-y-0.5 hover:shadow-lg">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   <Image src={s.image} alt={s.title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-300 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
@@ -151,9 +206,9 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 no-scrollbar sm:mx-0 sm:gap-4 sm:px-0">
-              {featured.map((d) => (
+              {featured.map((d, i) => (
                 <div key={d.id} className="w-[78%] shrink-0 snap-start sm:w-[340px]">
-                  <DoctorCard doctor={d} />
+                  <DoctorCard doctor={d} index={i} />
                 </div>
               ))}
             </div>
@@ -206,16 +261,16 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="rounded-2xl bg-white/10 p-4 sm:p-5">
-              <div className="text-sm font-semibold">Hanuone Home Care Network</div>
+              <div className="text-sm font-semibold">HanuOne Home Care Network</div>
               <p className="mt-1 text-xs text-white/80">
-                Are you a nurse, ward boy, caregiver or physiotherapist? Register on HanuonePro to get
-                home-care gigs in Lucknow.
+                Are you a nurse, ward boy, caregiver or physiotherapist? Join HanuOne to get
+                home-care work near you in Lucknow.
               </p>
               <Link href="/providers/register" className="btn-whatsapp mt-4 inline-flex">
                 Register as a professional
               </Link>
-              <Link href="/login" className="mt-2 block text-xs text-white/70 hover:text-white">
-                Already registered? Login
+              <Link href="/login?next=/providers" className="mt-2 block text-xs text-white/70 hover:text-white">
+                Already registered? Log in
               </Link>
             </div>
           </div>

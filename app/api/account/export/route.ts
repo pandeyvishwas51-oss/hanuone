@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 import { audit, clientIp } from "@/lib/audit";
+import { rateLimit } from "@/lib/ratelimit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,10 +17,18 @@ export async function GET(req: Request) {
     const status = e instanceof AuthError ? e.status : 401;
     return NextResponse.json({ ok: false, error: "Login required" }, { status });
   }
+  // Each export runs 6 full-table scans — throttle per user to prevent DB-load amplification.
+  const rl = await rateLimit(`export:${user.id}`, 3, 600);
+  if (!rl.ok) return NextResponse.json({ ok: false, error: "Export was requested recently. Please try again in a few minutes." }, { status: 429 });
   if (!HAS_DB) return NextResponse.json({ ok: false, error: "Database not configured" }, { status: 503 });
 
   const [profile, consults, rxs, vitals, payments, consents] = await Promise.all([
-    db().select().from(schema.users).where(eq(schema.users.id, user.id)),
+    // Explicit safe fields only — never export passwordHash or other secrets.
+    db().select({
+      id: schema.users.id, name: schema.users.name, email: schema.users.email, phone: schema.users.phone,
+      gender: schema.users.gender, role: schema.users.role, authProvider: schema.users.authProvider,
+      emailVerified: schema.users.emailVerified, phoneVerified: schema.users.phoneVerified, createdAt: schema.users.createdAt
+    }).from(schema.users).where(eq(schema.users.id, user.id)),
     db().select().from(schema.consultations).where(eq(schema.consultations.patientUserId, user.id)),
     db().select().from(schema.prescriptions).where(eq(schema.prescriptions.patientUserId, user.id)),
     db().select().from(schema.vitalVisits).where(eq(schema.vitalVisits.patientUserId, user.id)),

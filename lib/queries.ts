@@ -476,6 +476,20 @@ export async function getAllDoctorSlugs(): Promise<string[]> {
   }
 }
 
+/** Doctor slugs with their real updatedAt — used for honest sitemap lastmod. */
+export async function getAllDoctorSlugsWithUpdated(): Promise<{ slug: string; updatedAt: Date | null }[]> {
+  if (!HAS_DB) return LOCAL_DOCTORS.map((d) => ({ slug: d.slug, updatedAt: null }));
+  try {
+    const rows = await db()
+      .select({ slug: doctors.slug, updatedAt: doctors.updatedAt })
+      .from(doctors)
+      .where(eq(doctors.isActive, true));
+    return rows.length ? rows : LOCAL_DOCTORS.map((d) => ({ slug: d.slug, updatedAt: null }));
+  } catch {
+    return LOCAL_DOCTORS.map((d) => ({ slug: d.slug, updatedAt: null }));
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Pincode resolver
 // ---------------------------------------------------------------------------

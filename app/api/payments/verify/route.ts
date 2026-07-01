@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 import { verifyPaymentSignature } from "@/lib/razorpay";
-import { notifyConsultBooked } from "@/lib/notify";
+import { confirmConsultation } from "@/lib/order-confirm";
 import { audit, clientIp } from "@/lib/audit";
+import { track } from "@/lib/analytics";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -49,18 +50,27 @@ export async function POST(req: Request) {
       .where(eq(schema.payments.razorpayOrderId, razorpay_order_id))
       .limit(1);
     if (!payment) return NextResponse.json({ ok: false, error: "Order not found" }, { status: 404 });
-
-    await db()
-      .update(schema.payments)
-      .set({ razorpayPaymentId: razorpay_payment_id, razorpaySignature: razorpay_signature, status: "paid", updatedAt: new Date() })
-      .where(eq(schema.payments.id, payment.id));
-
-    // Confirm the linked order.
-    if (payment.orderType === "consultation" && payment.orderId) {
-      await confirmConsultation(payment.orderId);
+    if (payment.userId && payment.userId !== user.id) {
+      return NextResponse.json({ ok: false, error: "This payment is not yours" }, { status: 403 });
     }
 
-    await audit({ actorUserId: user.id, actorRole: user.role, action: "payment", entity: "payments", entityId: payment.id, meta: { status: "paid" }, ipAddress: clientIp(req) });
+    // Idempotent flip: only the first writer (verify OR webhook) flips →paid and
+    // runs confirm/audit. A concurrent/duplicate call updates 0 rows and skips.
+    const flipped = await db()
+      .update(schema.payments)
+      .set({ razorpayPaymentId: razorpay_payment_id, razorpaySignature: razorpay_signature, status: "paid", updatedAt: new Date() })
+      .where(and(eq(schema.payments.id, payment.id), ne(schema.payments.status, "paid")))
+      .returning({ id: schema.payments.id });
+
+    if (flipped.length > 0) {
+      // Confirm the linked order.
+      if (payment.orderType === "consultation" && payment.orderId) {
+        await confirmConsultation(payment.orderId);
+      }
+      await audit({ actorUserId: user.id, actorRole: user.role, action: "payment", entity: "payments", entityId: payment.id, meta: { status: "paid" }, ipAddress: clientIp(req) });
+      // Conversion event — fires exactly once per paid order (inside the idempotent flip).
+      await track({ name: "book_success", userId: user.id, props: { service: payment.orderType, orderId: payment.orderId, amountInr: payment.amountInr } });
+    }
     return NextResponse.json({ ok: true, orderType: payment.orderType, orderId: payment.orderId });
   } catch (e) {
     console.error("[payments/verify]", e);
@@ -68,29 +78,3 @@ export async function POST(req: Request) {
   }
 }
 
-async function confirmConsultation(consultationId: string) {
-  const [consult] = await db()
-    .update(schema.consultations)
-    .set({ status: "booked", updatedAt: new Date() })
-    .where(eq(schema.consultations.id, consultationId))
-    .returning();
-  if (!consult) return;
-
-  if (consult.slotId) {
-    await db().update(schema.providerSlots).set({ isBooked: true }).where(eq(schema.providerSlots.id, consult.slotId));
-  }
-
-  const [doctor] = consult.doctorId
-    ? await db().select({ name: schema.doctors.name }).from(schema.doctors).where(eq(schema.doctors.id, consult.doctorId)).limit(1)
-    : [{ name: "your doctor" }];
-
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.in";
-  const whenText = consult.scheduledAt ? new Date(consult.scheduledAt).toLocaleString("en-IN") : "your scheduled time";
-  await notifyConsultBooked({
-    patientPhone: consult.patientPhone,
-    patientName: consult.patientName,
-    doctorName: doctor?.name ?? "your doctor",
-    whenText,
-    joinUrl: `${base}/consult/${consult.id}`
-  });
-}

@@ -5,7 +5,7 @@
 // (writes branded PNGs to /public/generated/), flip USE_GENERATED to true to
 // switch the whole site to the AI-generated set — no other code changes.
 
-const USE_GENERATED = false;
+const USE_GENERATED = true;
 
 type Key =
   | "heroHome"
@@ -15,17 +15,23 @@ type Key =
   | "nursing"
   | "physio"
   | "vitals"
+  | "ai"
+  | "nutrition"
   | "providersHero";
 
+// WebP sources (re-compressed from the original PNGs: ~17MB -> ~1MB total).
+// next/image still serves responsive AVIF/WebP variants from these.
 const GENERATED: Record<Key, string> = {
-  heroHome: "/generated/hero-home.png",
-  consult: "/generated/service-consult.png",
-  medicine: "/generated/service-medicine.png",
-  lab: "/generated/service-lab.png",
-  nursing: "/generated/service-nursing.png",
-  physio: "/generated/service-physio.png",
-  vitals: "/generated/service-vitals.png",
-  providersHero: "/generated/providers-hero.png"
+  heroHome: "/generated/hero-home.webp",
+  consult: "/generated/service-consult.webp",
+  medicine: "/generated/service-medicine.webp",
+  lab: "/generated/service-lab.webp",
+  nursing: "/generated/service-nursing.webp",
+  physio: "/generated/service-physio.webp",
+  vitals: "/generated/service-vitals.webp",
+  ai: "/generated/service-ai.webp",
+  nutrition: "/generated/service-nutrition.webp",
+  providersHero: "/generated/providers-hero.webp"
 };
 
 // Best available existing photos (demo set) as the current default.
@@ -37,6 +43,8 @@ const FALLBACK: Record<Key, string> = {
   nursing: "/img/home-nursing.jpg",
   physio: "/hero/injection.jpg",
   vitals: "/hero/vitals.jpg",
+  ai: "/hero/consult.jpg",
+  nutrition: "/hero/vitals.jpg",
   providersHero: "/providers/01.jpg"
 };
 

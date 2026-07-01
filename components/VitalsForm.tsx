@@ -35,6 +35,7 @@ export default function VitalsForm({ defaultName, defaultPhone }: { defaultName:
   }, [defaultName, defaultPhone]);
 
   async function submit() {
+    if (busy) return; // guard against double-submit
     setError("");
     if (!name.trim() || phone.trim().length < 10) return setError("Enter name and a valid phone.");
     setBusy(true);
@@ -57,14 +58,14 @@ export default function VitalsForm({ defaultName, defaultPhone }: { defaultName:
 
   if (result) {
     return (
-      <div className={`card p-6 ${result.evaluation.escalate ? "border-rose-200" : ""}`}>
+      <div className={`card animate-scale-in p-6 ${result.evaluation.escalate ? "border-rose-200" : ""}`}>
         <h3 className="h3">{result.evaluation.escalate ? "⚠ Needs attention" : "✓ Checkup recorded"}</h3>
         <p className="mt-2 text-sm text-muted">{result.evaluation.summary}</p>
         {result.evaluation.escalate && (
           <a href="/doctors" className="btn-primary mt-4 inline-block">Book a teleconsult now</a>
         )}
         <div className="mt-4 flex gap-2">
-          {result.reportUrl && <a href={result.reportUrl} target="_blank" className="btn-outline">Download report</a>}
+          {result.reportUrl && <a href={result.reportUrl} target="_blank" rel="noopener noreferrer" className="btn-outline">Download report</a>}
           <button className="btn-outline" onClick={() => { setResult(null); setV({}); }}>New checkup</button>
         </div>
       </div>
@@ -74,16 +75,16 @@ export default function VitalsForm({ defaultName, defaultPhone }: { defaultName:
   return (
     <div className="card p-6">
       <h2 className="h3">New Vital Checkup</h2>
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <input className="input" placeholder="Patient name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input className="input" inputMode="numeric" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))} />
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <input className="input" aria-label="Patient name" autoComplete="name" placeholder="Patient name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input className="input" aria-label="Phone number" autoComplete="tel" inputMode="numeric" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))} />
       </div>
 
       <div className="mt-3 grid gap-2">
-        <input className="input" placeholder="Reason for checkup" value={intake.reason} onChange={(e) => setIntake({ ...intake, reason: e.target.value })} />
+        <input className="input" aria-label="Reason for checkup" placeholder="Reason for checkup" value={intake.reason} onChange={(e) => setIntake({ ...intake, reason: e.target.value })} />
         <div className="grid grid-cols-2 gap-2">
-          <input className="input" placeholder="Allergies" value={intake.allergies} onChange={(e) => setIntake({ ...intake, allergies: e.target.value })} />
-          <input className="input" placeholder="Current medicines" value={intake.currentMeds} onChange={(e) => setIntake({ ...intake, currentMeds: e.target.value })} />
+          <input className="input" aria-label="Allergies" placeholder="Allergies" value={intake.allergies} onChange={(e) => setIntake({ ...intake, allergies: e.target.value })} />
+          <input className="input" aria-label="Current medicines" placeholder="Current medicines" value={intake.currentMeds} onChange={(e) => setIntake({ ...intake, currentMeds: e.target.value })} />
         </div>
       </div>
 
@@ -102,10 +103,13 @@ export default function VitalsForm({ defaultName, defaultPhone }: { defaultName:
         ))}
       </div>
 
-      <button className="btn-primary mt-5 w-full" disabled={busy} onClick={submit}>
-        {busy ? "Saving…" : "Save & generate report"}
-      </button>
-      {error && <p className="mt-2 text-sm text-rose-600">{error}</p>}
+      {/* Sticky on mobile so the primary action stays reachable above the bottom nav. */}
+      <div className="sticky bottom-[calc(4rem+env(safe-area-inset-bottom))] z-20 -mx-1 mt-5 bg-gradient-to-t from-bg via-bg/95 to-transparent px-1 pb-1 pt-3 md:static md:mx-0 md:bg-none md:p-0">
+        <button className="btn-primary w-full" disabled={busy} onClick={submit}>
+          {busy ? "Saving…" : "Save & generate report"}
+        </button>
+      </div>
+      {error && <p role="alert" className="mt-2 animate-fade-in-up text-sm text-rose-600">{error}</p>}
     </div>
   );
 }

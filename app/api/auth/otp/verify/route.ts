@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isValidIndianMobile, normalizeMobile, verifyOtp } from "@/lib/msg91";
 import { upsertUserByPhone, createSession } from "@/lib/auth";
+import { rateLimit } from "@/lib/ratelimit";
 import { audit, clientIp } from "@/lib/audit";
 
 export const runtime = "nodejs";
@@ -9,6 +10,9 @@ export const dynamic = "force-dynamic";
 type Body = { phone?: string; otp?: string; name?: string; role?: "patient" | "provider" };
 
 export async function POST(req: Request) {
+  const rl = await rateLimit(`otp-verify:${clientIp(req)}`, 8, 600);
+  if (!rl.ok) return NextResponse.json({ ok: false, error: "Too many attempts. Try again later." }, { status: 429 });
+
   let body: Body = {};
   try {
     body = await req.json();

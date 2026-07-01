@@ -20,8 +20,8 @@ export default function DoctorList({
   }
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {doctors.map((d) => (
-        <DoctorCard key={d.id} doctor={d} />
+      {doctors.map((d, i) => (
+        <DoctorCard key={d.id} doctor={d} index={i} />
       ))}
     </div>
   );

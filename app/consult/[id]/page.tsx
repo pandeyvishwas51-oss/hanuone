@@ -4,6 +4,9 @@ import { getCurrentUser } from "@/lib/auth";
 import { HAS_DB, db, schema } from "@/lib/db";
 import VideoRoom from "@/components/VideoRoom";
 import PrescriptionPanel from "@/components/PrescriptionPanel";
+import ConsultTranscript from "@/components/ConsultTranscript";
+import ResumePayment from "@/components/ResumePayment";
+import ConsultStatusActions from "@/components/ConsultStatusActions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Your consultation", robots: { index: false } };
@@ -29,6 +32,8 @@ export default async function ConsultPage({ params }: { params: { id: string } }
   const when = consult.scheduledAt ? new Date(consult.scheduledAt) : null;
   const room = consult.videoRoom || `ho-${consult.id.slice(0, 10)}`;
   const paid = consult.status !== "pending_payment";
+  // Completed/cancelled consults are terminal — never show a joinable video room.
+  const terminal = consult.status === "completed" || consult.status === "cancelled";
   const isProvider = user.role === "provider" || user.role === "admin" || user.isAdmin;
 
   return (
@@ -47,6 +52,21 @@ export default async function ConsultPage({ params }: { params: { id: string } }
         {!paid ? (
           <div className="card p-8 text-center">
             <p className="text-sm text-muted">This consultation is awaiting payment. Complete payment to unlock the video room.</p>
+            {isOwner && (
+              <ResumePayment consultationId={consult.id} feeInr={consult.feeInr ?? 400} name={user.name || consult.patientName} contact={consult.patientPhone} />
+            )}
+          </div>
+        ) : terminal ? (
+          <div className="card p-8 text-center">
+            <p className="text-sm font-medium text-ink">
+              {consult.status === "completed" ? "This consultation has ended." : "This consultation was cancelled."}
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              {consult.status === "completed"
+                ? "Your prescription and summary are in your account."
+                : "If this was a mistake, you can book a new consultation."}
+            </p>
+            <a href="/account" className="btn-primary mt-4 inline-block">Back to my consults</a>
           </div>
         ) : (
           <VideoRoom
@@ -65,10 +85,19 @@ export default async function ConsultPage({ params }: { params: { id: string } }
       ) : null}
 
       {isProvider && paid ? (
-        <div className="mt-4">
+        <div className="mt-4 space-y-4">
           <PrescriptionPanel consultationId={consult.id} />
+          <div className="card p-5">
+            <div className="label">Consultation status</div>
+            <p className="mb-3 text-xs text-muted">Mark complete once you&apos;ve finished — this sends the patient their wrap-up and unlocks follow-up.</p>
+            <ConsultStatusActions consultationId={consult.id} status={consult.status} />
+          </div>
         </div>
       ) : null}
+
+      <div className="mt-4">
+        <ConsultTranscript consultId={consult.id} />
+      </div>
     </div>
   );
 }

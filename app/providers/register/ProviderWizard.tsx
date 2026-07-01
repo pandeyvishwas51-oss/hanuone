@@ -39,6 +39,8 @@ export default function ProviderWizard() {
   const [otpSent, setOtpSent] = useState(false);
   const [savedAt, setSavedAt] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   // Restore draft
   useEffect(() => {
@@ -95,14 +97,47 @@ export default function ProviderWizard() {
     }
   }
 
+  async function submitApplication() {
+    if (submitting) return; // guard the race before `disabled` re-renders → no duplicate applications/ops-emails
+    setSubmitError(""); setSubmitting(true);
+    try {
+      const r = await fetch("/api/providers/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.name,
+          phone: data.mobile,
+          role,
+          email: data.email,
+          gender: data.gender,
+          specialization: role === "doctor" ? data.specialty : data.tier,
+          experienceYears: data.experienceYears,
+          locality: data.address,
+          pincode: data.pincode,
+          city: data.city || "Lucknow"
+        })
+      });
+      const j = await r.json();
+      if (!j.ok) {
+        if (r.status === 401) { setSubmitError("Please log in or create your HanuONE account first, then submit your application."); return; }
+        throw new Error(j.error || "Could not submit application");
+      }
+      setSubmitted(true);
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {
+      setSubmitError((e as Error).message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   const next = () => {
     if (step < STEPS.length - 1) {
       const n = step + 1;
       setStep(n);
       setMaxStep((m) => Math.max(m, n));
     } else {
-      setSubmitted(true);
-      localStorage.removeItem(STORAGE_KEY);
+      submitApplication();
     }
   };
   const back = () => setStep((s) => Math.max(0, s - 1));
@@ -192,13 +227,19 @@ export default function ProviderWizard() {
               )}
               <button
                 onClick={next}
-                disabled={!canProceed()}
+                disabled={!canProceed() || submitting}
                 className="rounded-full bg-brand-600 px-6 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:bg-slate-300"
               >
-                {step === STEPS.length - 1 ? "Submit application" : "Next"}
+                {step === STEPS.length - 1 ? (submitting ? "Submitting…" : "Submit application") : "Next"}
               </button>
             </div>
           </div>
+          {submitError && (
+            <p className="mt-3 text-right text-sm text-rose-600">
+              {submitError}{" "}
+              {submitError.includes("log in") && <Link href="/login?next=/providers/register" className="font-semibold underline">Log in</Link>}
+            </p>
+          )}
         </section>
       </div>
     </div>
@@ -240,6 +281,8 @@ function StepMobile({ data, set, otpSent, setOtpSent, mobileValid }: any) {
               value={data.mobile ?? ""}
               onChange={(e) => set("mobile", e.target.value.replace(/\D/g, "").slice(0, 10))}
               inputMode="numeric"
+              autoComplete="tel-national"
+              aria-label="Mobile number"
               placeholder="10-digit mobile"
               className="w-full rounded-r-xl px-2 py-2.5 text-sm outline-none"
             />
@@ -259,6 +302,8 @@ function StepMobile({ data, set, otpSent, setOtpSent, mobileValid }: any) {
               value={data.otp ?? ""}
               onChange={(e) => set("otp", e.target.value.replace(/\D/g, "").slice(0, 6))}
               inputMode="numeric"
+              autoComplete="one-time-code"
+              aria-label="6-digit verification code"
               placeholder="6-digit code"
               className={inputCls + " text-center text-lg tracking-[0.4em]"}
             />
@@ -274,14 +319,14 @@ function StepIdentity({ data, set }: any) {
     <div>
       <StepHead title="Your details" sub="Basic information for your profile." />
       <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-        <Field label="Full name"><input value={data.name ?? ""} onChange={(e) => set("name", e.target.value)} placeholder="Dr. / Nurse name" className={inputCls} /></Field>
+        <Field label="Full name"><input value={data.name ?? ""} onChange={(e) => set("name", e.target.value)} autoComplete="name" placeholder="Dr. / Nurse name" className={inputCls} /></Field>
         <Field label="Gender">
           <select value={data.gender ?? ""} onChange={(e) => set("gender", e.target.value)} className={inputCls}>
             <option value="">Select</option><option>Female</option><option>Male</option><option>Other</option>
           </select>
         </Field>
         <Field label="Date of birth"><input type="date" value={data.dob ?? ""} onChange={(e) => set("dob", e.target.value)} className={inputCls} /></Field>
-        <Field label="Email"><input type="email" value={data.email ?? ""} onChange={(e) => set("email", e.target.value)} placeholder="you@example.com" className={inputCls} /></Field>
+        <Field label="Email"><input type="email" value={data.email ?? ""} onChange={(e) => set("email", e.target.value)} autoComplete="email" placeholder="you@example.com" className={inputCls} /></Field>
         <Field label="Languages spoken"><input value={data.languages ?? ""} onChange={(e) => set("languages", e.target.value)} placeholder="Hindi, English" className={inputCls} /></Field>
       </div>
     </div>

@@ -5,13 +5,18 @@ import Link from "next/link";
 
 // Shows "Log in" or "My account" depending on session.
 export default function AccountNavLink() {
-  const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  // Default to "Log in" so the nav never shifts/flashes; update once we know.
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
-    fetch("/api/auth/me").then((r) => r.json()).then((j) => setLoggedIn(!!j.user)).catch(() => setLoggedIn(false));
+    let ignore = false;
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((j) => { if (!ignore) setLoggedIn(!!j.user); })
+      .catch(() => { if (!ignore) setLoggedIn(false); });
+    return () => { ignore = true; };
   }, []);
-  if (loggedIn === null) return null;
   return (
-    <Link href={loggedIn ? "/account" : "/login"} className="hover:text-accent">
+    <Link href={loggedIn ? "/account" : "/login"} className="whitespace-nowrap hover:text-accent">
       {loggedIn ? "My account" : "Log in"}
     </Link>
   );

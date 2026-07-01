@@ -14,7 +14,29 @@ import {
   ArrowRight
 } from "lucide-react";
 import ServiceRequestDialog from "@/components/ServiceRequestDialog";
+import ServiceabilityBadge from "@/components/ServiceabilityBadge";
+import AnswerBlock from "@/components/AnswerBlock";
+import FaqSection from "@/components/FaqSection";
 import { getActiveCity } from "@/lib/active-city";
+
+const SERVICE_FAQS = [
+  {
+    q: "What services does Hanuone offer?",
+    a: "Hanuone offers video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, at-home vitals checkups and elder care — all from verified providers with transparent pricing and no booking fees."
+  },
+  {
+    q: "Which cities is Hanuone available in?",
+    a: "Hanuone is live in Lucknow and Delhi NCR (including Noida, Gurugram, Ghaziabad and Faridabad). Teleconsultations are available anywhere; home visits depend on your pincode — check serviceability on the page."
+  },
+  {
+    q: "Can I get a doctor, nurse or lab test at home?",
+    a: "Yes. You can book home nursing, at-home lab sample collection, physiotherapy and vitals checkups directly on Hanuone. Enter your pincode to confirm same-day availability in your area."
+  },
+  {
+    q: "Does Hanuone charge a booking fee?",
+    a: "No. Hanuone never charges patients a booking or platform fee. You only pay the consultation fee or service price shown upfront on each provider's profile."
+  }
+];
 
 export const metadata: Metadata = {
   title: "Services, Hanuone Trusted Healthcare",
@@ -90,6 +112,14 @@ export default function ServicesPage() {
         </div>
       </div>
 
+      <div className="mx-auto mt-6 max-w-3xl">
+        <AnswerBlock
+          question="What is Hanuone and what services does it offer?"
+          answer={`Hanuone is an all-in-one healthcare platform in Lucknow and Delhi NCR offering verified video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, vitals checkups and elder care — with transparent pricing and no booking fees for patients.`}
+          updated={new Date().toISOString().slice(0, 10)}
+        />
+      </div>
+
       <div className="relative mx-auto mt-8 aspect-[16/7] w-full max-w-5xl overflow-hidden rounded-2xl">
         <Image
           src={img("heroHome")}
@@ -102,9 +132,17 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
       </div>
 
+      <div className="mx-auto mt-8 max-w-3xl">
+        <ServiceabilityBadge />
+      </div>
+
       <section className="mt-10 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {SERVICES.map((s) => (
-          <article key={s.id} className="card p-5 sm:p-6 flex flex-col">
+        {SERVICES.map((s, i) => (
+          <article
+            key={s.id}
+            style={{ animationDelay: `${Math.min(i, 6) * 60}ms` }}
+            className="card animate-fade-in-up flex flex-col p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-12px_rgba(1,88,108,0.3)] sm:p-6"
+          >
             <div className="flex items-center justify-between">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent">
                 <s.icon size={20} />
@@ -118,10 +156,7 @@ export default function ServicesPage() {
             <h2 className="mt-3 text-base font-semibold text-ink">{s.label}</h2>
             <p className="mt-1 text-sm text-muted flex-1">{s.desc}</p>
             {"href" in s && s.href ? (
-              <Link
-                href={s.href}
-                className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primary-600"
-              >
+              <Link href={s.href} className="btn-secondary mt-4 w-full">
                 {s.cta} <ArrowRight size={14} />
               </Link>
             ) : (
@@ -130,7 +165,7 @@ export default function ServicesPage() {
                 serviceLabel={s.label}
                 isLive={s.live}
                 defaultCity={city}
-                className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primary-600"
+                className="btn-secondary mt-4 w-full"
                 trigger={<>{s.cta} <ArrowRight size={14} /></>}
               />
             )}
@@ -146,7 +181,7 @@ export default function ServicesPage() {
               Compassionate, accessible, affordable healthcare for every family. From doctor consultations to home care, we make sure the right care is never more than a search away.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Link href="/doctors" className="rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-600">Find doctors</Link>
+              <Link href="/doctors" className="btn-primary">Find doctors</Link>
               <Link href="/my-bookings" className="rounded-lg border border-white/30 bg-transparent px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/5">My bookings</Link>
             </div>
           </div>
@@ -157,6 +192,10 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <div className="mt-12">
+        <FaqSection title="Hanuone services — FAQs" faqs={SERVICE_FAQS} />
+      </div>
     </div>
   );
 }

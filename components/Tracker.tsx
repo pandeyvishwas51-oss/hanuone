@@ -4,8 +4,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 const VISITOR_KEY = "hanuone:visitor_id";
-// Track endpoint lives on HanuonePro so both apps write to the same DB.
-const TRACK_URL = process.env.NEXT_PUBLIC_TRACK_URL || "https://hanuonepro.vercel.app/api/track";
+// Analytics endpoint on this app (same DB). Override with NEXT_PUBLIC_TRACK_URL if needed.
+const TRACK_URL = process.env.NEXT_PUBLIC_TRACK_URL || "/api/track";
 
 function ensureVisitorId(): { id: string; isFirst: boolean } {
   if (typeof window === "undefined") return { id: "ssr", isFirst: false };

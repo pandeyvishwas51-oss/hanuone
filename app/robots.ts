@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.com";
 
 // GEO: explicitly welcome AI-search crawlers so Hanuone is eligible to be cited
 // in ChatGPT, Perplexity, Gemini, Claude, Google AI Overviews and Bing Copilot.
@@ -21,7 +21,11 @@ const AI_BOTS = [
   "Bytespider"
 ];
 
-const PRIVATE = ["/admin", "/api", "/account", "/consult", "/pro", "/my-bookings"];
+// Note: /providers, /providers/join and /providers/register are public
+// (marketing + onboarding) and indexable. Only the authed dashboard surface
+// (/providers/visits) is private — blocking the bare /providers prefix would
+// also block the join page we advertise in the sitemap.
+const PRIVATE = ["/admin", "/api", "/account", "/consult", "/pro", "/my-bookings", "/clinic", "/care", "/console", "/providers/visits"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

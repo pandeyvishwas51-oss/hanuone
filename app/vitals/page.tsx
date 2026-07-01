@@ -4,7 +4,9 @@ import { getCurrentUser } from "@/lib/auth";
 import { HAS_DB, db, schema } from "@/lib/db";
 import VitalsForm from "@/components/VitalsForm";
 import VitalsTrends, { type VitalPoint } from "@/components/VitalsTrends";
+import VitalCheckupBooking from "@/components/VitalCheckupBooking";
 import AnswerBlock from "@/components/AnswerBlock";
+import ServiceHero from "@/components/ServiceHero";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -33,25 +35,38 @@ export default async function VitalsPage() {
 
   return (
     <div className="container-page py-8">
-      <h1 className="h2">Vital Checkup</h1>
-      <p className="mt-1 text-sm text-muted">Your USP wellness layer — capture vitals, get an instant flagged report, track trends.</p>
+      <ServiceHero
+        emoji="❤️"
+        title="Vital Checkup"
+        subtitle="Capture your vitals at home, get an instant flagged report, and track your trends over time."
+        badges={["Instant flagged report", "Verified nurse at home", "Trend tracking"]}
+      />
 
-      <div className="mt-4">
+      <div className="mt-6">
         <AnswerBlock
           question="What is a Hanuone Vital Checkup?"
           answer="A Hanuone Vital Checkup captures key vitals — blood pressure, heart rate, SpO₂, temperature, blood sugar, respiratory rate and weight — at home, instantly flags any out-of-range values, generates a downloadable PDF report, and tracks your trends over time. Abnormal results suggest an immediate teleconsult."
         />
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[400px,1fr]">
-        <VitalsForm defaultName={user.name ?? ""} defaultPhone={user.phone?.replace(/^91/, "") ?? ""} />
-        <div>
-          <h2 className="h3">Your trends</h2>
-          <div className="mt-3">
-            <VitalsTrends data={points} />
-          </div>
-        </div>
+      <div className="mt-6">
+        <VitalCheckupBooking defaultName={user.name ?? ""} defaultPhone={user.phone?.replace(/^91/, "") ?? ""} city="Lucknow" />
       </div>
+
+      <section className="mt-8">
+        <h2 className="h3">Your trends</h2>
+        <p className="mt-1 text-sm text-muted">Vitals your nurse records on each visit appear here over time.</p>
+        <div className="mt-3">
+          <VitalsTrends data={points} />
+        </div>
+      </section>
+
+      <details className="mt-8">
+        <summary className="cursor-pointer text-sm font-medium text-primary">Prefer to log a reading yourself? Open the self-entry form</summary>
+        <div className="mt-3 max-w-md">
+          <VitalsForm defaultName={user.name ?? ""} defaultPhone={user.phone?.replace(/^91/, "") ?? ""} />
+        </div>
+      </details>
     </div>
   );
 }

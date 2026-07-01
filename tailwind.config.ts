@@ -8,26 +8,39 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        "fade-in": { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+        "fade-in-up": { "0%": { opacity: "0", transform: "translateY(10px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+        "scale-in": { "0%": { opacity: "0", transform: "scale(0.97)" }, "100%": { opacity: "1", transform: "scale(1)" } },
+        shimmer: { "100%": { transform: "translateX(100%)" } }
+      },
+      animation: {
+        "fade-in": "fade-in 0.4s ease-out both",
+        "fade-in-up": "fade-in-up 0.45s ease-out both",
+        "scale-in": "scale-in 0.3s ease-out both",
+        shimmer: "shimmer 1.6s infinite"
+      },
       colors: {
         // Brand: deep teal (trust, medical) + warm orange (warmth, action)
+        // Sampled exactly from the Hanuone logo: teal #01586C, orange #FE7D15.
         primary: {
-          DEFAULT: "#0F4C5C",
-          50: "#E7F2F4",
-          100: "#C2DEE3",
-          400: "#1F6E80",
-          500: "#0F4C5C",
-          600: "#0a3540",
-          700: "#072830"
+          DEFAULT: "#01586C",
+          50: "#E6F1F4",
+          100: "#BFDCE3",
+          400: "#1B7488",
+          500: "#01586C",
+          600: "#024656",
+          700: "#033543"
         },
         // Orange matched to the Hanuone logo ("ONE" + ECG line)
         accent: {
-          DEFAULT: "#F47A20",
-          50: "#FEF2E8",
-          100: "#FBDCBF",
-          400: "#F79347",
-          500: "#F47A20",
-          600: "#D9651A",
-          700: "#B25015"
+          DEFAULT: "#FE7D15",
+          50: "#FFF2E6",
+          100: "#FEDDBC",
+          400: "#FE9847",
+          500: "#FE7D15",
+          600: "#E06806",
+          700: "#B45205"
         },
         whatsapp: "#25D366",
         bg: "#FFF8F2", // cream background from template
@@ -35,7 +48,7 @@ const config: Config = {
         muted: "#5C6B73"
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         hindi: ["'Noto Sans Devanagari'", "Inter", "sans-serif"]
       },
       boxShadow: {

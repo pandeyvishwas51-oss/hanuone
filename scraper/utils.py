@@ -83,6 +83,34 @@ def parse_experience(text: str | None) -> int | None:
     return None
 
 
+EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
+# Indian mobiles: 10 digits starting 6-9, optionally +91/0 prefixed.
+PHONE_RE = re.compile(r"(?:(?:\+?91[\-\s]?)|0)?([6-9]\d{9})\b")
+
+
+def extract_email(text: str | None) -> str | None:
+    if not text:
+        return None
+    m = EMAIL_RE.search(text)
+    return m.group(0).lower() if m else None
+
+
+def extract_phones(text: str | None) -> list[str]:
+    """Return de-duplicated, normalized +91 phone numbers found in free text/HTML."""
+    if not text:
+        return []
+    out: list[str] = []
+    for m in PHONE_RE.finditer(text):
+        norm = f"+91{m.group(1)}"
+        if norm not in out:
+            out.append(norm)
+    return out
+
+
+def lead_dedupe_key(name: str | None, city: str | None, phone: str | None) -> str:
+    return slugify(name or "", city or "", (phone or "")[-10:])
+
+
 def detect_locality(address: str | None, known_localities: Iterable[str]) -> str | None:
     if not address:
         return None

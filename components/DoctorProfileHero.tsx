@@ -22,7 +22,7 @@ export default function DoctorProfileHero({ doctor }: { doctor: Doctor }) {
   const fee = formatFeeRange(doctor.consultation_fee_min, doctor.consultation_fee_max);
 
   return (
-    <section className="card overflow-hidden">
+    <section className="card animate-fade-in-up overflow-hidden">
       <div className="grid gap-6 p-6 md:grid-cols-[160px,1fr,260px] md:p-8">
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-2xl bg-primary/10 md:h-40 md:w-40">
           {doctor.profile_image_url ? (

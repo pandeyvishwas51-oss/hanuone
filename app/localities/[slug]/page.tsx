@@ -17,7 +17,8 @@ import {
   localityFaqs,
   medicalWebPageJsonLd,
   placeJsonLd,
-  speakableJsonLd
+  speakableJsonLd,
+  SITE
 } from "@/lib/seo";
 import AnswerBlock from "@/components/AnswerBlock";
 import JsonLd from "@/components/JsonLd";
@@ -42,8 +43,8 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: `/localities/${loc.slug}` },
-    openGraph: { title, description, url: `/localities/${loc.slug}`, type: "website" },
-    twitter: { card: "summary_large_image", title, description }
+    openGraph: { title, description, url: `/localities/${loc.slug}`, type: "website", images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [SITE.ogImage] }
   };
 }
 

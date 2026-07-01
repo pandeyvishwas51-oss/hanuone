@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import DoctorList from "@/components/DoctorList";
 import FaqSection from "@/components/FaqSection";
+import AnswerBlock from "@/components/AnswerBlock";
+import JsonLd from "@/components/JsonLd";
 import {
   getCombinationsForStaticParams,
   getLocalityBySlug,
@@ -12,7 +14,12 @@ import {
 import {
   breadcrumbJsonLd,
   doctorItemListJsonLd,
-  localityFaqs
+  medicalWebPageJsonLd,
+  medicalSpecialtyJsonLd,
+  speakableJsonLd,
+  comboAnswer,
+  comboFaqs,
+  SITE
 } from "@/lib/seo";
 
 export const revalidate = 3600;
@@ -35,8 +42,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: { canonical: `/${loc.slug}/${spec.slug}` },
-    openGraph: { title, description, url: `/${loc.slug}/${spec.slug}`, type: "website" },
-    twitter: { card: "summary_large_image", title, description }
+    openGraph: { title, description, url: `/${loc.slug}/${spec.slug}`, type: "website", images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [SITE.ogImage] }
   };
 }
 
@@ -54,28 +61,35 @@ export default async function ComboPage({ params }: { params: Params }) {
     pageSize: 60
   });
 
+  const url = `/${loc.slug}/${spec.slug}`;
+  const city = "Lucknow";
+  const answer = comboAnswer(spec.name, loc.name, city, results.total);
+  const faqs = comboFaqs(spec.name, loc.name, city);
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              { name: "Home", href: "/" },
-              { name: `Doctors in ${loc.name}`, href: `/localities/${loc.slug}` },
-              {
-                name: `${spec.name} in ${loc.name}`,
-                href: `/${loc.slug}/${spec.slug}`
-              }
-            ])
-          )
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(doctorItemListJsonLd(results.doctors))
-        }}
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", href: "/" },
+            { name: `Doctors in ${loc.name}`, href: `/localities/${loc.slug}` },
+            { name: `${spec.name} in ${loc.name}`, href: url }
+          ]),
+          doctorItemListJsonLd(results.doctors),
+          medicalWebPageJsonLd({
+            url,
+            name: `Best ${spec.name} in ${loc.name}, ${city}`,
+            description: answer
+          }),
+          medicalSpecialtyJsonLd({
+            specialty: spec.name,
+            city: `${loc.name}, ${city}`,
+            url,
+            description: answer,
+            doctorCount: results.total
+          }),
+          speakableJsonLd(url)
+        ]}
       />
 
       <div className="container-page py-8">
@@ -89,15 +103,23 @@ export default async function ComboPage({ params }: { params: Params }) {
 
         <header className="mt-3">
           <h1 className="h2">
-            Best {spec.name} in {loc.name}, Lucknow
+            Best {spec.name} in {loc.name}, {city}
           </h1>
           <p className="mt-2 max-w-3xl text-sm text-muted">
-            Looking for a {spec.name.toLowerCase()} in {loc.name}, Lucknow? Hanuone lists verified
+            Looking for a {spec.name.toLowerCase()} in {loc.name}, {city}? Hanuone lists verified
             {" "}{spec.name.toLowerCase()}s practising in and around {loc.name} with full transparency on
             qualifications, experience, fees and patient ratings. Contact directly on WhatsApp, no
             booking fees, no spam.
           </p>
         </header>
+
+        <div className="mt-5">
+          <AnswerBlock
+            question={`Who is the best ${spec.name.toLowerCase()} in ${loc.name}, ${city}?`}
+            answer={answer}
+            updated={new Date().toISOString().slice(0, 10)}
+          />
+        </div>
 
         <section className="mt-6">
           <div className="mb-3 text-sm text-muted">
@@ -112,7 +134,7 @@ export default async function ComboPage({ params }: { params: Params }) {
 
       <FaqSection
         title={`FAQs about ${spec.name}s in ${loc.name}`}
-        faqs={localityFaqs(loc.name)}
+        faqs={faqs}
       />
     </>
   );

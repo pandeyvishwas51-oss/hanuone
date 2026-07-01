@@ -1,18 +1,33 @@
 // Server-side auth helpers for RSC and route handlers.
 import { eq } from "drizzle-orm";
 import { HAS_DB, db, schema } from "./db";
-import { getSession, createSession, type SessionUser } from "./session";
+import { getSession, createSession, destroySession, type SessionUser } from "./session";
 
 export { getSession, createSession };
 export type { SessionUser };
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export async function getCurrentUser(): Promise<SessionUser | null> {
-  return getSession();
+  const user = await getSession();
+  if (!user) return null;
+  // Guard against legacy/dev sessions (id "dev-<phone>") created before a real
+  // database was connected. With a DB, user ids must be UUIDs, so a non-UUID id
+  // would crash queries. Treat it as logged-out and clear the stale cookie.
+  if (HAS_DB && !UUID_RE.test(user.id)) {
+    try {
+      await destroySession();
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
+  return user;
 }
 
 /** Throws if not logged in. Use in route handlers; catch to return 401. */
 export async function requireUser(): Promise<SessionUser> {
-  const user = await getSession();
+  const user = await getCurrentUser();
   if (!user) throw new AuthError(401, "Login required");
   return user;
 }
@@ -50,21 +65,20 @@ export async function upsertUserByPhone(
   }
   const [existing] = await db().select().from(schema.users).where(eq(schema.users.phone, phone)).limit(1);
   if (existing) {
-    // Promote role to provider if registering as one; never downgrade.
-    if (opts.role === "provider" && existing.role === "patient") {
-      await db().update(schema.users).set({ role: "provider" }).where(eq(schema.users.id, existing.id));
-    }
+    // SECURITY: never escalate role from a client-supplied value at login. The
+    // `provider` role is granted ONLY by an admin verifying the professional.
     return {
       id: existing.id,
       phone: existing.phone,
       name: opts.name ?? existing.name,
-      role: (opts.role === "provider" && existing.role === "patient" ? "provider" : existing.role) as SessionUser["role"],
+      role: existing.role as SessionUser["role"],
       isAdmin: !!existing.isAdmin
     };
   }
+  // New accounts are always patients. Provider access comes from admin approval.
   const [created] = await db()
     .insert(schema.users)
-    .values({ phone, name: opts.name ?? null, role: opts.role ?? "patient", phoneVerified: new Date() })
+    .values({ phone, name: opts.name ?? null, role: "patient", phoneVerified: new Date() })
     .returning();
   return { id: created.id, phone: created.phone, name: created.name, role: created.role as SessionUser["role"], isAdmin: false };
 }

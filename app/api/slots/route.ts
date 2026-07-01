@@ -69,8 +69,14 @@ export async function POST(req: Request) {
   if (!HAS_DB) return NextResponse.json({ ok: false, error: "Database not configured" }, { status: 503 });
 
   try {
-    const [doctor] = await db().select({ id: schema.doctors.id, fee: schema.doctors.consultationFeeMin }).from(schema.doctors).where(eq(schema.doctors.slug, body.doctorSlug)).limit(1);
+    const [doctor] = await db().select({ id: schema.doctors.id, fee: schema.doctors.consultationFeeMin, userId: schema.doctors.userId }).from(schema.doctors).where(eq(schema.doctors.slug, body.doctorSlug)).limit(1);
     if (!doctor) return NextResponse.json({ ok: false, error: "Doctor not found" }, { status: 404 });
+    // Only the doctor who owns this catalog profile (or an admin) may publish its
+    // slots — stops a provider creating slots/fees for arbitrary doctors.
+    const isAdmin = user.isAdmin || user.role === "admin";
+    if (!isAdmin && doctor.userId !== user.id) {
+      return NextResponse.json({ ok: false, error: "You can only publish your own slots" }, { status: 403 });
+    }
     const dur = body.durationMin ?? 15;
     const rows = body.times.map((t) => {
       const [h, m] = t.split(":").map(Number);

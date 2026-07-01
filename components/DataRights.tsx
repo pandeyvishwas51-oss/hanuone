@@ -7,13 +7,25 @@ import { useRouter } from "next/navigation";
 export default function DataRights() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
   async function del() {
     if (!confirm("Delete your account? Personal details will be anonymized. Health records are retained de-identified for the legal minimum period.")) return;
-    setBusy(true);
-    await fetch("/api/account/delete", { method: "POST" });
-    router.push("/");
-    router.refresh();
+    setBusy(true); setError("");
+    try {
+      const r = await fetch("/api/account/delete", { method: "POST" });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        setError(j.error || "Could not delete your account. Please try again or contact support.");
+        return;
+      }
+      router.push("/");
+      router.refresh();
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -26,6 +38,7 @@ export default function DataRights() {
           {busy ? "Processing…" : "Delete my account"}
         </button>
       </div>
+      {error && <p className="mt-2 text-xs text-rose-600">{error}</p>}
     </section>
   );
 }

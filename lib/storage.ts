@@ -27,3 +27,10 @@ export async function uploadPrivate(
     return null;
   }
 }
+
+/** Upload a base64 data URL (canvas signature / captured photo). Returns a signed URL. */
+export async function uploadDataUrl(bucket: string, path: string, dataUrl: string): Promise<string | null> {
+  const match = dataUrl.match(/^data:(.+?);base64,(.*)$/);
+  if (!match) return null;
+  return uploadPrivate(bucket, path, Buffer.from(match[2], "base64"), match[1]);
+}

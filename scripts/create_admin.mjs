@@ -18,9 +18,9 @@ const passwordHash = bcrypt.hashSync(password, 10);
 
 const existing = await sql`SELECT id FROM users WHERE email = ${email.toLowerCase()} LIMIT 1`;
 if (existing.length) {
-  await sql`UPDATE users SET is_admin = true, password_hash = ${passwordHash}, name = ${"Hanuone Admin"} WHERE email = ${email.toLowerCase()}`;
+  await sql`UPDATE users SET is_admin = true, role = 'admin', email_verified = now(), password_hash = ${passwordHash}, name = ${"Hanuone Admin"} WHERE email = ${email.toLowerCase()}`;
   console.log(`Updated existing user ${email} -> admin`);
 } else {
-  const r = await sql`INSERT INTO users (email, name, password_hash, is_admin) VALUES (${email.toLowerCase()}, ${"Hanuone Admin"}, ${passwordHash}, true) RETURNING id`;
+  const r = await sql`INSERT INTO users (email, name, password_hash, is_admin, role, email_verified) VALUES (${email.toLowerCase()}, ${"Hanuone Admin"}, ${passwordHash}, true, 'admin', now()) RETURNING id`;
   console.log(`Created admin ${email}, id=${r[0].id}`);
 }

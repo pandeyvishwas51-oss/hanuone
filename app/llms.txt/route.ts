@@ -43,6 +43,7 @@ export async function GET() {
     `- [Lab tests at home](${abs("/lab")}): book blood tests and health packages with home sample collection`,
     `- [Medicines at home](${abs("/medicine")}): prescription-linked medicine delivery`,
     `- [Vital Checkup](${abs("/vitals")}): at-home vitals capture with an instant flagged report and trend tracking`,
+    `- [AI Health Assistant](${abs("/ai-doctor")}): free AI symptom checker that triages your symptoms, can read uploaded lab reports and prescriptions, recommends the right specialist and books a consultation`,
     `- [For providers](${abs("/pro")}): doctors and home-care professionals register, get verified and accept bookings`,
     ""
   ];

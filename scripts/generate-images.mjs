@@ -7,7 +7,14 @@
  *   OPENAI_API_KEY=sk-... node scripts/generate-images.mjs --force   # regenerate all
  *   OPENAI_API_KEY=sk-... node scripts/generate-images.mjs hero-home  # one image by id
  *
- * Output: public/generated/<id>.png  (referenced via lib/images.ts)
+ * Output: public/generated/<id>.png
+ *
+ * NOTE: lib/images.ts references the WebP variants (much smaller). After
+ * regenerating PNGs, re-compress to WebP and re-export the OG image, e.g.:
+ *   for f in public/generated/*.png; do cwebp -q 82 -resize 1280 0 "$f" -o "${f%.png}.webp"; done
+ *   sips -s format jpeg -z 630 1200 --cropToHeightWidth 630 1200 \
+ *        public/generated/og-default.png --out public/generated/og-default.jpg
+ * then delete the source PNGs to keep the deploy lean.
  */
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

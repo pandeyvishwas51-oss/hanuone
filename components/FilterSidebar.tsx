@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState, useTransition } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
 import { Filter, X } from "lucide-react";
 import type { Locality, Specialization } from "@/lib/types";
+import { useDialogA11y } from "@/lib/useDialogA11y";
 import { PINCODE_MAP } from "@/lib/pincode-map";
 
 type Props = {
@@ -16,6 +17,8 @@ export default function FilterSidebar({ specializations, localities }: Props) {
   const params = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(open, () => setOpen(false), panelRef);
 
   const selectedSpecs = useMemo(() => params.getAll("specialty"), [params]);
   const selectedLocs = useMemo(() => params.getAll("locality"), [params]);
@@ -208,10 +211,10 @@ export default function FilterSidebar({ specializations, localities }: Props) {
 
       {open && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 right-0 w-[88%] max-w-md overflow-y-auto bg-white p-5">
+          <div aria-hidden="true" className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+          <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="filters-title" tabIndex={-1} className="absolute inset-y-0 right-0 w-[88%] max-w-md overflow-y-auto bg-white p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-sm font-semibold">Filters</span>
+              <span id="filters-title" className="text-sm font-semibold">Filters</span>
               <button onClick={() => setOpen(false)} aria-label="Close filters">
                 <X size={18} />
               </button>

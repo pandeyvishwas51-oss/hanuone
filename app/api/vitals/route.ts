@@ -7,6 +7,7 @@ import { evaluateVitals, type VitalsInput } from "@/lib/vitals-thresholds";
 import { VitalsReportDoc } from "@/lib/pdf/vitals";
 import { uploadPrivate } from "@/lib/storage";
 import { audit, clientIp } from "@/lib/audit";
+import { notifyVitalsEscalation } from "@/lib/notify";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -27,6 +28,13 @@ type Body = VitalsInput & {
 };
 
 const num = (v: unknown) => (v === "" || v === null || v === undefined ? null : Number(v));
+// Reject physiologically-impossible / abusive values (else they're stored,
+// escalation-evaluated, and baked into the patient PDF).
+const numRange = (v: unknown, min: number, max: number) => {
+  const n = num(v);
+  return n != null && Number.isFinite(n) && n >= min && n <= max ? n : null;
+};
+const cap = (v: string | undefined, n: number) => (v?.slice(0, n) ?? null);
 
 // POST /api/vitals -> record a Vital Checkup, flag abnormals, generate report.
 export async function POST(req: Request) {
@@ -50,14 +58,14 @@ export async function POST(req: Request) {
   if (!HAS_DB) return NextResponse.json({ ok: false, error: "Database not configured" }, { status: 503 });
 
   const vitals: VitalsInput = {
-    bpSystolic: num(body.bpSystolic),
-    bpDiastolic: num(body.bpDiastolic),
-    heartRate: num(body.heartRate),
-    spo2: num(body.spo2),
-    temperatureC: num(body.temperatureC),
-    randomBloodSugar: num(body.randomBloodSugar),
-    respiratoryRate: num(body.respiratoryRate),
-    painScale: num(body.painScale)
+    bpSystolic: numRange(body.bpSystolic, 0, 400),
+    bpDiastolic: numRange(body.bpDiastolic, 0, 300),
+    heartRate: numRange(body.heartRate, 0, 300),
+    spo2: numRange(body.spo2, 0, 100),
+    temperatureC: numRange(body.temperatureC, 20, 45),
+    randomBloodSugar: numRange(body.randomBloodSugar, 0, 1000),
+    respiratoryRate: numRange(body.respiratoryRate, 0, 100),
+    painScale: numRange(body.painScale, 0, 10)
   };
   const evalResult = evaluateVitals(vitals);
 
@@ -66,24 +74,24 @@ export async function POST(req: Request) {
       .insert(schema.vitalVisits)
       .values({
         patientUserId: user.id,
-        patientName: body.patientName!.trim(),
-        patientPhone: body.patientPhone!.trim(),
-        reason: body.reason ?? null,
-        allergies: body.allergies ?? null,
-        currentMeds: body.currentMeds ?? null,
-        history: body.history ?? null,
+        patientName: body.patientName!.trim().slice(0, 120),
+        patientPhone: body.patientPhone!.trim().slice(0, 20),
+        reason: cap(body.reason, 2000),
+        allergies: cap(body.allergies, 1000),
+        currentMeds: cap(body.currentMeds, 1000),
+        history: cap(body.history, 2000),
         bpSystolic: vitals.bpSystolic,
         bpDiastolic: vitals.bpDiastolic,
         heartRate: vitals.heartRate,
         spo2: vitals.spo2,
         temperatureC: vitals.temperatureC != null ? String(vitals.temperatureC) : null,
         randomBloodSugar: vitals.randomBloodSugar,
-        weightKg: body.weightKg != null ? String(num(body.weightKg)) : null,
-        heightCm: body.heightCm != null ? String(num(body.heightCm)) : null,
+        weightKg: (() => { const w = numRange(body.weightKg, 0, 500); return w != null ? String(w) : null; })(),
+        heightCm: (() => { const h = numRange(body.heightCm, 0, 300); return h != null ? String(h) : null; })(),
         respiratoryRate: vitals.respiratoryRate,
         painScale: vitals.painScale,
         flags: JSON.stringify(evalResult.flags),
-        providerNotes: body.providerNotes ?? null,
+        providerNotes: cap(body.providerNotes, 2000),
         escalated: evalResult.escalate
       })
       .returning();
@@ -112,6 +120,16 @@ export async function POST(req: Request) {
     if (url) await db().update(schema.vitalVisits).set({ reportPdfUrl: url }).where(eq(schema.vitalVisits.id, visit.id));
 
     await audit({ actorUserId: user.id, actorRole: user.role, action: "create", entity: "vital_visits", entityId: visit.id, meta: { escalated: evalResult.escalate }, ipAddress: clientIp(req) });
+
+    // Clinical safety: a self-recorded CRITICAL reading must page the on-call
+    // team, not just show an on-screen message.
+    if (evalResult.escalate) {
+      await notifyVitalsEscalation({
+        patientName: visit.patientName,
+        patientPhone: visit.patientPhone,
+        flags: evalResult.flags as unknown as Record<string, string>
+      });
+    }
 
     return NextResponse.json({ ok: true, visitId: visit.id, evaluation: evalResult, reportUrl: url });
   } catch (e) {

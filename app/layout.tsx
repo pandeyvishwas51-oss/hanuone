@@ -7,6 +7,8 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import { SITE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import Tracker from "@/components/Tracker";
 import ChatWidget from "@/components/ChatWidget";
+import FloatingVoiceAgent from "@/components/FloatingVoiceAgent";
+import PatientChrome from "@/components/PatientChrome";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
@@ -56,8 +58,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name}, ${SITE.tagline}`,
     description: SITE.description,
-    site: "@Hanuone_0",
-    creator: "@Hanuone_0",
+    site: "@hanu_one",
+    creator: "@hanu_one",
     images: [SITE.ogImage]
   },
   alternates: {
@@ -111,11 +113,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col bg-bg">
-        <SiteHeader />
-        <main className="flex-1 pb-16 md:pb-0">{children}</main>
-        <SiteFooter />
-        <MobileBottomNav />
-        <ChatWidget />
+        <PatientChrome
+          header={<SiteHeader />}
+          footer={<><SiteFooter /><MobileBottomNav /><ChatWidget /><FloatingVoiceAgent /></>}
+        >
+          {children}
+        </PatientChrome>
         <Tracker site="hanuone" />
       </body>
     </html>

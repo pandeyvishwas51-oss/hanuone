@@ -4,7 +4,7 @@ import { Quote, Instagram, Linkedin, Twitter, ArrowRight } from "lucide-react";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-primary/10 bg-white">
+    <footer data-site-footer className="border-t border-primary/10 bg-white">
       <div className="container-page grid gap-10 py-12 lg:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
@@ -36,22 +36,22 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="rounded-2xl bg-primary p-6 text-white">
-          <div className="text-base font-semibold">Hanuone Home Care Network</div>
+          <div className="text-base font-semibold">Join the HanuOne provider network</div>
           <p className="mt-1 text-sm text-white/80">
-            Are you a doctor, nurse, ward boy, caregiver or physiotherapist? Register on HanuonePro
-            to manage your availability and receive home-care gigs.
+            Are you a doctor, nurse, ward boy, caregiver or physiotherapist? Join HanuOne
+            to manage your availability and receive work near you.
           </p>
           <Link
-            href="https://hanuonepro.vercel.app/register"
+            href="/providers/register"
             className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-primary hover:bg-white/90"
           >
-            Register on HanuonePro <ArrowRight size={14} />
+            Join as a provider <ArrowRight size={14} />
           </Link>
           <Link
-            href="https://hanuonepro.vercel.app/login"
+            href="/login?next=/providers"
             className="mt-2 block text-xs text-white/70 hover:text-white"
           >
-            Already registered? Login
+            Already registered? Log in
           </Link>
         </div>
       </div>

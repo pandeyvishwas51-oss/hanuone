@@ -18,6 +18,7 @@ export default function PrescriptionPanel({ consultationId }: { consultationId: 
   }
 
   async function issue() {
+    if (busy) return; // guard double-submit → no duplicate prescriptions issued/sent
     setError("");
     const valid = meds.filter((m) => m.name.trim());
     if (!valid.length) return setError("Add at least one medicine.");
@@ -40,10 +41,10 @@ export default function PrescriptionPanel({ consultationId }: { consultationId: 
 
   if (pdfUrl) {
     return (
-      <div className="card border-emerald-200 p-5">
+      <div className="card border-emerald-200 p-5" role="status">
         <h3 className="h3">✓ Prescription issued</h3>
         <p className="mt-1 text-sm text-muted">The patient has been notified.</p>
-        {pdfUrl !== "issued" && <a href={pdfUrl} target="_blank" className="btn-outline mt-3 inline-block">View PDF</a>}
+        {pdfUrl !== "issued" && <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-outline mt-3 inline-block">View PDF</a>}
       </div>
     );
   }
@@ -74,7 +75,7 @@ export default function PrescriptionPanel({ consultationId }: { consultationId: 
         <button className="btn-primary w-full" disabled={busy} onClick={issue}>
           {busy ? "Generating…" : "Issue & send to patient"}
         </button>
-        {error && <p className="text-sm text-rose-600">{error}</p>}
+        {error && <p role="alert" className="text-sm text-rose-600">{error}</p>}
       </div>
     </div>
   );
