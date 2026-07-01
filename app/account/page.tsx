@@ -39,7 +39,7 @@ export default async function AccountPage() {
   return (
     <div className="container-page py-8">
       {/* Welcome hero */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-600 p-6 text-white shadow-lg sm:p-7">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary to-primary-400 p-6 text-white shadow-lg sm:p-7">
         <div className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-white/10 blur-2xl" />
         <div className="relative flex flex-wrap items-start justify-between gap-4">
           <div>
