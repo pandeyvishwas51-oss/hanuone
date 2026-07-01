@@ -26,6 +26,14 @@ export default function FilterSidebar({ specializations, localities }: Props) {
   const minRating = Number(params.get("minRating") ?? 0);
   const pincode = params.get("pincode") ?? "";
 
+  // Count applied filters so the mobile trigger can show a badge (Urban-Company style).
+  const activeCount =
+    selectedSpecs.length +
+    selectedLocs.length +
+    (feeMax < 2000 ? 1 : 0) +
+    (minRating > 0 ? 1 : 0) +
+    (pincode ? 1 : 0);
+
   function update(next: URLSearchParams) {
     next.delete("page");
     startTransition(() => {
@@ -206,6 +214,9 @@ export default function FilterSidebar({ specializations, localities }: Props) {
         <button onClick={() => setOpen(true)} className="btn-outline w-full">
           <Filter size={14} />
           Filters
+          {activeCount > 0 && (
+            <span className="ml-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-primary px-1.5 text-xs font-bold text-white">{activeCount}</span>
+          )}
         </button>
       </div>
 
