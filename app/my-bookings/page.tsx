@@ -83,7 +83,7 @@ export default function MyBookingsPage() {
     <div className="container-page py-10 sm:py-14">
       <div className="mx-auto max-w-2xl">
         {/* Hero */}
-        <div className="animate-fade-in-up overflow-hidden rounded-2xl bg-gradient-to-br from-primary-700 via-primary to-primary-400 p-6 text-white shadow-card sm:p-7">
+        <div className="animate-fade-in-up overflow-hidden rounded-2xl bg-gradient-to-br from-[#01586C] via-[#0a7d96] to-[#0e8fa8] p-6 text-white shadow-card sm:p-7">
           <div className="flex items-center gap-2 text-xs font-medium text-white/70"><CalendarDays size={14} /> Your appointments</div>
           <h1 className="mt-1 text-2xl font-bold sm:text-3xl">My bookings</h1>
           <p className="mt-1 text-sm text-white/80">Consultations tied to your Hanuone account.</p>

@@ -22,7 +22,7 @@ export default function DoctorCard({ doctor, className = "", index = 0 }: Props)
   return (
     <article
       style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
-      className={`group flex animate-fade-in-up flex-col overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_1px_3px_rgba(1,88,108,0.06)] transition hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_12px_28px_-12px_rgba(1,88,108,0.3)] ${className}`}
+      className={`group flex animate-fade-in-up flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-card-hover ${className}`}
     >
       <div className="flex items-start gap-3.5 p-4 pb-3">
         <div className="relative h-16 w-16 flex-none">

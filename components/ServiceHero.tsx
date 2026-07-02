@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 /** Premium gradient hero for patient service pages (lab, vitals, medicine…). */
 export default function ServiceHero({ title, subtitle, badges, emoji }: { title: string; subtitle: string; badges?: string[]; emoji?: string }) {
   return (
-    <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary to-primary-400 p-6 text-white shadow-[0_20px_50px_-20px_rgba(1,88,108,0.55)] sm:p-9">
+    <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-[#01586C] via-[#0a7d96] to-[#0e8fa8] p-6 text-white shadow-[0_20px_50px_-20px_rgba(1,88,108,0.55)] sm:p-9">
       {/* Soft depth: warm accent glow + cool highlight + faint grid texture */}
       <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent/30 blur-3xl" />
       <div className="absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-white/10 blur-3xl" />

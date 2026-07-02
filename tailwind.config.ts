@@ -82,7 +82,9 @@ const config: Config = {
         hindi: ["'Noto Sans Devanagari'", "Inter", "sans-serif"]
       },
       boxShadow: {
-        card: "0 1px 3px rgba(15, 76, 92, 0.06), 0 4px 12px rgba(15, 76, 92, 0.05)"
+        // Softer, more diffuse two-layer elevation for a premium "floating" feel.
+        card: "0 1px 2px rgba(13, 42, 51, 0.04), 0 8px 24px -8px rgba(13, 42, 51, 0.10)",
+        "card-hover": "0 2px 4px rgba(13, 42, 51, 0.05), 0 16px 36px -12px rgba(13, 42, 51, 0.18)"
       }
     }
   },
