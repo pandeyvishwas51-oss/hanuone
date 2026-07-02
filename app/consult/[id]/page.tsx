@@ -19,15 +19,20 @@ export default async function ConsultPage({ params }: { params: { id: string } }
   const [consult] = await db().select().from(schema.consultations).where(eq(schema.consultations.id, params.id)).limit(1);
   if (!consult) notFound();
 
-  // Only the patient, the consulting provider, or an admin may join.
+  // Only the patient, the ASSIGNED doctor, or an admin may join. A provider may
+  // NOT open a consult that isn't theirs (prevents cross-doctor IDOR: patient
+  // PII, video-room access and prescribing on someone else's consultation).
   const isOwner = consult.patientUserId === user.id;
-  if (!isOwner && user.role !== "provider" && user.role !== "admin" && !user.isAdmin) {
-    redirect("/account");
-  }
+  const isAdmin = user.role === "admin" || !!user.isAdmin;
 
   const [doctor] = consult.doctorId
-    ? await db().select({ name: schema.doctors.name }).from(schema.doctors).where(eq(schema.doctors.id, consult.doctorId)).limit(1)
-    : [{ name: "your doctor" }];
+    ? await db().select({ name: schema.doctors.name, userId: schema.doctors.userId }).from(schema.doctors).where(eq(schema.doctors.id, consult.doctorId)).limit(1)
+    : [{ name: "your doctor", userId: null }];
+
+  const isAssignedDoctor = user.role === "provider" && !!doctor?.userId && doctor.userId === user.id;
+  if (!isOwner && !isAdmin && !isAssignedDoctor) {
+    redirect("/account");
+  }
 
   const when = consult.scheduledAt ? new Date(consult.scheduledAt) : null;
   const room = consult.videoRoom || `ho-${consult.id.slice(0, 10)}`;
