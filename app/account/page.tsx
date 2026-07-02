@@ -103,15 +103,34 @@ export default async function AccountPage() {
         <section className="mt-8">
           <h2 className="h3">Prescriptions</h2>
           <div className="mt-3 grid gap-3">
-            {rxs.map((r) => (
-              <div key={r.id} className="card flex items-center justify-between gap-3 p-4">
-                <div>
-                  <div className="font-medium text-ink">{r.diagnosis || "Prescription"}</div>
-                  <div className="text-xs text-muted">By {r.doctorName} · valid until {r.validUntil}</div>
+            {rxs.map((r) => {
+              let meds: { name?: string; dosage?: string; frequency?: string; duration?: string }[] = [];
+              try { meds = JSON.parse(r.medications || "[]"); } catch { /* keep [] */ }
+              return (
+                <div key={r.id} className="card p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-medium text-ink">{r.diagnosis || "Prescription"}</div>
+                      <div className="text-xs text-muted">By {r.doctorName} · valid until {r.validUntil}</div>
+                    </div>
+                    {r.pdfUrl ? <a href={r.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-outline px-3 py-1.5 text-sm">View PDF</a> : null}
+                  </div>
+                  {meds.length > 0 && (
+                    <ul className="mt-3 space-y-1.5 border-t border-line pt-3">
+                      {meds.map((m, i) => (
+                        <li key={i} className="flex flex-wrap items-baseline gap-x-2 text-sm">
+                          <span className="font-semibold text-ink">💊 {m.name}</span>
+                          {m.dosage && <span className="text-muted">{m.dosage}</span>}
+                          {m.frequency && <span className="text-muted">· {m.frequency}</span>}
+                          {m.duration && <span className="text-muted">· {m.duration}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {r.instructions && <p className="mt-2 text-xs italic text-muted">{r.instructions}</p>}
                 </div>
-                {r.pdfUrl ? <a href={r.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-outline px-3 py-1.5 text-sm">View PDF</a> : null}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
