@@ -32,6 +32,7 @@ type Body = {
   address?: string;
   city?: string;
   reason?: string;
+  gender?: string; // patient gender — drives same-gender safety matching for home visits
 };
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL?.trim() || "ops@hanuone.com";
@@ -132,6 +133,7 @@ export async function POST(req: Request) {
     if (kind === "vitals") {
       const address = (b.address || "").trim();
       if (!address) return NextResponse.json({ ok: false, error: "I need the patient's home address for the nurse visit." }, { status: 400 });
+      const vGender = ["male", "female", "other"].includes(String(b.gender || "").trim().toLowerCase()) ? String(b.gender).trim().toLowerCase() : null;
       const [visit] = await db().insert(schema.serviceVisits).values({
         patientUserId: null,
         patientName,
@@ -140,6 +142,7 @@ export async function POST(req: Request) {
         serviceName: "Vital Checkup (home nurse)",
         address,
         pincode: null,
+        customerGender: vGender,
         scheduledAt: new Date(`${preferredDate}T00:00:00`),
         status: "requested"
       }).returning({ id: schema.serviceVisits.id });

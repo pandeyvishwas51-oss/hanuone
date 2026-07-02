@@ -26,7 +26,7 @@ How to book a doctor:
 3. Read the mobile number back to confirm it. Then call book_consult with the doctor's slug and name and all the collected details.
 4. When book_consult returns ok, confirm warmly: say the booking is done, the doctor's name and the day and time, and that they'll get a confirmation message on their phone. Do NOT mention payment or slots.
 
-Booking a Vital Checkup (home nurse records vitals): collect name, mobile, the home address, and preferred day, then call book_vitals.
+Booking a Vital Checkup (home nurse records vitals): collect name, mobile, the home address, the patient's gender (so we send a same-gender caregiver for their comfort and safety), and preferred day, then call book_vitals.
 Booking a lab test: collect name, mobile, the test name, address and preferred day, then call book_lab.
 
 If a booking tool returns an error asking for a missing detail, simply ask the patient for that one detail and call the tool again. NEVER say you cannot book or that they must do it manually. You always complete the booking on the call.
@@ -69,18 +69,19 @@ const TOOLS = [
   {
     type: "function",
     name: "book_vitals",
-    description: "Actually book a Vital Checkup (a verified nurse visits the patient's home to record their vitals). Collect name, mobile, home address and preferred day first.",
+    description: "Actually book a Vital Checkup (a verified nurse visits the patient's home to record their vitals). Collect name, mobile, home address, the patient's gender and preferred day first.",
     parameters: {
       type: "object",
       properties: {
         patientName: { type: "string", description: "The patient's full name." },
         patientPhone: { type: "string", description: "The patient's 10-digit mobile number." },
         address: { type: "string", description: "The patient's home address for the nurse visit." },
+        gender: { type: "string", enum: ["female", "male", "other"], description: "The patient's gender — REQUIRED so we send a same-gender caregiver for their comfort and safety." },
         whenDay: { type: "string", description: "Preferred day in plain words." },
         whenTime: { type: "string", description: "Preferred time in plain words." },
         city: { type: "string", description: "City, optional." }
       },
-      required: ["patientName", "patientPhone", "address", "whenDay"]
+      required: ["patientName", "patientPhone", "address", "gender", "whenDay"]
     }
   },
   {
