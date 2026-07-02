@@ -4,6 +4,7 @@ import { notifyOpsNewVisit } from "@/lib/notify";
 import { autoAssignVisit } from "@/lib/assignment";
 import { track } from "@/lib/analytics";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
+import { getCurrentUser } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,6 +45,9 @@ export async function POST(req: Request) {
   const city = String(body.city || "").trim().slice(0, 60);
   const pincode = String(body.pincode || "").trim().slice(0, 6);
   const notes = String(body.notes || "").trim().slice(0, 500);
+  // Customer gender drives the HARD same-gender safety rule in provider matching.
+  const gRaw = String(body.gender || "").trim().toLowerCase();
+  const gender = ["male", "female", "other"].includes(gRaw) ? gRaw : null;
 
   if (!ALLOWED.has(service)) return NextResponse.json({ ok: false, error: "Invalid service" }, { status: 400 });
   if (!phone || !/^[+\d][\d\s\-()]{7,}$/.test(phone)) {
@@ -66,15 +70,20 @@ export async function POST(req: Request) {
     const serviceType = HOME_VISIT_SERVICE[service];
     if (serviceType) {
       try {
+        // Link the patient (when logged in) so the visit shows in their bookings
+        // AND the same-gender safety rule can fall back to their profile gender.
+        const reqUser = await getCurrentUser().catch(() => null);
         const [visit] = await db()
           .insert(schema.serviceVisits)
           .values({
+            patientUserId: reqUser?.id ?? null,
             patientName: name || "Patient",
             patientPhone: phone,
             serviceType,
             serviceName: service,
             address: notes || [city, pincode].filter(Boolean).join(", ") || "To be confirmed",
             pincode: pincode || null,
+            customerGender: gender,
             status: "requested"
           })
           .returning({ id: schema.serviceVisits.id });

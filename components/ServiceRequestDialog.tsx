@@ -21,6 +21,7 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
   const [email, setEmail] = useState("");
   const [city, setCity] = useState(defaultCity ?? "");
   const [pincode, setPincode] = useState("");
+  const [gender, setGender] = useState("");
   const [notes, setNotes] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
   useDialogA11y(open, () => setOpen(false), panelRef);
@@ -49,7 +50,7 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
       const r = await fetch("/api/service-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ service, name, phone, email, city, pincode, notes })
+        body: JSON.stringify({ service, name, phone, email, city, pincode, gender, notes })
       });
       const data = await r.json().catch(() => ({}));
       if (!r.ok || !data.ok) {
@@ -118,6 +119,17 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
                     <input id="srd-pincode" type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} className="input" inputMode="numeric" maxLength={6} />
                   </div>
                 </div>
+                <div>
+                  <label className="label" htmlFor="srd-gender">Patient gender</label>
+                  <select id="srd-gender" value={gender} onChange={(e) => setGender(e.target.value)} className="input">
+                    <option value="">Prefer not to say</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <p className="mt-1 text-[11px] text-muted">Helps us match a same-gender caregiver for your comfort and safety.</p>
+                </div>
+
                 <div>
                   <label className="label" htmlFor="srd-notes">What do you need?</label>
                   <textarea id="srd-notes" value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} className="input" maxLength={500} placeholder="Any details, e.g. medicine names, lab tests, dates" />
