@@ -35,6 +35,23 @@ export async function getProviderBookings(professionalId: string) {
     .orderBy(desc(schema.bookings.bookingDate));
 }
 
+/**
+ * Video/audio consultations booked with this doctor. Consults link to the
+ * `doctors` catalog row (doctor_id); that row's user_id ties back to the
+ * provider user — so a doctor can see and join their telemedicine consults
+ * from the clinic portal. Returns [] for non-doctor providers / unlinked users.
+ */
+export async function getProviderConsultations(userId: string | null) {
+  if (!userId) return [];
+  const [doc] = await db().select({ id: schema.doctors.id })
+    .from(schema.doctors).where(eq(schema.doctors.userId, userId)).limit(1);
+  if (!doc) return [];
+  return db().select().from(schema.consultations)
+    .where(eq(schema.consultations.doctorId, doc.id))
+    .orderBy(desc(schema.consultations.scheduledAt), desc(schema.consultations.createdAt))
+    .limit(100);
+}
+
 /** Home-care visits assigned to this professional (the `service_visits` table). */
 export async function getProviderVisits(professionalId: string) {
   return db().select().from(schema.serviceVisits)

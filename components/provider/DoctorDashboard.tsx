@@ -2,11 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CalendarCheck, CalendarClock, Wallet, Stethoscope, Phone, Plus, Trash2, IndianRupee } from "lucide-react";
+import { CalendarCheck, CalendarClock, Wallet, Stethoscope, Phone, Plus, Trash2, IndianRupee, Video } from "lucide-react";
 import { PageHeader, StatCard, SectionCard, Pill, statusTone, Tabs, EmptyState } from "@/components/portal/ui";
 import { formatINR } from "@/lib/utils";
 
 type Booking = { id: string; patientName: string; patientPhone: string; patientAddress: string | null; serviceType: string; bookingDate: string; startTime: string | null; endTime: string | null; status: string | null; amount: number | null; paymentStatus: string | null; notes: string | null };
+type Consult = { id: string; patientName: string; patientPhone: string | null; status: string; mode: string | null; scheduledAt: string | null; feeInr: number | null };
 type Slot = { id: string; date: string; startTime: string; endTime: string; isBooked: boolean | null };
 type Earnings = { rows: { id: string; amount: number; type: string | null; description: string | null; createdAt: string }[]; credited: number; paidOut: number; balance: number };
 type Prof = { fullName: string; role: string; specialization: string | null; city: string | null };
@@ -20,7 +21,7 @@ const NEXT_ACTION: Record<string, { label: string; to: string; primary?: boolean
 
 function initials(name: string) { return name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase(); }
 
-export default function DoctorDashboard({ prof, bookings, availability, earnings }: { prof: Prof; bookings: Booking[]; availability: Slot[]; earnings: Earnings }) {
+export default function DoctorDashboard({ prof, bookings, availability, earnings, consultations = [] }: { prof: Prof; bookings: Booking[]; availability: Slot[]; earnings: Earnings; consultations?: Consult[] }) {
   const router = useRouter();
   const [tab, setTab] = useState<"appointments" | "availability" | "earnings">("appointments");
   const [busy, setBusy] = useState<string | null>(null);
@@ -76,6 +77,12 @@ export default function DoctorDashboard({ prof, bookings, availability, earnings
         {tab === "appointments" && (
           <div className="space-y-6">
             {err && <p role="alert" className="animate-fade-in-up rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{err}</p>}
+            {consultations.length > 0 && (
+              <div>
+                <h3 className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-400"><Video size={13} /> Video consultations · {consultations.length}</h3>
+                <div className="space-y-2">{consultations.map((c) => <ConsultRow key={c.id} c={c} />)}</div>
+              </div>
+            )}
             <div>
               <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">Today · {today.length}</h3>
               {today.length === 0 ? <EmptyState icon={<CalendarCheck size={22} />} title="No appointments today" hint="Enjoy the breather." /> : (
@@ -121,6 +128,31 @@ function BookingRow({ b, busy, onStatus }: { b: Booking; busy: boolean; onStatus
           </button>
         ))}
       </div>
+    </div>
+  );
+}
+
+function ConsultRow({ c }: { c: Consult }) {
+  const paid = c.status !== "pending_payment";
+  const terminal = c.status === "completed" || c.status === "cancelled";
+  const when = c.scheduledAt ? new Date(c.scheduledAt).toLocaleString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "Flexible time";
+  return (
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-primary/15 bg-primary/[0.03] p-3.5 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#01586C] to-[#0a7d96] text-white"><Video size={16} /></span>
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-semibold text-slate-800">{c.patientName}</span>
+          <Pill tone={statusTone(c.status)}>{c.status.replace(/_/g, " ")}</Pill>
+          {paid && !terminal && <Pill tone="green">paid</Pill>}
+        </div>
+        <div className="mt-0.5 text-xs text-slate-500">{c.mode || "video"} consult · {when}{c.feeInr ? ` · ${formatINR(c.feeInr)}` : ""}</div>
+      </div>
+      {c.patientPhone && <a href={`tel:${c.patientPhone}`} className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50" aria-label="Call patient"><Phone size={15} /></a>}
+      {paid && !terminal ? (
+        <a href={`/consult/${c.id}`} className="inline-flex items-center gap-1.5 rounded-lg bg-[#01586C] px-3 py-2 text-xs font-semibold text-white hover:bg-[#024a5a]"><Video size={14} /> Join call</a>
+      ) : (
+        <a href={`/consult/${c.id}`} className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50">Open</a>
+      )}
     </div>
   );
 }
