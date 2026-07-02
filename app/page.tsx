@@ -126,11 +126,11 @@ export default async function HomePage() {
           <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {[
               { href: "/doctors", title: "Consult a doctor", desc: "Video or clinic visit", image: img("consult") },
-              { href: "/lab", title: "Diagnostics & lab tests", desc: "Home sample, fast reports", image: img("lab") },
               { href: "/medicine", title: "Pharmacy delivery", desc: "Medicines to your door", image: img("medicine") },
+              { href: "/lab", title: "Diagnostics & lab tests", desc: "Home sample, fast reports", image: img("lab") },
+              { href: "/vitals", title: "Vital Checkup", desc: "Instant flagged report", image: img("vitals") },
               { href: "/home-nursing", title: "Nursing & home care", desc: "Skilled care at home", image: img("nursing") },
               { href: "/services", title: "Physiotherapy", desc: "Rehab & mobility care", image: img("physio") },
-              { href: "/vitals", title: "Vital Checkup", desc: "Instant flagged report", image: img("vitals") },
               { href: "/ai-doctor", title: "AI Health Assistant", desc: "Symptom check & guidance", image: img("ai") },
               { href: "/services", title: "Nutrition support", desc: "Personalised diet plans", image: img("nutrition") }
             ].map((s) => (

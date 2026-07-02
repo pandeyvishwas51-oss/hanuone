@@ -30,11 +30,11 @@ export default async function SiteHeader() {
 
         <nav className="hidden items-center gap-5 whitespace-nowrap text-sm font-medium text-ink lg:flex">
           <Link href="/doctors" className="hover:text-accent">Find Doctors</Link>
-          <Link href="/services" className="hover:text-accent">Services</Link>
-          <Link href="/lab" className="hover:text-accent">Lab Tests</Link>
           <Link href="/medicine" className="hover:text-accent">Medicines</Link>
+          <Link href="/lab" className="hover:text-accent">Lab Tests</Link>
           <Link href="/vitals" className="hover:text-accent">Vital Checkup</Link>
           <Link href="/ai-doctor" className="font-semibold text-accent hover:text-accent-600">AI Doctor</Link>
+          <Link href="/services" className="hover:text-accent">All Services</Link>
           <Link href="/providers/join" className="hover:text-accent">For Doctors</Link>
           <AccountNavLink />
         </nav>
