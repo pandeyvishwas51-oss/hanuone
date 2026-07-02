@@ -67,13 +67,36 @@ export async function getProviderAvailability(professionalId: string) {
     .orderBy(schema.availability.date, schema.availability.startTime);
 }
 
-/** Earnings ledger + simple totals. */
+/**
+ * Earnings ledger + totals. Merges TWO income sources so a provider sees ALL
+ * their money: the `earnings` ledger (home-care bookings) AND the `payouts`
+ * table (each completed consult/visit credits the provider's net share). Without
+ * the payouts merge, doctors and nurses saw ₹0 despite completed work.
+ */
 export async function getProviderEarnings(professionalId: string) {
-  const rows = await db().select().from(schema.earnings)
-    .where(eq(schema.earnings.professionalId, professionalId))
-    .orderBy(desc(schema.earnings.createdAt));
-  const credited = rows.filter((r) => r.type === "credit").reduce((s, r) => s + (r.amount ?? 0), 0);
-  const paidOut = rows.filter((r) => r.type === "payout").reduce((s, r) => s + (r.amount ?? 0), 0);
+  const [ledger, payoutRows] = await Promise.all([
+    db().select().from(schema.earnings).where(eq(schema.earnings.professionalId, professionalId)).orderBy(desc(schema.earnings.createdAt)),
+    db().select().from(schema.payouts).where(eq(schema.payouts.professionalId, professionalId)).orderBy(desc(schema.payouts.createdAt))
+  ]);
+
+  type Row = { id: string; amount: number; type: string | null; description: string | null; createdAt: Date | null };
+  const ledgerRows: Row[] = ledger.map((r) => ({ id: r.id, amount: r.amount ?? 0, type: r.type, description: r.description, createdAt: r.createdAt }));
+  // Each payout is the provider's net credit for one consult/visit.
+  const payoutLedger: Row[] = payoutRows.map((p) => ({
+    id: p.id,
+    amount: p.netInr ?? 0,
+    type: "credit",
+    description: p.sourceType === "consultation" ? "Teleconsult" : "Home visit",
+    createdAt: p.createdAt
+  }));
+
+  const rows = [...ledgerRows, ...payoutLedger].sort((a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0));
+  const credited =
+    ledgerRows.filter((r) => r.type === "credit").reduce((s, r) => s + r.amount, 0) +
+    payoutRows.reduce((s, p) => s + (p.netInr ?? 0), 0);
+  const paidOut =
+    ledgerRows.filter((r) => r.type === "payout").reduce((s, r) => s + r.amount, 0) +
+    payoutRows.filter((p) => p.status === "paid").reduce((s, p) => s + (p.netInr ?? 0), 0);
   return { rows, credited, paidOut, balance: credited - paidOut };
 }
 
