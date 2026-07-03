@@ -7,6 +7,7 @@ import { sendEmail } from "@/lib/notify";
 import { welcomeEmail } from "@/lib/email-templates";
 import { audit, clientIp } from "@/lib/audit";
 import { rateLimit } from "@/lib/ratelimit";
+import { applyReferral } from "@/lib/referrals";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -40,6 +41,12 @@ export async function POST(req: Request) {
 
   const [user] = await db().update(schema.users).set({ emailVerified: new Date() }).where(eq(schema.users.email, email)).returning();
   if (!user) return NextResponse.json({ ok: false, error: "Account not found" }, { status: 404 });
+
+  // Credit the referrer now that the account is verified (only real users count).
+  if (user.referredByCode) {
+    await applyReferral(user.referredByCode, user.id).catch(() => {});
+    await db().update(schema.users).set({ referredByCode: null }).where(eq(schema.users.id, user.id)).catch(() => {});
+  }
 
   await createSession({ id: user.id, phone: user.phone, name: user.name, role: user.role as "patient" | "provider" | "admin", isAdmin: !!user.isAdmin });
   await sendEmail([email], welcomeEmail(user.name).subject, welcomeEmail(user.name).html);

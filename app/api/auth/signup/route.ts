@@ -14,7 +14,8 @@ export async function POST(req: Request) {
   const rl = await rateLimit(`signup:${clientIp(req)}`, 8, 60);
   if (!rl.ok) return NextResponse.json({ ok: false, error: "Too many attempts. Try again shortly." }, { status: 429 });
 
-  const body = (await req.json().catch(() => ({}))) as { name?: string; email?: string; phone?: string; password?: string; channel?: "email" | "sms" };
+  const body = (await req.json().catch(() => ({}))) as { name?: string; email?: string; phone?: string; password?: string; channel?: "email" | "sms"; ref?: string };
+  const refCode = (body.ref ?? "").trim().toUpperCase().slice(0, 20) || null;
   const name = (body.name ?? "").trim();
   const email = (body.email ?? "").trim().toLowerCase();
   const phone = (body.phone ?? "").trim();
@@ -53,9 +54,9 @@ export async function POST(req: Request) {
       await db().delete(schema.users).where(eq(schema.users.id, byPhone.id));
     }
     if (target) {
-      await db().update(schema.users).set({ name, email, phone: mobile, passwordHash, authProvider: "email" }).where(eq(schema.users.id, target.id));
+      await db().update(schema.users).set({ name, email, phone: mobile, passwordHash, authProvider: "email", ...(refCode ? { referredByCode: refCode } : {}) }).where(eq(schema.users.id, target.id));
     } else {
-      await db().insert(schema.users).values({ name, email, phone: mobile, passwordHash, authProvider: "email", role: "patient" });
+      await db().insert(schema.users).values({ name, email, phone: mobile, passwordHash, authProvider: "email", role: "patient", referredByCode: refCode });
     }
 
     const { devCode, channel } = await sendOtp(email, "signup", { channel: body.channel, phone: mobile });

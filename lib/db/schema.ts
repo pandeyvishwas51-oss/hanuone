@@ -170,6 +170,7 @@ export const users = pgTable("users", {
   emergencyPhone: text("emergency_phone"),
   marketingOptIn: boolean("marketing_opt_in").default(true),
   authProvider: text("auth_provider").default("email"), // 'email' | 'google' | 'phone'
+  referredByCode: text("referred_by_code"), // ref code captured at signup, applied on verify
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
 });
 

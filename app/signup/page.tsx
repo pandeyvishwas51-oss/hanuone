@@ -40,7 +40,7 @@ function SignupInner() {
       const r = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, password, channel })
+        body: JSON.stringify({ name, email, phone, password, channel, ref: refCode() })
       });
       const j = await r.json();
       if (!j.ok) throw new Error(j.error || "Could not sign up");
