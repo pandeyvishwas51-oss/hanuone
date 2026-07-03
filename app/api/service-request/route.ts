@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { notifyOpsNewVisit } from "@/lib/notify";
 import { autoAssignVisit } from "@/lib/assignment";
+import { rewardReferralOnFirstBooking } from "@/lib/referrals";
 import { track } from "@/lib/analytics";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 import { getCurrentUser } from "@/lib/auth";
@@ -88,6 +89,9 @@ export async function POST(req: Request) {
           })
           .returning({ id: schema.serviceVisits.id });
         visitId = visit?.id ?? null;
+        // Refer & earn: a referred patient's first home visit earns the reward
+        // (idempotent; no-ops for anonymous or already-rewarded referrals).
+        if (visitId) await rewardReferralOnFirstBooking(reqUser?.id ?? null).catch(() => {});
         if (visitId) await autoAssignVisit(visitId);
         await notifyOpsNewVisit({
           serviceType,

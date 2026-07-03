@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { sendEmail, notifyOpsNewVisit } from "@/lib/notify";
 import { autoAssignVisit } from "@/lib/assignment";
+import { rewardReferralOnFirstBooking } from "@/lib/referrals";
 import { sendSms } from "@/lib/msg91";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 import { getCurrentUser } from "@/lib/auth";
@@ -124,6 +125,10 @@ export async function POST(req: Request) {
       await db().insert(schema.patients).values({ phone: patientPhone, name: patientName, email: b.patientEmail?.trim() || null, city: b.city?.trim() || null })
         .onConflictDoUpdate({ target: schema.patients.phone, set: { name: patientName, city: b.city?.trim() || null } });
 
+      // Refer & earn: a referred patient's first consult request also earns the
+      // reward (idempotent; no-ops for anonymous or already-rewarded referrals).
+      await rewardReferralOnFirstBooking(reqUser?.id ?? null).catch(() => {});
+
       const recipients = new Set([NOTIFY_EMAIL]);
       if (b.patientEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.patientEmail)) recipients.add(b.patientEmail.trim());
       await sendEmail(Array.from(recipients), `Voice booking: ${patientName} → ${b.doctorName}`,
@@ -151,6 +156,7 @@ export async function POST(req: Request) {
         scheduledAt: new Date(`${preferredDate}T00:00:00`),
         status: "requested"
       }).returning({ id: schema.serviceVisits.id });
+      await rewardReferralOnFirstBooking(reqUser?.id ?? null).catch(() => {});
       await autoAssignVisit(visit.id);
       await notifyOpsNewVisit({ serviceType: "vitals", patientName, patientPhone, address, pincode: null }).catch(() => {});
       await sendSms(patientPhone, `HanuONE: Your Vital Checkup for ${whenLabel} is booked. Our verified nurse will visit to record your vitals.`).catch(() => {});

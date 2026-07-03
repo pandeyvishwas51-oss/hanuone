@@ -4,6 +4,7 @@ import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 import { notify, notifyOpsNewVisit } from "@/lib/notify";
 import { autoAssignVisit } from "@/lib/assignment";
+import { rewardReferralOnFirstBooking } from "@/lib/referrals";
 import { track } from "@/lib/analytics";
 import { audit, clientIp } from "@/lib/audit";
 
@@ -47,6 +48,12 @@ export async function POST(req: Request) {
       status: "requested"
     })
     .returning({ id: schema.serviceVisits.id });
+
+  // Refer & earn: this home visit is the referred patient's first booking —
+  // convert a pending "signed_up" referral to "rewarded" (idempotent for repeats).
+  // The refer page promises the reward on "first consultation OR home visit", so
+  // it must fire here too, not only on the teleconsult path.
+  await rewardReferralOnFirstBooking(user.id).catch(() => {});
 
   // Auto-dispatch: try to assign a verified, gender-safe nurse immediately.
   await autoAssignVisit(visit.id);
