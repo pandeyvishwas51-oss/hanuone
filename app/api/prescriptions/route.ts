@@ -7,6 +7,7 @@ import { validatePrescription, prescriptionValidUntil, type RxMed } from "@/lib/
 import { PrescriptionDoc } from "@/lib/pdf/prescription";
 import { uploadPrivate } from "@/lib/storage";
 import { notifyPrescriptionReady } from "@/lib/notify";
+import { completeConsultation } from "@/lib/order-confirm";
 import { audit, clientIp } from "@/lib/audit";
 
 export const runtime = "nodejs";
@@ -108,8 +109,11 @@ export async function POST(req: Request) {
       await db().update(schema.prescriptions).set({ pdfUrl: url }).where(eq(schema.prescriptions.id, rx.id));
     }
 
-    // 3) Mark consultation completed + notify.
-    await db().update(schema.consultations).set({ status: "completed", updatedAt: new Date() }).where(eq(schema.consultations.id, consult.id));
+    // 3) Mark consultation completed + notify. Route through completeConsultation
+    // (not a raw update) so the doctor's payout is created, the status flip is
+    // idempotently guarded, and the patient's review/notify automation fires —
+    // issuing the e-Rx is the natural way a doctor finishes a teleconsult.
+    await completeConsultation(consult.id);
     if (url) {
       await notifyPrescriptionReady({ patientPhone: consult.patientPhone, doctorName: doctor?.name ?? "your doctor", url });
     }
