@@ -7,15 +7,17 @@ import { parseLocalDate, formatLocalDate } from "@/lib/utils";
 
 type Booking = {
   id: string;
+  kind?: "request" | "consult";
   doctorSlug: string;
   doctorName: string;
   patientName: string;
   patientPhone: string;
-  preferredDate: string;
+  preferredDate: string | null;
   preferredTime: string;
   reason: string | null;
   city: string | null;
   status: string;
+  href?: string;
   createdAt: string | null;
 };
 
@@ -28,6 +30,7 @@ const STATUS_BADGE: Record<string, string> = {
 
 function isUpcoming(b: Booking) {
   if (b.status === "cancelled" || b.status === "completed") return false;
+  if (!b.preferredDate) return true; // undated (e.g. slot-less consult) → treat as upcoming
   const d = parseLocalDate(b.preferredDate); // local, not UTC — avoids IST off-by-one
   if (Number.isNaN(d.getTime())) return true; // undated → treat as upcoming
   const today = new Date();
@@ -150,7 +153,7 @@ export default function MyBookingsPage() {
               {shown.map((b, i) => (
                 <Link
                   key={b.id}
-                  href={`/doctors/${b.doctorSlug}`}
+                  href={b.href || `/doctors/${b.doctorSlug}`}
                   className="group block animate-fade-in-up rounded-2xl border border-primary/10 bg-white p-5 shadow-[0_1px_3px_rgba(1,88,108,0.06)] transition hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_12px_28px_-12px_rgba(1,88,108,0.3)]"
                   style={{ animationDelay: `${Math.min(i * 50, 300)}ms` }}
                 >
@@ -160,7 +163,7 @@ export default function MyBookingsPage() {
                       <div className="min-w-0">
                         <div className="truncate text-[15px] font-bold text-ink transition group-hover:text-primary">{b.doctorName}</div>
                         <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
-                          <span className="inline-flex items-center gap-1"><Calendar size={12} /> {formatLocalDate(b.preferredDate)}</span>
+                          {b.preferredDate && <span className="inline-flex items-center gap-1"><Calendar size={12} /> {formatLocalDate(b.preferredDate)}</span>}
                           <span className="inline-flex items-center gap-1"><Clock size={12} /> {b.preferredTime}</span>
                           {b.city && <span className="inline-flex items-center gap-1"><MapPin size={12} /> {b.city}</span>}
                         </div>
@@ -173,7 +176,7 @@ export default function MyBookingsPage() {
                   </div>
                   {b.reason && <p className="mt-3 line-clamp-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-muted">“{b.reason}”</p>}
                   <div className="mt-3 flex items-center justify-end text-xs font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                    View doctor <ChevronRight size={14} />
+                    {b.kind === "consult" ? "Open consultation" : "View doctor"} <ChevronRight size={14} />
                   </div>
                 </Link>
               ))}
