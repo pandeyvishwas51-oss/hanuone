@@ -25,12 +25,16 @@ export default async function AccountPage() {
   let consults: typeof schema.consultations.$inferSelect[] = [];
   let rxs: typeof schema.prescriptions.$inferSelect[] = [];
   let vitals: typeof schema.vitalVisits.$inferSelect[] = [];
+  let labs: typeof schema.labOrders.$inferSelect[] = [];
+  let meds: typeof schema.medicineOrders.$inferSelect[] = [];
 
   if (HAS_DB) {
-    [consults, rxs, vitals] = await Promise.all([
+    [consults, rxs, vitals, labs, meds] = await Promise.all([
       db().select().from(schema.consultations).where(eq(schema.consultations.patientUserId, user.id)).orderBy(desc(schema.consultations.createdAt)).limit(20),
       db().select().from(schema.prescriptions).where(eq(schema.prescriptions.patientUserId, user.id)).orderBy(desc(schema.prescriptions.createdAt)).limit(20),
-      db().select().from(schema.vitalVisits).where(eq(schema.vitalVisits.patientUserId, user.id)).orderBy(desc(schema.vitalVisits.visitedAt)).limit(20)
+      db().select().from(schema.vitalVisits).where(eq(schema.vitalVisits.patientUserId, user.id)).orderBy(desc(schema.vitalVisits.visitedAt)).limit(20),
+      db().select().from(schema.labOrders).where(eq(schema.labOrders.patientUserId, user.id)).orderBy(desc(schema.labOrders.createdAt)).limit(20),
+      db().select().from(schema.medicineOrders).where(eq(schema.medicineOrders.patientUserId, user.id)).orderBy(desc(schema.medicineOrders.createdAt)).limit(20)
     ]);
   }
 
@@ -155,6 +159,47 @@ export default async function AccountPage() {
             ))}
           </div>
           <a href="/vitals" className="mt-3 inline-block text-sm font-medium text-primary">View trends →</a>
+        </section>
+      )}
+
+      {labs.length > 0 && (
+        <section className="mt-8">
+          <h2 className="h3">Lab tests</h2>
+          <div className="mt-3 grid gap-3">
+            {labs.map((l) => (
+              <div key={l.id} className="card flex items-center justify-between gap-3 p-4">
+                <div>
+                  <div className="font-medium text-ink">{l.testName}</div>
+                  <div className="text-xs text-muted">
+                    {[l.collectionType === "walkin" ? "Walk-in" : "Home collection", l.slotDate, l.slotTime].filter(Boolean).join(" · ")} · <span className="capitalize">{l.status}</span>
+                  </div>
+                </div>
+                {l.reportUrl ? <a href={l.reportUrl} target="_blank" rel="noopener noreferrer" className="btn-outline px-3 py-1.5 text-sm">Report</a> : null}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {meds.length > 0 && (
+        <section className="mt-8">
+          <h2 className="h3">Medicine orders</h2>
+          <div className="mt-3 grid gap-3">
+            {meds.map((m) => {
+              let items: { name?: string; qty?: number }[] = [];
+              try { items = JSON.parse(m.items || "[]"); } catch { /* keep [] */ }
+              const names = items.map((it) => it.name).filter(Boolean) as string[];
+              const summary = names.length ? names.slice(0, 3).join(", ") + (names.length > 3 ? ` +${names.length - 3} more` : "") : "Prescription order";
+              return (
+                <div key={m.id} className="card flex items-center justify-between gap-3 p-4">
+                  <div>
+                    <div className="font-medium text-ink">{summary}</div>
+                    <div className="text-xs text-muted"><span className="capitalize">{m.status}</span>{m.amountInr ? ` · ₹${m.amountInr}` : ""}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </section>
       )}
 
