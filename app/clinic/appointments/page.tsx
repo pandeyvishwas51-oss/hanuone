@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getCurrentProfessional, getProviderBookings, getProviderAvailability, getProviderEarnings, getProviderConsultations, isHomeCareRole } from "@/lib/provider";
+import { getCurrentProfessional, getProviderMergedBookings, getProviderAvailability, getProviderEarnings, getProviderConsultations, isHomeCareRole } from "@/lib/provider";
 import DoctorDashboard from "@/components/provider/DoctorDashboard";
 import ComingSoon from "@/components/portal/ComingSoon";
 
@@ -12,7 +12,10 @@ export default async function ClinicAppointments() {
   if (!prof) return <ComingSoon title="Appointments" blurb="Connect a verified doctor profile to manage appointments." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
   const [bookings, availability, earnings, consults] = await Promise.all([
-    getProviderBookings(prof.id), getProviderAvailability(prof.userId), getProviderEarnings(prof.id), getProviderConsultations(prof.userId)
+    getProviderMergedBookings(prof.id, prof.userId),
+    getProviderAvailability(prof.userId),
+    getProviderEarnings(prof.id),
+    getProviderConsultations(prof.userId)
   ]);
   const consultations = consults.map((c) => ({
     id: c.id, patientName: c.patientName, patientPhone: c.patientPhone,

@@ -36,6 +36,62 @@ export async function getProviderBookings(professionalId: string) {
 }
 
 /**
+ * Patient consultation REQUESTS from the public booking flow — stored in
+ * `doctor_bookings` (the SAME table `/api/book` writes and `/my-bookings` reads).
+ * Resolved via the provider user → doctors catalog row. Without this, doctors saw
+ * an empty clinic dashboard while patients had bookings in their account.
+ */
+export async function getProviderDoctorBookings(userId: string | null) {
+  if (!userId) return [];
+  const [doc] = await db().select({ id: schema.doctors.id })
+    .from(schema.doctors).where(eq(schema.doctors.userId, userId)).limit(1);
+  if (!doc) return [];
+  return db().select().from(schema.doctorBookings)
+    .where(eq(schema.doctorBookings.doctorId, doc.id))
+    .orderBy(desc(schema.doctorBookings.preferredDate), desc(schema.doctorBookings.createdAt))
+    .limit(100);
+}
+
+type LegacyBooking = typeof schema.bookings.$inferSelect;
+type DoctorRequest = typeof schema.doctorBookings.$inferSelect;
+
+/** Map patient consult REQUESTS into the provider `bookings` card shape. */
+export function mergeDoctorRequestsIntoBookings(
+  professionalId: string,
+  legacy: LegacyBooking[],
+  requests: DoctorRequest[]
+): LegacyBooking[] {
+  const mapped: LegacyBooking[] = requests.map((b) => ({
+    id: b.id,
+    professionalId,
+    patientName: b.patientName,
+    patientPhone: b.patientPhone,
+    patientAddress: null,
+    serviceType: "Consultation request",
+    bookingDate: b.preferredDate,
+    startTime: b.preferredTime,
+    endTime: null,
+    status: b.status,
+    notes: b.reason,
+    amount: null,
+    paymentStatus: null,
+    reminderSentAt: null,
+    createdAt: b.createdAt,
+    updatedAt: b.createdAt
+  }));
+  return [...legacy, ...mapped].sort((a, b) => String(b.bookingDate).localeCompare(String(a.bookingDate)));
+}
+
+/** All appointment rows a doctor should see: legacy `bookings` + `doctor_bookings`. */
+export async function getProviderMergedBookings(professionalId: string, userId: string | null) {
+  const [legacy, requests] = await Promise.all([
+    getProviderBookings(professionalId),
+    getProviderDoctorBookings(userId)
+  ]);
+  return mergeDoctorRequestsIntoBookings(professionalId, legacy, requests);
+}
+
+/**
  * Video/audio consultations booked with this doctor. Consults link to the
  * `doctors` catalog row (doctor_id); that row's user_id ties back to the
  * provider user — so a doctor can see and join their telemedicine consults

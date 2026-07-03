@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getCurrentProfessional, getProviderBookings, getProviderEarnings, getProviderNotes, isHomeCareRole } from "@/lib/provider";
+import { getCurrentProfessional, getProviderMergedBookings, getProviderEarnings, getProviderNotes, isHomeCareRole } from "@/lib/provider";
 import ClinicHome from "@/components/clinic/ClinicHome";
 import ComingSoon from "@/components/portal/ComingSoon";
 
@@ -13,7 +13,7 @@ export default async function ClinicHomePage() {
   if (!prof) return <ComingSoon title="Clinic" blurb="Connect a verified doctor profile to open your command center." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
   const [bookings, earnings, notes] = await Promise.all([
-    getProviderBookings(prof.id), getProviderEarnings(prof.id), getProviderNotes(prof.id)
+    getProviderMergedBookings(prof.id, prof.userId), getProviderEarnings(prof.id), getProviderNotes(prof.id)
   ]);
 
   return <ClinicHome prof={j(prof)} bookings={j(bookings)} earnings={j(earnings)} notes={j(notes)} />;
