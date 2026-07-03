@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, inArray } from "drizzle-orm";
 import { getCurrentUser } from "@/lib/auth";
 import { HAS_DB, db, schema } from "@/lib/db";
 import LogoutButton from "@/components/LogoutButton";
@@ -37,6 +37,15 @@ export default async function AccountPage() {
       db().select().from(schema.labOrders).where(eq(schema.labOrders.patientUserId, user.id)).orderBy(desc(schema.labOrders.createdAt)).limit(20),
       db().select().from(schema.medicineOrders).where(eq(schema.medicineOrders.patientUserId, user.id)).orderBy(desc(schema.medicineOrders.createdAt)).limit(20)
     ]);
+  }
+
+  // Live delivery tracking: who is bringing each medicine order + their status.
+  // Keyed by medicineOrderId so the card can show the rider once assigned.
+  const delivery = new Map<string, typeof schema.deliveryAssignments.$inferSelect>();
+  if (HAS_DB && meds.length) {
+    const rows = await db().select().from(schema.deliveryAssignments)
+      .where(inArray(schema.deliveryAssignments.medicineOrderId, meds.map((m) => m.id)));
+    for (const r of rows) if (r.medicineOrderId) delivery.set(r.medicineOrderId, r);
   }
 
   const upcoming = consults.filter((c) => c.status === "booked" || c.status === "in_progress").length;
@@ -198,12 +207,32 @@ export default async function AccountPage() {
               try { items = JSON.parse(m.items || "[]"); } catch { /* keep [] */ }
               const names = items.map((it) => it.name).filter(Boolean) as string[];
               const summary = names.length ? names.slice(0, 3).join(", ") + (names.length > 3 ? ` +${names.length - 3} more` : "") : "Prescription order";
+              const d = delivery.get(m.id);
+              const outForDelivery = d?.status === "out_for_delivery";
               return (
-                <div key={m.id} className="card flex items-center justify-between gap-3 p-4">
-                  <div>
-                    <div className="font-medium text-ink">{summary}</div>
-                    <div className="text-xs text-muted"><span className="capitalize">{m.status}</span>{m.amountInr ? ` · ₹${m.amountInr}` : ""}</div>
+                <div key={m.id} className="card p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="truncate font-medium text-ink">{summary}</div>
+                      <div className="text-xs text-muted"><span className="capitalize">{m.status}</span>{m.amountInr ? ` · ₹${m.amountInr}` : ""}</div>
+                    </div>
+                    {d?.status && (
+                      <span className={`flex-none rounded-full px-2.5 py-1 text-xs font-medium capitalize ${outForDelivery ? "bg-sky-50 text-sky-700" : d.status === "delivered" ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>
+                        {d.status.replace(/_/g, " ")}
+                      </span>
+                    )}
                   </div>
+                  {d?.deliveryPersonName && d.status !== "delivered" && d.status !== "cancelled" && (
+                    <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-primary/5 px-3 py-2 ring-1 ring-primary/10">
+                      <div className="min-w-0 text-xs">
+                        <div className="font-medium text-ink">{outForDelivery ? "Out for delivery" : "Delivery partner"}: {d.deliveryPersonName}</div>
+                        {d.deliveryPersonPhone && <div className="text-muted">{d.deliveryPersonPhone}</div>}
+                      </div>
+                      {d.deliveryPersonPhone && (
+                        <a href={`tel:${d.deliveryPersonPhone}`} className="flex-none rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90">Call</a>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

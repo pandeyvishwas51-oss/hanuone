@@ -50,15 +50,36 @@ export async function POST(req: Request) {
       .where(eq(schema.medicineOrders.id, body.id));
   }
 
-  // Record / update the delivery person on the order.
-  if (body.deliveryPersonName || body.deliveryPersonPhone) {
+  // Record / update the delivery person on the order. Upsert (not blind insert)
+  // so re-assigning or updating status edits the SAME row instead of piling up
+  // duplicate assignments — the patient's tracking must show one current rider.
+  if (body.deliveryPersonName || body.deliveryPersonPhone || body.status) {
     try {
-      await db().insert(schema.deliveryAssignments).values({
-        medicineOrderId: body.id,
-        deliveryPersonName: body.deliveryPersonName ?? null,
-        deliveryPersonPhone: body.deliveryPersonPhone ?? null,
-        status: body.status === "dispatched" ? "out_for_delivery" : "accepted"
-      });
+      const assignmentStatus =
+        body.status === "dispatched" ? "out_for_delivery" :
+        body.status === "delivered" ? "delivered" :
+        body.status === "cancelled" ? "cancelled" : "accepted";
+      const [existing] = await db().select({ id: schema.deliveryAssignments.id })
+        .from(schema.deliveryAssignments)
+        .where(eq(schema.deliveryAssignments.medicineOrderId, body.id))
+        .limit(1);
+      if (existing) {
+        await db().update(schema.deliveryAssignments).set({
+          ...(body.deliveryPersonName ? { deliveryPersonName: body.deliveryPersonName } : {}),
+          ...(body.deliveryPersonPhone ? { deliveryPersonPhone: body.deliveryPersonPhone } : {}),
+          status: assignmentStatus,
+          trackingUpdatedAt: new Date(),
+          updatedAt: new Date()
+        }).where(eq(schema.deliveryAssignments.id, existing.id));
+      } else if (body.deliveryPersonName || body.deliveryPersonPhone) {
+        await db().insert(schema.deliveryAssignments).values({
+          medicineOrderId: body.id,
+          deliveryPersonName: body.deliveryPersonName ?? null,
+          deliveryPersonPhone: body.deliveryPersonPhone ?? null,
+          status: assignmentStatus,
+          trackingUpdatedAt: new Date()
+        });
+      }
     } catch {
       /* assignment is best-effort */
     }
