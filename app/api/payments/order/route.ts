@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 import { createOrder, RAZORPAY_KEY_ID_PUBLIC, RAZORPAY_LIVE } from "@/lib/razorpay";
@@ -70,6 +70,26 @@ export async function POST(req: Request) {
   }
 
   try {
+    // Re-use an existing unpaid Razorpay order so a retry/double-click doesn't
+    // mint duplicate payment rows for the same consultation.
+    const [existingPay] = await db().select().from(schema.payments).where(and(
+      eq(schema.payments.orderType, body.orderType),
+      eq(schema.payments.orderId, body.orderId),
+      eq(schema.payments.userId, user.id),
+      eq(schema.payments.status, "created")
+    )).orderBy(desc(schema.payments.createdAt)).limit(1);
+    if (existingPay) {
+      return NextResponse.json({
+        ok: true,
+        razorpayOrderId: existingPay.razorpayOrderId,
+        amount: existingPay.amountInr * 100,
+        currency: existingPay.currency || "INR",
+        keyId: RAZORPAY_KEY_ID_PUBLIC,
+        live: RAZORPAY_LIVE,
+        reused: true
+      });
+    }
+
     const receipt = `${body.orderType}_${body.orderId}`.slice(0, 40);
     const order = await createOrder(amountInr, receipt);
 

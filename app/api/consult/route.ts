@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq, gte, isNull } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
@@ -63,6 +63,30 @@ export async function POST(req: Request) {
       .where(eq(schema.doctors.slug, body.doctorSlug))
       .limit(1);
     if (!doctor) return NextResponse.json({ ok: false, error: "Doctor not found" }, { status: 404 });
+
+    // Idempotency: a double-click or refresh mid-checkout must not spawn a second
+    // pending_payment consult (and orphan a reserved slot). Re-use the patient's
+    // recent in-flight booking for the same doctor + slot instead.
+    const recentCutoff = new Date(Date.now() - 30 * 60 * 1000);
+    const slotMatch = body.slotId
+      ? eq(schema.consultations.slotId, body.slotId)
+      : isNull(schema.consultations.slotId);
+    const [inFlight] = await db().select().from(schema.consultations).where(and(
+      eq(schema.consultations.patientUserId, user.id),
+      eq(schema.consultations.doctorId, doctor.id),
+      eq(schema.consultations.status, "pending_payment"),
+      slotMatch,
+      gte(schema.consultations.createdAt, recentCutoff)
+    )).orderBy(desc(schema.consultations.createdAt)).limit(1);
+    if (inFlight) {
+      return NextResponse.json({
+        ok: true,
+        consultationId: inFlight.id,
+        feeInr: inFlight.feeInr,
+        videoRoom: inFlight.videoRoom,
+        resumed: true
+      });
+    }
 
     // Resolve slot + fee.
     let scheduledAt: Date | null = null;
