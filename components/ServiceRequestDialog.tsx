@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, X } from "lucide-react";
 import { SITE } from "@/lib/seo";
+import { buildWhatsAppLink } from "@/lib/utils";
 import { useDialogA11y } from "@/lib/useDialogA11y";
 
 type Props = {
@@ -24,21 +25,46 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
   const [gender, setGender] = useState("");
   const [notes, setNotes] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
+  const userIdRef = useRef<string | null>(null);
+  const waLink = buildWhatsAppLink(
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210",
+    `Hi, I need help with a ${serviceLabel} request on HanuOne.`
+  );
   useDialogA11y(open, () => setOpen(false), panelRef);
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || typeof window === "undefined") return;
     // Clear stale status/feedback so a reopened dialog starts fresh.
     setStatus("idle");
     setFeedback("");
-    try {
-      const cached = JSON.parse(window.localStorage.getItem("hanuone:patient") || "{}");
-      if (cached.name) setName(cached.name);
-      if (cached.phone) setPhone(cached.phone);
-      if (cached.email) setEmail(cached.email);
-    } catch {}
+    let ignore = false;
+    fetch("/api/auth/me").then((r) => r.json()).then((j) => {
+      if (ignore) return;
+      const id = j.user?.id ?? null;
+      userIdRef.current = id;
+      if (j.user?.name) setName(j.user.name);
+      if (j.user?.phone) setPhone(j.user.phone.replace(/^\+?91/, ""));
+      try {
+        const storage = id ? window.localStorage : window.sessionStorage;
+        const key = id ? `hanuone:patient:${id}` : "hanuone:patient";
+        const cached = JSON.parse(storage.getItem(key) || "{}");
+        if (cached.name) setName(cached.name);
+        if (cached.phone) setPhone(cached.phone);
+        if (cached.email) setEmail(cached.email);
+      } catch {}
+    }).catch(() => {
+      if (ignore) return;
+      userIdRef.current = null;
+      try {
+        const cached = JSON.parse(window.sessionStorage.getItem("hanuone:patient") || "{}");
+        if (cached.name) setName(cached.name);
+        if (cached.phone) setPhone(cached.phone);
+        if (cached.email) setEmail(cached.email);
+      } catch {}
+    });
+    return () => { ignore = true; };
   }, [open]);
 
   async function submit(e: React.FormEvent) {
@@ -59,7 +85,13 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
         return;
       }
       if (typeof window !== "undefined") {
-        window.localStorage.setItem("hanuone:patient", JSON.stringify({ name, phone, email }));
+        const payload = JSON.stringify({ name, phone, email });
+        const id = userIdRef.current;
+        if (id) {
+          window.localStorage.setItem(`hanuone:patient:${id}`, payload);
+        } else {
+          window.sessionStorage.setItem("hanuone:patient", payload);
+        }
       }
       setStatus("ok");
       setFeedback(isLive ? "Got it. Our team will WhatsApp you within 30 minutes." : "You're on the early access list. We'll WhatsApp you the moment this service goes live in your area.");
@@ -138,7 +170,14 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
                   {status === "loading" ? "Sending..." : (isLive ? "Send request" : "Notify me")}
                 </button>
                 {status === "error" && (
-                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">{feedback}</div>
+                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">
+                    <p>{feedback}</p>
+                    {waLink && (
+                      <a href={waLink} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-primary underline">
+                        Chat on WhatsApp →
+                      </a>
+                    )}
+                  </div>
                 )}
               </form>
             )}
