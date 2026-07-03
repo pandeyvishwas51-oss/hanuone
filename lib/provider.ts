@@ -36,6 +36,23 @@ export async function getProviderBookings(professionalId: string) {
 }
 
 /**
+ * Patient consultation REQUESTS from the public booking flow — stored in
+ * `doctor_bookings` (the SAME table `/api/book` writes and `/my-bookings` reads).
+ * Resolved via the provider user → doctors catalog row. Without this, doctors saw
+ * an empty clinic dashboard while patients had bookings in their account.
+ */
+export async function getProviderDoctorBookings(userId: string | null) {
+  if (!userId) return [];
+  const [doc] = await db().select({ id: schema.doctors.id })
+    .from(schema.doctors).where(eq(schema.doctors.userId, userId)).limit(1);
+  if (!doc) return [];
+  return db().select().from(schema.doctorBookings)
+    .where(eq(schema.doctorBookings.doctorId, doc.id))
+    .orderBy(desc(schema.doctorBookings.preferredDate), desc(schema.doctorBookings.createdAt))
+    .limit(100);
+}
+
+/**
  * Video/audio consultations booked with this doctor. Consults link to the
  * `doctors` catalog row (doctor_id); that row's user_id ties back to the
  * provider user — so a doctor can see and join their telemedicine consults
