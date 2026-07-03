@@ -21,6 +21,13 @@ type SaveBody = {
   sendToPatient?: boolean;
 };
 
+// Prefix "Dr." only if the name doesn't already carry it — providers often
+// store "Dr. Asha Verma" in full_name, so a blind prefix yields "Dr. Dr. …".
+function drName(fullName: string): string {
+  const n = (fullName || "").trim();
+  return /^dr\.?\s/i.test(n) ? n : `Dr. ${n}`;
+}
+
 function rxText(meds: ScribeMedication[]): string {
   return meds.map((m, i) => `${i + 1}. ${m.name}${m.dose ? " " + m.dose : ""}${m.frequency ? " · " + m.frequency : ""}${m.duration ? " · " + m.duration : ""}${m.instructions ? " (" + m.instructions + ")" : ""}`).join("\n");
 }
@@ -77,10 +84,29 @@ export async function POST(req: Request) {
     })));
   }
 
+  // Also record a patient-facing prescription so the e-Rx shows up under
+  // "Prescriptions" in the patient's account — not only in the doctor's EMR
+  // note or a best-effort SMS/email. Resolve the doctor's catalog id (nullable
+  // for providers without a linked catalog row); the account reads by
+  // patientUserId, so a linked patient will see it immediately.
+  try {
+    const [doc] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(sql`${schema.doctors.userId} = ${prof.userId}`).limit(1);
+    await db().insert(schema.prescriptions).values({
+      doctorId: doc?.id ?? null,
+      patientUserId,
+      doctorName: drName(prof.fullName),
+      diagnosis: note.diagnosis || null,
+      medications: JSON.stringify(meds.map((m) => ({ name: m.name, dosage: m.dose || "", frequency: m.frequency || "", duration: m.duration || "" }))),
+      instructions: [note.advice, note.followUp ? `Follow up: ${note.followUp}` : ""].filter(Boolean).join("\n") || null
+    });
+  } catch {
+    /* patient-facing copy is best-effort; the signed EMR note is the source of truth */
+  }
+
   // Send the e-prescription to the patient.
   let sent = false;
   if (b.sendToPatient) {
-    const doctorName = `Dr. ${prof.fullName}`;
+    const doctorName = drName(prof.fullName);
     const summary = note.patientSummary || "Your consultation notes are ready.";
     const rx = meds.length ? `\n\nPrescription:\n${rxText(meds)}` : "";
     if (b.patientPhone) {
