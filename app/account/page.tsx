@@ -28,14 +28,16 @@ export default async function AccountPage() {
   let vitals: typeof schema.vitalVisits.$inferSelect[] = [];
   let labs: typeof schema.labOrders.$inferSelect[] = [];
   let meds: typeof schema.medicineOrders.$inferSelect[] = [];
+  let visits: typeof schema.serviceVisits.$inferSelect[] = [];
 
   if (HAS_DB) {
-    [consults, rxs, vitals, labs, meds] = await Promise.all([
+    [consults, rxs, vitals, labs, meds, visits] = await Promise.all([
       db().select().from(schema.consultations).where(eq(schema.consultations.patientUserId, user.id)).orderBy(desc(schema.consultations.createdAt)).limit(20),
       db().select().from(schema.prescriptions).where(eq(schema.prescriptions.patientUserId, user.id)).orderBy(desc(schema.prescriptions.createdAt)).limit(20),
       db().select().from(schema.vitalVisits).where(eq(schema.vitalVisits.patientUserId, user.id)).orderBy(desc(schema.vitalVisits.visitedAt)).limit(20),
       db().select().from(schema.labOrders).where(eq(schema.labOrders.patientUserId, user.id)).orderBy(desc(schema.labOrders.createdAt)).limit(20),
-      db().select().from(schema.medicineOrders).where(eq(schema.medicineOrders.patientUserId, user.id)).orderBy(desc(schema.medicineOrders.createdAt)).limit(20)
+      db().select().from(schema.medicineOrders).where(eq(schema.medicineOrders.patientUserId, user.id)).orderBy(desc(schema.medicineOrders.createdAt)).limit(20),
+      db().select().from(schema.serviceVisits).where(eq(schema.serviceVisits.patientUserId, user.id)).orderBy(desc(schema.serviceVisits.createdAt)).limit(20)
     ]);
   }
 
@@ -232,6 +234,33 @@ export default async function AccountPage() {
                         <a href={`tel:${d.deliveryPersonPhone}`} className="flex-none rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90">Call</a>
                       )}
                     </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {visits.length > 0 && (
+        <section className="mt-8">
+          <h2 className="h3">Home visits</h2>
+          <div className="mt-3 grid gap-3">
+            {visits.map((v) => {
+              const active = ["assigned", "on_the_way", "arrived", "in_progress"].includes(v.status);
+              const label = v.serviceName || v.serviceType?.replace(/_/g, " ") || "Home visit";
+              return (
+                <div key={v.id} className="card flex items-center justify-between gap-3 p-4">
+                  <div className="min-w-0">
+                    <div className="truncate font-medium capitalize text-ink">{label}</div>
+                    <div className="text-xs text-muted">
+                      <span className="capitalize">{v.status.replace(/_/g, " ")}</span>
+                      {v.scheduledAt ? ` · ${new Date(v.scheduledAt).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}` : ""}
+                      {v.feeInr ? ` · ₹${v.feeInr}` : ""}
+                    </div>
+                  </div>
+                  {active && (
+                    <a href={`/track/${v.id}`} className="btn-primary flex-none px-3 py-1.5 text-sm">Track live</a>
                   )}
                 </div>
               );
