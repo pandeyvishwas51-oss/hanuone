@@ -59,12 +59,19 @@ export async function getProviderVisits(professionalId: string) {
     .orderBy(desc(schema.serviceVisits.createdAt));
 }
 
-/** Upcoming availability slots for a doctor. */
-export async function getProviderAvailability(professionalId: string) {
+/**
+ * Upcoming availability slots for a doctor — from `providerSlots` (the SAME table
+ * patients book from), resolved via the provider user -> doctors catalog row. This
+ * is what makes a doctor's published availability actually bookable by patients.
+ */
+export async function getProviderAvailability(userId: string | null) {
+  if (!userId) return [];
+  const [doc] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.userId, userId)).limit(1);
+  if (!doc) return [];
   const today = new Date().toISOString().slice(0, 10);
-  return db().select().from(schema.availability)
-    .where(and(eq(schema.availability.professionalId, professionalId), gte(schema.availability.date, today)))
-    .orderBy(schema.availability.date, schema.availability.startTime);
+  return db().select().from(schema.providerSlots)
+    .where(and(eq(schema.providerSlots.doctorId, doc.id), gte(schema.providerSlots.date, today)))
+    .orderBy(schema.providerSlots.date, schema.providerSlots.startTime);
 }
 
 /**
