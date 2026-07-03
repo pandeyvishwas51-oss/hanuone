@@ -10,7 +10,9 @@ export const dynamic = "force-dynamic";
 function SignupInner() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || "/account";
+  const rawNext = params.get("next");
+  // Open-redirect guard: only allow same-site relative paths (not "//evil.com" or absolute URLs).
+  const next = rawNext && /^\/(?!\/)/.test(rawNext) ? rawNext : "/account";
 
   const [step, setStep] = useState<"form" | "otp">("form");
   const [name, setName] = useState("");
