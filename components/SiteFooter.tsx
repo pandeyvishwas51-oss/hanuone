@@ -5,29 +5,41 @@ import { Quote, Instagram, Linkedin, Twitter, ArrowRight } from "lucide-react";
 export default function SiteFooter() {
   return (
     <footer data-site-footer className="border-t border-primary/10 bg-white">
-      <div className="container-page grid gap-10 py-12 lg:grid-cols-3">
+      <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr,2fr,1.2fr]">
         <div>
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="Hanuone" width={120} height={120} className="h-11 w-auto" />
           </div>
-          <p className="mt-3 text-sm text-muted">
-            Lucknow ke Trusted Doctors, Ek Jagah. A free, verified directory of doctors in Lucknow,
-            built for families looking after their parents from afar.
+          <p className="mt-3 max-w-xs text-sm text-muted">
+            Trusted Healthcare, Right at Home. Consult doctors, order medicines, book lab tests and
+            home care — for your whole family, in one app.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-6 text-sm">
+        <div className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-3">
           <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">Explore</div>
-            <ul className="space-y-1.5 text-ink">
-              <li><Link href="/doctors" className="hover:text-primary">All Doctors</Link></li>
-              <li><Link href="/specializations/cardiologist" className="hover:text-primary">Cardiologists</Link></li>
-              <li><Link href="/specializations/gynecologist" className="hover:text-primary">Gynecologists</Link></li>
-              <li><Link href="/specializations/pediatrician" className="hover:text-primary">Pediatricians</Link></li>
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted">Services</div>
+            <ul className="space-y-2 text-ink">
+              <li><Link href="/doctors" className="hover:text-primary">Find Doctors</Link></li>
+              <li><Link href="/medicine" className="hover:text-primary">Medicines</Link></li>
+              <li><Link href="/lab" className="hover:text-primary">Lab Tests</Link></li>
+              <li><Link href="/vitals" className="hover:text-primary">Vital Checkup</Link></li>
+              <li><Link href="/ai-doctor" className="hover:text-primary">AI Doctor</Link></li>
+              <li><Link href="/services" className="hover:text-primary">All Services</Link></li>
             </ul>
           </div>
           <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">Localities</div>
-            <ul className="space-y-1.5 text-ink">
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted">Specialties</div>
+            <ul className="space-y-2 text-ink">
+              <li><Link href="/specializations/cardiologist" className="hover:text-primary">Cardiologists</Link></li>
+              <li><Link href="/specializations/gynecologist" className="hover:text-primary">Gynecologists</Link></li>
+              <li><Link href="/specializations/pediatrician" className="hover:text-primary">Pediatricians</Link></li>
+              <li><Link href="/specializations/dermatologist" className="hover:text-primary">Dermatologists</Link></li>
+              <li><Link href="/doctors" className="hover:text-primary">Browse all →</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted">Localities</div>
+            <ul className="space-y-2 text-ink">
               <li><Link href="/localities/gomtinagar" className="hover:text-primary">Gomtinagar</Link></li>
               <li><Link href="/localities/hazratganj" className="hover:text-primary">Hazratganj</Link></li>
               <li><Link href="/localities/aliganj" className="hover:text-primary">Aliganj</Link></li>
