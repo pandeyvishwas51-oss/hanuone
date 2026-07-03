@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Users, Sparkles, Receipt, Settings, ClipboardList,
   Wallet, UserCircle, UserCheck, CalendarDays, Menu, X, LogOut, ShieldCheck,
-  BarChart3, Send, FileText, CalendarRange, type LucideIcon
+  BarChart3, Send, FileText, CalendarRange, Home, type LucideIcon
 } from "lucide-react";
 
 type NavItem = { label: string; href: string; icon?: string };
@@ -99,7 +99,9 @@ export default function PortalShell({
         <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-slate-200 bg-white/80 px-4 py-3 backdrop-blur md:px-6 print:hidden">
           <button onClick={() => setOpen(true)} aria-label="Open menu" className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 md:hidden"><Menu size={20} /></button>
           <h1 className="text-base font-bold text-slate-800">{current?.label || brand}</h1>
-          <span className="ml-auto hidden text-xs text-slate-400 sm:inline">{brand}</span>
+          <Link href="/" className="ml-auto inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-500 hover:bg-slate-100 hover:text-slate-800">
+            <Home size={14} /> <span className="hidden sm:inline">Main site</span>
+          </Link>
         </header>
 
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-5 md:px-6">{children}</main>
