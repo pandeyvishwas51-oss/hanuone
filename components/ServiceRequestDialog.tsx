@@ -24,21 +24,42 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
   const [gender, setGender] = useState("");
   const [notes, setNotes] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
+  const userIdRef = useRef<string | null>(null);
   useDialogA11y(open, () => setOpen(false), panelRef);
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || typeof window === "undefined") return;
     // Clear stale status/feedback so a reopened dialog starts fresh.
     setStatus("idle");
     setFeedback("");
-    try {
-      const cached = JSON.parse(window.localStorage.getItem("hanuone:patient") || "{}");
-      if (cached.name) setName(cached.name);
-      if (cached.phone) setPhone(cached.phone);
-      if (cached.email) setEmail(cached.email);
-    } catch {}
+    let ignore = false;
+    fetch("/api/auth/me").then((r) => r.json()).then((j) => {
+      if (ignore) return;
+      const id = j.user?.id ?? null;
+      userIdRef.current = id;
+      if (j.user?.name) setName(j.user.name);
+      if (j.user?.phone) setPhone(j.user.phone.replace(/^\+?91/, ""));
+      try {
+        const storage = id ? window.localStorage : window.sessionStorage;
+        const key = id ? `hanuone:patient:${id}` : "hanuone:patient";
+        const cached = JSON.parse(storage.getItem(key) || "{}");
+        if (cached.name) setName(cached.name);
+        if (cached.phone) setPhone(cached.phone);
+        if (cached.email) setEmail(cached.email);
+      } catch {}
+    }).catch(() => {
+      if (ignore) return;
+      userIdRef.current = null;
+      try {
+        const cached = JSON.parse(window.sessionStorage.getItem("hanuone:patient") || "{}");
+        if (cached.name) setName(cached.name);
+        if (cached.phone) setPhone(cached.phone);
+        if (cached.email) setEmail(cached.email);
+      } catch {}
+    });
+    return () => { ignore = true; };
   }, [open]);
 
   async function submit(e: React.FormEvent) {
@@ -59,7 +80,13 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
         return;
       }
       if (typeof window !== "undefined") {
-        window.localStorage.setItem("hanuone:patient", JSON.stringify({ name, phone, email }));
+        const payload = JSON.stringify({ name, phone, email });
+        const id = userIdRef.current;
+        if (id) {
+          window.localStorage.setItem(`hanuone:patient:${id}`, payload);
+        } else {
+          window.sessionStorage.setItem("hanuone:patient", payload);
+        }
       }
       setStatus("ok");
       setFeedback(isLive ? "Got it. Our team will WhatsApp you within 30 minutes." : "You're on the early access list. We'll WhatsApp you the moment this service goes live in your area.");
