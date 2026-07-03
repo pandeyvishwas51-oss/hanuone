@@ -11,14 +11,14 @@ export default function RateDoctor({ doctorId, consultationId }: { doctorId: str
   const [state, setState] = useState<"idle" | "saving" | "done" | "error">("idle");
   const [err, setErr] = useState("");
 
-  async function submit(stars: number) {
-    if (state === "saving") return;
-    setRating(stars); setState("saving"); setErr("");
+  async function submit() {
+    if (state === "saving" || rating < 1) return;
+    setState("saving"); setErr("");
     try {
       const r = await fetch("/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ doctorId, consultationId, rating: stars, reviewText: text })
+        body: JSON.stringify({ doctorId, consultationId, rating, reviewText: text })
       });
       const j = await r.json();
       if (!j.ok) throw new Error(j.error || "Could not submit your rating.");
@@ -36,6 +36,9 @@ export default function RateDoctor({ doctorId, consultationId }: { doctorId: str
     <div className="mt-2 w-full">
       <div className="flex items-center gap-2">
         <span className="text-xs text-muted">Rate your doctor:</span>
+        {/* Selecting a star only SETS the rating — we submit on the explicit
+            button below, so the optional note is never discarded by an
+            accidental early submit. */}
         <div className="flex" onMouseLeave={() => setHover(0)}>
           {[1, 2, 3, 4, 5].map((n) => (
             <button
@@ -43,8 +46,9 @@ export default function RateDoctor({ doctorId, consultationId }: { doctorId: str
               type="button"
               disabled={state === "saving"}
               onMouseEnter={() => setHover(n)}
-              onClick={() => submit(n)}
+              onClick={() => setRating(n)}
               aria-label={`${n} star${n > 1 ? "s" : ""}`}
+              aria-pressed={rating === n}
               className="p-0.5 disabled:opacity-50"
             >
               <Star size={18} className={(hover || rating) >= n ? "fill-amber-400 text-amber-400" : "text-slate-300"} />
@@ -52,13 +56,25 @@ export default function RateDoctor({ doctorId, consultationId }: { doctorId: str
           ))}
         </div>
       </div>
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Add a quick note (optional)"
-        maxLength={1000}
-        className="input mt-1.5 text-sm"
-      />
+      {rating > 0 && (
+        <div className="mt-1.5 flex items-center gap-2">
+          <input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Add a quick note (optional)"
+            maxLength={1000}
+            className="input flex-1 text-sm"
+          />
+          <button
+            type="button"
+            onClick={submit}
+            disabled={state === "saving"}
+            className="btn-primary flex-none px-3 py-1.5 text-sm disabled:opacity-50"
+          >
+            {state === "saving" ? "Saving…" : "Submit"}
+          </button>
+        </div>
+      )}
       {err && <p className="mt-1 text-xs text-rose-600">{err}</p>}
     </div>
   );
