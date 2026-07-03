@@ -5,6 +5,7 @@ import { sendEmail, notifyOpsNewVisit } from "@/lib/notify";
 import { autoAssignVisit } from "@/lib/assignment";
 import { sendSms } from "@/lib/msg91";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
+import { getCurrentUser } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -84,6 +85,9 @@ export async function POST(req: Request) {
   const b = (await req.json().catch(() => ({}))) as Body;
   const kind = b.kind;
   const patientName = (b.patientName || "").trim();
+  // Link the booking to the logged-in patient so it always shows in their
+  // "My bookings" (even if the spoken phone differs from their account phone).
+  const reqUser = await getCurrentUser().catch(() => null);
   const patientPhone = (b.patientPhone || "").trim();
   const whenTime = (b.whenTime || "").trim() || "Any time";
   const preferredDate = resolveDate(b.whenDay);
@@ -103,6 +107,7 @@ export async function POST(req: Request) {
       const [doctor] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.slug, b.doctorSlug)).limit(1);
 
       const [row] = await db().insert(schema.doctorBookings).values({
+        patientUserId: reqUser?.id ?? null,
         doctorId: doctor?.id ?? null,
         doctorSlug: b.doctorSlug,
         doctorName: b.doctorName,
@@ -135,7 +140,7 @@ export async function POST(req: Request) {
       if (!address) return NextResponse.json({ ok: false, error: "I need the patient's home address for the nurse visit." }, { status: 400 });
       const vGender = ["male", "female", "other"].includes(String(b.gender || "").trim().toLowerCase()) ? String(b.gender).trim().toLowerCase() : null;
       const [visit] = await db().insert(schema.serviceVisits).values({
-        patientUserId: null,
+        patientUserId: reqUser?.id ?? null,
         patientName,
         patientPhone,
         serviceType: "vitals",
@@ -156,7 +161,7 @@ export async function POST(req: Request) {
       const testName = (b.testName || "").trim();
       if (!testName) return NextResponse.json({ ok: false, error: "Which lab test should I book?" }, { status: 400 });
       const [order] = await db().insert(schema.labOrders).values({
-        patientUserId: null,
+        patientUserId: reqUser?.id ?? null,
         testName,
         patientName,
         patientPhone,

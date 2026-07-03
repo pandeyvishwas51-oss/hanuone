@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sql } from "drizzle-orm";
+import { sql, or, eq } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 
@@ -18,14 +18,19 @@ export async function POST() {
     return NextResponse.json({ ok: false, error: "Login required" }, { status });
   }
 
+  // Match bookings linked to this account (patientUserId) OR made with the user's
+  // own phone number (last 10 digits, +91/0 tolerant) — so AI/voice bookings and
+  // pre-login bookings with the same number both surface reliably.
   const last10 = (user.phone || "").replace(/\D/g, "").slice(-10);
-  if (last10.length !== 10) return NextResponse.json({ ok: true, bookings: [] });
+  const byUser = eq(schema.doctorBookings.patientUserId, user.id);
+  const where = last10.length === 10
+    ? or(byUser, sql`right(regexp_replace(${schema.doctorBookings.patientPhone}, '\\D', '', 'g'), 10) = ${last10}`)
+    : byUser;
 
-  // Match the session user's own number (last 10 digits, +91/0 tolerant).
   const bookings = await db()
     .select()
     .from(schema.doctorBookings)
-    .where(sql`right(regexp_replace(${schema.doctorBookings.patientPhone}, '\\D', '', 'g'), 10) = ${last10}`)
+    .where(where)
     .orderBy(sql`${schema.doctorBookings.createdAt} desc`)
     .limit(50);
 

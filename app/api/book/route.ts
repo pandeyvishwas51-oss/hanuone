@@ -4,6 +4,7 @@ import { HAS_DB, db, schema } from "@/lib/db";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 import { SITE } from "@/lib/seo";
 import { track } from "@/lib/analytics";
+import { getCurrentUser } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -118,10 +119,13 @@ async function persistBooking(p: Payload) {
   try {
     // Lookup doctor row to attach the FK if possible.
     const [doctor] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.slug, p.doctorSlug)).limit(1);
+    // Link to the logged-in patient (if any) so it shows in their My bookings.
+    const bookUser = await getCurrentUser().catch(() => null);
     // Insert the booking AND upsert the patient-history row atomically (neon-http
     // db.batch = one tx), so we never persist a booking without its history row.
     await db().batch([
       db().insert(schema.doctorBookings).values({
+        patientUserId: bookUser?.id ?? null,
         doctorId: doctor?.id ?? null,
         doctorSlug: p.doctorSlug,
         doctorName: p.doctorName,

@@ -99,6 +99,9 @@ export const waitlist = pgTable("waitlist", {
 // Patient-side booking (consultation request)
 export const doctorBookings = pgTable("doctor_bookings", {
   id: uuid("id").primaryKey().defaultRandom(),
+  // Links the booking to a logged-in patient so it reliably appears in their
+  // "My bookings" even if the phone entered differs. Null for anonymous bookings.
+  patientUserId: uuid("patient_user_id"),
   doctorId: uuid("doctor_id").references(() => doctors.id, { onDelete: "set null" }),
   doctorSlug: text("doctor_slug").notNull(),
   doctorName: text("doctor_name").notNull(),
