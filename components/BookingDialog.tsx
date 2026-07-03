@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Clock, X, CheckCircle2 } from "lucide-react";
+import { SITE } from "@/lib/seo";
+import { buildWhatsAppLink } from "@/lib/utils";
 import { useDialogA11y } from "@/lib/useDialogA11y";
 
 type Props = {
@@ -39,6 +41,10 @@ export default function BookingDialog({ doctorSlug, doctorName, doctorCity, trig
   const [feedback, setFeedback] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
   const userIdRef = useRef<string | null>(null);
+  const waLink = buildWhatsAppLink(
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210",
+    `Hi, I need help booking a consultation with ${doctorName} on HanuOne.`
+  );
   useDialogA11y(open, () => setOpen(false), panelRef);
 
   // On open: restore last patient details, seed a fresh default date, and clear
@@ -107,7 +113,7 @@ export default function BookingDialog({ doctorSlug, doctorName, doctorCity, trig
       const data = await r.json().catch(() => ({}));
       if (!r.ok || !data.ok) {
         setStatus("error");
-        setFeedback(data.error || "Could not book. Please try again.");
+        setFeedback(data.error || `Could not book. Please WhatsApp us at ${SITE.phoneE164}.`);
         return;
       }
       // Cache patient details per authenticated user; anonymous users: tab session only.
@@ -199,7 +205,14 @@ export default function BookingDialog({ doctorSlug, doctorName, doctorCity, trig
                   {status === "loading" ? "Sending..." : "Request consultation"}
                 </button>
                 {status === "error" && (
-                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">{feedback}</div>
+                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">
+                    <p>{feedback}</p>
+                    {waLink && (
+                      <a href={waLink} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-primary underline">
+                        Chat on WhatsApp →
+                      </a>
+                    )}
+                  </div>
                 )}
                 <p className="text-[11px] text-muted">By booking you agree to be contacted on WhatsApp / phone for confirmation. We never share your details.</p>
               </form>

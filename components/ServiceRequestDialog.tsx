@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, X } from "lucide-react";
 import { SITE } from "@/lib/seo";
+import { buildWhatsAppLink } from "@/lib/utils";
 import { useDialogA11y } from "@/lib/useDialogA11y";
 
 type Props = {
@@ -25,6 +26,10 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
   const [notes, setNotes] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
   const userIdRef = useRef<string | null>(null);
+  const waLink = buildWhatsAppLink(
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210",
+    `Hi, I need help with a ${serviceLabel} request on HanuOne.`
+  );
   useDialogA11y(open, () => setOpen(false), panelRef);
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
@@ -165,7 +170,14 @@ export default function ServiceRequestDialog({ service, serviceLabel, isLive, tr
                   {status === "loading" ? "Sending..." : (isLive ? "Send request" : "Notify me")}
                 </button>
                 {status === "error" && (
-                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">{feedback}</div>
+                  <div role="alert" className="animate-fade-in-up rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">
+                    <p>{feedback}</p>
+                    {waLink && (
+                      <a href={waLink} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-primary underline">
+                        Chat on WhatsApp →
+                      </a>
+                    )}
+                  </div>
                 )}
               </form>
             )}
