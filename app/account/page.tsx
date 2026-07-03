@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { Stethoscope, Pill, FlaskConical, HeartPulse, HeartHandshake, Sparkles } from "lucide-react";
 import { desc, eq, inArray } from "drizzle-orm";
 import { getCurrentUser } from "@/lib/auth";
 import { HAS_DB, db, schema } from "@/lib/db";
@@ -82,6 +84,29 @@ export default async function AccountPage() {
           <span className="text-xs text-muted">{user.isAdmin ? "Command center, providers, finance" : "Appointments, visits & earnings"}</span>
         </a>
       )}
+
+      {/* Quick actions — one-tap access to every service */}
+      <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-6">
+        {[
+          { href: "/doctors", label: "Consult", icon: Stethoscope },
+          { href: "/medicine", label: "Medicines", icon: Pill },
+          { href: "/lab", label: "Lab tests", icon: FlaskConical },
+          { href: "/vitals", label: "Vitals", icon: HeartPulse },
+          { href: "/home-nursing", label: "Home care", icon: HeartHandshake },
+          { href: "/ai-doctor", label: "Ask Dr Hanu", icon: Sparkles }
+        ].map((a) => (
+          <Link
+            key={a.label}
+            href={a.href}
+            className="card group flex flex-col items-center gap-2 p-4 text-center transition hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-card-hover"
+          >
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-white">
+              <a.icon size={20} />
+            </span>
+            <span className="text-xs font-semibold text-ink">{a.label}</span>
+          </Link>
+        ))}
+      </div>
 
       <section className="mt-8">
         <ProfileForm />
