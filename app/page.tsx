@@ -8,6 +8,7 @@ import SpecialtyCard from "@/components/SpecialtyCard";
 import LocalityChip from "@/components/LocalityChip";
 import DoctorCard from "@/components/DoctorCard";
 import HeroHeadline from "@/components/HeroHeadline";
+import SectionHeading from "@/components/SectionHeading";
 import FaqSection from "@/components/FaqSection";
 import {
   getAllSpecializations,
@@ -16,7 +17,7 @@ import {
 } from "@/lib/queries";
 import { getActiveCity } from "@/lib/active-city";
 import { unstable_cache } from "next/cache";
-import { ShieldCheck, Users, Sparkles, BadgeCheck as CheckBadge } from "lucide-react";
+import { ShieldCheck, Users, Sparkles, BadgeCheck as CheckBadge, Mic, Search, CalendarCheck, HeartPulse, Stethoscope, MapPin, Layers, Clock } from "lucide-react";
 import { HOME_FAQS } from "@/lib/seo";
 
 // The page itself is dynamic (geo city is resolved per-request from headers),
@@ -67,17 +68,14 @@ export default async function HomePage() {
               assistant — for your whole family in {activeCity.name}.
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/services" className="btn-primary px-6">
+                Book a service
+              </Link>
               <Link href="/ai-doctor" className="btn-secondary">
-                🎙️ Talk to Dr. Hanu
-              </Link>
-              <Link href="/services" className="btn-primary">
-                Book Now
-              </Link>
-              <Link href="/services" className="btn-outline">
-                Explore Services
+                <Mic size={16} /> Talk to Dr. Hanu
               </Link>
             </div>
-            <p className="mt-2 text-xs text-muted">Speak in Hindi or English — our AI doctor listens and replies by voice.</p>
+            <p className="mt-2.5 text-xs text-muted">Speak in Hindi or English — our AI doctor listens and replies by voice.</p>
           </div>
 
           <div className="mx-auto mt-6 max-w-4xl sm:mt-8">
@@ -118,12 +116,35 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Trust / proof band — real catalog numbers + capability signals */}
+      <section className="container-page -mt-2 sm:-mt-4">
+        <div className="card grid grid-cols-2 divide-x divide-y divide-line overflow-hidden p-0 sm:grid-cols-4 sm:divide-y-0">
+          {[
+            { icon: <Stethoscope size={18} />, value: `${specializations.length}+`, label: "Specialties" },
+            { icon: <MapPin size={18} />, value: `${localities.length}+`, label: `Localities in ${activeCity.name}` },
+            { icon: <Layers size={18} />, value: "6", label: "Home services" },
+            { icon: <Clock size={18} />, value: "24/7", label: "AI health triage" }
+          ].map((s) => (
+            <div key={s.label} className="flex items-center gap-3 p-4 sm:p-5">
+              <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-primary/10 text-primary">{s.icon}</span>
+              <div className="min-w-0">
+                <div className="text-lg font-extrabold leading-tight text-ink sm:text-xl">{s.value}</div>
+                <div className="truncate text-xs text-muted">{s.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Services showcase */}
-      <section className="section pt-2">
+      <section className="section">
         <div className="container-page">
-          <h2 className="h2">Everything your family needs</h2>
-          <p className="mt-1 text-sm text-muted">One platform — consult, test, medicate, recover and monitor.</p>
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <SectionHeading
+            eyebrow="Our services"
+            title="Everything your family needs"
+            subtitle="One platform — consult, test, medicate, recover and monitor."
+          />
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {[
               { href: "/doctors", title: "Consult a doctor", desc: "Video or clinic visit", image: img("consult") },
               { href: "/medicine", title: "Pharmacy delivery", desc: "Medicines to your door", image: img("medicine") },
@@ -150,19 +171,14 @@ export default async function HomePage() {
       </section>
 
       {/* Top specialties */}
-      <section className="section">
+      <section className="section pt-0">
         <div className="container-page">
-          <div className="mb-5 flex items-end justify-between sm:mb-6">
-            <div>
-              <h2 className="h2">Most searched specialties</h2>
-              <p className="mt-1 hidden text-sm text-muted sm:block">
-                Browse the specialties our families ask about most.
-              </p>
-            </div>
-            <Link href="/doctors" className="text-sm text-primary hover:underline whitespace-nowrap">
-              View all
-            </Link>
-          </div>
+          <SectionHeading
+            eyebrow="Find a specialist"
+            title="Most searched specialties"
+            subtitle="Browse the specialties our families ask about most."
+            action={{ href: "/doctors", label: "View all" }}
+          />
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
             {topSpecialties.map((s) => (
               <SpecialtyCard key={s.slug} specialty={s} />
@@ -174,11 +190,12 @@ export default async function HomePage() {
       {/* Localities */}
       <section className="section pt-0">
         <div className="container-page">
-          <h2 className="h2">Popular localities in {activeCity.name}</h2>
-          <p className="mt-1 text-sm text-muted">
-            Doctors near where your family lives. You can also enter a 6-digit pincode in the search bar.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <SectionHeading
+            eyebrow="Near you"
+            title={`Popular localities in ${activeCity.name}`}
+            subtitle="Doctors near where your family lives. You can also enter a 6-digit pincode in the search bar."
+          />
+          <div className="flex flex-wrap gap-2">
             {topLocalities.map((l) => (
               <LocalityChip key={l.slug} locality={l} />
             ))}
@@ -189,17 +206,12 @@ export default async function HomePage() {
       {/* Featured doctors */}
       <section className="section pt-0">
         <div className="container-page">
-          <div className="mb-5 flex items-end justify-between sm:mb-6">
-            <div>
-              <h2 className="h2">Featured doctors</h2>
-              <p className="mt-1 hidden text-sm text-muted sm:block">
-                Top-rated, verified profiles in {activeCity.name}.
-              </p>
-            </div>
-            <Link href="/doctors" className="text-sm text-primary hover:underline whitespace-nowrap">
-              See all
-            </Link>
-          </div>
+          <SectionHeading
+            eyebrow="Top rated"
+            title="Featured doctors"
+            subtitle={`Top-rated, verified profiles in ${activeCity.name}.`}
+            action={{ href: "/doctors", label: "See all" }}
+          />
           {featured.length === 0 ? (
             <div className="card p-8 text-center text-sm text-muted">
               No doctors in the database yet. Run the seed script or scraper.
@@ -216,9 +228,42 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section className="section pt-0">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Simple & fast"
+            title="Care in three easy steps"
+            subtitle="From symptom to solution — without the wait."
+          />
+          <div className="relative grid gap-3 sm:grid-cols-3 sm:gap-4">
+            {[
+              { icon: <Search size={20} />, step: "01", title: "Search or ask Dr. Hanu", desc: "Find a specialist by name or locality, or describe your symptoms to our AI in Hindi or English." },
+              { icon: <CalendarCheck size={20} />, step: "02", title: "Book in seconds", desc: "Pick a video or clinic slot, order medicines, or schedule a home visit — all in a few taps." },
+              { icon: <HeartPulse size={20} />, step: "03", title: "Get cared for", desc: "Consult, receive your e-prescription, and track home visits and deliveries live from your account." }
+            ].map((s) => (
+              <div key={s.step} className="card relative p-6">
+                <div className="flex items-center justify-between">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-primary">{s.icon}</span>
+                  <span className="font-display text-2xl font-extrabold text-primary/15">{s.step}</span>
+                </div>
+                <h3 className="h3 mt-4">{s.title}</h3>
+                <p className="mt-1.5 text-sm text-muted">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Hanuone */}
       <section className="section pt-0">
-        <div className="container-page grid gap-3 sm:gap-4 sm:grid-cols-3">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Why HanuONE"
+            title="Healthcare your family can trust"
+            subtitle="Built for Indian families — verified, local and compliant."
+          />
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-3">
           {[
             {
               icon: <ShieldCheck className="text-accent" />,
@@ -244,6 +289,7 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-muted">{card.desc}</p>
             </div>
           ))}
+          </div>
         </div>
       </section>
 
