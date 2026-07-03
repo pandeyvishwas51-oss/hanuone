@@ -66,3 +66,22 @@ export async function applyReferral(code: string, newUserId: string): Promise<bo
     return false;
   }
 }
+
+/**
+ * Convert a "signed_up" referral to "rewarded" (granting the reward) the first
+ * time the referred user completes a booking. Idempotent: only a still-"signed_up"
+ * referral flips, so later bookings are a no-op. Returns true only on the reward.
+ */
+export async function rewardReferralOnFirstBooking(referredUserId: string | null): Promise<boolean> {
+  if (!HAS_DB || !referredUserId) return false;
+  try {
+    const [updated] = await db()
+      .update(schema.referrals)
+      .set({ status: "rewarded", rewardInr: REWARD_INR })
+      .where(and(eq(schema.referrals.referredUserId, referredUserId), eq(schema.referrals.status, "signed_up")))
+      .returning({ id: schema.referrals.id });
+    return !!updated;
+  } catch {
+    return false;
+  }
+}

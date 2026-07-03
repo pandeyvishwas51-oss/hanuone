@@ -5,6 +5,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { db, schema } from "./db";
 import { notifyConsultBooked, notify } from "./notify";
 import { createPayoutForSource } from "./payouts";
+import { rewardReferralOnFirstBooking } from "./referrals";
 
 /**
  * Confirm a consultation after successful payment. Idempotent: if it's already
@@ -33,6 +34,10 @@ export async function confirmConsultation(consultationId: string): Promise<void>
   const [patient] = existing.patientUserId
     ? await db().select({ email: schema.users.email }).from(schema.users).where(eq(schema.users.id, existing.patientUserId)).limit(1)
     : [{ email: null as string | null }];
+
+  // Referral reward: this paid consult is the patient's first booking — convert a
+  // pending "signed_up" referral to "rewarded" (idempotent for repeat bookings).
+  if (existing.patientUserId) await rewardReferralOnFirstBooking(existing.patientUserId).catch(() => {});
 
   const base = process.env.NEXT_PUBLIC_SITE_URL || "https://hanuone.com";
   const whenText = existing.scheduledAt ? new Date(existing.scheduledAt).toLocaleString("en-IN") : "your scheduled time";
