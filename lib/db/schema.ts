@@ -79,6 +79,10 @@ export const localities = pgTable("localities", {
 export const reviews = pgTable("reviews", {
   id: uuid("id").primaryKey().defaultRandom(),
   doctorId: uuid("doctor_id").references(() => doctors.id, { onDelete: "cascade" }),
+  // Links the review to the patient who wrote it (one per patient per doctor) and
+  // the consult it's for — so we can verify the patient actually saw the doctor.
+  patientUserId: uuid("patient_user_id"),
+  consultationId: uuid("consultation_id"),
   reviewerName: text("reviewer_name"),
   rating: integer("rating").notNull(),
   reviewText: text("review_text"),

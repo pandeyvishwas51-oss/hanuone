@@ -5,6 +5,7 @@ import { HAS_DB, db, schema } from "@/lib/db";
 import LogoutButton from "@/components/LogoutButton";
 import DataRights from "@/components/DataRights";
 import ProfileForm from "@/components/ProfileForm";
+import RateDoctor from "@/components/RateDoctor";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "My account", robots: { index: false } };
@@ -82,21 +83,28 @@ export default async function AccountPage() {
         ) : (
           <div className="mt-3 grid gap-3">
             {consults.map((c) => (
-              <div key={c.id} className="card flex flex-wrap items-center justify-between gap-3 p-4">
-                <div>
-                  <div className="font-medium text-ink">{c.context || "Consultation"}</div>
-                  <div className="text-xs text-muted">
-                    {c.scheduledAt ? new Date(c.scheduledAt).toLocaleString("en-IN") : "—"} · {c.mode}
+              <div key={c.id} className="card p-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="font-medium text-ink">{c.context || "Consultation"}</div>
+                    <div className="text-xs text-muted">
+                      {c.scheduledAt ? new Date(c.scheduledAt).toLocaleString("en-IN") : "—"} · {c.mode}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${STATUS_COLOR[c.status] ?? "bg-slate-100 text-slate-600"}`}>
+                      {c.status.replace(/_/g, " ")}
+                    </span>
+                    {(c.status === "booked" || c.status === "in_progress") && (
+                      <a href={`/consult/${c.id}`} className="btn-primary px-3 py-1.5 text-sm">Join</a>
+                    )}
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${STATUS_COLOR[c.status] ?? "bg-slate-100 text-slate-600"}`}>
-                    {c.status.replace(/_/g, " ")}
-                  </span>
-                  {(c.status === "booked" || c.status === "in_progress") && (
-                    <a href={`/consult/${c.id}`} className="btn-primary px-3 py-1.5 text-sm">Join</a>
-                  )}
-                </div>
+                {c.status === "completed" && c.doctorId && (
+                  <div className="mt-2 border-t border-line pt-2">
+                    <RateDoctor doctorId={c.doctorId} consultationId={c.id} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
