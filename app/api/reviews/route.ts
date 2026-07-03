@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { HAS_DB, db, schema } from "@/lib/db";
 import { requireUser, AuthError } from "@/lib/auth";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
@@ -49,18 +49,30 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "You can only review a doctor after a completed consultation." }, { status: 403 });
   }
 
-  await db().insert(schema.reviews).values({
-    doctorId: doctor.id,
-    patientUserId: user.id,
-    consultationId: body.consultationId ?? completed.id,
-    reviewerName: user.name ?? "Patient",
-    rating,
-    reviewText,
-    isVerified: true
-  }).onConflictDoUpdate({
-    target: [schema.reviews.patientUserId, schema.reviews.doctorId],
-    set: { rating, reviewText, isVerified: true, createdAt: new Date() }
-  });
+  // Persist the review AND refresh the doctor's denormalised aggregate in one
+  // all-or-nothing tx. Every reader (doctor card/profile headline, search sort,
+  // AI recommendations) reads doctors.rating / review_count — not the reviews
+  // table — so without this recompute a real patient review never moves the
+  // shown rating. The subquery runs after the upsert in the same batch, so it
+  // counts the just-written row.
+  await db().batch([
+    db().insert(schema.reviews).values({
+      doctorId: doctor.id,
+      patientUserId: user.id,
+      consultationId: body.consultationId ?? completed.id,
+      reviewerName: user.name ?? "Patient",
+      rating,
+      reviewText,
+      isVerified: true
+    }).onConflictDoUpdate({
+      target: [schema.reviews.patientUserId, schema.reviews.doctorId],
+      set: { rating, reviewText, isVerified: true, createdAt: new Date() }
+    }),
+    db().update(schema.doctors).set({
+      rating: sql`(select round(avg(${schema.reviews.rating})::numeric, 1) from ${schema.reviews} where ${schema.reviews.doctorId} = ${doctor.id})`,
+      reviewCount: sql`(select count(*)::int from ${schema.reviews} where ${schema.reviews.doctorId} = ${doctor.id})`
+    }).where(eq(schema.doctors.id, doctor.id))
+  ]);
 
   await audit({ actorUserId: user.id, actorRole: user.role, action: "create", entity: "reviews", entityId: doctor.id, meta: { rating } });
   return NextResponse.json({ ok: true, verified: true });
