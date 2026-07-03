@@ -9,7 +9,12 @@ export default function ServiceHero({ title, subtitle, badges, emoji }: { title:
       <div className="absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.06)_1px,transparent_0)] [background-size:22px_22px]" />
       <div className="relative">
-        <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-[2rem]">{emoji ? `${emoji} ` : ""}{title}</h1>
+        {emoji && (
+          <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-2xl ring-1 ring-inset ring-white/25 backdrop-blur-sm">
+            {emoji}
+          </div>
+        )}
+        <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-[2rem]">{title}</h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">{subtitle}</p>
         {badges && badges.length > 0 && (
           <div className="mt-5 flex flex-wrap gap-2">
