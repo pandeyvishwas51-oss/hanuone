@@ -38,7 +38,7 @@ export async function POST(req: Request) {
   // Read the linked user first so the professional-status flip and the user-role
   // change run atomically (neon-http db.batch = one tx). Otherwise a failure
   // between them leaves a "verified" pro whose user is still a patient (locked out).
-  const [profRow] = await db().select({ userId: schema.professionals.userId }).from(schema.professionals).where(eq(schema.professionals.id, body.id)).limit(1);
+  const [profRow] = await db().select().from(schema.professionals).where(eq(schema.professionals.id, body.id)).limit(1);
   if (!profRow) return NextResponse.json({ ok: false, error: "Professional not found" }, { status: 404 });
 
   // verify → provider, suspend/reject → patient.
@@ -51,6 +51,46 @@ export async function POST(req: Request) {
     ]);
   } else {
     await setStatus;
+  }
+
+  // A verified DOCTOR needs a linked `doctors` catalog row — that row is what
+  // makes them appear in /doctors AND what the whole teleconsult surface
+  // resolves through (consultations, availability, slots, payouts all key off
+  // doctors.userId). Without it a self-registered doctor had an empty clinic
+  // portal and never showed in the catalog, despite the revalidate below.
+  if (status === "verified" && profRow.role === "doctor" && profRow.userId) {
+    try {
+      const [existingDoc] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.userId, profRow.userId)).limit(1);
+      if (!existingDoc) {
+        const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+        const city = profRow.city || "Lucknow";
+        const locality = profRow.locality || city;
+        const spec = profRow.specialization || "General Physician";
+        const base = slugify(`dr-${profRow.fullName}-${spec}-${locality}`) || `dr-${profRow.userId.slice(0, 8)}`;
+        // Keep the slug unique (fall back to a user-id suffix on collision).
+        const [clash] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.slug, base)).limit(1);
+        const slug = clash ? `${base}-${profRow.userId.slice(0, 6)}` : base;
+        await db().insert(schema.doctors).values({
+          userId: profRow.userId,
+          name: profRow.fullName,
+          slug,
+          specialization: spec,
+          experienceYears: profRow.experienceYears,
+          clinicAddress: locality === city ? city : `${locality}, ${city}`,
+          locality,
+          city,
+          pincode: profRow.pincode,
+          phone: profRow.phone,
+          languages: profRow.languages ?? undefined,
+          verified: true,
+          source: "onboarded",
+          isActive: true
+        }).onConflictDoNothing();
+      }
+    } catch (e) {
+      // Catalog row is additive; a failure here must not undo verification.
+      console.error("[admin/professionals] doctor catalog link", e);
+    }
   }
 
   await audit({ actorUserId: admin.id, actorRole: "admin", action: "update", entity: "professionals", entityId: body.id, meta: { status }, ipAddress: clientIp(req) });
