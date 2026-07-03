@@ -171,7 +171,7 @@ export default async function AccountPage() {
                 <div>
                   <div className="font-medium text-ink">{l.testName}</div>
                   <div className="text-xs text-muted">
-                    {[l.collectionType === "walkin" ? "Walk-in" : "Home collection", l.slotDate, l.slotTime].filter(Boolean).join(" · ")} · <span className="capitalize">{l.status}</span>
+                    {[l.collectionType === "walkin" ? "Walk-in" : "Home collection", l.slotDate, l.slotTime].filter(Boolean).join(" · ")} · <span className="capitalize">{l.status.replace(/_/g, " ")}</span>
                   </div>
                 </div>
                 {l.reportUrl ? <a href={l.reportUrl} target="_blank" rel="noopener noreferrer" className="btn-outline px-3 py-1.5 text-sm">Report</a> : null}

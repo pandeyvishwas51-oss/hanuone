@@ -8,11 +8,12 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const VALID = ["placed", "confirmed", "dispatched", "delivered", "cancelled"];
+const LAB_VALID = ["booked", "sample_collected", "report_ready", "completed", "cancelled"];
 
-// POST { id, status?, deliveryPersonName?, deliveryPersonPhone? }
+// POST { id, type?, status?, reportUrl?, deliveryPersonName?, deliveryPersonPhone? }
 export async function POST(req: Request) {
-  // Medicine fulfilment is an ops function — restrict to admins (no pharmacy
-  // partner ownership model yet, so any-provider access was an IDOR hole).
+  // Medicine + lab fulfilment is an ops function — restrict to admins (no partner
+  // ownership model yet, so any-provider access would be an IDOR hole).
   const user = await getCurrentUser();
   if (!user || (!user.isAdmin && user.role !== "admin")) {
     return NextResponse.json({ ok: false, error: "Admin only" }, { status: 403 });
@@ -21,11 +22,26 @@ export async function POST(req: Request) {
 
   const body = (await req.json().catch(() => ({}))) as {
     id?: string;
+    type?: "medicine" | "lab";
     status?: string;
+    reportUrl?: string;
     deliveryPersonName?: string;
     deliveryPersonPhone?: string;
   };
   if (!body.id) return NextResponse.json({ ok: false, error: "id required" }, { status: 400 });
+
+  // Lab orders: advance the lab lifecycle (and optionally attach a report link).
+  if (body.type === "lab") {
+    if (!body.status || !LAB_VALID.includes(body.status)) {
+      return NextResponse.json({ ok: false, error: "valid lab status required" }, { status: 400 });
+    }
+    await db()
+      .update(schema.labOrders)
+      .set({ status: body.status, ...(body.reportUrl ? { reportUrl: body.reportUrl } : {}), updatedAt: new Date() })
+      .where(eq(schema.labOrders.id, body.id));
+    await audit({ actorUserId: user.id, actorRole: user.role, action: "update", entity: "lab_orders", entityId: body.id, meta: { status: body.status }, ipAddress: clientIp(req) });
+    return NextResponse.json({ ok: true });
+  }
 
   if (body.status && VALID.includes(body.status)) {
     await db()
