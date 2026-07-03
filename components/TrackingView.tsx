@@ -23,31 +23,41 @@ const LABEL: Record<string, string> = {
 
 export default function TrackingView({ visitId }: { visitId: string }) {
   const [s, setS] = useState<State | null>(null);
+  const [pollError, setPollError] = useState("");
 
   useEffect(() => {
     let alive = true;
+    let timer: ReturnType<typeof setInterval> | undefined;
     // The public /track link carries ?token=… which authorizes the location read.
     const token = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("token") : null;
     const qs = token ? `?token=${encodeURIComponent(token)}` : "";
     async function poll() {
       try {
         const r = await fetch(`/api/visits/${visitId}/location${qs}`, { cache: "no-store" });
-        const j = await r.json();
-        if (alive && j.ok) {
+        const j = await r.json().catch(() => ({}));
+        if (!alive) return;
+        if (r.ok && j.ok) {
+          setPollError("");
           setS({ status: j.status, staffLat: j.staffLat, staffLng: j.staffLng, etaMinutes: j.etaMinutes, trackingUpdatedAt: j.trackingUpdatedAt });
           // Stop polling once the visit is terminal — no point hammering the
           // endpoint every 8s (battery/server) on a finished or cancelled visit.
-          if (j.status === "completed" || j.status === "cancelled") clearInterval(t);
+          if (j.status === "completed" || j.status === "cancelled") {
+            if (timer) clearInterval(timer);
+          }
+        } else {
+          setPollError(j.error === "Forbidden"
+            ? "This tracking link is invalid or has expired."
+            : "Connection lost — showing your last known status. We'll retry automatically.");
         }
       } catch {
-        /* keep last state */
+        if (alive) setPollError("Connection lost — showing your last known status. We'll retry automatically.");
       }
     }
     poll();
-    const t = setInterval(poll, 8000); // 8s polling; swap to Supabase Realtime later
+    timer = setInterval(poll, 8000); // 8s polling; swap to Supabase Realtime later
     return () => {
       alive = false;
-      clearInterval(t);
+      if (timer) clearInterval(timer);
     };
   }, [visitId]);
 
@@ -67,6 +77,9 @@ export default function TrackingView({ visitId }: { visitId: string }) {
     <div className="mx-auto max-w-2xl">
       <div className="card p-5">
         <div className="text-sm font-semibold text-ink">{s ? LABEL[s.status] ?? s.status : "Loading…"}</div>
+        {pollError && (
+          <p role="status" className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">{pollError}</p>
+        )}
         {s?.etaMinutes ? <div className="mt-1 text-sm text-primary">ETA about {s.etaMinutes} min</div> : null}
 
         {/* Progress steps */}
