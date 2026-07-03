@@ -61,7 +61,10 @@ export async function POST(req: Request) {
   if (status === "verified" && profRow.role === "doctor" && profRow.userId) {
     try {
       const [existingDoc] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.userId, profRow.userId)).limit(1);
-      if (!existingDoc) {
+      if (existingDoc) {
+        // Re-verifying a previously suspended/rejected doctor: relist them.
+        await db().update(schema.doctors).set({ verified: true, isActive: true, updatedAt: new Date() }).where(eq(schema.doctors.id, existingDoc.id));
+      } else {
         const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
         const city = profRow.city || "Lucknow";
         const locality = profRow.locality || city;
@@ -90,6 +93,17 @@ export async function POST(req: Request) {
     } catch (e) {
       // Catalog row is additive; a failure here must not undo verification.
       console.error("[admin/professionals] doctor catalog link", e);
+    }
+  }
+
+  // Suspending/rejecting an onboarded doctor must pull them from the public
+  // catalog so they're no longer listed or bookable. Scoped to their linked
+  // row (doctors.userId) — scraped catalog rows have no userId, so untouched.
+  if ((status === "suspended" || status === "rejected") && profRow.userId) {
+    try {
+      await db().update(schema.doctors).set({ isActive: false, updatedAt: new Date() }).where(eq(schema.doctors.userId, profRow.userId));
+    } catch (e) {
+      console.error("[admin/professionals] doctor catalog delist", e);
     }
   }
 
