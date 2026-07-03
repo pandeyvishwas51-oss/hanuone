@@ -52,6 +52,45 @@ export async function getProviderDoctorBookings(userId: string | null) {
     .limit(100);
 }
 
+type LegacyBooking = typeof schema.bookings.$inferSelect;
+type DoctorRequest = typeof schema.doctorBookings.$inferSelect;
+
+/** Map patient consult REQUESTS into the provider `bookings` card shape. */
+export function mergeDoctorRequestsIntoBookings(
+  professionalId: string,
+  legacy: LegacyBooking[],
+  requests: DoctorRequest[]
+): LegacyBooking[] {
+  const mapped: LegacyBooking[] = requests.map((b) => ({
+    id: b.id,
+    professionalId,
+    patientName: b.patientName,
+    patientPhone: b.patientPhone,
+    patientAddress: null,
+    serviceType: "Consultation request",
+    bookingDate: b.preferredDate,
+    startTime: b.preferredTime,
+    endTime: null,
+    status: b.status,
+    notes: b.reason,
+    amount: null,
+    paymentStatus: null,
+    reminderSentAt: null,
+    createdAt: b.createdAt,
+    updatedAt: b.createdAt
+  }));
+  return [...legacy, ...mapped].sort((a, b) => String(b.bookingDate).localeCompare(String(a.bookingDate)));
+}
+
+/** All appointment rows a doctor should see: legacy `bookings` + `doctor_bookings`. */
+export async function getProviderMergedBookings(professionalId: string, userId: string | null) {
+  const [legacy, requests] = await Promise.all([
+    getProviderBookings(professionalId),
+    getProviderDoctorBookings(userId)
+  ]);
+  return mergeDoctorRequestsIntoBookings(professionalId, legacy, requests);
+}
+
 /**
  * Video/audio consultations booked with this doctor. Consults link to the
  * `doctors` catalog row (doctor_id); that row's user_id ties back to the
