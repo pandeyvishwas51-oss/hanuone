@@ -109,6 +109,36 @@ export async function POST(req: Request) {
       await db().update(schema.prescriptions).set({ pdfUrl: url }).where(eq(schema.prescriptions.id, rx.id));
     }
 
+    // 2b) Mirror the e-Rx into the doctor's EMR (emr_notes + rx_items) so it
+    // also shows in their Clinic → Prescriptions / Patients record list — the
+    // same dual-write the AI Scribe does (the patient-facing `prescriptions`
+    // row above stays the source of truth). Scoped to the doctor's own
+    // professional id so it lands in THEIR list. Best-effort.
+    try {
+      const [prof] = await db().select({ id: schema.professionals.id }).from(schema.professionals).where(eq(schema.professionals.userId, user.id)).limit(1);
+      if (prof?.id) {
+        const [note] = await db().insert(schema.emrNotes).values({
+          professionalId: prof.id,
+          patientUserId: consult.patientUserId,
+          patientName: consult.patientName,
+          patientPhone: consult.patientPhone,
+          diagnosis: rx.diagnosis,
+          advice: rx.instructions,
+          patientSummary: rx.diagnosis ? null : "Teleconsult e-prescription",
+          signed: true,
+          signedAt: new Date()
+        }).returning({ id: schema.emrNotes.id });
+        if (meds.length) {
+          await db().insert(schema.rxItems).values(meds.map((m, i) => ({
+            noteId: note.id, drugName: m.name, dose: m.dosage ?? null,
+            frequency: m.frequency ?? null, duration: m.duration ?? null, position: i
+          })));
+        }
+      }
+    } catch (e) {
+      console.error("[prescriptions] emr mirror", e);
+    }
+
     // 3) Mark consultation completed + notify. Route through completeConsultation
     // (not a raw update) so the doctor's payout is created, the status flip is
     // idempotently guarded, and the patient's review/notify automation fires —
