@@ -12,7 +12,7 @@ export default async function ClinicAnalyticsPage() {
   if (prof && isHomeCareRole(prof.role)) redirect("/care");
   if (!prof) return <ComingSoon title="Analytics" blurb="Connect a verified doctor profile to see practice analytics." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
-  const [bookings, earnings] = await Promise.all([getProviderBookings(prof.id), getProviderEarnings(prof.id)]);
+  const [bookings, earnings] = await Promise.all([getProviderBookings(prof.userId), getProviderEarnings(prof.id)]);
 
   // 14-day appointment + revenue series.
   const days = Array.from({ length: 14 }, (_, i) => {

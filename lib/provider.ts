@@ -28,11 +28,39 @@ export async function getCurrentProfessional(): Promise<Professional | null> {
   return prof ?? null;
 }
 
-/** Doctor-style appointments (the `bookings` table) for a professional. */
-export async function getProviderBookings(professionalId: string) {
-  return db().select().from(schema.bookings)
-    .where(eq(schema.bookings.professionalId, professionalId))
-    .orderBy(desc(schema.bookings.bookingDate));
+/**
+ * Doctor appointment requests for a provider. Patients write these to
+ * `doctor_bookings` (keyed by the catalog doctor_id — see app/api/book), so we
+ * resolve the provider user -> doctors row and read from THAT table. The legacy
+ * `bookings` table has NO patient writer, which is why a doctor's appointment
+ * list was always empty. Rows are mapped into the appointment shape the clinic
+ * pages already render. Returns [] for unlinked users / non-doctor providers.
+ */
+export async function getProviderBookings(userId: string | null) {
+  if (!userId) return [];
+  const [doc] = await db().select({ id: schema.doctors.id })
+    .from(schema.doctors).where(eq(schema.doctors.userId, userId)).limit(1);
+  if (!doc) return [];
+  const rows = await db().select().from(schema.doctorBookings)
+    .where(eq(schema.doctorBookings.doctorId, doc.id))
+    .orderBy(desc(schema.doctorBookings.createdAt));
+  // doctor_bookings are unpaid in-clinic requests (no fee captured here), so
+  // amount/paymentStatus are null — billing/analytics treat them as unbilled.
+  return rows.map((b) => ({
+    id: b.id,
+    patientName: b.patientName,
+    patientPhone: b.patientPhone,
+    patientAddress: null as string | null,
+    serviceType: "Consultation",
+    bookingDate: b.preferredDate,
+    startTime: b.preferredTime as string | null,
+    endTime: null as string | null,
+    status: b.status ?? "pending",
+    amount: null as number | null,
+    paymentStatus: "unpaid" as string | null,
+    notes: b.reason ?? null,
+    createdAt: b.createdAt
+  }));
 }
 
 /**

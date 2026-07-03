@@ -21,24 +21,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "bookingId and valid status required" }, { status: 400 });
   }
 
-  const [booking] = await db().select().from(schema.bookings).where(eq(schema.bookings.id, b.bookingId)).limit(1);
-  if (!booking || booking.professionalId !== prof.id) {
+  // Ownership: appointment requests live in `doctor_bookings`, keyed by the
+  // catalog doctor_id. Resolve this provider's doctor row and confirm the
+  // booking is theirs — stops cross-doctor IDOR. (doctor_bookings has no
+  // updatedAt column, so we set status only.)
+  if (!prof.userId) return NextResponse.json({ ok: false, error: "No doctor profile linked to your account yet" }, { status: 404 });
+  const [doc] = await db().select({ id: schema.doctors.id }).from(schema.doctors).where(eq(schema.doctors.userId, prof.userId)).limit(1);
+  if (!doc) return NextResponse.json({ ok: false, error: "No doctor profile linked to your account yet" }, { status: 404 });
+
+  const [booking] = await db().select().from(schema.doctorBookings).where(eq(schema.doctorBookings.id, b.bookingId)).limit(1);
+  if (!booking || booking.doctorId !== doc.id) {
     return NextResponse.json({ ok: false, error: "Not your booking" }, { status: 404 });
   }
 
-  await db().update(schema.bookings).set({ status: b.status, updatedAt: new Date() }).where(eq(schema.bookings.id, b.bookingId));
+  await db().update(schema.doctorBookings).set({ status: b.status }).where(eq(schema.doctorBookings.id, b.bookingId));
 
-  // Credit earnings once, when first completed.
-  if (b.status === "completed" && booking.status !== "completed" && booking.amount) {
-    await db().insert(schema.earnings).values({
-      professionalId: prof.id,
-      bookingId: booking.id,
-      amount: booking.amount,
-      type: "credit",
-      description: `Completed: ${booking.serviceType} (${booking.patientName})`
-    });
-  }
-
-  await audit({ actorUserId: prof.userId, actorRole: "provider", action: "update", entity: "bookings", entityId: b.bookingId, meta: { status: b.status }, ipAddress: clientIp(req) });
+  await audit({ actorUserId: prof.userId, actorRole: "provider", action: "update", entity: "doctor_bookings", entityId: b.bookingId, meta: { status: b.status }, ipAddress: clientIp(req) });
   return NextResponse.json({ ok: true });
 }

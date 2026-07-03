@@ -12,7 +12,7 @@ export default async function ClinicAppointments() {
   if (!prof) return <ComingSoon title="Appointments" blurb="Connect a verified doctor profile to manage appointments." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
   const [bookings, availability, earnings, consults] = await Promise.all([
-    getProviderBookings(prof.id), getProviderAvailability(prof.userId), getProviderEarnings(prof.id), getProviderConsultations(prof.userId)
+    getProviderBookings(prof.userId), getProviderAvailability(prof.userId), getProviderEarnings(prof.id), getProviderConsultations(prof.userId)
   ]);
   const consultations = consults.map((c) => ({
     id: c.id, patientName: c.patientName, patientPhone: c.patientPhone,

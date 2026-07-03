@@ -13,7 +13,7 @@ export default async function ClinicHomePage() {
   if (!prof) return <ComingSoon title="Clinic" blurb="Connect a verified doctor profile to open your command center." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
   const [bookings, earnings, notes] = await Promise.all([
-    getProviderBookings(prof.id), getProviderEarnings(prof.id), getProviderNotes(prof.id)
+    getProviderBookings(prof.userId), getProviderEarnings(prof.id), getProviderNotes(prof.id)
   ]);
 
   return <ClinicHome prof={j(prof)} bookings={j(bookings)} earnings={j(earnings)} notes={j(notes)} />;

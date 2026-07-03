@@ -12,7 +12,7 @@ export default async function ClinicBilling() {
   if (prof && isHomeCareRole(prof.role)) redirect("/care");
   if (!prof) return <ComingSoon title="Billing" blurb="Connect a verified doctor profile to see invoices." cta={{ label: "Set up doctor profile", href: "/providers/register?role=doctor" }} />;
 
-  const bookings = (await getProviderBookings(prof.id)).filter((b) => b.amount);
+  const bookings = (await getProviderBookings(prof.userId)).filter((b) => b.amount);
   const collected = bookings.filter((b) => b.paymentStatus === "paid").reduce((s, b) => s + (b.amount ?? 0), 0);
   const pending = bookings.filter((b) => b.paymentStatus !== "paid").reduce((s, b) => s + (b.amount ?? 0), 0);
 
