@@ -25,9 +25,11 @@ import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 3600;
 
+// Pre-render a slice at build; the rest render on-demand via ISR (revalidate
+// above) and cache — still indexable, keeps the build fast.
 export async function generateStaticParams() {
   const specs = await getAllSpecializations();
-  return specs.map((s) => ({ slug: s.slug }));
+  return specs.slice(0, 150).map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({

@@ -20,9 +20,12 @@ import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 3600;
 
+// Pre-render the first slice of doctor pages at build; the rest render
+// on-demand via ISR (revalidate above) and cache — still indexable, but keeps
+// the build fast instead of hitting the DB for every doctor on each deploy.
 export async function generateStaticParams() {
   const slugs = await getAllDoctorSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.slice(0, 300).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

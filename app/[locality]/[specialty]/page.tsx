@@ -26,8 +26,12 @@ export const revalidate = 3600;
 
 type Params = { locality: string; specialty: string };
 
+// Pre-render a high-value slice at build time; the long tail renders on-demand
+// via ISR (dynamicParams defaults to true, revalidate above) and is cached +
+// still fully indexable. Keeps builds fast/reliable instead of pre-rendering
+// thousands of DB-backed pages against a remote DB on every deploy.
 export async function generateStaticParams() {
-  return getCombinationsForStaticParams();
+  return (await getCombinationsForStaticParams()).slice(0, 100);
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
