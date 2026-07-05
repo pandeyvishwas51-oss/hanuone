@@ -126,17 +126,6 @@ export default function ServicesPage() {
         />
       </div>
 
-      <details className="mx-auto mt-6 max-w-3xl text-sm">
-        <summary className="cursor-pointer font-medium text-primary">What is Hanuone?</summary>
-        <div className="mt-3">
-          <AnswerBlock
-            question="What is Hanuone and what services does it offer?"
-            answer={`Hanuone is an all-in-one healthcare platform in Lucknow and Delhi NCR offering verified video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, vitals checkups and elder care — with transparent pricing and no booking fees for patients.`}
-            updated={new Date().toISOString().slice(0, 10)}
-          />
-        </div>
-      </details>
-
       <div className="relative mx-auto mt-8 aspect-[16/7] w-full max-w-5xl overflow-hidden rounded-2xl">
         <Image
           src={img("heroHome")}
@@ -211,6 +200,16 @@ export default function ServicesPage() {
       </section>
 
       <div className="mt-12">
+        <details className="mx-auto mb-6 max-w-3xl text-sm">
+          <summary className="cursor-pointer font-medium text-primary">What is Hanuone?</summary>
+          <div className="mt-3">
+            <AnswerBlock
+              question="What is Hanuone and what services does it offer?"
+              answer={`Hanuone is an all-in-one healthcare platform in Lucknow and Delhi NCR offering verified video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, vitals checkups and elder care — with transparent pricing and no booking fees for patients.`}
+              updated={new Date().toISOString().slice(0, 10)}
+            />
+          </div>
+        </details>
         <FaqSection title="Hanuone services — FAQs" faqs={SERVICE_FAQS} />
       </div>
     </div>

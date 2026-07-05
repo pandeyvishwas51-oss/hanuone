@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { NURSING_SERVICES, NURSE_TIERS, CITY, getDoctor } from "@/lib/data";
 
-export default function NursingBooking() {
+export default function NursingBooking({ defaultName = "", defaultPhone = "" }: { defaultName?: string; defaultPhone?: string }) {
   const params = useSearchParams();
   const withDoctor = params.get("withDoctor");
   const doctor = withDoctor ? getDoctor(withDoctor) : undefined;
@@ -14,9 +14,46 @@ export default function NursingBooking() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
   const service = NURSING_SERVICES.find((s) => s.id === serviceId);
-  const canSubmit = serviceId && address && date && time;
+  const canSubmit = Boolean(serviceId && address && date && time);
+
+  async function confirmVisit() {
+    if (!canSubmit || busy) return;
+    // Reuse the saved profile — never re-ask name/phone. If we truly have no
+    // phone on file, send them to log in (keeps their booking intent).
+    if (!defaultPhone) {
+      window.location.href = "/login?next=/home-nursing";
+      return;
+    }
+    setBusy(true);
+    setError("");
+    try {
+      const r = await fetch("/api/service-request", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          service: "nursing",
+          name: defaultName || "Patient",
+          phone: defaultPhone,
+          city: CITY.name,
+          notes: `${service?.name} · ${address} · ${date} ${time}${doctor ? ` · with ${doctor.name}` : ""}`
+        })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) {
+        setError(j.error || "Could not place the request. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Network error — please check your connection and retry.");
+    } finally {
+      setBusy(false);
+    }
+  }
 
   if (submitted && service) {
     return (
@@ -139,12 +176,13 @@ export default function NursingBooking() {
                 <div className="flex justify-between border-t border-slate-100 pt-2 text-base"><span>Total</span><span className="font-bold text-brand-700">{service ? `₹${service.price}` : "—"}</span></div>
               </div>
               <button
-                disabled={!canSubmit}
-                onClick={() => setSubmitted(true)}
+                disabled={!canSubmit || busy}
+                onClick={confirmVisit}
                 className="mt-4 w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:bg-slate-300"
               >
-                Confirm Nursing Visit
+                {busy ? "Booking…" : "Confirm Nursing Visit"}
               </button>
+              {error && <p className="mt-2 text-center text-xs font-semibold text-rose-600">{error}</p>}
               <p className="mt-2 text-center text-[11px] text-slate-400">
                 You consent to share your address with the assigned verified nurse only.
               </p>

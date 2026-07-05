@@ -33,7 +33,11 @@ export default function MedicinePage() {
         />
       </div>
 
-      <details className="mt-6 text-sm">
+      <div className="mt-6">
+        <MedicineOrder city={city} />
+      </div>
+
+      <details className="mt-10 text-sm">
         <summary className="cursor-pointer font-medium text-primary">More about ordering medicines</summary>
         <div className="mt-3">
           <AnswerBlock
@@ -42,10 +46,6 @@ export default function MedicinePage() {
           />
         </div>
       </details>
-
-      <div className="mt-6">
-        <MedicineOrder city={city} />
-      </div>
     </div>
   );
 }

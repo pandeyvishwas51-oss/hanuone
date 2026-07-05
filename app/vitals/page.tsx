@@ -55,17 +55,7 @@ export default async function VitalsPage() {
         />
       </div>
 
-      <details className="mt-6 text-sm">
-        <summary className="cursor-pointer font-medium text-primary">More about Vital Checkup</summary>
-        <div className="mt-3">
-          <AnswerBlock
-            question="What is a Hanuone Vital Checkup?"
-            answer="A Hanuone Vital Checkup captures key vitals — blood pressure, heart rate, SpO₂, temperature, blood sugar, respiratory rate and weight — at home, instantly flags any out-of-range values, generates a downloadable PDF report, and tracks your trends over time. Abnormal results suggest an immediate teleconsult."
-          />
-        </div>
-      </details>
-
-      <div className="mt-6">
+      <div className="mt-8">
         <VitalCheckupBooking defaultName={user.name ?? ""} defaultPhone={user.phone?.replace(/^91/, "") ?? ""} city="Lucknow" />
       </div>
 
@@ -81,6 +71,16 @@ export default async function VitalsPage() {
         <summary className="cursor-pointer text-sm font-medium text-primary">Prefer to log a reading yourself? Open the self-entry form</summary>
         <div className="mt-3 max-w-md">
           <VitalsForm defaultName={user.name ?? ""} defaultPhone={user.phone?.replace(/^91/, "") ?? ""} />
+        </div>
+      </details>
+
+      <details className="mt-10 text-sm">
+        <summary className="cursor-pointer font-medium text-primary">More about Vital Checkup</summary>
+        <div className="mt-3">
+          <AnswerBlock
+            question="What is a Hanuone Vital Checkup?"
+            answer="A Hanuone Vital Checkup captures key vitals — blood pressure, heart rate, SpO₂, temperature, blood sugar, respiratory rate and weight — at home, instantly flags any out-of-range values, generates a downloadable PDF report, and tracks your trends over time. Abnormal results suggest an immediate teleconsult."
+          />
         </div>
       </details>
     </div>

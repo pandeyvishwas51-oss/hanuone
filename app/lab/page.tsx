@@ -35,7 +35,11 @@ export default async function LabPage() {
         />
       </div>
 
-      <details className="mt-6 text-sm">
+      <div className="mt-6">
+        <LabBooking tests={tests} city={city} />
+      </div>
+
+      <details className="mt-10 text-sm">
         <summary className="cursor-pointer font-medium text-primary">More about home lab tests</summary>
         <div className="mt-3">
           <AnswerBlock
@@ -44,10 +48,6 @@ export default async function LabPage() {
           />
         </div>
       </details>
-
-      <div className="mt-6">
-        <LabBooking tests={tests} city={city} />
-      </div>
     </div>
   );
 }
