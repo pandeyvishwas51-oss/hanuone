@@ -85,11 +85,14 @@ export async function POST(req: Request) {
 
   const b = (await req.json().catch(() => ({}))) as Body;
   const kind = b.kind;
-  const patientName = (b.patientName || "").trim();
   // Link the booking to the logged-in patient so it always shows in their
-  // "My bookings" (even if the spoken phone differs from their account phone).
+  // "My bookings" (even if the spoken phone differs from their account phone),
+  // AND reuse their saved profile so the AI never re-asks a returning, logged-in
+  // user for their name/phone — providing details once is enough.
   const reqUser = await getCurrentUser().catch(() => null);
-  const patientPhone = (b.patientPhone || "").trim();
+  const patientName = (b.patientName || reqUser?.name || "").trim();
+  const rawPhone = (b.patientPhone || reqUser?.phone || "").replace(/\D/g, "");
+  const patientPhone = rawPhone.length > 10 ? rawPhone.slice(-10) : rawPhone;
   const whenTime = (b.whenTime || "").trim() || "Any time";
   const preferredDate = resolveDate(b.whenDay);
   // Parse as local midnight (bare YYYY-MM-DD parses as UTC and can show the wrong day).

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
+import { getCurrentUser } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -110,6 +111,16 @@ export async function POST(req: Request) {
   if (!rl.ok) return NextResponse.json({ ok: false, error: "Too many requests" }, { status: 429 });
   if (!ENDPOINT || !KEY) return NextResponse.json({ ok: false, error: "Realtime not configured" }, { status: 503 });
 
+  // If the patient is signed in, hand their saved profile to the voice agent so
+  // it greets them by name and NEVER re-asks for details it already has —
+  // one-time profile data should be enough.
+  const user = await getCurrentUser().catch(() => null);
+  const knownPhone = user?.phone ? user.phone.replace(/\D/g, "").slice(-10) : "";
+  const known = user && (user.name || knownPhone)
+    ? `\n\nThe patient is already signed in to HanuONE${user.name ? ` as ${user.name}` : ""}. ${user.name ? "Greet them warmly by their first name. " : ""}You ALREADY have their details${user.name ? ` — name: ${user.name}` : ""}${knownPhone ? `, mobile: ${knownPhone}` : ""}. Do NOT ask them for their name or mobile number again; pass these exact values straight into the booking tools. Only ask for details you genuinely don't have yet, such as the day, time, home address, gender or test name.`
+    : "";
+  const instructions = INSTRUCTIONS + known;
+
   try {
     const res = await fetch(`${ENDPOINT}/openai/realtimeapi/sessions?api-version=${API_VERSION}`, {
       method: "POST",
@@ -118,7 +129,7 @@ export async function POST(req: Request) {
         model: DEPLOYMENT,
         voice: "marin",
         modalities: ["audio", "text"],
-        instructions: INSTRUCTIONS,
+        instructions,
         tools: TOOLS,
         tool_choice: "auto",
         input_audio_transcription: { model: "whisper-1" },
