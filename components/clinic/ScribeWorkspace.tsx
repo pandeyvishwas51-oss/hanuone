@@ -210,14 +210,14 @@ export default function ScribeWorkspace() {
 
           {/* DocAssist — agentic safety co-pilot */}
           <div className="lg:col-span-2">
-            <div className="rounded-2xl border border-violet-200 bg-violet-50/50 p-4">
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-violet-600 text-xs font-bold text-white">AI</span>
-                  <span className="text-sm font-bold text-violet-900">DocAssist safety check</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary text-xs font-bold text-white">AI</span>
+                  <span className="text-sm font-bold text-primary">DocAssist safety check</span>
                   {assist && <RiskBadge risk={assist.overallRisk} />}
                 </div>
-                <button onClick={runAssist} disabled={assistBusy} className="rounded-lg bg-violet-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-violet-700 disabled:bg-slate-300">
+                <button onClick={runAssist} disabled={assistBusy} className="rounded-lg bg-primary px-4 py-1.5 text-xs font-semibold text-white hover:bg-primary-600 disabled:bg-slate-300">
                   {assistBusy ? "Analysing…" : assist ? "Re-run" : "🛡️ Run interaction + differential check"}
                 </button>
               </div>
@@ -249,7 +249,7 @@ export default function ScribeWorkspace() {
                     {assist.suggestedInvestigations?.length > 0 && (
                       <Block title="Suggested investigations">
                         <div className="flex flex-wrap gap-1.5">{assist.suggestedInvestigations.map((s: string, i: number) => (
-                          <button key={i} onClick={() => applyInvestigation(s)} className="rounded-full border border-violet-300 bg-white px-2 py-0.5 text-xs text-violet-700 hover:bg-violet-100">+ {s}</button>
+                          <button key={i} onClick={() => applyInvestigation(s)} className="rounded-full border border-primary/30 bg-white px-2 py-0.5 text-xs text-primary hover:bg-primary/10">+ {s}</button>
                         ))}</div>
                       </Block>
                     )}
@@ -326,8 +326,8 @@ function RiskBadge({ risk }: { risk: string }) {
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-lg border border-violet-100 bg-white p-2.5">
-      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-violet-500">{title}</div>
+    <div className="rounded-lg border border-primary/10 bg-white p-2.5">
+      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-primary/70">{title}</div>
       {children}
     </div>
   );

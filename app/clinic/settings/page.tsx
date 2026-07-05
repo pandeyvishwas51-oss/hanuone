@@ -41,7 +41,7 @@ export default async function ClinicSettings() {
         {/* Clinic */}
         <SectionCard title="Clinic & practice">
           <div className="flex items-center gap-3">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-violet-600"><Building2 size={20} /></span>
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary"><Building2 size={20} /></span>
             <div><div className="font-bold text-slate-800">{prof.city || "Lucknow"} practice</div><div className="text-xs text-slate-400">{prof.pincode ? `Pincode ${prof.pincode}` : "Add your clinic address"}</div></div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2">
