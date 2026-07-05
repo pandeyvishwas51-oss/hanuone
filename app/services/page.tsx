@@ -17,6 +17,8 @@ import ServiceRequestDialog from "@/components/ServiceRequestDialog";
 import ServiceabilityBadge from "@/components/ServiceabilityBadge";
 import AnswerBlock from "@/components/AnswerBlock";
 import FaqSection from "@/components/FaqSection";
+import HowItWorks from "@/components/HowItWorks";
+import { Search, CalendarCheck, HeartPulse, FileText } from "lucide-react";
 import { getActiveCity } from "@/lib/active-city";
 
 const SERVICE_FAQS = [
@@ -112,13 +114,28 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      <div className="mx-auto mt-6 max-w-3xl">
-        <AnswerBlock
-          question="What is Hanuone and what services does it offer?"
-          answer={`Hanuone is an all-in-one healthcare platform in Lucknow and Delhi NCR offering verified video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, vitals checkups and elder care — with transparent pricing and no booking fees for patients.`}
-          updated={new Date().toISOString().slice(0, 10)}
+      <div className="mt-10">
+        <HowItWorks
+          title="How Hanuone works"
+          steps={[
+            { Icon: Search, title: "Find your care", text: "Search a doctor, test or service — or ask Dr. Hanu, our AI health assistant." },
+            { Icon: CalendarCheck, title: "Book in seconds", text: "Pick a slot with transparent pricing and no booking fees, ever." },
+            { Icon: HeartPulse, title: "Get care at home", text: "Verified doctors, nurses and phlebotomists come to you, or consult on video." },
+            { Icon: FileText, title: "Reports & records", text: "Prescriptions, lab reports and vitals stay safe in one place for the whole family." }
+          ]}
         />
       </div>
+
+      <details className="mx-auto mt-6 max-w-3xl text-sm">
+        <summary className="cursor-pointer font-medium text-primary">What is Hanuone?</summary>
+        <div className="mt-3">
+          <AnswerBlock
+            question="What is Hanuone and what services does it offer?"
+            answer={`Hanuone is an all-in-one healthcare platform in Lucknow and Delhi NCR offering verified video doctor consultations, at-home lab tests, medicine delivery, home nursing, physiotherapy, vitals checkups and elder care — with transparent pricing and no booking fees for patients.`}
+            updated={new Date().toISOString().slice(0, 10)}
+          />
+        </div>
+      </details>
 
       <div className="relative mx-auto mt-8 aspect-[16/7] w-full max-w-5xl overflow-hidden rounded-2xl">
         <Image

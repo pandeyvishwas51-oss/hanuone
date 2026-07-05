@@ -55,8 +55,8 @@ export default async function HomePage() {
         <HeroVideo />
 
         <div className="container-page relative z-10 pb-10 pt-8 sm:pt-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+          <div className="mx-auto max-w-3xl text-center [text-shadow:0_1px_10px_rgba(245,248,248,0.85)]">
+            <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent [text-shadow:none]">
               One Platform · Complete Healthcare
             </span>
             <HeroHeadline initialCity={visitorCity} />

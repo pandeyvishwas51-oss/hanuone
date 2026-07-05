@@ -48,8 +48,12 @@ export default function HeroVideo() {
         preload="none"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      {/* Light scrim only for headline legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/55 via-transparent to-bg/70" />
+      {/* Legibility wash: a soft, consistent light veil so the dark headline and
+          body copy stay crisp across the whole text zone (the old scrim went
+          fully transparent through the middle, where most of the text sits). */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/55 to-bg/90" />
+      {/* Gentle centre glow to lift the headline off any busy frame of the video */}
+      <div className="absolute inset-0 bg-[radial-gradient(60%_55%_at_50%_38%,rgba(255,255,255,0.5),transparent_70%)]" />
     </div>
   );
 }

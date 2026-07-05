@@ -1,6 +1,8 @@
 import MedicineOrder from "@/components/MedicineOrder";
 import AnswerBlock from "@/components/AnswerBlock";
 import ServiceHero from "@/components/ServiceHero";
+import HowItWorks from "@/components/HowItWorks";
+import { UploadCloud, BadgeCheck, Wallet, Truck } from "lucide-react";
 import { getActiveCity } from "@/lib/active-city";
 
 export const dynamic = "force-dynamic";
@@ -20,12 +22,26 @@ export default function MedicinePage() {
         badges={["Partner pharmacies", "Prescription-linked", "Same-day in select areas"]}
       />
 
-      <div className="mt-6">
-        <AnswerBlock
-          question="How do I order medicines on Hanuone?"
-          answer={`Upload a doctor's prescription or list the medicines you need, add your delivery address, and a partner pharmacy in ${city} confirms availability and price. Prescription medicines are dispensed only against a valid prescription, and delivery is same-day in select pincodes.`}
+      <div className="mt-8">
+        <HowItWorks
+          steps={[
+            { Icon: UploadCloud, title: "Upload prescription", text: "Snap your doctor's prescription or simply list the medicines you need." },
+            { Icon: BadgeCheck, title: "Pharmacy confirms", text: `A partner pharmacy in ${city} checks availability and confirms the price.` },
+            { Icon: Wallet, title: "Pay securely", text: "Transparent pricing, no hidden fees — pay online once you approve." },
+            { Icon: Truck, title: "Home delivery", text: "Medicines delivered to your door, same-day in select pincodes." }
+          ]}
         />
       </div>
+
+      <details className="mt-6 text-sm">
+        <summary className="cursor-pointer font-medium text-primary">More about ordering medicines</summary>
+        <div className="mt-3">
+          <AnswerBlock
+            question="How do I order medicines on Hanuone?"
+            answer={`Upload a doctor's prescription or list the medicines you need, add your delivery address, and a partner pharmacy in ${city} confirms availability and price. Prescription medicines are dispensed only against a valid prescription, and delivery is same-day in select pincodes.`}
+          />
+        </div>
+      </details>
 
       <div className="mt-6">
         <MedicineOrder city={city} />

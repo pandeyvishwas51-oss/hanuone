@@ -2,6 +2,8 @@ import { getLabTests } from "@/lib/lab-catalog";
 import LabBooking from "@/components/LabBooking";
 import AnswerBlock from "@/components/AnswerBlock";
 import ServiceHero from "@/components/ServiceHero";
+import HowItWorks from "@/components/HowItWorks";
+import { TestTube2, Home, FlaskConical, FileText } from "lucide-react";
 import { getActiveCity } from "@/lib/active-city";
 
 export const dynamic = "force-dynamic";
@@ -22,12 +24,26 @@ export default async function LabPage() {
         badges={["Verified labs", "Home collection", "Reports in 24-48h"]}
       />
 
-      <div className="mt-6">
-        <AnswerBlock
-          question="How do I book a home lab test on Hanuone?"
-          answer={`Pick a test below, choose home collection, and select a slot. A trained phlebotomist collects your sample at home in ${city}, and your digital report is delivered to your Hanuone account — typically within 24–48 hours. Routine tests start at ₹350.`}
+      <div className="mt-8">
+        <HowItWorks
+          steps={[
+            { Icon: TestTube2, title: "Pick a test", text: "Choose from blood tests, thyroid, diabetes, lipid and full-body packages below." },
+            { Icon: Home, title: "Home collection", text: `A trained phlebotomist collects your sample at home in ${city}, at your chosen slot.` },
+            { Icon: FlaskConical, title: "Verified lab", text: "Your sample is processed at an accredited, verified diagnostic lab." },
+            { Icon: FileText, title: "Digital report", text: "Reports land in your Hanuone account, typically within 24–48 hours." }
+          ]}
         />
       </div>
+
+      <details className="mt-6 text-sm">
+        <summary className="cursor-pointer font-medium text-primary">More about home lab tests</summary>
+        <div className="mt-3">
+          <AnswerBlock
+            question="How do I book a home lab test on Hanuone?"
+            answer={`Pick a test below, choose home collection, and select a slot. A trained phlebotomist collects your sample at home in ${city}, and your digital report is delivered to your Hanuone account — typically within 24–48 hours. Routine tests start at ₹350.`}
+          />
+        </div>
+      </details>
 
       <div className="mt-6">
         <LabBooking tests={tests} city={city} />
