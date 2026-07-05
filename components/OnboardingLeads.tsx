@@ -21,7 +21,7 @@ const STATUSES = ["new", "contacted", "interested", "docs_pending", "onboarded",
 const COLOR: Record<string, string> = {
   new: "bg-slate-100 text-slate-700",
   contacted: "bg-blue-50 text-blue-700",
-  interested: "bg-indigo-50 text-indigo-700",
+  interested: "bg-sky-50 text-sky-700",
   docs_pending: "bg-amber-50 text-amber-700",
   onboarded: "bg-emerald-50 text-emerald-700",
   rejected: "bg-rose-50 text-rose-600",

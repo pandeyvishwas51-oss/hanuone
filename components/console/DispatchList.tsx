@@ -39,7 +39,7 @@ export default function DispatchList({ requested, assigned }: { requested: Visit
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-sm font-bold text-slate-800">{v.patientName}</span>
                       <Pill tone={statusTone(v.status)}>{v.status}</Pill>
-                      {v.customerGender && <Pill tone="violet">{v.customerGender}</Pill>}
+                      {v.customerGender && <Pill tone="slate">{v.customerGender}</Pill>}
                     </div>
                     <div className="mt-0.5 flex items-center gap-1 text-xs text-slate-500"><MapPin size={12} /> {v.address}{v.pincode ? `, ${v.pincode}` : ""}</div>
                     <div className="text-xs text-slate-400">{v.serviceName || v.serviceType}</div>

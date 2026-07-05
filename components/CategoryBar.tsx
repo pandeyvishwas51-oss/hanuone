@@ -8,13 +8,15 @@ import { Stethoscope, TestTube, Pill, Activity, HeartPulse, Mic } from "lucide-r
  */
 // Ordered by patient intent / frequency: consult first, then pharmacy, diagnostics,
 // monitoring, home care, and the always-on AI assistant.
+// One cohesive brand treatment (teal), with the flagship AI Doctor as the
+// single orange accent — avoids the cluttered rainbow of per-item colours.
 const CATEGORIES = [
   { href: "/doctors", label: "Doctors", Icon: Stethoscope, tint: "bg-primary/10 text-primary" },
-  { href: "/medicine", label: "Medicines", Icon: Pill, tint: "bg-emerald-100 text-emerald-700" },
-  { href: "/lab", label: "Lab Tests", Icon: TestTube, tint: "bg-accent/10 text-accent" },
-  { href: "/vitals", label: "Vitals", Icon: Activity, tint: "bg-rose-100 text-rose-700" },
-  { href: "/home-nursing", label: "Home Care", Icon: HeartPulse, tint: "bg-violet-100 text-violet-700" },
-  { href: "/ai-doctor", label: "AI Doctor", Icon: Mic, tint: "bg-sky-100 text-sky-700" }
+  { href: "/medicine", label: "Medicines", Icon: Pill, tint: "bg-primary/10 text-primary" },
+  { href: "/lab", label: "Lab Tests", Icon: TestTube, tint: "bg-primary/10 text-primary" },
+  { href: "/vitals", label: "Vitals", Icon: Activity, tint: "bg-primary/10 text-primary" },
+  { href: "/home-nursing", label: "Home Care", Icon: HeartPulse, tint: "bg-primary/10 text-primary" },
+  { href: "/ai-doctor", label: "AI Doctor", Icon: Mic, tint: "bg-accent/10 text-accent" }
 ];
 
 export default function CategoryBar() {

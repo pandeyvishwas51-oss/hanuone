@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 type Row = { type: string; patient: string; detail: string; status: string; date: Date | null };
 async function safe<T>(p: Promise<T>, fallback: T): Promise<T> { try { return await p; } catch { return fallback; } }
 
-const TYPE_TONE: Record<string, "blue" | "violet" | "green" | "amber"> = { Consult: "blue", Lab: "violet", "Home visit": "green", "Appt request": "amber" };
+const TYPE_TONE: Record<string, "blue" | "slate" | "green" | "amber"> = { Consult: "blue", Lab: "slate", "Home visit": "green", "Appt request": "amber" };
 
 export default async function ConsoleBookings() {
   let rows: Row[] = [];

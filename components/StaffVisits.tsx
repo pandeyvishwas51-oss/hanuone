@@ -26,9 +26,9 @@ const FLOW: Record<string, { next: string; label: string } | null> = {
 
 const STATUS_COLOR: Record<string, string> = {
   assigned: "bg-blue-50 text-blue-700",
-  on_the_way: "bg-indigo-50 text-indigo-700",
+  on_the_way: "bg-sky-50 text-sky-700",
   arrived: "bg-amber-50 text-amber-700",
-  in_progress: "bg-violet-50 text-violet-700",
+  in_progress: "bg-sky-50 text-sky-700",
   completed: "bg-emerald-50 text-emerald-700",
   cancelled: "bg-rose-50 text-rose-600"
 };

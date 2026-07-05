@@ -26,7 +26,7 @@ const FLOW: Record<string, { next: string; label: string } | null> = {
 const COLOR: Record<string, string> = {
   placed: "bg-amber-50 text-amber-700",
   confirmed: "bg-blue-50 text-blue-700",
-  dispatched: "bg-indigo-50 text-indigo-700",
+  dispatched: "bg-sky-50 text-sky-700",
   delivered: "bg-emerald-50 text-emerald-700",
   cancelled: "bg-rose-50 text-rose-600"
 };
