@@ -47,10 +47,10 @@ export default async function VitalsPage() {
       <div className="mt-8">
         <HowItWorks
           steps={[
-            { Icon: CalendarCheck, title: "Book a slot", text: "Pick a time — a verified nurse comes to your home to take your vitals." },
-            { Icon: Stethoscope, title: "Vitals captured", text: "BP, heart rate, SpO₂, temperature, blood sugar, weight and more, all at home." },
-            { Icon: FileText, title: "Instant report", text: "Out-of-range values are flagged instantly in a downloadable PDF report." },
-            { Icon: LineChart, title: "Track trends", text: "Every visit is charted over time, so you can watch your health improve." }
+            { Icon: CalendarCheck, title: "Book a slot" },
+            { Icon: Stethoscope, title: "Vitals at home" },
+            { Icon: FileText, title: "Instant report" },
+            { Icon: LineChart, title: "Track trends" }
           ]}
         />
       </div>

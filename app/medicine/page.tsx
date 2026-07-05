@@ -25,10 +25,10 @@ export default function MedicinePage() {
       <div className="mt-8">
         <HowItWorks
           steps={[
-            { Icon: UploadCloud, title: "Upload prescription", text: "Snap your doctor's prescription or simply list the medicines you need." },
-            { Icon: BadgeCheck, title: "Pharmacy confirms", text: `A partner pharmacy in ${city} checks availability and confirms the price.` },
-            { Icon: Wallet, title: "Pay securely", text: "Transparent pricing, no hidden fees — pay online once you approve." },
-            { Icon: Truck, title: "Home delivery", text: "Medicines delivered to your door, same-day in select pincodes." }
+            { Icon: UploadCloud, title: "Upload Rx" },
+            { Icon: BadgeCheck, title: "Pharmacy confirms" },
+            { Icon: Wallet, title: "Pay securely" },
+            { Icon: Truck, title: "Home delivery" }
           ]}
         />
       </div>

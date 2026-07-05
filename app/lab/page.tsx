@@ -27,10 +27,10 @@ export default async function LabPage() {
       <div className="mt-8">
         <HowItWorks
           steps={[
-            { Icon: TestTube2, title: "Pick a test", text: "Choose from blood tests, thyroid, diabetes, lipid and full-body packages below." },
-            { Icon: Home, title: "Home collection", text: `A trained phlebotomist collects your sample at home in ${city}, at your chosen slot.` },
-            { Icon: FlaskConical, title: "Verified lab", text: "Your sample is processed at an accredited, verified diagnostic lab." },
-            { Icon: FileText, title: "Digital report", text: "Reports land in your Hanuone account, typically within 24–48 hours." }
+            { Icon: TestTube2, title: "Pick a test" },
+            { Icon: Home, title: "Home collection" },
+            { Icon: FlaskConical, title: "Verified lab" },
+            { Icon: FileText, title: "Digital report" }
           ]}
         />
       </div>

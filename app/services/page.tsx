@@ -118,10 +118,10 @@ export default function ServicesPage() {
         <HowItWorks
           title="How Hanuone works"
           steps={[
-            { Icon: Search, title: "Find your care", text: "Search a doctor, test or service — or ask Dr. Hanu, our AI health assistant." },
-            { Icon: CalendarCheck, title: "Book in seconds", text: "Pick a slot with transparent pricing and no booking fees, ever." },
-            { Icon: HeartPulse, title: "Get care at home", text: "Verified doctors, nurses and phlebotomists come to you, or consult on video." },
-            { Icon: FileText, title: "Reports & records", text: "Prescriptions, lab reports and vitals stay safe in one place for the whole family." }
+            { Icon: Search, title: "Find care" },
+            { Icon: CalendarCheck, title: "Book a slot" },
+            { Icon: HeartPulse, title: "Get care at home" },
+            { Icon: FileText, title: "Reports & records" }
           ]}
         />
       </div>

@@ -56,16 +56,9 @@ export default async function HomePage() {
 
         <div className="container-page relative z-10 pb-10 pt-8 sm:pt-16">
           <div className="mx-auto max-w-3xl text-center [text-shadow:0_1px_10px_rgba(245,248,248,0.85)]">
-            <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent [text-shadow:none]">
-              One Platform · Complete Healthcare
-            </span>
             <HeroHeadline initialCity={visitorCity} />
             <p className="mt-3 text-sm font-medium text-primary sm:text-base">
               Trusted Healthcare, Right at Home.
-            </p>
-            <p className="mt-2 text-sm text-muted sm:text-lg">
-              Consult doctors, book lab tests, order medicines, nursing, physiotherapy and an AI health
-              assistant — for your whole family in {activeCity.name}.
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <Link href="/services" className="btn-primary px-6">
@@ -75,7 +68,6 @@ export default async function HomePage() {
                 <Mic size={16} /> Talk to Dr. Hanu
               </Link>
             </div>
-            <p className="mt-2.5 text-xs text-muted">Speak in Hindi or English — our AI doctor listens and replies by voice.</p>
           </div>
 
           <div className="mx-auto mt-6 max-w-4xl sm:mt-8">
@@ -102,11 +94,9 @@ export default async function HomePage() {
           <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-primary/80">
             {[
               "Verified Doctors",
-              "Trusted Healthcare Partners",
-              "Affordable Pricing",
-              "Home Healthcare Services",
-              "AI-Powered Health Guidance",
-              "Secure Health Records"
+              "Affordable",
+              "Home Visits",
+              "Secure Records"
             ].map((t) => (
               <span key={t} className="inline-flex items-center gap-1.5">
                 <CheckBadge className="h-4 w-4 text-accent" /> {t}
@@ -142,7 +132,6 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Our services"
             title="Everything your family needs"
-            subtitle="One platform — consult, test, medicate, recover and monitor."
           />
           <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {[
@@ -161,7 +150,6 @@ export default async function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
                   <div className="absolute bottom-0 p-3 text-white">
                     <div className="text-sm font-semibold">{s.title}</div>
-                    <div className="text-[11px] text-white/85">{s.desc}</div>
                   </div>
                 </div>
               </Link>
@@ -176,7 +164,6 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Find a specialist"
             title="Most searched specialties"
-            subtitle="Browse the specialties our families ask about most."
             action={{ href: "/doctors", label: "View all" }}
           />
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
@@ -193,7 +180,6 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Near you"
             title={`Popular localities in ${activeCity.name}`}
-            subtitle="Doctors near where your family lives. You can also enter a 6-digit pincode in the search bar."
           />
           <div className="flex flex-wrap gap-2">
             {topLocalities.map((l) => (
@@ -209,7 +195,6 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Top rated"
             title="Featured doctors"
-            subtitle={`Top-rated, verified profiles in ${activeCity.name}.`}
             action={{ href: "/doctors", label: "See all" }}
           />
           {featured.length === 0 ? (
@@ -234,13 +219,12 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Simple & fast"
             title="Care in three easy steps"
-            subtitle="From symptom to solution — without the wait."
           />
           <div className="relative grid gap-3 sm:grid-cols-3 sm:gap-4">
             {[
-              { icon: <Search size={20} />, step: "01", title: "Search or ask Dr. Hanu", desc: "Find a specialist by name or locality, or describe your symptoms to our AI in Hindi or English." },
-              { icon: <CalendarCheck size={20} />, step: "02", title: "Book in seconds", desc: "Pick a video or clinic slot, order medicines, or schedule a home visit — all in a few taps." },
-              { icon: <HeartPulse size={20} />, step: "03", title: "Get cared for", desc: "Consult, receive your e-prescription, and track home visits and deliveries live from your account." }
+              { icon: <Search size={20} />, step: "01", title: "Search or ask Dr. Hanu", desc: "Find a doctor or describe symptoms." },
+              { icon: <CalendarCheck size={20} />, step: "02", title: "Book in seconds", desc: "Video, clinic or home visit." },
+              { icon: <HeartPulse size={20} />, step: "03", title: "Get cared for", desc: "Consult, e-prescription, track live." }
             ].map((s) => (
               <div key={s.step} className="card relative p-6">
                 <div className="flex items-center justify-between">
@@ -261,24 +245,23 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Why HanuONE"
             title="Healthcare your family can trust"
-            subtitle="Built for Indian families — verified, local and compliant."
           />
           <div className="grid gap-3 sm:gap-4 sm:grid-cols-3">
           {[
             {
               icon: <ShieldCheck className="text-accent" />,
               title: "Verified profiles",
-              desc: "Every doctor cross-checked against public registries before listing."
+              desc: "Cross-checked against registries."
             },
             {
               icon: <Users className="text-accent" />,
               title: "Local reviews",
-              desc: "Real reviews from Lucknow families, not anonymous numbers."
+              desc: "Real families, real ratings."
             },
             {
               icon: <Sparkles className="text-accent" />,
               title: "Free, forever",
-              desc: "No fees, no hidden ads. Our home-care network funds the directory."
+              desc: "No fees, no hidden ads."
             }
           ].map((card) => (
             <div key={card.title} className="card p-5 sm:p-6">
@@ -299,19 +282,14 @@ export default async function HomePage() {
           <div className="card grid items-center gap-5 bg-primary p-6 text-white sm:grid-cols-2 sm:gap-6 sm:p-8">
             <div>
               <h3 className="text-lg font-bold sm:text-xl">Are you a doctor in Lucknow?</h3>
-              <p className="mt-1 text-sm text-white/80">
-                Get listed for free. Verified profiles get more visibility on Hanuone.
-              </p>
+              <p className="mt-1 text-sm text-white/80">Get listed free.</p>
               <Link href="/providers/join" className="btn-whatsapp mt-4 inline-flex">
                 Get listed free
               </Link>
             </div>
             <div className="rounded-2xl bg-white/10 p-4 sm:p-5">
               <div className="text-sm font-semibold">HanuOne Home Care Network</div>
-              <p className="mt-1 text-xs text-white/80">
-                Are you a nurse, ward boy, caregiver or physiotherapist? Join HanuOne to get
-                home-care work near you in Lucknow.
-              </p>
+              <p className="mt-1 text-xs text-white/80">Nurse, caregiver or physio? Get work near you.</p>
               <Link href="/providers/register" className="btn-whatsapp mt-4 inline-flex">
                 Register as a professional
               </Link>
